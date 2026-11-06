@@ -80,6 +80,9 @@ export default function DamDetail() {
             <MapPin className="mt-0.5 h-[18px] w-[18px] shrink-0" aria-hidden />
             <span className="min-w-0">{dam.place} · {damRegion(dam)}</span>
           </p>
+          <Link to={`/atlas?ficha=${dam.id}`} className="press mt-3 inline-flex h-10 items-center gap-1.5 rounded-full border border-white/35 px-4 text-[13.5px] font-bold text-white backdrop-blur-sm hover:bg-white hover:text-ink">
+            <MapPin className="h-4 w-4" aria-hidden /> Ver no Atlas Ibérico
+          </Link>
           <div className="tnum mt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-[14px] font-semibold text-white/95 lg:mt-5 lg:text-[16px]">
             <span className="flex items-center gap-2"><Waves className="h-[18px] w-[18px] text-teal" aria-hidden />{dam.river}</span>
             <span className="flex items-center gap-2"><Droplets className="h-[18px] w-[18px] text-teal" aria-hidden />Água {today.water} °C</span>

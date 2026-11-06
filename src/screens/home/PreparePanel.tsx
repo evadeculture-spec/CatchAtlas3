@@ -8,6 +8,7 @@ import { formatDate, relativeDay } from '../../lib/format'
 import { simulateConditions } from '../../lib/weather'
 import { useApp } from '../../state/AppState'
 import { Credit, Glass, ToolList } from './parts'
+import { AtlasTeaser } from '../../components/atlas/AtlasTeaser'
 
 /** Universo 1 — antes da pesca: planear, explorar, condições (simuladas) e próxima jornada. */
 export function PreparePanel() {
@@ -43,6 +44,8 @@ export function PreparePanel() {
           Planear jornada <ArrowRight className="h-5 w-5" aria-hidden />
         </Link>
       </div>
+
+      <AtlasTeaser />
 
       <section className="mt-10" aria-labelledby="next-trip-h">
         <h3 id="next-trip-h" className="text-[11.5px] font-bold uppercase tracking-[0.16em] text-white/55">Próxima jornada</h3>
@@ -103,8 +106,9 @@ export function PreparePanel() {
       <ToolList
         title="Ferramentas"
         items={[
-          { to: '/explorar', label: 'Explorar barragens', hint: 'Lista, filtros e favoritas', icon: Compass },
-          { to: '/explorar?vista=mapa', label: 'Mapa', hint: 'Portugal e Espanha', icon: Map },
+          // Ambos abrem o Atlas Ibérico 3D: o mapa na vista da Península; "Explorar barragens" com a lista aberta.
+          { to: '/atlas?painel=lista', label: 'Explorar barragens', hint: 'Atlas com lista, pesquisa, filtros e favoritas', icon: Compass },
+          { to: '/atlas', label: 'Mapa', hint: 'Atlas Ibérico 3D · Portugal e Espanha', icon: Map },
           { to: '/rios', label: 'Rios e bacias', icon: Waves },
           { to: '/zonas', label: 'Concessões e zonas', icon: FileText },
           { to: '/licencas', label: 'Licenças e lei', icon: Scale },

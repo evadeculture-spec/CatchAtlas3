@@ -48,8 +48,8 @@ export function ZoneCard({ z, showDam = true }: { z: FishingZone; showDam?: bool
       <div className="mt-4 flex flex-wrap items-center gap-2">
         <SourceLink label={z.source.label} url={z.source.url} />
         {ZONE_WATER[z.id]?.map((w) => (
-          <Link key={w.waterId} to={`/explorar?vista=mapa&agua=${w.waterId}`} className="press inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-bold text-ink hover:bg-mist">
-            <MapIcon className="h-3.5 w-3.5" aria-hidden /> Ver no mapa{ZONE_WATER[z.id].length > 1 ? ` · ${w.name}` : ''}
+          <Link key={w.waterId} to={`/atlas?agua=${w.waterId}`} className="press inline-flex items-center gap-1 rounded-full px-2.5 py-1 text-[12px] font-bold text-ink hover:bg-mist">
+            <MapIcon className="h-3.5 w-3.5" aria-hidden /> Ver no Atlas{ZONE_WATER[z.id].length > 1 ? ` · ${w.name}` : ''}
           </Link>
         ))}
         {showDam && dam && (

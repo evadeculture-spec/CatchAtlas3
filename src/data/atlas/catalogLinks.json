@@ -1,0 +1,1183 @@
+[
+ {
+  "catalogId": "alqueva",
+  "atlasId": "osm-relation-8988700",
+  "structureIds": [
+   "osm-relation-19463731"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "castelo-de-bode",
+  "atlasId": "osm-relation-12244426",
+  "structureIds": [
+   "osm-way-98711367"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "cabril",
+  "atlasId": "osm-relation-2665375",
+  "structureIds": [
+   "osm-relation-10704550"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "bouca",
+  "atlasId": "osm-relation-18346106",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "montargil",
+  "atlasId": "osm-relation-7684323",
+  "structureIds": [
+   "osm-way-637214676"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "maranhao",
+  "atlasId": "osm-relation-1977571",
+  "structureIds": [
+   "osm-way-239858078",
+   "osm-relation-5674107"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.6,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "santa-clara",
+  "atlasId": "osm-relation-5158024",
+  "structureIds": [
+   "osm-way-95944609"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "aguieira",
+  "atlasId": "osm-relation-9451279",
+  "structureIds": [
+   "osm-way-96917700"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alto-rabagao",
+  "atlasId": "osm-relation-1420612",
+  "structureIds": [
+   "osm-relation-2449098"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "canicada",
+  "atlasId": "osm-relation-2441813",
+  "structureIds": [
+   "osm-relation-2441815"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "baixo-sabor",
+  "atlasId": "osm-relation-10691569",
+  "structureIds": [
+   "osm-way-244597222"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "idanha",
+  "atlasId": "osm-relation-12629857",
+  "structureIds": [
+   "osm-relation-14193978"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.6,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "caia",
+  "atlasId": "osm-relation-2513732",
+  "structureIds": [
+   "osm-way-304068101"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "pego-do-altar",
+  "atlasId": "osm-relation-11190256",
+  "structureIds": [
+   "osm-way-291679214"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "roxo",
+  "atlasId": "osm-relation-9318563",
+  "structureIds": [
+   "osm-way-184849578"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "odeleite",
+  "atlasId": "osm-relation-1203341",
+  "structureIds": [
+   "osm-way-690666048",
+   "osm-way-690666054"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alcantara",
+  "atlasId": "osm-relation-128102",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.6,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "valdecanas",
+  "atlasId": "osm-relation-65527",
+  "structureIds": [
+   "osm-way-94449902"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "orellana",
+  "atlasId": "osm-relation-1225409",
+  "structureIds": [
+   "osm-way-209259039",
+   "osm-way-909437122"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "la-serena",
+  "atlasId": "osm-relation-254547",
+  "structureIds": [
+   "osm-way-871932889"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "mequinenza",
+  "atlasId": "osm-relation-254385",
+  "structureIds": [
+   "osm-way-484897850",
+   "osm-relation-1843324"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "ricobayo",
+  "atlasId": "osm-relation-1232049",
+  "structureIds": [
+   "osm-way-100545516"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "iznajar",
+  "atlasId": "osm-relation-51446",
+  "structureIds": [
+   "osm-way-244919145"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "buendia",
+  "atlasId": "osm-relation-8383993",
+  "structureIds": [
+   "osm-way-317534727"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alto-lindoso",
+  "atlasId": "osm-relation-16196443",
+  "structureIds": [
+   "osm-relation-16487197"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "touvedo",
+  "atlasId": "osm-relation-2446035",
+  "structureIds": [
+   "osm-way-183714045"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "vilarinho-das-furnas",
+  "atlasId": "osm-relation-16202417",
+  "structureIds": [
+   "osm-relation-16375240"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "paradela",
+  "atlasId": "osm-relation-15317850",
+  "structureIds": [
+   "osm-way-358670282",
+   "osm-relation-15342602",
+   "osm-relation-15343011"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alto-cavado",
+  "atlasId": "osm-relation-18445130",
+  "structureIds": [
+   "osm-relation-18456918"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "salamonde",
+  "atlasId": "osm-relation-15555725",
+  "structureIds": [
+   "osm-relation-18913985"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "venda-nova",
+  "atlasId": "osm-relation-18494254",
+  "structureIds": [
+   "osm-relation-19020209"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "torrao",
+  "atlasId": "osm-relation-5011894",
+  "structureIds": [
+   "osm-relation-19469700"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "crestuma-lever",
+  "atlasId": "osm-relation-3688751",
+  "structureIds": [
+   "osm-relation-2915594"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "carrapatelo",
+  "atlasId": "osm-relation-3688774",
+  "structureIds": [
+   "osm-relation-1694464"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "regua",
+  "atlasId": "osm-relation-18334925",
+  "structureIds": [
+   "osm-relation-2915548",
+   "osm-relation-2915595"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 5.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "valeira",
+  "atlasId": "osm-relation-3688753",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "pocinho",
+  "atlasId": "osm-relation-3688749",
+  "structureIds": [
+   "osm-relation-1723003"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "miranda",
+  "atlasId": "osm-way-47916216",
+  "structureIds": [
+   "osm-way-71588050"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "picote",
+  "atlasId": "osm-relation-2520395",
+  "structureIds": [
+   "osm-relation-2520396"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "bemposta",
+  "atlasId": "osm-way-53154472",
+  "structureIds": [
+   "osm-way-533091902"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "azibo",
+  "atlasId": "osm-relation-2455968",
+  "structureIds": [
+   "osm-relation-2455969"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "vilar",
+  "atlasId": "osm-relation-1661467",
+  "structureIds": [
+   "osm-way-147544190",
+   "osm-way-182911266"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "varosa",
+  "atlasId": "osm-relation-19671487",
+  "structureIds": [
+   "osm-way-127882730"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "fronhas",
+  "atlasId": "osm-way-96829477",
+  "structureIds": [
+   "osm-way-543419083"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "raiva",
+  "atlasId": "osm-way-159074165",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "caldeirao",
+  "atlasId": "osm-relation-1710157",
+  "structureIds": [
+   "osm-relation-1775127"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "sabugal",
+  "atlasId": "osm-relation-4774337",
+  "structureIds": [
+   "osm-way-93254639"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "santa-luzia",
+  "atlasId": "osm-relation-3301627",
+  "structureIds": [
+   "osm-way-159769740"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "meimoa",
+  "atlasId": "osm-relation-10867804",
+  "structureIds": [
+   "osm-relation-10867805"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "marateca",
+  "atlasId": "osm-relation-7768755",
+  "structureIds": [
+   "osm-way-340901437"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 5.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "pracana",
+  "atlasId": "osm-relation-19664417",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "fratel",
+  "atlasId": "osm-relation-2643879",
+  "structureIds": [
+   "osm-relation-2431469",
+   "osm-way-369744142"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "belver",
+  "atlasId": "osm-relation-2431470",
+  "structureIds": [
+   "osm-way-369746884"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "magos",
+  "atlasId": "osm-way-116405602",
+  "structureIds": [
+   "osm-way-360412363"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "sao-domingos",
+  "atlasId": "osm-way-105224396",
+  "structureIds": [
+   "osm-way-543419067"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "povoa-e-meadas",
+  "atlasId": "osm-relation-2431468",
+  "structureIds": [
+   "osm-way-96187494"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "apartadura",
+  "atlasId": "osm-relation-20032208",
+  "structureIds": [
+   "osm-way-141796434"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "lucefecit",
+  "atlasId": "osm-relation-7396320",
+  "structureIds": [
+   "osm-relation-19657142"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 7.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "vigia",
+  "atlasId": "osm-relation-15410718",
+  "structureIds": [
+   "osm-way-544335019"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 9.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "divor",
+  "atlasId": "osm-way-83601312",
+  "structureIds": [
+   "osm-way-543491324"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 10.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "monte-novo",
+  "atlasId": "osm-relation-15716272",
+  "structureIds": [
+   "osm-way-544335085"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alvito",
+  "atlasId": "osm-relation-10383676",
+  "structureIds": [
+   "osm-way-157888567"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "odivelas",
+  "atlasId": "osm-relation-1636770",
+  "structureIds": [
+   "osm-way-163602519"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "vale-do-gaio",
+  "atlasId": "osm-relation-4831031",
+  "structureIds": [
+   "osm-way-340422063"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "campilhas",
+  "atlasId": "osm-relation-17915959",
+  "structureIds": [
+   "osm-way-51181698"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 13.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "monte-da-rocha",
+  "atlasId": "osm-relation-15431557",
+  "structureIds": [
+   "osm-way-366046184"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "pedrogao",
+  "atlasId": "osm-relation-11206736",
+  "structureIds": [
+   "osm-way-79175916"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "enxoe",
+  "atlasId": "osm-relation-2025716",
+  "structureIds": [
+   "osm-way-544335105"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "chanca",
+  "atlasId": "osm-relation-1399689",
+  "structureIds": [
+   "osm-way-87078962"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "misericordia",
+  "atlasId": null,
+  "structureIds": [],
+  "status": "sem-contorno",
+  "method": "nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado",
+  "distanceKm": null,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "foro-do-espanhol",
+  "atlasId": null,
+  "structureIds": [],
+  "status": "sem-contorno",
+  "method": "nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado",
+  "distanceKm": null,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "beliche",
+  "atlasId": "osm-relation-2727413",
+  "structureIds": [
+   "osm-way-84987182"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "bravura",
+  "atlasId": null,
+  "structureIds": [],
+  "status": "sem-contorno",
+  "method": "nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado",
+  "distanceKm": null,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "arade",
+  "atlasId": "osm-relation-2631593",
+  "structureIds": [
+   "osm-way-84985422"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "funcho",
+  "atlasId": "osm-relation-10612864",
+  "structureIds": [
+   "osm-way-55468384"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "odelouca",
+  "atlasId": "osm-relation-20407263",
+  "structureIds": [
+   "osm-way-84866149"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "cijara",
+  "atlasId": "osm-relation-65521",
+  "structureIds": [
+   "osm-way-161861671"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "garcia-de-sola",
+  "atlasId": "osm-relation-65522",
+  "structureIds": [
+   "osm-way-318819935"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alange",
+  "atlasId": "osm-relation-2050721",
+  "structureIds": [
+   "osm-way-477243215"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "gabriel-y-galan",
+  "atlasId": "osm-relation-3828300",
+  "structureIds": [
+   "osm-way-143236014"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "borbollon",
+  "atlasId": "osm-relation-2130037",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "sierra-brava",
+  "atlasId": "osm-relation-4223227",
+  "structureIds": [
+   "osm-way-305682787"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "entrepenas",
+  "atlasId": "osm-relation-1326855",
+  "structureIds": [
+   "osm-way-317523208",
+   "osm-way-1193384895"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "alarcon",
+  "atlasId": "osm-relation-2980752",
+  "structureIds": [
+   "osm-way-361006089"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "contreras",
+  "atlasId": "osm-relation-3015325",
+  "structureIds": [
+   "osm-way-226882966"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "el-atazar",
+  "atlasId": "osm-relation-3352492",
+  "structureIds": [
+   "osm-way-57907223"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "pinilla",
+  "atlasId": "osm-way-30822229",
+  "structureIds": [
+   "osm-way-30808126"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "san-juan",
+  "atlasId": "osm-way-27578047",
+  "structureIds": [
+   "osm-way-28134574",
+   "osm-way-29713498"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "valmayor",
+  "atlasId": "osm-way-30915749",
+  "structureIds": [
+   "osm-way-26237156"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "almendra",
+  "atlasId": "osm-relation-1613295",
+  "structureIds": [
+   "osm-way-522451409",
+   "osm-relation-11891174"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "santa-teresa",
+  "atlasId": "osm-relation-4473782",
+  "structureIds": [
+   "osm-way-291296801",
+   "osm-way-321249620"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "aldeadavila",
+  "atlasId": "osm-way-188466604",
+  "structureIds": [
+   "osm-way-215669321"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "barrios-de-luna",
+  "atlasId": "osm-relation-2588413",
+  "structureIds": [
+   "osm-way-54448166"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "riano",
+  "atlasId": "osm-relation-254780",
+  "structureIds": [
+   "osm-way-200222277"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "cuerda-del-pozo",
+  "atlasId": "osm-relation-2007522",
+  "structureIds": [
+   "osm-way-148818686"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "belesar",
+  "atlasId": "osm-relation-18080585",
+  "structureIds": [
+   "osm-way-70787788"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "ribarroja",
+  "atlasId": "osm-relation-1843322",
+  "structureIds": [
+   "osm-way-268061755"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "yesa",
+  "atlasId": "osm-way-22887206",
+  "structureIds": [
+   "osm-way-91690039"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "mediano",
+  "atlasId": "osm-relation-7141904",
+  "structureIds": [
+   "osm-way-23416081"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "el-grado",
+  "atlasId": "osm-way-23416067",
+  "structureIds": [
+   "osm-way-23416079"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "santa-ana",
+  "atlasId": "osm-relation-5597868",
+  "structureIds": [
+   "osm-way-224123445"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 7.7,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "canelles",
+  "atlasId": "osm-relation-5597869",
+  "structureIds": [
+   "osm-way-229709412"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "sau",
+  "atlasId": "osm-relation-5639693",
+  "structureIds": [
+   "osm-relation-14400280"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "guadalcacin",
+  "atlasId": "osm-way-24468607",
+  "structureIds": [
+   "osm-way-183280059"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.9,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "negratin",
+  "atlasId": "osm-relation-9607539",
+  "structureIds": [
+   "osm-way-244922188"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "tranco-de-beas",
+  "atlasId": "osm-relation-9670496",
+  "structureIds": [
+   "osm-way-62266992"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "andevalo",
+  "atlasId": "osm-relation-2499761",
+  "structureIds": [],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 12.6,
+  "reviewedAt": null
+ },
+ {
+  "catalogId": "brena-ii",
+  "atlasId": "osm-relation-3313918",
+  "structureIds": [
+   "osm-way-245050659"
+  ],
+  "status": "automatica",
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3,
+  "reviewedAt": null
+ }
+]

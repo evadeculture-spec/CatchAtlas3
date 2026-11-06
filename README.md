@@ -47,9 +47,18 @@ Em alternativa, pode ligar o repositório em app.netlify.com: as definições s�
 - `src/screens/` — ecrãs.
 - `public/` — manifesto PWA, ícones e service worker (cache básico do shell).
 
+## Atlas Ibérico 3D
+
+Experiência principal de exploração de **Prepara a tua jornada** (`/atlas`): a Península Ibérica como peça com volume, que dá lugar ao relevo local à medida que se aproxima; albufeiras, rios e barragens com geometria real; pesquisa (nomes PT/ES, sem acentos), filtros, lista sincronizada, favoritas e ficha com ligação a **Preparar jornada** e **Registar captura** pelo mesmo ID. Os acessos "Mapa" e "Explorar barragens" do painel abrem o atlas.
+
+- MapLibre GL JS 6 numa só cena: paredes da peça numa *custom layer* WebGL2 com a câmara do mapa; relevo de DEM (Terrain Tiles, sem batimetria) e terreno 3D à escala local.
+- Dados: `npm run map:build` e depois `npm run atlas:build` (Natural Earth + OSM, versões fixadas). Tiles MVT opcionais: `npm run atlas:tiles`.
+- Configuração pública em `.env.example`. Verificações: `npm test`, `npm run e2e:atlas -- <url> <pasta>`.
+- Decisões, fontes, cobertura e limitações: **[docs/ATLAS.md](docs/ATLAS.md)** e **[docs/atlas/COBERTURA.md](docs/atlas/COBERTURA.md)**.
+
 ## Mapa real das albufeiras
 
-O separador **Mapa** do Explorar usa **MapLibre GL JS** (Mercator, plano, norte para cima, sem rotação nem inclinação).
+O separador **Mapa** do Explorar usa **MapLibre GL JS** (Mercator, plano, norte para cima, sem rotação nem inclinação). O Atlas Ibérico 3D reutiliza os mesmos dados.
 
 - **Albufeiras**: contornos reais do **OpenStreetMap** (© contribuidores do OSM, **ODbL**), 3 137 albufeiras ≥ 5 ha de Portugal e Espanha, extraídas por [bquelhas/barragens](https://github.com/bquelhas/barragens) (extração de 2 nov. 2026). `npm run map:build` gera `public/map/water/` (visão geral + 88 blocos de 1°, carregados pela área visível), o índice de pesquisa e as correspondências com as fichas (`src/data/map/catalogWater.json`, relatório em `photos/MAPA-CORRESPONDENCIAS.txt`).
 - **Área**: geodésica no elipsoide WGS84 (GeographicLib), sobre o contorno completo. Os escalões (≥ 40, 15–40, 3–15, 0,5–3 e < 0,5 km²) e os limiares de zoom, relativos ao enquadramento da Península em cada ecrã, estão documentados em `src/lib/map/waterConfig.ts`.

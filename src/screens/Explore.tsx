@@ -106,6 +106,9 @@ export default function Explore() {
         <div className="mt-4">
           <ExploreTabs />
         </div>
+        <Link to={`/atlas${favOnly ? '?fav=1' : country ? `?pais=${country}` : ''}`} className="press mt-3 inline-flex h-10 items-center gap-2 rounded-full bg-ink px-4 text-[13.5px] font-bold text-white hover:bg-ink-2">
+          <MapIcon className="h-4 w-4 text-teal" aria-hidden /> Abrir no Atlas Ibérico 3D
+        </Link>
       </header>
 
       <div className="sticky top-0 z-20 -mx-4 mt-3 bg-canvas/90 px-4 pb-3 pt-2 backdrop-blur-xl lg:-mx-8 lg:px-8">

@@ -1,3 +1,4 @@
+import { lazy, Suspense } from 'react'
 import { createBrowserRouter, createHashRouter, Navigate, Outlet, RouterProvider } from 'react-router'
 import { AppShell } from './components/AppShell'
 import { useApp } from './state/AppState'
@@ -28,6 +29,10 @@ import Licences from './screens/Licences'
 import Zones from './screens/Zones'
 import Rivers from './screens/Rivers'
 
+// O Atlas (MapLibre + WebGL) só é descarregado quando é aberto.
+const Atlas = lazy(() => import('./screens/Atlas'))
+const AtlasFallback = <div className="fixed inset-0 grid place-items-center bg-[#071923] text-[13px] font-bold text-[#b5c5cc]">A abrir o Atlas Ibérico…</div>
+
 /** O onboarding aparece só na primeira visita ao Início; links diretos abrem sempre.
  * Depois de entrar, o Início é o ecrã dividido "Prepara a tua jornada | Gera a tua história". */
 function HomeGate() {
@@ -37,6 +42,7 @@ function HomeGate() {
 
 const routes = [
   { path: '/boas-vindas', element: <Onboarding /> },
+  { path: '/atlas', element: <Suspense fallback={AtlasFallback}><Atlas /></Suspense> },
   {
     element: <AppShell />,
     children: [

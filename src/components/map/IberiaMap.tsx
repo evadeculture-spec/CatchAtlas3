@@ -1,7 +1,7 @@
 import { ExternalLink, Loader2, Locate, Search, TriangleAlert, X } from 'lucide-react'
 import * as maplibregl from 'maplibre-gl'
 import type { GeoJSONSource, LngLatBoundsLike, Map as MLMap, MapGeoJSONFeature } from 'maplibre-gl'
-import type { Feature, FeatureCollection } from 'geojson'
+import type { FeatureCollection } from 'geojson'
 import 'maplibre-gl/dist/maplibre-gl.css'
 import workerUrl from 'maplibre-gl/dist/maplibre-gl-worker.mjs?url'
 import { useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
@@ -30,6 +30,7 @@ import {
   type Tier,
 } from '../../lib/map/waterConfig'
 import { cx } from '../ui'
+import { makeChunkLoader, type ChunkIndex } from '../../lib/map/chunks'
 
 maplibregl.setWorkerUrl(workerUrl)
 
@@ -60,8 +61,6 @@ function knownWater(id: string): { bbox: number[]; tier: Tier } | null {
   return null
 }
 
-interface ChunkInfo { key: string; bbox: [number, number, number, number]; count: number }
-interface ChunkIndex { source: { extractedAt: string; attribution: string; license: string; url: string; notes: string }; chunks: ChunkInfo[] }
 /** [id, nome, nomes alternativos, bbox, escalão, área km², ficha] */
 type SearchEntry = [string, string, string, [number, number, number, number], Tier, number, string]
 
@@ -94,7 +93,6 @@ const tierLabel = (t: number) => AREA_TIERS.find((x) => x.tier === t)?.label ?? 
 const fmtArea = (km2: number) =>
   km2 >= 1 ? `${km2.toLocaleString('pt-PT', { maximumFractionDigits: 1 })} km²` : km2 * 100 < 1 ? '< 1 ha' : `${Math.round(km2 * 100).toLocaleString('pt-PT')} ha`
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
-const overlaps = (a: number[], b: number[]) => a[0] <= b[2] && a[2] >= b[0] && a[1] <= b[3] && a[3] >= b[1]
 const FILL_LAYERS = [...OVERVIEW_TIERS.map((t) => layerIds.fill('ov', t)), ...TIERS.map((t) => layerIds.fill('dt', t))]
 const LABEL_LAYERS = [...TIERS.map((t) => layerIds.label('dt', t)), ...OVERVIEW_TIERS.map((t) => layerIds.label('ov', t))]
 const STRUCT_LAYERS = ['st-dam-pt', 'st-weir-pt', 'st-dam-line', 'st-dam-fill', 'st-weir-line', 'st-weir-fill']
@@ -642,46 +640,6 @@ function StructPanel({ s }: { s: StructInfo }) {
       )}
     </>
   )
-}
-
-/** Carrega, por área visível, os blocos de um conjunto (índice com a extensão real de cada bloco). */
-function makeChunkLoader(map: MLMap, dir: string, sourceId: string, minZoom: () => number) {
-  let index: ChunkIndex | null = null
-  let indexPromise: Promise<ChunkIndex | null> | null = null
-  const loaded = new Map<string, unknown[]>()
-  const pending = new Set<string>()
-  const getIndex = () =>
-    index
-      ? Promise.resolve(index)
-      : (indexPromise ??= fetch(`${dir}/index.json`)
-          .then((r) => (r.ok ? r.json() : Promise.reject(r.status)))
-          .then((i: ChunkIndex) => (index = i))
-          .catch(() => ((indexPromise = null), null)))
-  return {
-    setIndex: (i: ChunkIndex) => {
-      index = i
-    },
-    count: () => loaded.size,
-    busy: () => pending.size > 0,
-    /** Devolve false se algum pedido falhou. */
-    async loadVisible(): Promise<boolean> {
-      if (map.getZoom() < minZoom()) return true
-      const idx = await getIndex()
-      if (!idx) return false
-      const b = map.getBounds()
-      const vb = [b.getWest(), b.getSouth(), b.getEast(), b.getNorth()]
-      const need = idx.chunks.filter((c) => overlaps(c.bbox, vb) && !loaded.has(c.key) && !pending.has(c.key))
-      if (!need.length) return true
-      need.forEach((c) => pending.add(c.key))
-      const results = await Promise.allSettled(need.map((c) => fetch(`${dir}/${c.key}.geojson`).then((r) => (r.ok ? r.json() : Promise.reject(r.status)))))
-      results.forEach((r, i) => {
-        pending.delete(need[i].key)
-        if (r.status === 'fulfilled') loaded.set(need[i].key, r.value.features)
-      })
-      ;(map.getSource(sourceId) as GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: [...loaded.values()].flat() as Feature[] })
-      return !results.some((r) => r.status === 'rejected')
-    },
-  }
 }
 
 /** Opacidade de um escalão em função do zoom (fade de entrada; sem fade de saída quando não há mapa base). */

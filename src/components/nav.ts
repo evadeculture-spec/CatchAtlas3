@@ -1,4 +1,4 @@
-import { Compass, FileText, Fish, Gift, House, LayoutDashboard, Medal, MessageCircle, Radio, Scale, ShoppingBag, Trophy, User, Users } from 'lucide-react'
+import { Compass, FileText, Fish, Gift, House, LayoutDashboard, Map, Medal, MessageCircle, Radio, Scale, ShoppingBag, Trophy, User, Users } from 'lucide-react'
 
 /** Itens de navegação partilhados pela barra lateral, pela barra inferior e pelo menu da página inicial. */
 export const NAV = [
@@ -10,6 +10,7 @@ export const NAV = [
 ]
 
 export const SECONDARY = [
+  { to: '/atlas', label: 'Atlas Ibérico 3D', icon: Map },
   { to: '/painel', label: 'Painel resumo', icon: LayoutDashboard },
   { to: '/zonas', label: 'Concessões e zonas', icon: FileText },
   { to: '/licencas', label: 'Licenças e lei', icon: Scale },

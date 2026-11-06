@@ -1,0 +1,7 @@
+Atlas Ibérico (public/map/atlas/*)
+
+slab.geojson, rivers.geojson e as regiões do registry.json derivam do Natural Earth (domínio público),
+versão 5.2.0-pre, commit ca96624a56bd078437bca8184e78163e5039ad19.
+Os elementos OSM do registry.json (albufeiras, barragens, açudes) derivam do OpenStreetMap:
+© contribuidores do OpenStreetMap, Open Database License (ODbL) 1.0 — https://opendatacommons.org/licenses/odbl/1-0/
+Gerado por scripts/map/build-atlas.ts em 2026-11-06.

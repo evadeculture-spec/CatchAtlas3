@@ -82,6 +82,9 @@ export default function CatchDetail() {
               <Link to={`/barragens/${dam.id}`} className="mt-2 inline-flex items-center gap-1.5 text-[15px] font-bold text-teal-700 hover:underline">
                 <MapPin className="h-4 w-4" aria-hidden /> {dam.name}
               </Link>
+              <Link to={`/atlas?ficha=${dam.id}`} className="ml-3 mt-2 inline-flex items-center text-[13.5px] font-bold text-muted hover:text-ink hover:underline">
+                Ver no Atlas
+              </Link>
               {!own && (
                 <p className="mt-3 flex items-center gap-2 text-[14px] font-semibold text-muted">
                   <Avatar anglerId={c.anglerId} size={28} /> {anglerName(c.anglerId)}

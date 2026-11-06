@@ -20,6 +20,8 @@ export interface PersistedState {
   onboarded: boolean
   profile: Profile
   favorites: string[]
+  /** Favoritas do Atlas sem ficha CatchAtlas (IDs do registo cartográfico: albufeiras, rios, estruturas). */
+  favoriteWaters: string[]
   myCatches: Catch[]
   trips: Trip[]
   savedEvents: string[]
@@ -54,6 +56,7 @@ function initialState(): PersistedState {
     onboarded: false,
     profile: { name: 'Pescador', region: 'centro', species: ['achiga'], modalities: ['margem'], avatarColor: '#20BFA9' },
     favorites: ['castelo-de-bode', 'alqueva'],
+    favoriteWaters: [],
     myCatches: buildSeedCatches((n) => addDaysISO(anchor, n))
       .filter((c) => c.anglerId === DEMO_USER_ID)
       .map((c) => ({ ...c, seeded: true })),
@@ -72,7 +75,8 @@ type StoredState = Omit<PersistedState, 'v'> & { v: number }
 
 /** Migra o estado da versão 1 (sem comunidade) mantendo capturas, jornadas e favoritos. */
 function migrate(stored: StoredState): PersistedState | null {
-  if (stored.v === 2) return stored as PersistedState
+  // favoriteWaters chegou depois da versão 2: estados guardados antes ficam com a lista vazia.
+  if (stored.v === 2) return { ...(stored as PersistedState), favoriteWaters: (stored as Partial<PersistedState>).favoriteWaters ?? [] }
   if (stored.v === 1) {
     const base = initialState()
     return { ...base, ...stored, v: 2, myReports: [], myListings: [], myMessages: [], subscription: { active: false }, giveawayJoined: [] }
@@ -104,6 +108,8 @@ interface Ctx {
   completeOnboarding: (p: Partial<Profile>) => void
   updateProfile: (p: Partial<Profile>) => void
   toggleFavorite: (damId: string) => boolean
+  /** Favorita do Atlas para elementos sem ficha (ID do registo). */
+  toggleFavoriteWater: (atlasId: string) => boolean
   addCatch: (c: Omit<Catch, 'id' | 'anglerId' | 'createdAt'>) => Catch
   updateCatch: (id: string, c: Partial<Catch>) => void
   deleteCatch: (id: string) => void
@@ -179,6 +185,11 @@ export function AppStateProvider({ children }: { children: ReactNode }) {
     toggleFavorite: (damId) => {
       const willAdd = !stateRef.current.favorites.includes(damId)
       patch((s) => ({ ...s, favorites: willAdd ? [...s.favorites, damId] : s.favorites.filter((f) => f !== damId) }))
+      return willAdd
+    },
+    toggleFavoriteWater: (atlasId) => {
+      const willAdd = !stateRef.current.favoriteWaters.includes(atlasId)
+      patch((s) => ({ ...s, favoriteWaters: willAdd ? [...s.favoriteWaters, atlasId] : s.favoriteWaters.filter((f) => f !== atlasId) }))
       return willAdd
     },
     addCatch: (c) => {

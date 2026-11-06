@@ -204,3 +204,34 @@ body {
     --nav-h: 0px;
   }
 }
+
+/* Atlas: controlos do MapLibre (atribuição, escala) acima do painel inferior, no tema escuro. */
+.atlas-root .maplibregl-ctrl-bottom-right,
+.atlas-root .maplibregl-ctrl-bottom-left {
+  bottom: var(--atlas-bottom, 0px);
+  transition: bottom 300ms ease-out;
+}
+.atlas-root .maplibregl-ctrl-attrib {
+  background: rgb(10 34 48 / 0.88);
+  color: #b5c5cc;
+}
+.atlas-root .maplibregl-ctrl-attrib a {
+  color: #d6eef1;
+}
+.atlas-root .maplibregl-ctrl-attrib.maplibregl-compact {
+  min-height: 28px;
+}
+.atlas-root .maplibregl-ctrl-attrib-button {
+  filter: invert(1);
+}
+.atlas-root .maplibregl-ctrl-scale {
+  background: rgb(10 34 48 / 0.7);
+  border-color: #b5c5cc;
+  color: #b5c5cc;
+}
+@media (prefers-reduced-motion: reduce) {
+  .atlas-root .maplibregl-ctrl-bottom-right,
+  .atlas-root .maplibregl-ctrl-bottom-left {
+    transition: none;
+  }
+}
