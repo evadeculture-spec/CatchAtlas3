@@ -1,0 +1,1 @@
+{"type":"FeatureCollection","features":[{"type":"Feature","properties":{"id":"osm-way-597748357","kind":"dam"},"geometry":{"type":"LineString","coordinates":[[-31.16046,39.46231],[-31.15966,39.46221]]}},{"type":"Feature","properties":{"id":"osm-way-597748357","kind":"spt","skind":"dam","water":"osm-way-332523212"},"geometry":{"type":"Point","coordinates":[-31.15966,39.46221]}}]}

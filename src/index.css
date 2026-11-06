@@ -1,0 +1,206 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/manrope';
+@import '@fontsource-variable/fraunces';
+
+@theme {
+  --color-ink: #102b3a;
+  --color-ink-2: #18394a;
+  --color-ink-3: #24495b;
+  --color-text: #172c36;
+  --color-muted: #566a73;
+  --color-subtle: #8a9ba2;
+  --color-line: #e1e8ea;
+  --color-canvas: #f4f7f8;
+  --color-mist: #eaf1f2;
+  --color-teal: #20bfa9;
+  --color-teal-600: #14a08d;
+  --color-teal-700: #0b7a6c;
+  --color-teal-50: #e3f6f2;
+  --color-amber: #f2b544;
+  --color-amber-50: #fdf3dd;
+  --color-amber-800: #7d5200;
+  --color-danger: #c0392b;
+
+  --font-sans: 'Manrope Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Fraunces Variable', ui-serif, Georgia, serif;
+
+  --shadow-card: 0 1px 2px rgb(16 43 58 / 0.05), 0 4px 16px -6px rgb(16 43 58 / 0.1);
+  --shadow-lift: 0 10px 30px -10px rgb(16 43 58 / 0.35);
+  --radius-card: 1.25rem;
+}
+
+:root {
+  --nav-h: 68px;
+  color-scheme: light;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body {
+  background: var(--color-canvas);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  overflow-x: hidden;
+  font-feature-settings: 'tnum' 0;
+}
+
+.tnum {
+  font-variant-numeric: tabular-nums;
+}
+
+.font-display {
+  font-optical-sizing: auto;
+  letter-spacing: -0.015em;
+}
+
+:focus-visible {
+  outline: 2.5px solid var(--color-teal);
+  outline-offset: 2px;
+  border-radius: 10px;
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+
+.pt-safe {
+  padding-top: env(safe-area-inset-top);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+}
+.toast-in {
+  animation: toast-in 0.22s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes page-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.page-in {
+  animation: page-in 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+@keyframes sheet-in {
+  from {
+    transform: translateY(100%);
+  }
+}
+.sheet-in {
+  animation: sheet-in 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+}
+.fade-in {
+  animation: fade-in 0.2s ease-out;
+}
+
+@keyframes shimmer {
+  to {
+    background-position: -200% 0;
+  }
+}
+.skeleton {
+  background: linear-gradient(90deg, #e6eced 25%, #f1f5f6 50%, #e6eced 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: scale(0.8);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(2.2);
+    opacity: 0;
+  }
+}
+.pulse-ring {
+  animation: pulse-ring 1.8s ease-out infinite;
+}
+
+.press {
+  transition: transform 0.12s ease, background-color 0.15s ease, color 0.15s ease, box-shadow 0.15s ease;
+}
+.press:active {
+  transform: scale(0.97);
+}
+
+/* Gaveta do menu */
+@keyframes drawer-in {
+  from { transform: translateX(-100%); }
+  to { transform: none; }
+}
+.drawer-in {
+  animation: drawer-in 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Página inicial: indicador de história ativo */
+@keyframes story-bar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+.story-bar-fill {
+  transform-origin: left;
+  animation: story-bar 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Boas-vindas: entrada suave (desligada por prefers-reduced-motion no bloco acima) */
+@keyframes welcome-rise {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: none; }
+}
+.welcome-rise {
+  animation: welcome-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) both;
+}
+.welcome-btn {
+  transition: transform 0.16s ease, background-color 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+}
+.welcome-btn:hover {
+  transform: translateY(-1px);
+}
+.welcome-btn:active {
+  transform: translateY(0) scale(0.98);
+}
+.welcome-btn:focus-visible {
+  outline: 2.5px solid var(--color-teal);
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --nav-h: 0px;
+  }
+}

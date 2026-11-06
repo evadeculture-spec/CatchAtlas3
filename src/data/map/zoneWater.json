@@ -1,0 +1,282 @@
+{
+ "zpl-canicada-geres": [
+  {
+   "waterId": "osm-relation-2441813",
+   "name": "Albufeira da Caniçada",
+   "short": "Caniçada",
+   "label": [
+    -8.18016,
+    41.68036
+   ],
+   "bbox": [
+    -8.2316,
+    41.6484,
+    -8.1119,
+    41.704
+   ],
+   "tier": 3,
+   "areaKm2": 4.92,
+   "partial": true
+  }
+ ],
+ "zpl-rio-homem": [
+  {
+   "waterId": "osm-relation-16202417",
+   "name": "Albufeira de Vilarinho das Furnas",
+   "short": "Vilarinho das Furnas",
+   "label": [
+    -8.19447,
+    41.77511
+   ],
+   "bbox": [
+    -8.2106,
+    41.762,
+    -8.1511,
+    41.7937
+   ],
+   "tier": 3,
+   "areaKm2": 3.26,
+   "partial": true
+  }
+ ],
+ "zpl-venda-velha": [
+  {
+   "waterId": "osm-relation-5366185",
+   "name": "Albufeira da Venda Velha",
+   "short": "Venda Velha",
+   "label": [
+    -8.83468,
+    38.68865
+   ],
+   "bbox": [
+    -8.8367,
+    38.6695,
+    -8.8047,
+    38.6977
+   ],
+   "tier": 4,
+   "areaKm2": 1.12,
+   "partial": false
+  }
+ ],
+ "conc-rio-cabril-lindoso": [
+  {
+   "waterId": "osm-relation-16196443",
+   "name": "Albufeira do Alto-Lindoso",
+   "short": "Alto-Lindoso",
+   "label": [
+    -8.14301,
+    41.89508
+   ],
+   "bbox": [
+    -8.2188,
+    41.8616,
+    -8.0642,
+    41.9337
+   ],
+   "tier": 3,
+   "areaKm2": 9.15,
+   "partial": true
+  }
+ ],
+ "conc-touvedo": [
+  {
+   "waterId": "osm-relation-2446035",
+   "name": "Albufeira de Touvedo",
+   "short": "Touvedo",
+   "label": [
+    -8.31463,
+    41.82604
+   ],
+   "bbox": [
+    -8.3538,
+    41.8113,
+    -8.2574,
+    41.8617
+   ],
+   "tier": 4,
+   "areaKm2": 1.51,
+   "partial": false
+  }
+ ],
+ "conc-vilar": [
+  {
+   "waterId": "osm-relation-1661467",
+   "name": "Albufeira de Vilar",
+   "short": "Vilar",
+   "label": [
+    -7.53883,
+    40.95607
+   ],
+   "bbox": [
+    -7.549,
+    40.9114,
+    -7.5108,
+    40.9869
+   ],
+   "tier": 3,
+   "areaKm2": 6.18,
+   "partial": false
+  }
+ ],
+ "conc-belver": [
+  {
+   "waterId": "osm-relation-2431470",
+   "name": "Albufeira de Belver",
+   "short": "Belver",
+   "label": [
+    -7.99539,
+    39.47972
+   ],
+   "bbox": [
+    -8.0028,
+    39.4766,
+    -7.8032,
+    39.5443
+   ],
+   "tier": 4,
+   "areaKm2": 2.94,
+   "partial": false
+  }
+ ],
+ "conc-unhais": [
+  {
+   "waterId": "osm-relation-3301627",
+   "name": "Albufeira de Santa Luzia",
+   "short": "Santa Luzia",
+   "label": [
+    -7.85533,
+    40.09334
+   ],
+   "bbox": [
+    -7.8676,
+    40.089,
+    -7.8229,
+    40.1257
+   ],
+   "tier": 4,
+   "areaKm2": 2.11,
+   "partial": true
+  }
+ ],
+ "conc-coa-sabugal": [
+  {
+   "waterId": "osm-relation-4774337",
+   "name": "Albufeira do Sabugal",
+   "short": "Sabugal",
+   "label": [
+    -7.08906,
+    40.32799
+   ],
+   "bbox": [
+    -7.0985,
+    40.2973,
+    -7.0249,
+    40.3374
+   ],
+   "tier": 3,
+   "areaKm2": 6.56,
+   "partial": true
+  }
+ ],
+ "conc-apartadura": [
+  {
+   "waterId": "osm-relation-20032208",
+   "name": "Albufeira da Apartadura",
+   "short": "Apartadura",
+   "label": [
+    -7.38314,
+    39.3461
+   ],
+   "bbox": [
+    -7.3866,
+    39.3381,
+    -7.3737,
+    39.3503
+   ],
+   "tier": 5,
+   "areaKm2": 0.47,
+   "partial": false
+  }
+ ],
+ "conc-vale-cobrao": [
+  {
+   "waterId": "osm-way-132800346",
+   "name": "Albufeira de Vale do Cobrão",
+   "short": "Vale do Cobrão",
+   "label": [
+    -8.7809,
+    38.84208
+   ],
+   "bbox": [
+    -8.7851,
+    38.8241,
+    -8.757,
+    38.8462
+   ],
+   "tier": 4,
+   "areaKm2": 0.92,
+   "partial": false
+  }
+ ],
+ "conc-bouca-cova": [
+  {
+   "waterId": "osm-relation-4007088",
+   "name": "Albufeira de Bouça Cova",
+   "short": "Bouça Cova",
+   "label": [
+    -7.24882,
+    40.69735
+   ],
+   "bbox": [
+    -7.2522,
+    40.6837,
+    -7.2439,
+    40.7018
+   ],
+   "tier": 4,
+   "areaKm2": 0.68,
+   "partial": false
+  }
+ ],
+ "conc-coutada-rodao": [
+  {
+   "waterId": "osm-way-194995899",
+   "name": "Albufeira (Barragem da Coutada)",
+   "short": "Coutada",
+   "label": [
+    -7.61307,
+    39.68851
+   ],
+   "bbox": [
+    -7.6178,
+    39.686,
+    -7.6089,
+    39.6982
+   ],
+   "tier": 5,
+   "areaKm2": 0.42,
+   "partial": false
+  }
+ ],
+ "coto-santa-ana": [
+  {
+   "waterId": "osm-relation-5597868",
+   "name": "Pantà de Santa Anna",
+   "short": "Santa Anna",
+   "label": [
+    0.59862,
+    41.89863
+   ],
+   "bbox": [
+    0.5668,
+    41.881,
+    0.6234,
+    41.9785
+   ],
+   "tier": 3,
+   "areaKm2": 7.3,
+   "partial": false
+  }
+ ]
+}

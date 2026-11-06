@@ -1,0 +1,497 @@
+{
+  "generatedAt": "2026-11-01",
+  "assets": [
+    {
+      "id": "teste-1",
+      "provider": "cedida",
+      "externalId": null,
+      "title": "Imagem de teste e2e",
+      "sourcePageUrl": "https://example.org/teste",
+      "originalFileUrl": null,
+      "author": "Teste automático",
+      "authorUrl": null,
+      "license": {
+        "name": "Imagem de teste (não publicada)",
+        "url": null,
+        "requiresAttribution": true,
+        "shareAlike": false,
+        "commercialUse": false,
+        "derivatives": false
+      },
+      "attribution": "Imagem de teste e2e",
+      "changes": "Nenhuma",
+      "width": 2000,
+      "height": 1333,
+      "capturedAt": null,
+      "collectedAt": "2026-11-01",
+      "checksumSha1": "teste-1",
+      "location": null,
+      "locationEvidence": [],
+      "identity": "confirmado",
+      "identityBasis": "Fixture de teste",
+      "identityMethod": "automatica",
+      "identityReviewer": null,
+      "rights": "aprovado",
+      "rightsBasis": "Fixture de teste",
+      "publication": "publicado",
+      "exportAllowed": false,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "src": "/photos/orellana/teste-1-640.webp"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-1-640.jpg"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "src": "/photos/orellana/teste-1-1280.webp"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-1-1280.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "src": "/photos/orellana/teste-1-1920.webp"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-1-1920.jpg"
+        }
+      ],
+      "alt": "Imagem de teste (orellana)"
+    },
+    {
+      "id": "teste-2",
+      "provider": "cedida",
+      "externalId": null,
+      "title": "Imagem de teste e2e",
+      "sourcePageUrl": "https://example.org/teste",
+      "originalFileUrl": null,
+      "author": "Teste automático",
+      "authorUrl": null,
+      "license": {
+        "name": "Imagem de teste (não publicada)",
+        "url": null,
+        "requiresAttribution": true,
+        "shareAlike": false,
+        "commercialUse": false,
+        "derivatives": false
+      },
+      "attribution": "Imagem de teste e2e",
+      "changes": "Nenhuma",
+      "width": 2000,
+      "height": 1333,
+      "capturedAt": null,
+      "collectedAt": "2026-11-01",
+      "checksumSha1": "teste-2",
+      "location": null,
+      "locationEvidence": [],
+      "identity": "confirmado",
+      "identityBasis": "Fixture de teste",
+      "identityMethod": "automatica",
+      "identityReviewer": null,
+      "rights": "aprovado",
+      "rightsBasis": "Fixture de teste",
+      "publication": "publicado",
+      "exportAllowed": false,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "src": "/photos/orellana/teste-2-640.webp"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-2-640.jpg"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "src": "/photos/orellana/teste-2-1280.webp"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-2-1280.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "src": "/photos/orellana/teste-2-1920.webp"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "jpeg",
+          "src": "/photos/orellana/teste-2-1920.jpg"
+        }
+      ],
+      "alt": "Imagem de teste (orellana)"
+    },
+    {
+      "id": "teste-3",
+      "provider": "cedida",
+      "externalId": null,
+      "title": "Imagem de teste e2e",
+      "sourcePageUrl": "https://example.org/teste",
+      "originalFileUrl": null,
+      "author": "Teste automático",
+      "authorUrl": null,
+      "license": {
+        "name": "Imagem de teste (não publicada)",
+        "url": null,
+        "requiresAttribution": true,
+        "shareAlike": false,
+        "commercialUse": false,
+        "derivatives": false
+      },
+      "attribution": "Imagem de teste e2e",
+      "changes": "Nenhuma",
+      "width": 2000,
+      "height": 1333,
+      "capturedAt": null,
+      "collectedAt": "2026-11-01",
+      "checksumSha1": "teste-3",
+      "location": null,
+      "locationEvidence": [],
+      "identity": "confirmado",
+      "identityBasis": "Fixture de teste",
+      "identityMethod": "automatica",
+      "identityReviewer": null,
+      "rights": "aprovado",
+      "rightsBasis": "Fixture de teste",
+      "publication": "publicado",
+      "exportAllowed": false,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "src": "/photos/marateca/teste-3-640.webp"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "format": "jpeg",
+          "src": "/photos/marateca/teste-3-640.jpg"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "src": "/photos/marateca/teste-3-1280.webp"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "jpeg",
+          "src": "/photos/marateca/teste-3-1280.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "src": "/photos/marateca/teste-3-1920.webp"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "jpeg",
+          "src": "/photos/marateca/teste-3-1920.jpg"
+        }
+      ],
+      "alt": "Imagem de teste (marateca)"
+    },
+    {
+      "id": "teste-4",
+      "provider": "cedida",
+      "externalId": null,
+      "title": "Imagem de teste e2e",
+      "sourcePageUrl": "https://example.org/teste",
+      "originalFileUrl": null,
+      "author": "Teste automático",
+      "authorUrl": null,
+      "license": {
+        "name": "Imagem de teste (não publicada)",
+        "url": null,
+        "requiresAttribution": true,
+        "shareAlike": false,
+        "commercialUse": false,
+        "derivatives": false
+      },
+      "attribution": "Imagem de teste e2e",
+      "changes": "Nenhuma",
+      "width": 2000,
+      "height": 1333,
+      "capturedAt": null,
+      "collectedAt": "2026-11-01",
+      "checksumSha1": "teste-4",
+      "location": null,
+      "locationEvidence": [],
+      "identity": "confirmado",
+      "identityBasis": "Fixture de teste",
+      "identityMethod": "automatica",
+      "identityReviewer": null,
+      "rights": "aprovado",
+      "rightsBasis": "Fixture de teste",
+      "publication": "publicado",
+      "exportAllowed": false,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "src": "/photos/alqueva/teste-4-640.webp"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "format": "jpeg",
+          "src": "/photos/alqueva/teste-4-640.jpg"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "src": "/photos/alqueva/teste-4-1280.webp"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "jpeg",
+          "src": "/photos/alqueva/teste-4-1280.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "src": "/photos/alqueva/teste-4-1920.webp"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "jpeg",
+          "src": "/photos/alqueva/teste-4-1920.jpg"
+        }
+      ],
+      "alt": "Imagem de teste (alqueva)"
+    },
+    {
+      "id": "teste-5",
+      "provider": "cedida",
+      "externalId": null,
+      "title": "Imagem de teste e2e",
+      "sourcePageUrl": "https://example.org/teste",
+      "originalFileUrl": null,
+      "author": "Teste automático",
+      "authorUrl": null,
+      "license": {
+        "name": "Imagem de teste (não publicada)",
+        "url": null,
+        "requiresAttribution": true,
+        "shareAlike": false,
+        "commercialUse": false,
+        "derivatives": false
+      },
+      "attribution": "Imagem de teste e2e",
+      "changes": "Nenhuma",
+      "width": 2000,
+      "height": 1333,
+      "capturedAt": null,
+      "collectedAt": "2026-11-01",
+      "checksumSha1": "teste-5",
+      "location": null,
+      "locationEvidence": [],
+      "identity": "candidato",
+      "identityBasis": "Fixture de teste",
+      "identityMethod": "automatica",
+      "identityReviewer": null,
+      "rights": "aprovado",
+      "rightsBasis": "Fixture de teste",
+      "publication": "publicado",
+      "exportAllowed": false,
+      "variants": [
+        {
+          "width": 640,
+          "height": 427,
+          "format": "webp",
+          "src": "/photos/castelo-de-bode/teste-5-640.webp"
+        },
+        {
+          "width": 640,
+          "height": 427,
+          "format": "jpeg",
+          "src": "/photos/castelo-de-bode/teste-5-640.jpg"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "webp",
+          "src": "/photos/castelo-de-bode/teste-5-1280.webp"
+        },
+        {
+          "width": 1280,
+          "height": 853,
+          "format": "jpeg",
+          "src": "/photos/castelo-de-bode/teste-5-1280.jpg"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "webp",
+          "src": "/photos/castelo-de-bode/teste-5-1920.webp"
+        },
+        {
+          "width": 1920,
+          "height": 1280,
+          "format": "jpeg",
+          "src": "/photos/castelo-de-bode/teste-5-1920.jpg"
+        }
+      ],
+      "alt": "Imagem de teste (castelo-de-bode)"
+    }
+  ],
+  "links": [
+    {
+      "assetId": "teste-1",
+      "damId": "orellana",
+      "role": "capa",
+      "order": 0,
+      "basis": "teste",
+      "focal": {
+        "mobile": {
+          "x": 0.3,
+          "y": 0.6
+        },
+        "desktop": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    },
+    {
+      "assetId": "teste-2",
+      "damId": "orellana",
+      "role": "margens",
+      "order": 1,
+      "basis": "teste",
+      "focal": {
+        "mobile": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "desktop": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    },
+    {
+      "assetId": "teste-3",
+      "damId": "marateca",
+      "role": "capa",
+      "order": 0,
+      "basis": "teste",
+      "focal": {
+        "mobile": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "desktop": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    },
+    {
+      "assetId": "teste-4",
+      "damId": "alqueva",
+      "role": "capa",
+      "order": 0,
+      "basis": "teste",
+      "focal": {
+        "mobile": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "desktop": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    },
+    {
+      "assetId": "teste-5",
+      "damId": "castelo-de-bode",
+      "role": "capa",
+      "order": 0,
+      "basis": "teste (identidade pendente)",
+      "focal": {
+        "mobile": {
+          "x": 0.5,
+          "y": 0.5
+        },
+        "desktop": {
+          "x": 0.5,
+          "y": 0.5
+        }
+      }
+    }
+  ],
+  "observations": [
+    {
+      "id": "o1",
+      "assetId": "teste-1",
+      "assetChecksum": "teste-1",
+      "layer": "observado",
+      "category": "rocha",
+      "text": "Observação de teste aprovada",
+      "region": null,
+      "origin": "manual",
+      "confidence": "media",
+      "limitations": "",
+      "review": "aprovada",
+      "analysisVersion": "1",
+      "model": null,
+      "analyzedAt": "2026-11-01"
+    },
+    {
+      "id": "o2",
+      "assetId": "teste-1",
+      "assetChecksum": "outro-checksum",
+      "layer": "observado",
+      "category": "rocha",
+      "text": "OBSERVACAO DE OUTRA FOTO",
+      "region": null,
+      "origin": "manual",
+      "confidence": "media",
+      "limitations": "",
+      "review": "aprovada",
+      "analysisVersion": "1",
+      "model": null,
+      "analyzedAt": "2026-11-01"
+    }
+  ],
+  "adjacentPairs": []
+}

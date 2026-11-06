@@ -1,0 +1,4 @@
+{
+  "_leia": "Decisões humanas por candidato (chave damId:pageid de candidates.json). Nunca é sobrescrito pelo pipeline. Exemplo de decisão: {\"identity\":\"confirmado\",\"identityBasis\":\"Categoria Embalse de Orellana e coordenadas a 2 km; margem e presa reconhecíveis\",\"identityReviewer\":\"Nome de quem reviu\",\"rights\":\"aprovado\",\"rightsBasis\":\"CC BY-SA 4.0 confirmada na página do ficheiro\",\"publication\":\"publicado\",\"role\":\"capa\",\"alt\":\"Embalse de Orellana: ...\",\"focal\":{\"mobile\":{\"x\":0.5,\"y\":0.6},\"desktop\":{\"x\":0.5,\"y\":0.5}},\"observations\":[]}",
+  "decisions": {}
+}

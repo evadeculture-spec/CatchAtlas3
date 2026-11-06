@@ -1,0 +1,1892 @@
+{
+ "alqueva": {
+  "waterId": "osm-relation-8988700",
+  "name": "Albufeira de Alqueva",
+  "areaKm2": 223.88,
+  "tier": 1,
+  "bbox": [
+   -7.681,
+   38.1956,
+   -7.1577,
+   38.7833
+  ],
+  "label": [
+   -7.36061,
+   38.41486
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "castelo-de-bode": {
+  "waterId": "osm-relation-12244426",
+  "name": "Albufeira de Castelo do Bode",
+  "areaKm2": 31.76,
+  "tier": 2,
+  "bbox": [
+   -8.3213,
+   39.5403,
+   -8.1651,
+   39.8467
+  ],
+  "label": [
+   -8.24839,
+   39.60045
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "cabril": {
+  "waterId": "osm-relation-2665375",
+  "name": "Albufeira do Cabril",
+  "areaKm2": 17.48,
+  "tier": 2,
+  "bbox": [
+   -8.1363,
+   39.917,
+   -7.8427,
+   40.0287
+  ],
+  "label": [
+   -8.11884,
+   39.93447
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "bouca": {
+  "waterId": "osm-relation-18346106",
+  "name": "Albufeira da Bouçã",
+  "areaKm2": 2.02,
+  "tier": 4,
+  "bbox": [
+   -8.2195,
+   39.8491,
+   -8.1321,
+   39.9174
+  ],
+  "label": [
+   -8.19953,
+   39.86326
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7
+ },
+ "montargil": {
+  "waterId": "osm-relation-7684323",
+  "name": "Albufeira de Montargil",
+  "areaKm2": 14.74,
+  "tier": 3,
+  "bbox": [
+   -8.178,
+   39.042,
+   -8.0646,
+   39.1713
+  ],
+  "label": [
+   -8.12949,
+   39.10863
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "maranhao": {
+  "waterId": "osm-relation-1977571",
+  "name": "Albufeira de Maranhão",
+  "areaKm2": 17.83,
+  "tier": 2,
+  "bbox": [
+   -7.9798,
+   39.0091,
+   -7.7533,
+   39.1735
+  ],
+  "label": [
+   -7.92873,
+   39.04859
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.6
+ },
+ "santa-clara": {
+  "waterId": "osm-relation-5158024",
+  "name": "Albufeira de Santa Clara",
+  "areaKm2": 18.58,
+  "tier": 2,
+  "bbox": [
+   -8.4528,
+   37.4668,
+   -8.2973,
+   37.5798
+  ],
+  "label": [
+   -8.43958,
+   37.51711
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "aguieira": {
+  "waterId": "osm-relation-9451279",
+  "name": "Albufeira da Aguieira",
+  "areaKm2": 16.84,
+  "tier": 2,
+  "bbox": [
+   -8.1982,
+   40.3083,
+   -7.9827,
+   40.4405
+  ],
+  "label": [
+   -8.11942,
+   40.33801
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "alto-rabagao": {
+  "waterId": "osm-relation-1420612",
+  "name": "Albufeira do Alto Rabagão",
+  "areaKm2": 19.7,
+  "tier": 2,
+  "bbox": [
+   -7.8773,
+   41.728,
+   -7.7402,
+   41.7773
+  ],
+  "label": [
+   -7.78199,
+   41.7559
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "canicada": {
+  "waterId": "osm-relation-2441813",
+  "name": "Albufeira da Caniçada",
+  "areaKm2": 4.92,
+  "tier": 3,
+  "bbox": [
+   -8.2316,
+   41.6484,
+   -8.1119,
+   41.704
+  ],
+  "label": [
+   -8.18016,
+   41.68036
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "baixo-sabor": {
+  "waterId": "osm-relation-10691569",
+  "name": "Albufeira do Baixo Sabor",
+  "areaKm2": 26.07,
+  "tier": 2,
+  "bbox": [
+   -7.0174,
+   41.2219,
+   -6.7279,
+   41.4333
+  ],
+  "label": [
+   -6.97962,
+   41.2378
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2
+ },
+ "idanha": {
+  "waterId": "osm-relation-12629857",
+  "name": "Albufeira da Barragem da Idanha",
+  "areaKm2": 6.37,
+  "tier": 3,
+  "bbox": [
+   -7.2264,
+   39.944,
+   -7.1699,
+   39.9967
+  ],
+  "label": [
+   -7.19367,
+   39.97134
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.6
+ },
+ "caia": {
+  "waterId": "osm-relation-2513732",
+  "name": "Albufeira do Caia",
+  "areaKm2": 18.7,
+  "tier": 2,
+  "bbox": [
+   -7.2581,
+   38.9952,
+   -7.1297,
+   39.0749
+  ],
+  "label": [
+   -7.14915,
+   39.01453
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.1
+ },
+ "pego-do-altar": {
+  "waterId": "osm-relation-11190256",
+  "name": "Albufeira de Pego do Altar",
+  "areaKm2": 8.51,
+  "tier": 3,
+  "bbox": [
+   -8.3957,
+   38.3939,
+   -8.2812,
+   38.4769
+  ],
+  "label": [
+   -8.37139,
+   38.44286
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4
+ },
+ "roxo": {
+  "waterId": "osm-relation-9318563",
+  "name": "Albufeira do Roxo",
+  "areaKm2": 12.58,
+  "tier": 3,
+  "bbox": [
+   -8.0812,
+   37.8927,
+   -8.0123,
+   37.9667
+  ],
+  "label": [
+   -8.07418,
+   37.93304
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.7
+ },
+ "odeleite": {
+  "waterId": "osm-relation-1203341",
+  "name": "Albufeira de Odeleite",
+  "areaKm2": 6.57,
+  "tier": 3,
+  "bbox": [
+   -7.6034,
+   37.3204,
+   -7.4856,
+   37.3495
+  ],
+  "label": [
+   -7.50248,
+   37.32882
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "alcantara": {
+  "waterId": "osm-relation-128102",
+  "name": "Embalse de Alcántara",
+  "areaKm2": 87.22,
+  "tier": 1,
+  "bbox": [
+   -6.8877,
+   39.5751,
+   -5.9868,
+   39.9478
+  ],
+  "label": [
+   -6.46283,
+   39.71864
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.6
+ },
+ "valdecanas": {
+  "waterId": "osm-relation-65527",
+  "name": "Embalse de Valdecañas",
+  "areaKm2": 65.69,
+  "tier": 1,
+  "bbox": [
+   -5.6124,
+   39.7511,
+   -5.256,
+   39.8942
+  ],
+  "label": [
+   -5.39181,
+   39.82203
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4
+ },
+ "orellana": {
+  "waterId": "osm-relation-1225409",
+  "name": "Embalse de Orellana",
+  "areaKm2": 48.6,
+  "tier": 1,
+  "bbox": [
+   -5.544,
+   38.9778,
+   -5.1812,
+   39.1442
+  ],
+  "label": [
+   -5.37206,
+   39.04438
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "la-serena": {
+  "waterId": "osm-relation-254547",
+  "name": "Embalse de la Serena",
+  "areaKm2": 129.82,
+  "tier": 1,
+  "bbox": [
+   -5.417,
+   38.7062,
+   -4.98,
+   39.0421
+  ],
+  "label": [
+   -5.10239,
+   38.84237
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "mequinenza": {
+  "waterId": "osm-relation-254385",
+  "name": "Embalse de Mequinenza",
+  "areaKm2": 57.16,
+  "tier": 1,
+  "bbox": [
+   -0.1415,
+   41.2464,
+   0.2745,
+   41.4335
+  ],
+  "label": [
+   0.16961,
+   41.40445
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.2
+ },
+ "ricobayo": {
+  "waterId": "osm-relation-1232049",
+  "name": "Embalse de Ricobayo",
+  "areaKm2": 49.5,
+  "tier": 1,
+  "bbox": [
+   -6.1181,
+   41.5257,
+   -5.7826,
+   41.8365
+  ],
+  "label": [
+   -5.8562,
+   41.65653
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "iznajar": {
+  "waterId": "osm-relation-51446",
+  "name": "Embalse de Iznájar",
+  "areaKm2": 21.39,
+  "tier": 2,
+  "bbox": [
+   -4.388,
+   37.229,
+   -4.201,
+   37.3067
+  ],
+  "label": [
+   -4.34214,
+   37.27909
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "buendia": {
+  "waterId": "osm-relation-8383993",
+  "name": "Embalse de Buendía",
+  "areaKm2": 36.38,
+  "tier": 2,
+  "bbox": [
+   -2.784,
+   40.3093,
+   -2.6012,
+   40.4515
+  ],
+  "label": [
+   -2.72151,
+   40.41118
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7
+ },
+ "alto-lindoso": {
+  "waterId": "osm-relation-16196443",
+  "name": "Albufeira do Alto-Lindoso",
+  "areaKm2": 9.15,
+  "tier": 3,
+  "bbox": [
+   -8.2188,
+   41.8616,
+   -8.0642,
+   41.9337
+  ],
+  "label": [
+   -8.14301,
+   41.89508
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "touvedo": {
+  "waterId": "osm-relation-2446035",
+  "name": "Albufeira de Touvedo",
+  "areaKm2": 1.51,
+  "tier": 4,
+  "bbox": [
+   -8.3538,
+   41.8113,
+   -8.2574,
+   41.8617
+  ],
+  "label": [
+   -8.31463,
+   41.82604
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.3
+ },
+ "vilarinho-das-furnas": {
+  "waterId": "osm-relation-16202417",
+  "name": "Albufeira de Vilarinho das Furnas",
+  "areaKm2": 3.26,
+  "tier": 3,
+  "bbox": [
+   -8.2106,
+   41.762,
+   -8.1511,
+   41.7937
+  ],
+  "label": [
+   -8.19447,
+   41.77511
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "paradela": {
+  "waterId": "osm-relation-15317850",
+  "name": "Albufeira da Paradela",
+  "areaKm2": 3.5,
+  "tier": 3,
+  "bbox": [
+   -7.9686,
+   41.7673,
+   -7.9407,
+   41.81
+  ],
+  "label": [
+   -7.95615,
+   41.78144
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "alto-cavado": {
+  "waterId": "osm-relation-18445130",
+  "name": "Albufeira do Alto Cávado",
+  "areaKm2": 0.23,
+  "tier": 5,
+  "bbox": [
+   -7.8775,
+   41.796,
+   -7.8605,
+   41.8093
+  ],
+  "label": [
+   -7.87103,
+   41.80577
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2
+ },
+ "salamonde": {
+  "waterId": "osm-relation-15555725",
+  "name": "Albufeira de Salamonde",
+  "areaKm2": 1.99,
+  "tier": 4,
+  "bbox": [
+   -8.0918,
+   41.6847,
+   -8.0068,
+   41.7167
+  ],
+  "label": [
+   -8.08032,
+   41.69521
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "venda-nova": {
+  "waterId": "osm-relation-18494254",
+  "name": "Albufeira da Venda Nova",
+  "areaKm2": 3.66,
+  "tier": 3,
+  "bbox": [
+   -7.9873,
+   41.6647,
+   -7.9151,
+   41.7102
+  ],
+  "label": [
+   -7.96616,
+   41.67554
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "torrao": {
+  "waterId": "osm-relation-5011894",
+  "name": "Albufeira do Torrão",
+  "areaKm2": 5.23,
+  "tier": 3,
+  "bbox": [
+   -8.2612,
+   41.0947,
+   -8.0858,
+   41.2672
+  ],
+  "label": [
+   -8.25348,
+   41.10041
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "crestuma-lever": {
+  "waterId": "osm-relation-3688751",
+  "name": "Albufeira de Crestuma-Lever",
+  "areaKm2": 11.19,
+  "tier": 3,
+  "bbox": [
+   -8.4869,
+   41.0267,
+   -8.1305,
+   41.0976
+  ],
+  "label": [
+   -8.4055,
+   41.0605
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "carrapatelo": {
+  "waterId": "osm-relation-3688774",
+  "name": "Albufeira do Carrapatelo",
+  "areaKm2": 9.46,
+  "tier": 3,
+  "bbox": [
+   -8.132,
+   41.0767,
+   -7.7401,
+   41.1627
+  ],
+  "label": [
+   -8.08664,
+   41.09652
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "regua": {
+  "waterId": "osm-relation-18334925",
+  "name": "Albufeira da Régua",
+  "areaKm2": 8.24,
+  "tier": 3,
+  "bbox": [
+   -7.7402,
+   41.1386,
+   -7.372,
+   41.2181
+  ],
+  "label": [
+   -7.68834,
+   41.14822
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 5.1
+ },
+ "valeira": {
+  "waterId": "osm-relation-3688753",
+  "name": "Albufeira da Valeira",
+  "areaKm2": 8.54,
+  "tier": 3,
+  "bbox": [
+   -7.3772,
+   41.1235,
+   -7.093,
+   41.2026
+  ],
+  "label": [
+   -7.16046,
+   41.12871
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "pocinho": {
+  "waterId": "osm-relation-3688749",
+  "name": "Albufeira do Pocinho",
+  "areaKm2": 7.26,
+  "tier": 3,
+  "bbox": [
+   -7.1142,
+   41.0067,
+   -6.8045,
+   41.1373
+  ],
+  "label": [
+   -6.99533,
+   41.02762
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.7
+ },
+ "miranda": {
+  "waterId": "osm-way-47916216",
+  "name": "Albufeira de Miranda",
+  "areaKm2": 1.07,
+  "tier": 4,
+  "bbox": [
+   -6.2696,
+   41.4891,
+   -6.1876,
+   41.5754
+  ],
+  "label": [
+   -6.26804,
+   41.49459
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4
+ },
+ "picote": {
+  "waterId": "osm-relation-2520395",
+  "name": "Albufeira de Picote",
+  "areaKm2": 2.13,
+  "tier": 4,
+  "bbox": [
+   -6.352,
+   41.3769,
+   -6.261,
+   41.4897
+  ],
+  "label": [
+   -6.31716,
+   41.38609
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.3
+ },
+ "bemposta": {
+  "waterId": "osm-way-53154472",
+  "name": "Albufeira de Bemposta",
+  "areaKm2": 3.77,
+  "tier": 3,
+  "bbox": [
+   -6.4709,
+   41.2963,
+   -6.3522,
+   41.3939
+  ],
+  "label": [
+   -6.42154,
+   41.3403
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "azibo": {
+  "waterId": "osm-relation-2455968",
+  "name": "Albufeira do Azibo",
+  "areaKm2": 3.75,
+  "tier": 3,
+  "bbox": [
+   -6.9302,
+   41.5568,
+   -6.8774,
+   41.5892
+  ],
+  "label": [
+   -6.90745,
+   41.57347
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "vilar": {
+  "waterId": "osm-relation-1661467",
+  "name": "Albufeira de Vilar",
+  "areaKm2": 6.18,
+  "tier": 3,
+  "bbox": [
+   -7.549,
+   40.9114,
+   -7.5108,
+   40.9869
+  ],
+  "label": [
+   -7.53883,
+   40.95607
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.4
+ },
+ "varosa": {
+  "waterId": "osm-relation-19671487",
+  "name": "Albufeira de Varosa",
+  "areaKm2": 0.46,
+  "tier": 5,
+  "bbox": [
+   -7.7848,
+   41.1043,
+   -7.7691,
+   41.1212
+  ],
+  "label": [
+   -7.77647,
+   41.1166
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.3
+ },
+ "fronhas": {
+  "waterId": "osm-way-96829477",
+  "name": "Albufeira das Fronhas",
+  "areaKm2": 2.25,
+  "tier": 4,
+  "bbox": [
+   -8.1684,
+   40.2313,
+   -8.0896,
+   40.256
+  ],
+  "label": [
+   -8.15589,
+   40.23841
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.8
+ },
+ "raiva": {
+  "waterId": "osm-way-159074165",
+  "name": "Albufeira da Raiva",
+  "areaKm2": 1.88,
+  "tier": 4,
+  "bbox": [
+   -8.2492,
+   40.3088,
+   -8.1968,
+   40.3448
+  ],
+  "label": [
+   -8.22787,
+   40.32344
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.8
+ },
+ "caldeirao": {
+  "waterId": "osm-relation-1710157",
+  "name": "Albufeira do Caldeirão",
+  "areaKm2": 0.63,
+  "tier": 4,
+  "bbox": [
+   -7.3363,
+   40.508,
+   -7.3227,
+   40.5372
+  ],
+  "label": [
+   -7.32719,
+   40.52987
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.3
+ },
+ "sabugal": {
+  "waterId": "osm-relation-4774337",
+  "name": "Albufeira do Sabugal",
+  "areaKm2": 6.56,
+  "tier": 3,
+  "bbox": [
+   -7.0985,
+   40.2973,
+   -7.0249,
+   40.3374
+  ],
+  "label": [
+   -7.08906,
+   40.32799
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.7
+ },
+ "santa-luzia": {
+  "waterId": "osm-relation-3301627",
+  "name": "Albufeira de Santa Luzia",
+  "areaKm2": 2.11,
+  "tier": 4,
+  "bbox": [
+   -7.8676,
+   40.089,
+   -7.8229,
+   40.1257
+  ],
+  "label": [
+   -7.85533,
+   40.09334
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.4
+ },
+ "meimoa": {
+  "waterId": "osm-relation-10867804",
+  "name": "Albufeira da Meimoa",
+  "areaKm2": 2.19,
+  "tier": 4,
+  "bbox": [
+   -7.1466,
+   40.2527,
+   -7.1008,
+   40.2737
+  ],
+  "label": [
+   -7.14101,
+   40.26482
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4
+ },
+ "marateca": {
+  "waterId": "osm-relation-7768755",
+  "name": "Albufeira da Marateca",
+  "areaKm2": 5.42,
+  "tier": 3,
+  "bbox": [
+   -7.5042,
+   39.967,
+   -7.4657,
+   40.0064
+  ],
+  "label": [
+   -7.48192,
+   39.97726
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 5.3
+ },
+ "pracana": {
+  "waterId": "osm-relation-19664417",
+  "name": "Albufeira de Pracana",
+  "areaKm2": 5.32,
+  "tier": 3,
+  "bbox": [
+   -7.8378,
+   39.5622,
+   -7.7654,
+   39.7172
+  ],
+  "label": [
+   -7.80871,
+   39.60439
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8
+ },
+ "fratel": {
+  "waterId": "osm-relation-2643879",
+  "name": "Albufeira de Fratel",
+  "areaKm2": 6.29,
+  "tier": 3,
+  "bbox": [
+   -7.8028,
+   39.5423,
+   -7.5402,
+   39.6651
+  ],
+  "label": [
+   -7.69128,
+   39.64135
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5
+ },
+ "belver": {
+  "waterId": "osm-relation-2431470",
+  "name": "Albufeira de Belver",
+  "areaKm2": 2.94,
+  "tier": 4,
+  "bbox": [
+   -8.0028,
+   39.4766,
+   -7.8032,
+   39.5443
+  ],
+  "label": [
+   -7.99539,
+   39.47972
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "magos": {
+  "waterId": "osm-way-116405602",
+  "name": "Albufeira de Magos",
+  "areaKm2": 0.83,
+  "tier": 4,
+  "bbox": [
+   -8.6908,
+   38.9847,
+   -8.6752,
+   38.997
+  ],
+  "label": [
+   -8.68697,
+   38.99316
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.8
+ },
+ "sao-domingos": {
+  "waterId": "osm-way-105224396",
+  "name": "Albufeira de São Domingos",
+  "areaKm2": 0.67,
+  "tier": 4,
+  "bbox": [
+   -9.3191,
+   39.3143,
+   -9.2927,
+   39.335
+  ],
+  "label": [
+   -9.31366,
+   39.33142
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1
+ },
+ "povoa-e-meadas": {
+  "waterId": "osm-relation-2431468",
+  "name": "Albufeira de Póvoa e Meadas",
+  "areaKm2": 1.37,
+  "tier": 4,
+  "bbox": [
+   -7.5578,
+   39.4538,
+   -7.5302,
+   39.4856
+  ],
+  "label": [
+   -7.55179,
+   39.47531
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.7
+ },
+ "apartadura": {
+  "waterId": "osm-relation-20032208",
+  "name": "Albufeira da Apartadura",
+  "areaKm2": 0.47,
+  "tier": 5,
+  "bbox": [
+   -7.3866,
+   39.3381,
+   -7.3737,
+   39.3503
+  ],
+  "label": [
+   -7.38314,
+   39.3461
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4
+ },
+ "lucefecit": {
+  "waterId": "osm-relation-7396320",
+  "name": "Albufeira de Lucefécit",
+  "areaKm2": 1.56,
+  "tier": 4,
+  "bbox": [
+   -7.455,
+   38.6281,
+   -7.4066,
+   38.6467
+  ],
+  "label": [
+   -7.41153,
+   38.63536
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 7.7
+ },
+ "vigia": {
+  "waterId": "osm-relation-15410718",
+  "name": "Albufeira da Vigia",
+  "areaKm2": 2.73,
+  "tier": 4,
+  "bbox": [
+   -7.6094,
+   38.5379,
+   -7.5573,
+   38.5903
+  ],
+  "label": [
+   -7.59756,
+   38.54316
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 9.3
+ },
+ "divor": {
+  "waterId": "osm-way-83601312",
+  "name": "Albufeira do Divor",
+  "areaKm2": 2.38,
+  "tier": 4,
+  "bbox": [
+   -7.9424,
+   38.6768,
+   -7.9106,
+   38.7007
+  ],
+  "label": [
+   -7.92257,
+   38.69508
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 10.3
+ },
+ "monte-novo": {
+  "waterId": "osm-relation-15716272",
+  "name": "Albufeira de Monte Novo",
+  "areaKm2": 2.4,
+  "tier": 4,
+  "bbox": [
+   -7.7729,
+   38.5104,
+   -7.7091,
+   38.5537
+  ],
+  "label": [
+   -7.72119,
+   38.531
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "alvito": {
+  "waterId": "osm-relation-10383676",
+  "name": "Albufeira do Alvito",
+  "areaKm2": 13.23,
+  "tier": 3,
+  "bbox": [
+   -7.9331,
+   38.2714,
+   -7.8433,
+   38.3294
+  ],
+  "label": [
+   -7.90614,
+   38.28339
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 4.7
+ },
+ "odivelas": {
+  "waterId": "osm-relation-1636770",
+  "name": "Albufeira de Odivelas",
+  "areaKm2": 7.76,
+  "tier": 3,
+  "bbox": [
+   -8.1243,
+   38.1706,
+   -8.0556,
+   38.2204
+  ],
+  "label": [
+   -8.09496,
+   38.19142
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.2
+ },
+ "vale-do-gaio": {
+  "waterId": "osm-relation-4831031",
+  "name": "Albufeira de Vale do Gaio",
+  "areaKm2": 5.58,
+  "tier": 3,
+  "bbox": [
+   -8.3021,
+   38.2448,
+   -8.2325,
+   38.2985
+  ],
+  "label": [
+   -8.25243,
+   38.27689
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.8
+ },
+ "campilhas": {
+  "waterId": "osm-relation-17915959",
+  "name": "Albufeira de Campilhas",
+  "areaKm2": 3.83,
+  "tier": 3,
+  "bbox": [
+   -8.6652,
+   37.8245,
+   -8.6184,
+   37.8682
+  ],
+  "label": [
+   -8.63142,
+   37.8583
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 13.4
+ },
+ "monte-da-rocha": {
+  "waterId": "osm-relation-15431557",
+  "name": "Albufeira do Monte da Rocha",
+  "areaKm2": 10.53,
+  "tier": 3,
+  "bbox": [
+   -8.3052,
+   37.676,
+   -8.2407,
+   37.7374
+  ],
+  "label": [
+   -8.29247,
+   37.72183
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "pedrogao": {
+  "waterId": "osm-relation-11206736",
+  "name": "Albufeira de Pedrógão",
+  "areaKm2": 10.64,
+  "tier": 3,
+  "bbox": [
+   -7.6404,
+   38.1097,
+   -7.3812,
+   38.197
+  ],
+  "label": [
+   -7.60662,
+   38.14138
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1
+ },
+ "enxoe": {
+  "waterId": "osm-relation-2025716",
+  "name": "Albufeira do Enxoé",
+  "areaKm2": 1.57,
+  "tier": 4,
+  "bbox": [
+   -7.4654,
+   37.9791,
+   -7.4317,
+   38.0022
+  ],
+  "label": [
+   -7.45851,
+   37.99246
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "chanca": {
+  "waterId": "osm-relation-1399689",
+  "name": "Barragem do Chança",
+  "areaKm2": 16.91,
+  "tier": 2,
+  "bbox": [
+   -7.5247,
+   37.5518,
+   -7.3966,
+   37.7022
+  ],
+  "label": [
+   -7.50092,
+   37.58607
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "beliche": {
+  "waterId": "osm-relation-2727413",
+  "name": "Albufeira de Beliche",
+  "areaKm2": 2.67,
+  "tier": 4,
+  "bbox": [
+   -7.5495,
+   37.2632,
+   -7.5073,
+   37.3035
+  ],
+  "label": [
+   -7.51197,
+   37.27859
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.4
+ },
+ "arade": {
+  "waterId": "osm-relation-2631593",
+  "name": "Albufeira do Arade",
+  "areaKm2": 1.47,
+  "tier": 4,
+  "bbox": [
+   -8.3918,
+   37.2369,
+   -8.3671,
+   37.2594
+  ],
+  "label": [
+   -8.37595,
+   37.24219
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.1
+ },
+ "funcho": {
+  "waterId": "osm-relation-10612864",
+  "name": "Albufeira do Funcho",
+  "areaKm2": 3.34,
+  "tier": 3,
+  "bbox": [
+   -8.3931,
+   37.2619,
+   -8.2925,
+   37.2909
+  ],
+  "label": [
+   -8.35976,
+   37.27297
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.8
+ },
+ "odelouca": {
+  "waterId": "osm-relation-20407263",
+  "name": "Albufeira de Odelouca",
+  "areaKm2": 6.24,
+  "tier": 3,
+  "bbox": [
+   -8.4781,
+   37.2862,
+   -8.3591,
+   37.3608
+  ],
+  "label": [
+   -8.46037,
+   37.30164
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3
+ },
+ "cijara": {
+  "waterId": "osm-relation-65521",
+  "name": "Embalse de Cíjara",
+  "areaKm2": 51.98,
+  "tier": 1,
+  "bbox": [
+   -5.0303,
+   39.1741,
+   -4.653,
+   39.4387
+  ],
+  "label": [
+   -4.89311,
+   39.32165
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.1
+ },
+ "garcia-de-sola": {
+  "waterId": "osm-relation-65522",
+  "name": "Embalse Garcia Sola",
+  "areaKm2": 25.49,
+  "tier": 2,
+  "bbox": [
+   -5.2205,
+   39.1398,
+   -5.0102,
+   39.3614
+  ],
+  "label": [
+   -5.17532,
+   39.19807
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "alange": {
+  "waterId": "osm-relation-2050721",
+  "name": "Embalse de Alange",
+  "areaKm2": 37.59,
+  "tier": 2,
+  "bbox": [
+   -6.3147,
+   38.6456,
+   -6.1729,
+   38.7897
+  ],
+  "label": [
+   -6.24574,
+   38.74774
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "gabriel-y-galan": {
+  "waterId": "osm-relation-3828300",
+  "name": "Embalse de Gabriel y Galán",
+  "areaKm2": 38.64,
+  "tier": 2,
+  "bbox": [
+   -6.2272,
+   40.2161,
+   -6.063,
+   40.4058
+  ],
+  "label": [
+   -6.10762,
+   40.2344
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "borbollon": {
+  "waterId": "osm-relation-2130037",
+  "name": "Embalse de Borbollón",
+  "areaKm2": 8.84,
+  "tier": 3,
+  "bbox": [
+   -6.586,
+   40.1188,
+   -6.5224,
+   40.1637
+  ],
+  "label": [
+   -6.56529,
+   40.13034
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5
+ },
+ "sierra-brava": {
+  "waterId": "osm-relation-4223227",
+  "name": "Embalse de Sierra Brava",
+  "areaKm2": 15.35,
+  "tier": 2,
+  "bbox": [
+   -5.6715,
+   39.1888,
+   -5.606,
+   39.2755
+  ],
+  "label": [
+   -5.63032,
+   39.22693
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5
+ },
+ "entrepenas": {
+  "waterId": "osm-relation-1326855",
+  "name": "Embalse de Entrepeñas",
+  "areaKm2": 21.53,
+  "tier": 2,
+  "bbox": [
+   -2.7504,
+   40.4861,
+   -2.6598,
+   40.6566
+  ],
+  "label": [
+   -2.71358,
+   40.5625
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2
+ },
+ "alarcon": {
+  "waterId": "osm-relation-2980752",
+  "name": "Embalse de Alarcón",
+  "areaKm2": 52.1,
+  "tier": 1,
+  "bbox": [
+   -2.3098,
+   39.5637,
+   -2.0922,
+   39.8072
+  ],
+  "label": [
+   -2.2924,
+   39.73498
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.5
+ },
+ "contreras": {
+  "waterId": "osm-relation-3015325",
+  "name": "Embalse de Contreras",
+  "areaKm2": 15.31,
+  "tier": 2,
+  "bbox": [
+   -1.5931,
+   39.5398,
+   -1.4625,
+   39.6658
+  ],
+  "label": [
+   -1.5217,
+   39.58751
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "el-atazar": {
+  "waterId": "osm-relation-3352492",
+  "name": "Embalse del Atazar",
+  "areaKm2": 10.56,
+  "tier": 3,
+  "bbox": [
+   -3.5634,
+   40.8832,
+   -3.4723,
+   40.9541
+  ],
+  "label": [
+   -3.54323,
+   40.90175
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "pinilla": {
+  "waterId": "osm-way-30822229",
+  "name": "Embalse de Pinilla",
+  "areaKm2": 4.31,
+  "tier": 3,
+  "bbox": [
+   -3.8205,
+   40.9189,
+   -3.7735,
+   40.9546
+  ],
+  "label": [
+   -3.80347,
+   40.93702
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "san-juan": {
+  "waterId": "osm-way-27578047",
+  "name": "Embalse de San Juan",
+  "areaKm2": 6.03,
+  "tier": 3,
+  "bbox": [
+   -4.4456,
+   40.3692,
+   -4.3113,
+   40.4193
+  ],
+  "label": [
+   -4.31606,
+   40.37588
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "valmayor": {
+  "waterId": "osm-way-30915749",
+  "name": "Pantano de Valmayor",
+  "areaKm2": 7.07,
+  "tier": 3,
+  "bbox": [
+   -4.0845,
+   40.5209,
+   -4.0405,
+   40.5894
+  ],
+  "label": [
+   -4.05632,
+   40.54354
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1.5
+ },
+ "almendra": {
+  "waterId": "osm-relation-1613295",
+  "name": "Embalse de Almendra",
+  "areaKm2": 82.21,
+  "tier": 1,
+  "bbox": [
+   -6.3322,
+   41.0938,
+   -5.9972,
+   41.338
+  ],
+  "label": [
+   -6.27159,
+   41.25837
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5
+ },
+ "santa-teresa": {
+  "waterId": "osm-relation-4473782",
+  "name": "Embalse de Santa Teresa",
+  "areaKm2": 22.86,
+  "tier": 2,
+  "bbox": [
+   -5.641,
+   40.5148,
+   -5.526,
+   40.6672
+  ],
+  "label": [
+   -5.58573,
+   40.5844
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 1
+ },
+ "aldeadavila": {
+  "waterId": "osm-way-188466604",
+  "name": "Albufeira de Aldeiadávila",
+  "areaKm2": 3.55,
+  "tier": 3,
+  "bbox": [
+   -6.6864,
+   41.2107,
+   -6.4777,
+   41.2884
+  ],
+  "label": [
+   -6.65641,
+   41.23467
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4
+ },
+ "barrios-de-luna": {
+  "waterId": "osm-relation-2588413",
+  "name": "Embalse de Los Barrios de Luna",
+  "areaKm2": 9.13,
+  "tier": 3,
+  "bbox": [
+   -5.9548,
+   42.8488,
+   -5.8541,
+   42.9183
+  ],
+  "label": [
+   -5.86978,
+   42.86862
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.5
+ },
+ "riano": {
+  "waterId": "osm-relation-254780",
+  "name": "Embalse de Riaño",
+  "areaKm2": 20.54,
+  "tier": 2,
+  "bbox": [
+   -5.0866,
+   42.933,
+   -4.9357,
+   43.0347
+  ],
+  "label": [
+   -5.00232,
+   42.96635
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "cuerda-del-pozo": {
+  "waterId": "osm-relation-2007522",
+  "name": "Embalse de la Cuerda del Pozo",
+  "areaKm2": 20.18,
+  "tier": 2,
+  "bbox": [
+   -2.8327,
+   41.8235,
+   -2.6951,
+   41.9083
+  ],
+  "label": [
+   -2.74491,
+   41.84962
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.3
+ },
+ "belesar": {
+  "waterId": "osm-relation-18080585",
+  "name": "Encoro de Belesar",
+  "areaKm2": 17.3,
+  "tier": 2,
+  "bbox": [
+   -7.7437,
+   42.6273,
+   -7.5482,
+   42.8757
+  ],
+  "label": [
+   -7.72676,
+   42.68206
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8
+ },
+ "ribarroja": {
+  "waterId": "osm-relation-1843322",
+  "name": "Pantà de Riba-roja",
+  "areaKm2": 15.98,
+  "tier": 2,
+  "bbox": [
+   0.2726,
+   41.2214,
+   0.4352,
+   41.4302
+  ],
+  "label": [
+   0.3396,
+   41.35899
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3.8
+ },
+ "yesa": {
+  "waterId": "osm-way-22887206",
+  "name": "Embalse de Yesa",
+  "areaKm2": 16.61,
+  "tier": 2,
+  "bbox": [
+   -1.1832,
+   42.5886,
+   -1.0331,
+   42.6237
+  ],
+  "label": [
+   -1.12295,
+   42.60506
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.1
+ },
+ "mediano": {
+  "waterId": "osm-relation-7141904",
+  "name": "Embalse de Mediano",
+  "areaKm2": 15.51,
+  "tier": 2,
+  "bbox": [
+   0.1443,
+   42.3111,
+   0.2214,
+   42.4122
+  ],
+  "label": [
+   0.16691,
+   42.37585
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "el-grado": {
+  "waterId": "osm-way-23416067",
+  "name": "Embalse de El Grado",
+  "areaKm2": 11.37,
+  "tier": 3,
+  "bbox": [
+   0.199,
+   42.1507,
+   0.2444,
+   42.3036
+  ],
+  "label": [
+   0.22808,
+   42.2139
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.4
+ },
+ "santa-ana": {
+  "waterId": "osm-relation-5597868",
+  "name": "Pantà de Santa Anna",
+  "areaKm2": 7.3,
+  "tier": 3,
+  "bbox": [
+   0.5668,
+   41.881,
+   0.6234,
+   41.9785
+  ],
+  "label": [
+   0.59862,
+   41.89863
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 7.7
+ },
+ "canelles": {
+  "waterId": "osm-relation-5597869",
+  "name": "Pantà de Canelles / Embalse de Canelles",
+  "areaKm2": 13.68,
+  "tier": 3,
+  "bbox": [
+   0.5677,
+   41.9719,
+   0.6963,
+   42.0987
+  ],
+  "label": [
+   0.65244,
+   42.03383
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "sau": {
+  "waterId": "osm-relation-5639693",
+  "name": "Pantà de Sau",
+  "areaKm2": 5.1,
+  "tier": 3,
+  "bbox": [
+   2.3359,
+   41.9632,
+   2.4155,
+   42.0147
+  ],
+  "label": [
+   2.38551,
+   41.97347
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0
+ },
+ "guadalcacin": {
+  "waterId": "osm-way-24468607",
+  "name": "Embalse de Guadalcacín",
+  "areaKm2": 25.8,
+  "tier": 2,
+  "bbox": [
+   -5.7874,
+   36.6083,
+   -5.6322,
+   36.6893
+  ],
+  "label": [
+   -5.77154,
+   36.66204
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 2.9
+ },
+ "negratin": {
+  "waterId": "osm-relation-9607539",
+  "name": "Embalse del Negratín",
+  "areaKm2": 17.82,
+  "tier": 2,
+  "bbox": [
+   -2.9549,
+   37.5517,
+   -2.7952,
+   37.622
+  ],
+  "label": [
+   -2.90468,
+   37.56676
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.2
+ },
+ "tranco-de-beas": {
+  "waterId": "osm-relation-9670496",
+  "name": "Embalse de Tranco de Beas",
+  "areaKm2": 16.56,
+  "tier": 2,
+  "bbox": [
+   -2.8201,
+   38.0746,
+   -2.728,
+   38.2145
+  ],
+  "label": [
+   -2.77618,
+   38.12862
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 0.8
+ },
+ "andevalo": {
+  "waterId": "osm-relation-2499761",
+  "name": "Embalse del Andévalo",
+  "areaKm2": 3.88,
+  "tier": 3,
+  "bbox": [
+   -7.3903,
+   37.5843,
+   -7.3349,
+   37.614
+  ],
+  "label": [
+   -7.37248,
+   37.60867
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 12.6
+ },
+ "brena-ii": {
+  "waterId": "osm-relation-3313918",
+  "name": "Embalse de la Breña",
+  "areaKm2": 17.01,
+  "tier": 2,
+  "bbox": [
+   -5.0636,
+   37.8259,
+   -4.9794,
+   37.9334
+  ],
+  "label": [
+   -5.04948,
+   37.83935
+  ],
+  "method": "nome compatível + ponto da ficha a ≤ 15 km do contorno",
+  "distanceKm": 3
+ }
+}

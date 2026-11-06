@@ -1,0 +1,13 @@
+Açudes e estruturas de barragem (public/map/structures/*)
+
+Base de dados derivada do OpenStreetMap: © contribuidores do OpenStreetMap.
+Disponibilizada nos termos da Open Database License (ODbL) 1.0:
+https://opendatacommons.org/licenses/odbl/1-0/
+
+Fonte: extração de albufeiras de Portugal e Espanha feita por bquelhas/barragens
+(https://github.com/bquelhas/barragens, commit 2ddc0bdc44caf73af506a55118f1afa87c3a4d1e,
+extração de 2026-11-02; código MIT). Alterações da CatchAtlas: remoção de duplicados
+transfronteiriços, área geodésica WGS84, escalões por área, ponto interior para rótulo,
+simplificação adicional na visão geral e divisão em blocos. Gerado por scripts/map/build-water.ts.
+
+Os contornos são de referência e não representam o nível atual da água.

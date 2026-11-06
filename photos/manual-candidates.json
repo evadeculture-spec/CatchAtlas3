@@ -1,0 +1,24 @@
+{
+  "_leia": "Candidatos fornecidos manualmente (fora do Commons). Os ficheiros de imagem ficam em photos/pending/ (não versionado) até os direitos estarem aprovados.",
+  "candidates": [
+    {
+      "key": "sierra-brava:manual-wikiloc-1",
+      "damId": "sierra-brava",
+      "file": "photos/pending/sierra-brava-wikiloc-crop.jpg",
+      "role": "capa",
+      "provenance": "Captura de ecrã de um telemóvel com o resultado do Google Imagens que aponta para a página Wikiloc «Trilha Embalse Sierra Brava (Zorita-Cáceres)». Recortada para mostrar só a albufeira.",
+      "sourcePageUrl": null,
+      "author": null,
+      "license": null,
+      "capturedAt": null,
+      "identity": "confirmado",
+      "identityMethod": "humana",
+      "identityBasis": "Identificada pelo utilizador em 01/11/2026 como albufeira de Sierra Brava; o título da página de origem refere o embalse de Sierra Brava (Zorita, Cáceres); paisagem de dehesa plana compatível.",
+      "rights": "por-verificar",
+      "rightsBasis": "Fotografia publicada no Wikiloc por autor não identificado e sem licença conhecida. Encontrada via Google Imagens, o que não confere direitos de reutilização. Precisa de autorização do autor ou de licença compatível.",
+      "publication": "rascunho",
+      "visualNotes": "Qualidade limitada: é uma fotografia de um ecrã com riscos visíveis. Mostra duas árvores emergentes, superfície aparentemente calma no momento da captação e margem plana com vegetação ao fundo.",
+      "collectedAt": "2026-11-01"
+    }
+  ]
+}

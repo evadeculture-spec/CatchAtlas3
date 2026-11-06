@@ -1,0 +1,137 @@
+Correspondências ficha ↔ albufeira OSM (gerado por npm run map:build)
+
+LIGADA        alqueva (Alqueva) → Albufeira de Alqueva [relation/8988700] 223.9 km², a 0.1 km
+LIGADA        castelo-de-bode (Castelo de Bode) → Albufeira de Castelo do Bode [relation/12244426] 31.8 km², a 0.2 km
+LIGADA        cabril (Cabril) → Albufeira do Cabril [relation/2665375] 17.5 km², a 0.1 km
+LIGADA        bouca (Bouçã) → Albufeira da Bouçã [relation/18346106] 2.0 km², a 0.7 km
+LIGADA        montargil (Montargil) → Albufeira de Montargil [relation/7684323] 14.7 km², a 0.3 km
+LIGADA        maranhao (Maranhão) → Albufeira de Maranhão [relation/1977571] 17.8 km², a 0.6 km
+LIGADA        santa-clara (Santa Clara) → Albufeira de Santa Clara [relation/5158024] 18.6 km², a 0.2 km
+LIGADA        aguieira (Aguieira) → Albufeira da Aguieira [relation/9451279] 16.8 km², a 0.3 km
+LIGADA        alto-rabagao (Alto Rabagão) → Albufeira do Alto Rabagão [relation/1420612] 19.7 km², a 0.2 km
+LIGADA        canicada (Caniçada) → Albufeira da Caniçada [relation/2441813] 4.9 km², a 0.1 km
+LIGADA        baixo-sabor (Baixo Sabor) → Albufeira do Baixo Sabor [relation/10691569] 26.1 km², a 1.2 km
+LIGADA        idanha (Idanha) → Albufeira da Barragem da Idanha [relation/12629857] 6.4 km², a 0.6 km
+LIGADA        caia (Caia) → Albufeira do Caia [relation/2513732] 18.7 km², a 3.1 km
+LIGADA        pego-do-altar (Pego do Altar) → Albufeira de Pego do Altar [relation/11190256] 8.5 km², a 0.4 km
+LIGADA        roxo (Roxo) → Albufeira do Roxo [relation/9318563] 12.6 km², a 1.7 km
+LIGADA        odeleite (Odeleite) → Albufeira de Odeleite [relation/1203341] 6.6 km², a 0.0 km
+LIGADA        alcantara (Alcántara) → Embalse de Alcántara [relation/128102] 87.2 km², a 3.6 km
+LIGADA        valdecanas (Valdecañas) → Embalse de Valdecañas [relation/65527] 65.7 km², a 0.4 km
+LIGADA        orellana (Orellana) → Embalse de Orellana [relation/1225409] 48.6 km², a 0.0 km
+LIGADA        la-serena (La Serena) → Embalse de la Serena [relation/254547] 129.8 km², a 0.0 km
+LIGADA        mequinenza (Mequinenza) → Embalse de Mequinenza [relation/254385] 57.2 km², a 2.2 km
+LIGADA        ricobayo (Ricobayo) → Embalse de Ricobayo [relation/1232049] 49.5 km², a 0.0 km
+LIGADA        iznajar (Iznájar) → Embalse de Iznájar [relation/51446] 21.4 km², a 0.0 km
+LIGADA        buendia (Buendía) → Embalse de Buendía [relation/8383993] 36.4 km², a 0.7 km
+LIGADA        alto-lindoso (Alto Lindoso) → Albufeira do Alto-Lindoso [relation/16196443] 9.2 km², a 0.2 km
+LIGADA        touvedo (Touvedo) → Albufeira de Touvedo [relation/2446035] 1.5 km², a 1.3 km
+LIGADA        vilarinho-das-furnas (Vilarinho das Furnas) → Albufeira de Vilarinho das Furnas [relation/16202417] 3.3 km², a 0.0 km
+LIGADA        paradela (Paradela) → Albufeira da Paradela [relation/15317850] 3.5 km², a 0.0 km
+LIGADA        alto-cavado (Alto Cávado) → Albufeira do Alto Cávado [relation/18445130] 0.2 km², a 1.2 km
+LIGADA        salamonde (Salamonde) → Albufeira de Salamonde [relation/15555725] 2.0 km², a 0.3 km
+LIGADA        venda-nova (Venda Nova) → Albufeira da Venda Nova [relation/18494254] 3.7 km², a 0.0 km
+LIGADA        torrao (Torrão) → Albufeira do Torrão [relation/5011894] 5.2 km², a 0.0 km
+LIGADA        crestuma-lever (Crestuma-Lever) → Albufeira de Crestuma-Lever [relation/3688751] 11.2 km², a 0.3 km
+LIGADA        carrapatelo (Carrapatelo) → Albufeira do Carrapatelo [relation/3688774] 9.5 km², a 0.2 km
+LIGADA        regua (Régua) → Albufeira da Régua [relation/18334925] 8.2 km², a 5.1 km
+LIGADA        valeira (Valeira) → Albufeira da Valeira [relation/3688753] 8.5 km², a 0.2 km
+LIGADA        pocinho (Pocinho) → Albufeira do Pocinho [relation/3688749] 7.3 km², a 0.7 km
+LIGADA        miranda (Miranda) → Albufeira de Miranda [way/47916216] 1.1 km², a 0.4 km
+LIGADA        picote (Picote) → Albufeira de Picote [relation/2520395] 2.1 km², a 2.3 km
+LIGADA        bemposta (Bemposta) → Albufeira de Bemposta [way/53154472] 3.8 km², a 0.0 km
+LIGADA        azibo (Azibo) → Albufeira do Azibo [relation/2455968] 3.7 km², a 0.1 km
+LIGADA        vilar (Vilar) → Albufeira de Vilar [relation/1661467] 6.2 km², a 4.4 km
+LIGADA        varosa (Varosa) → Albufeira de Varosa [relation/19671487] 0.5 km², a 3.3 km
+LIGADA        fronhas (Fronhas) → Albufeira das Fronhas [way/96829477] 2.2 km², a 2.8 km
+LIGADA        raiva (Raiva) → Albufeira da Raiva [way/159074165] 1.9 km², a 1.8 km
+LIGADA        caldeirao (Caldeirão) → Albufeira do Caldeirão [relation/1710157] 0.6 km², a 2.3 km
+LIGADA        sabugal (Sabugal) → Albufeira do Sabugal [relation/4774337] 6.6 km², a 4.7 km
+LIGADA        santa-luzia (Santa Luzia) → Albufeira de Santa Luzia [relation/3301627] 2.1 km², a 1.4 km
+LIGADA        meimoa (Meimoa) → Albufeira da Meimoa [relation/10867804] 2.2 km², a 4.0 km
+LIGADA        marateca (Marateca (Santa Águeda)) → Albufeira da Marateca [relation/7768755] 5.4 km², a 5.3 km
+LIGADA        pracana (Pracana) → Albufeira de Pracana [relation/19664417] 5.3 km², a 0.8 km
+LIGADA        fratel (Fratel) → Albufeira de Fratel [relation/2643879] 6.3 km², a 0.5 km
+LIGADA        belver (Belver) → Albufeira de Belver [relation/2431470] 2.9 km², a 0.1 km
+LIGADA        magos (Magos) → Albufeira de Magos [way/116405602] 0.8 km², a 4.8 km
+LIGADA        sao-domingos (São Domingos) → Albufeira de São Domingos [way/105224396] 0.7 km², a 1.0 km
+LIGADA        povoa-e-meadas (Póvoa e Meadas) → Albufeira de Póvoa e Meadas [relation/2431468] 1.4 km², a 2.7 km
+LIGADA        apartadura (Apartadura) → Albufeira da Apartadura [relation/20032208] 0.5 km², a 4.0 km
+LIGADA        lucefecit (Lucefécit) → Albufeira de Lucefécit [relation/7396320] 1.6 km², a 7.7 km
+LIGADA        vigia (Vigia) → Albufeira da Vigia [relation/15410718] 2.7 km², a 9.3 km
+LIGADA        divor (Divor) → Albufeira do Divor [way/83601312] 2.4 km², a 10.3 km
+LIGADA        monte-novo (Monte Novo) → Albufeira de Monte Novo [relation/15716272] 2.4 km², a 0.0 km
+LIGADA        alvito (Alvito) → Albufeira do Alvito [relation/10383676] 13.2 km², a 4.7 km
+LIGADA        odivelas (Odivelas) → Albufeira de Odivelas [relation/1636770] 7.8 km², a 1.2 km
+LIGADA        vale-do-gaio (Vale do Gaio) → Albufeira de Vale do Gaio [relation/4831031] 5.6 km², a 1.8 km
+LIGADA        campilhas (Campilhas) → Albufeira de Campilhas [relation/17915959] 3.8 km², a 13.4 km
+LIGADA        monte-da-rocha (Monte da Rocha) → Albufeira do Monte da Rocha [relation/15431557] 10.5 km², a 0.3 km
+LIGADA        pedrogao (Pedrógão) → Albufeira de Pedrógão [relation/11206736] 10.6 km², a 1.0 km
+LIGADA        enxoe (Enxoé) → Albufeira do Enxoé [relation/2025716] 1.6 km², a 0.3 km
+LIGADA        chanca (Chança) → Barragem do Chança [relation/1399689] 16.9 km², a 0.1 km
+SEM CONTORNO  misericordia (Misericórdia): nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado
+SEM CONTORNO  foro-do-espanhol (Foro do Espanhol): nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado
+LIGADA        beliche (Beliche) → Albufeira de Beliche [relation/2727413] 2.7 km², a 2.4 km
+SEM CONTORNO  bravura (Bravura): nenhuma albufeira OSM com nome compatível a ≤ 15 km do ponto aproximado
+LIGADA        arade (Arade) → Albufeira do Arade [relation/2631593] 1.5 km², a 1.1 km
+LIGADA        funcho (Funcho) → Albufeira do Funcho [relation/10612864] 3.3 km², a 3.8 km
+LIGADA        odelouca (Odelouca) → Albufeira de Odelouca [relation/20407263] 6.2 km², a 3.0 km
+LIGADA        cijara (Cíjara) → Embalse de Cíjara [relation/65521] 52.0 km², a 1.1 km
+LIGADA        garcia-de-sola (García de Sola) → Embalse Garcia Sola [relation/65522] 25.5 km², a 0.0 km
+LIGADA        alange (Alange) → Embalse de Alange [relation/2050721] 37.6 km², a 0.0 km
+LIGADA        gabriel-y-galan (Gabriel y Galán) → Embalse de Gabriel y Galán [relation/3828300] 38.6 km², a 0.0 km
+LIGADA        borbollon (Borbollón) → Embalse de Borbollón [relation/2130037] 8.8 km², a 1.5 km
+LIGADA        sierra-brava (Sierra Brava) → Embalse de Sierra Brava [relation/4223227] 15.4 km², a 1.5 km
+LIGADA        entrepenas (Entrepeñas) → Embalse de Entrepeñas [relation/1326855] 21.5 km², a 2.0 km
+LIGADA        alarcon (Alarcón) → Embalse de Alarcón [relation/2980752] 52.1 km², a 2.5 km
+LIGADA        contreras (Contreras) → Embalse de Contreras [relation/3015325] 15.3 km², a 0.0 km
+LIGADA        el-atazar (El Atazar) → Embalse del Atazar [relation/3352492] 10.6 km², a 0.1 km
+LIGADA        pinilla (Pinilla) → Embalse de Pinilla [way/30822229] 4.3 km², a 0.0 km
+LIGADA        san-juan (San Juan) → Embalse de San Juan [way/27578047] 6.0 km², a 0.1 km
+LIGADA        valmayor (Valmayor) → Pantano de Valmayor [way/30915749] 7.1 km², a 1.5 km
+LIGADA        almendra (Almendra) → Embalse de Almendra [relation/1613295] 82.2 km², a 0.5 km
+LIGADA        santa-teresa (Santa Teresa) → Embalse de Santa Teresa [relation/4473782] 22.9 km², a 1.0 km
+LIGADA        aldeadavila (Aldeadávila) → Albufeira de Aldeiadávila [way/188466604] 3.5 km², a 0.4 km
+LIGADA        barrios-de-luna (Barrios de Luna) → Embalse de Los Barrios de Luna [relation/2588413] 9.1 km², a 0.5 km
+LIGADA        riano (Riaño) → Embalse de Riaño [relation/254780] 20.5 km², a 0.0 km
+LIGADA        cuerda-del-pozo (Cuerda del Pozo) → Embalse de la Cuerda del Pozo [relation/2007522] 20.2 km², a 0.3 km
+LIGADA        belesar (Belesar) → Encoro de Belesar [relation/18080585] 17.3 km², a 0.8 km
+LIGADA        ribarroja (Riba-roja) → Pantà de Riba-roja [relation/1843322] 16.0 km², a 3.8 km
+LIGADA        yesa (Yesa) → Embalse de Yesa [way/22887206] 16.6 km², a 0.1 km
+LIGADA        mediano (Mediano) → Embalse de Mediano [relation/7141904] 15.5 km², a 0.0 km
+LIGADA        el-grado (El Grado) → Embalse de El Grado [way/23416067] 11.4 km², a 0.4 km
+LIGADA        santa-ana (Santa Ana) → Pantà de Santa Anna [relation/5597868] 7.3 km², a 7.7 km
+LIGADA        canelles (Canelles) → Pantà de Canelles / Embalse de Canelles [relation/5597869] 13.7 km², a 0.2 km
+LIGADA        sau (Sau) → Pantà de Sau [relation/5639693] 5.1 km², a 0.0 km
+LIGADA        guadalcacin (Guadalcacín) → Embalse de Guadalcacín [way/24468607] 25.8 km², a 2.9 km
+LIGADA        negratin (Negratín) → Embalse del Negratín [relation/9607539] 17.8 km², a 0.2 km
+LIGADA        tranco-de-beas (Tranco de Beas) → Embalse de Tranco de Beas [relation/9670496] 16.6 km², a 0.8 km
+LIGADA        andevalo (Andévalo) → Embalse del Andévalo [relation/2499761] 3.9 km², a 12.6 km
+LIGADA        brena-ii (Breña II) → Embalse de la Breña [relation/3313918] 17.0 km², a 3.0 km
+ZONA NO MAPA  zpl-canicada-geres → Albufeira da Caniçada [relation/2441813] (parcial)
+ZONA NO MAPA  zpl-rio-homem → Albufeira de Vilarinho das Furnas [relation/16202417] (parcial)
+ZONA SEM MAPA zpl-rio-mente (Zona de Pesca Lúdica do Rio Mente)
+ZONA SEM MAPA zpl-rio-mouro (Zona de Pesca Lúdica do Rio Mouro)
+ZONA SEM MAPA zpl-castro-laboreiro (Zona de Pesca Lúdica do Rio Castro Laboreiro e Corga da Varziela)
+ZONA SEM MAPA zpr-serra-estrela (Zona de Pesca Reservada das Lagoas da Serra da Estrela)
+ZONA SEM MAPA zpl-quinta-i (Zona de Pesca Lúdica da Albufeira da Quinta I)
+ZONA SEM MAPA zpl-rio-alva (Zona de Pesca Lúdica do Rio Alva)
+ZONA NO MAPA  zpl-venda-velha → Albufeira da Venda Velha [relation/5366185]
+ZONA SEM MAPA zpl-rio-seco (Zona de Pesca Lúdica da Barragem do Rio Seco)
+ZONA NO MAPA  conc-rio-cabril-lindoso → Albufeira do Alto-Lindoso [relation/16196443] (parcial)
+ZONA NO MAPA  conc-touvedo → Albufeira de Touvedo [relation/2446035]
+ZONA NO MAPA  conc-vilar → Albufeira de Vilar [relation/1661467]
+ZONA NO MAPA  conc-belver → Albufeira de Belver [relation/2431470]
+ZONA NO MAPA  conc-unhais → Albufeira de Santa Luzia [relation/3301627] (parcial)
+ZONA NO MAPA  conc-coa-sabugal → Albufeira do Sabugal [relation/4774337] (parcial)
+ZONA NO MAPA  conc-apartadura → Albufeira da Apartadura [relation/20032208]
+ZONA SEM MAPA conc-foro-espanhol (Concessão de Pesca da Albufeira do Foro do Espanhol)
+ZONA SEM MAPA conc-misericordia (Concessão de Pesca da Albufeira da Misericórdia)
+ZONA NO MAPA  conc-vale-cobrao → Albufeira de Vale do Cobrão [way/132800346]
+ZONA SEM MAPA conc-corte-pereiro (Concessão de Pesca da Albufeira 2 de Corte Pereiro)
+ZONA NO MAPA  conc-bouca-cova → Albufeira de Bouça Cova [relation/4007088]
+ZONA SEM MAPA conc-azinhal (Concessão de Pesca na Albufeira Norte da Herdade do Azinhal)
+ZONA NO MAPA  conc-coutada-rodao → Barragem da Coutada [way/194995899]
+ZONA SEM MAPA ref-herdade-urgueira (Herdade da Urgueira — barragens com concessão de pesca (referida em notícia))
+ZONA NO MAPA  coto-santa-ana → Pantà de Santa Anna [relation/5597868]
+ZONA SEM MAPA cotos-la-rioja (Cotos de pesca intensiva — La Rioja)
