@@ -1,7 +1,7 @@
 {
-  "name": "CatchAtlas — demonstração",
-  "short_name": "CatchAtlas",
-  "description": "Descobre barragens, prepara jornadas, regista capturas e acompanha rankings e provas. Dados ilustrativos.",
+  "name": "Lança Lance",
+  "short_name": "Lança Lance",
+  "description": "A memória digital do pescador: Pins, Pings, condições e jornadas.",
   "lang": "pt-PT",
   "start_url": "/",
   "scope": "/",

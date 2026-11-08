@@ -20,7 +20,7 @@ export interface PersistedState {
   onboarded: boolean
   profile: Profile
   favorites: string[]
-  /** Favoritas do Atlas sem ficha CatchAtlas (IDs do registo cartográfico: albufeiras, rios, estruturas). */
+  /** Favoritas do Atlas sem ficha Lança Lance (IDs do registo cartográfico: albufeiras, rios, estruturas). */
   favoriteWaters: string[]
   myCatches: Catch[]
   trips: Trip[]

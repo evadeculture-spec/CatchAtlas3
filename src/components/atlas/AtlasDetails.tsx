@@ -125,7 +125,7 @@ export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, on
         <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] p-3.5" data-no-catalog>
           <p className="text-[14px] font-bold text-[#f4f7f8]">Informação deste local ainda não disponível</p>
           <p className="mt-1 text-[12.5px] leading-relaxed text-[#b5c5cc]">
-            Este elemento existe na cartografia, mas ainda não tem ficha CatchAtlas. Preparar jornada e registar captura ficam disponíveis quando houver ficha.
+            Este elemento existe na cartografia, mas ainda não tem ficha Lança Lance. Preparar jornada e registar captura ficam disponíveis quando houver ficha.
           </p>
         </div>
       )}
@@ -246,7 +246,7 @@ export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, on
       {dam && (
         <section className="mt-5 rounded-2xl border border-[#e6b65a]/20 p-3" aria-labelledby="atlas-demo-h">
           <h3 id="atlas-demo-h" className="flex items-center gap-2 text-[11.5px] font-bold uppercase tracking-[0.16em] text-[#e6b65a]">
-            Ficha CatchAtlas · demonstração
+            Ficha Lança Lance · demonstração
           </h3>
           <p className="mt-1 text-[12.5px] leading-relaxed text-[#b5c5cc]">
             {dam.place} · {dam.river}. Espécies, condições e características da ficha são dados de demonstração (não verificados): consulte-os na ficha.

@@ -42,16 +42,9 @@ export default function Onboarding() {
             <h1 className="welcome-rise font-display text-[30px] font-medium leading-none tracking-[-0.01em] text-white/90 sm:text-[34px]" style={{ animationDelay: '40ms' }}>
               Bem-vindo
             </h1>
-            <img
-              src={brand.logo.srcLight}
-              width={brand.logo.width}
-              height={brand.logo.height}
-              alt={brand.name}
-              decoding="async"
-              fetchPriority="high"
-              className="welcome-rise mt-6 h-auto w-full max-w-[360px] sm:max-w-[440px] [@media(max-height:500px)]:max-w-[340px] drop-shadow-[0_10px_30px_rgb(0_0_0/0.25)] sm:mt-7"
-              style={{ animationDelay: '120ms' }}
-            />
+            <div className="welcome-rise mt-6 sm:mt-7 drop-shadow-[0_10px_30px_rgb(0_0_0/0.25)] [&_span]:!text-[40px] sm:[&_span]:!text-[48px] [&_svg]:!h-14 [&_svg]:!w-14" style={{ animationDelay: '120ms' }}>
+              <BrandLockup light />
+            </div>
             <div className="welcome-rise mt-12 flex w-full max-w-[300px] flex-col gap-3 sm:mt-14 sm:max-w-[320px] [@media(max-height:500px)]:mt-7" style={{ animationDelay: '220ms' }}>
               <button
                 type="button"

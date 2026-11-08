@@ -1,12 +1,13 @@
 // Configuração central da marca: substituir aqui para mudar nome e assinatura em toda a app.
 export const brand = {
-  name: 'CatchAtlas',
-  shortName: 'CatchAtlas',
-  /** Logótipo (fundo transparente): versão normal para fundos claros e versão clara para fundos escuros. */
+  name: 'Lança Lance',
+  shortName: 'Lança Lance',
+  /** Logótipo em imagem da marca anterior (CatchAtlas): mantido no repositório até existir o logótipo da Lança Lance.
+   *  Enquanto isso, a app usa o logótipo tipográfico (BrandLockup). */
   logo: { src: '/brand/logo.png', srcLight: '/brand/logo-light.png', width: 1166, height: 226 },
-  tagline: 'A tua próxima jornada começa aqui.',
+  tagline: 'A memória digital do pescador.',
   description:
-    'Descobre barragens, prepara jornadas, regista capturas e acompanha rankings e provas.',
+    'Guarda os teus locais (Pins), regista cada experiência (Pings) com as condições do momento e prepara jornadas com o teu próprio histórico.',
   demoLabel: 'Demonstração — dados ilustrativos',
   // Chaves antigas mantidas de propósito: mudar apagaria os dados já guardados no navegador.
   storageKey: 'atlascatch-demo-v1',
@@ -19,7 +20,7 @@ export const brand = {
     maxEntries: 10,
   },
   subscription: {
-    name: 'CatchAtlas Pro',
+    name: 'Lança Lance Pro',
     /** Valor apenas ilustrativo: não há pagamentos na demonstração. */
     priceLabel: '3,99 €/mês (valor ilustrativo)',
   },

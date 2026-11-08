@@ -1,4 +1,10 @@
-# CatchAtlas — demonstração
+# Lança Lance
+
+**A memória digital do pescador.** Conta privada com Pins (locais), Pings (experiências com fotografia, local, hora e as condições do momento), capturas, jornadas planeadas com previsões e o próprio histórico, e estatística descritiva. Backend Supabase (UE) com RLS, armazenamento privado e Edge Functions. Ver **[docs/LANCA_LANCE.md](docs/LANCA_LANCE.md)**.
+
+A app inclui também a demonstração herdada do CatchAtlas, descrita abaixo.
+
+## Demonstração (dados ilustrativos)
 
 Protótipo navegável de uma aplicação de pesca desportiva em barragens de Portugal e Espanha: descobrir barragens, preparar jornadas, registar capturas, rankings, provas e comunidade (reports com mapa de pings, chat global de subscritores, marketplace e giveaway).
 
@@ -36,6 +42,13 @@ Em alternativa, pode ligar o repositório em app.netlify.com: as definições s�
 ## Versão num único ficheiro
 
 `npm run build:artifact` gera `dist-artifact/atlascatch.html`, um ficheiro com tudo incluído, router em hash e sem service worker. Abre em qualquer navegador sem servidor.
+
+## Lança Lance: área privada
+
+- Rotas: `/entrar`, `/registar`, `/recuperar`, `/nova-palavra-passe`, `/privacidade` e `/conta/*` (painel, mapa, Pins, Pings, jornadas, histórico, inteligência, definições).
+- Configuração: `VITE_SUPABASE_URL` e `VITE_SUPABASE_PUBLISHABLE_KEY` (públicas) em `.env.local` ou nas variáveis da Netlify. Sem elas, só a demonstração funciona.
+- Backend: `supabase/migrations/` e `supabase/functions/`. Testes: `npm test`, `npm run e2e:backend`, `npm run e2e:lanca` (ver `e2e/README-lanca.md`).
+- Arquitetura, modelo de dados, integrações, RGPD, passos manuais e limitações: **[docs/LANCA_LANCE.md](docs/LANCA_LANCE.md)**.
 
 ## Estrutura
 

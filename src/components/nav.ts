@@ -1,4 +1,4 @@
-import { Compass, FileText, Fish, Gift, House, LayoutDashboard, Map, Medal, MessageCircle, Radio, Scale, ShoppingBag, Trophy, User, Users } from 'lucide-react'
+import { CircleUserRound, Compass, FileText, Fish, Gift, House, LayoutDashboard, Map, Medal, MessageCircle, Radio, Scale, ShoppingBag, Trophy, User, Users } from 'lucide-react'
 
 /** Itens de navegação partilhados pela barra lateral, pela barra inferior e pelo menu da página inicial. */
 export const NAV = [
@@ -6,7 +6,7 @@ export const NAV = [
   { to: '/explorar', label: 'Explorar', icon: Compass },
   { to: '/capturas', label: 'Capturas', icon: Fish },
   { to: '/comunidade', label: 'Comunidade', icon: Users },
-  { to: '/perfil', label: 'Perfil', icon: User },
+  { to: '/conta', label: 'Conta', icon: CircleUserRound },
 ]
 
 export const SECONDARY = [
@@ -20,4 +20,5 @@ export const SECONDARY = [
   { to: '/provas', label: 'Provas', icon: Trophy },
   { to: '/giveaway', label: 'Giveaway', icon: Gift },
   { to: '/rankings', label: 'Rankings', icon: Medal },
+  { to: '/perfil', label: 'Perfil de demonstração', icon: User },
 ]

@@ -1,7 +1,8 @@
-import { Plus, TriangleAlert } from 'lucide-react'
+import { Lock, Plus, Radio, TriangleAlert } from 'lucide-react'
 import { NavLink, Outlet, ScrollRestoration, useLocation, Link } from 'react-router'
 import { brand } from '../config/brand'
 import { useApp } from '../state/AppState'
+import { useAuth } from '../state/Auth'
 import { BrandLockup } from './BrandMark'
 import { NAV, SECONDARY } from './nav'
 import { cx } from './ui'
@@ -10,12 +11,18 @@ const COMMUNITY_PATHS = /^\/(comunidade|reports|mercado|provas|giveaway|rankings
 const EXPLORE_PATHS = /^\/(explorar|rios|zonas|licencas|barragens)/
 const sectionActive = (to: string, pathname: string) => (to === '/comunidade' && COMMUNITY_PATHS.test(pathname)) || (to === '/explorar' && EXPLORE_PATHS.test(pathname))
 
-const HIDE_FAB = [/^\/capturas\/nova/, /\/editar$/, /^\/jornada/, /^\/barragens\//, /^\/provas\/./, /^\/comunidade\/chat/, /^\/reports\/novo/, /^\/mercado\/./]
+const HIDE_FAB = [/^\/capturas\/nova/, /\/editar$/, /\/novo?a?$/, /^\/conta\/mapa/, /^\/conta\/pings\/novo/, /^\/conta\/definicoes/, /^\/privacidade/, /^\/jornada/, /^\/barragens\//, /^\/provas\/./, /^\/comunidade\/chat/, /^\/reports\/novo/, /^\/mercado\/./]
 
 export function AppShell() {
   const { pathname } = useLocation()
   const { storageWarning, state } = useApp()
+  const { session } = useAuth()
   const showFab = !HIDE_FAB.some((r) => r.test(pathname))
+  const privateArea = pathname.startsWith('/conta')
+  // Ecrãs com barra de ação própria escondem a navegação inferior.
+  const hideBottomNav = /^\/conta\/pings\/novo/.test(pathname)
+  // Com sessão iniciada, a ação principal é criar um Ping; sem sessão, mantém-se o registo de demonstração.
+  const primary = session ? { to: '/conta/pings/novo', label: 'Novo Ping', icon: Radio } : { to: '/capturas/nova', label: 'Registar captura', icon: Plus }
   // Página inicial imersiva (ecrã dividido + histórias): sem barra lateral, barra inferior nem botão flutuante.
   // O menu completo continua acessível pelo botão de menu da própria página.
   const immersive = pathname === '/' && state.onboarded
@@ -48,12 +55,17 @@ export function AppShell() {
         </Link>
         <p className="mt-2 px-1 text-[12.5px] leading-snug text-white/55">{brand.tagline}</p>
         <Link
-          to="/capturas/nova"
-          className="press mt-7 flex h-12 items-center justify-center gap-2 rounded-full bg-teal text-[14px] font-extrabold text-ink hover:bg-[#2fcab4]"
+          to={primary.to}
+          className="press mt-7 flex h-12 shrink-0 items-center justify-center gap-2 rounded-full bg-teal text-[14px] font-extrabold text-ink hover:bg-[#2fcab4]"
         >
-          <Plus className="h-5 w-5" aria-hidden /> Registar captura
+          <primary.icon className="h-5 w-5" aria-hidden /> {primary.label}
         </Link>
-        <nav className="mt-6 space-y-1" aria-label="Navegação principal">
+        {!session && (
+          <Link to="/entrar" className="press mt-2 flex h-11 shrink-0 items-center justify-center gap-2 rounded-full border border-white/15 text-[13.5px] font-bold text-white/85 hover:bg-white/5">
+            <Lock className="h-4 w-4" aria-hidden /> Entrar ou criar conta
+          </Link>
+        )}
+        <nav className="mt-6 shrink-0 space-y-1" aria-label="Navegação principal">
           {NAV.map((n) => (
             <NavLink
               key={n.to}
@@ -87,13 +99,23 @@ export function AppShell() {
             </NavLink>
           ))}
         </nav>
-        <div className="mt-auto rounded-2xl bg-white/5 p-4 text-[12px] leading-relaxed text-white/60">
-          <p className="mb-1 flex items-center gap-1.5 font-bold text-amber">
-            <span className="h-1.5 w-1.5 rounded-full bg-amber" aria-hidden />
-            {brand.demoLabel}
-          </p>
-          Os dados são fictícios e as alterações ficam apenas neste navegador.
-        </div>
+        {privateArea ? (
+          <div className="mt-auto shrink-0 rounded-2xl bg-white/5 p-4 text-[12px] leading-relaxed text-white/60">
+            <p className="mb-1 flex items-center gap-1.5 font-bold text-teal">
+              <Lock className="h-3.5 w-3.5" aria-hidden />
+              Área privada
+            </p>
+            Dados reais da sua conta, visíveis só para si.
+          </div>
+        ) : (
+          <div className="mt-auto shrink-0 rounded-2xl bg-white/5 p-4 text-[12px] leading-relaxed text-white/60">
+            <p className="mb-1 flex items-center gap-1.5 font-bold text-amber">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber" aria-hidden />
+              {brand.demoLabel}
+            </p>
+            As secções de demonstração usam dados fictícios guardados só neste navegador. Os seus Pins, Pings e jornadas reais estão em “Conta”.
+          </div>
+        )}
       </aside>
 
       <div className="lg:pl-[264px]">
@@ -103,7 +125,7 @@ export function AppShell() {
             {storageWarning}
           </div>
         )}
-        <main id="conteudo" className="pb-[calc(var(--nav-h)+env(safe-area-inset-bottom)+92px)] lg:pb-12">
+        <main id="conteudo" className={cx(pathname === '/conta/mapa' ? 'pb-[calc(var(--nav-h)+env(safe-area-inset-bottom))] lg:pb-0' : 'pb-[calc(var(--nav-h)+env(safe-area-inset-bottom)+92px)] lg:pb-12')}>
           <div key={pathname.split('/').slice(0, 2).join('/')} className="page-in">
             <Outlet />
           </div>
@@ -113,18 +135,18 @@ export function AppShell() {
       {/* Ação principal flutuante (telemóvel) */}
       {showFab && (
         <Link
-          to="/capturas/nova"
+          to={primary.to}
           className="press fixed right-4 z-40 flex h-14 items-center gap-2 rounded-full bg-teal pl-4 pr-5 text-[14px] font-extrabold text-ink shadow-[0_12px_28px_-8px_rgb(16_43_58/0.55)] hover:bg-[#2fcab4] bottom-[calc(var(--nav-h)+env(safe-area-inset-bottom)+14px)] lg:hidden"
         >
-          <Plus className="h-5 w-5" strokeWidth={2.6} aria-hidden />
-          Registar captura
+          <primary.icon className="h-5 w-5" strokeWidth={2.6} aria-hidden />
+          {primary.label}
         </Link>
       )}
 
       {/* Navegação inferior (telemóvel) */}
       <nav
         aria-label="Navegação principal"
-        className="pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-line/80 bg-white/92 backdrop-blur-xl lg:hidden"
+        className={cx('pb-safe fixed inset-x-0 bottom-0 z-40 border-t border-line/80 bg-white/92 backdrop-blur-xl lg:hidden', hideBottomNav && 'hidden')}
       >
         <ul className="mx-auto flex h-[var(--nav-h)] max-w-lg items-stretch">
           {NAV.map((n) => (

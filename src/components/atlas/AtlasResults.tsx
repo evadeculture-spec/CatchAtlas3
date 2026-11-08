@@ -88,7 +88,7 @@ export function SearchResults({ hits, query, loading, error, onRetry, selectedId
           <div className="rounded-2xl border border-white/10 p-4" data-atlas-empty>
             <p className="text-[14px] font-bold text-[#f4f7f8]">Sem resultados para “{query.trim()}”</p>
             <p className="mt-1 text-[12.5px] leading-relaxed text-[#b5c5cc]">
-              A pesquisa cobre albufeiras ≥ 5 ha do OpenStreetMap, barragens e açudes com nome, rios principais e as fichas CatchAtlas. Lagoas naturais e ribeiras locais ainda não estão no registo (veja-as no mapa, à escala local). Experimente outro nome, sem o tipo, ou retire filtros.
+              A pesquisa cobre albufeiras ≥ 5 ha do OpenStreetMap, barragens e açudes com nome, rios principais e as fichas Lança Lance. Lagoas naturais e ribeiras locais ainda não estão no registo (veja-as no mapa, à escala local). Experimente outro nome, sem o tipo, ou retire filtros.
             </p>
           </div>
         }
@@ -157,7 +157,7 @@ export function AtlasIntro({ onList, onFocusSearch }: { onList: () => void; onFo
       <ul className="mt-2 grid gap-1.5 text-[12.5px] text-[#b5c5cc]">
         <li className="flex items-center gap-2.5"><span className="h-3 w-5 rounded-sm bg-[#38c9d5]" aria-hidden /> Albufeira (contorno OpenStreetMap)</li>
         <li className="flex items-center gap-2.5"><span className="h-[3px] w-5 rounded-full bg-[#2fb6c3]" aria-hidden /> Rio (traçado geral; detalhado à escala local)</li>
-        <li className="flex items-center gap-2.5"><span className="mx-1 h-2.5 w-2.5 rounded-full border-2 border-[#071923] bg-[#f4f7f8]" aria-hidden /> Barragem (estrutura) · ficha CatchAtlas</li>
+        <li className="flex items-center gap-2.5"><span className="mx-1 h-2.5 w-2.5 rounded-full border-2 border-[#071923] bg-[#f4f7f8]" aria-hidden /> Barragem (estrutura) · ficha Lança Lance</li>
         <li className="flex items-center gap-2.5"><span className="mx-1 h-2.5 w-2.5 rounded-full bg-[#e6b65a]" aria-hidden /> Zona de pesca documentada · favorita</li>
       </ul>
       <p className="mt-4 text-[11.5px] leading-relaxed text-[#b5c5cc]/80">

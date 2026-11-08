@@ -1,0 +1,28 @@
+-- Fontes de dados ambientais (proveniência apresentada nos reports e no planeador).
+insert into public.data_sources (key, name, url, license, attribution, coverage_geo, coverage_time, data_kind, update_frequency, limits, cost, fallback, notes) values
+('open-meteo-forecast', 'Open-Meteo — Forecast API (modelos meteorológicos, ex.: ICON, ECMWF, AROME, ARPEGE)', 'https://open-meteo.com/en/docs',
+ 'CC BY 4.0 (dados) · uso não comercial gratuito; uso comercial com plano pago', 'Weather data by Open-Meteo.com',
+ 'Global (grelha 1–11 km conforme o modelo)', 'Últimos 92 dias (past_days) e previsão até 16 dias', 'estimado (modelo) / previsão',
+ 'Horária', '≤ 10 000 pedidos/dia no plano gratuito', 'Gratuito para uso não comercial; produção comercial exige plano API',
+ 'Cache por célula (0,01°) e hora; se falhar, o ping fica com enriquecimento pendente e novas tentativas', 'Valores de modelo para a célula, não observações de estação.'),
+('open-meteo-historical-forecast', 'Open-Meteo — Historical Forecast API', 'https://open-meteo.com/en/docs/historical-forecast-api',
+ 'CC BY 4.0', 'Weather data by Open-Meteo.com', 'Global', 'Desde 2022', 'estimado (arquivo de modelos de alta resolução)',
+ 'Diária', 'Partilha a quota do Open-Meteo', 'Como acima', 'Usa-se para acontecimentos com mais de 2 dias; reanálise se mais antigos', null),
+('open-meteo-archive', 'Open-Meteo — Historical Weather API (reanálise ERA5/ERA5-Land, Copernicus)', 'https://open-meteo.com/en/docs/historical-weather-api',
+ 'CC BY 4.0 · ERA5: Copernicus Climate Change Service', 'Weather data by Open-Meteo.com · contém informação modificada do Copernicus Climate Change Service',
+ 'Global (ERA5 ~25 km; ERA5-Land ~9 km)', 'Desde 1940, com ~5 dias de atraso', 'histórico (reanálise)', 'Diária', 'Partilha a quota do Open-Meteo', 'Como acima', 'Fallback',
+ 'Usa-se para acontecimentos anteriores a 2022 ou sem dados do arquivo de previsões.'),
+('open-meteo-marine', 'Open-Meteo — Marine Weather API', 'https://open-meteo.com/en/docs/marine-weather-api',
+ 'CC BY 4.0', 'Weather data by Open-Meteo.com', 'Oceanos e costas (resolução 5–25 km; fraca junto à costa)', 'Últimos 92 dias e previsão',
+ 'estimado (modelo)', 'Horária', 'Partilha a quota do Open-Meteo', 'Como acima', 'Só para locais costeiros/marítimos; sem marés oficiais',
+ 'Ondulação e temperatura da superfície do mar. Não substitui tabelas de marés oficiais.'),
+('suncalc', 'Cálculo astronómico local (SunCalc)', 'https://github.com/mourner/suncalc', 'BSD-2-Clause', 'SunCalc (Vladimir Agafonkin)',
+ 'Global', 'Qualquer data', 'calculado', 'Instantâneo', 'Sem limites', 'Gratuito', 'Não depende de rede', 'Nascer/pôr do sol e da lua, fase e iluminação lunar, posição solar.'),
+('agua-interior', 'Hidrologia de águas interiores (SNIRH/APA, SAIH/MITECO)', 'https://snirh.apambiente.pt/', 'A confirmar por fonte', 'APA/SNIRH · Confederaciones Hidrográficas (SAIH)',
+ 'Portugal e Espanha (estações específicas)', 'Variável', 'observado', 'Variável', 'Sem API pública estável integrada', 'A avaliar', 'Não integrado: campos ficam vazios',
+ 'Temperatura, nível e caudal da água ficam "indisponíveis" até haver integração oficial.'),
+('mares', 'Previsão de marés oficial (Instituto Hidrográfico, Puertos del Estado)', 'https://www.hidrografico.pt/', 'A confirmar', 'Instituto Hidrográfico · Puertos del Estado',
+ 'Portos de referência', 'Previsão anual', 'previsão', 'Anual', 'Sem API pública integrada', 'A avaliar', 'Não integrado', 'Marés não são apresentadas até haver fonte oficial.')
+on conflict (key) do update set name = excluded.name, url = excluded.url, license = excluded.license, attribution = excluded.attribution,
+  coverage_geo = excluded.coverage_geo, coverage_time = excluded.coverage_time, data_kind = excluded.data_kind,
+  update_frequency = excluded.update_frequency, limits = excluded.limits, cost = excluded.cost, fallback = excluded.fallback, notes = excluded.notes;
