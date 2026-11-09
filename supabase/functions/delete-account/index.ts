@@ -18,6 +18,14 @@ Deno.serve(async (req) => {
 
   const admin = createClient(URL_, SERVICE, { auth: { persistSession: false } })
   let removed = 0
+  // Versões partilhadas na comunidade: as fotografias derivadas têm o nome da partilha.
+  const { data: shares } = await admin.from('shared_reports').select('photo_path').eq('owner_id', user.id)
+  const sharedPhotos = (shares ?? []).map((s) => s.photo_path).filter((p): p is string => !!p)
+  if (sharedPhotos.length) {
+    const { error: shErr } = await admin.storage.from('community-media').remove(sharedPhotos)
+    if (shErr) return json(req, { error: `Não foi possível retirar as fotografias partilhadas (${shErr.message}). Nada foi eliminado.` }, 500)
+    removed += sharedPhotos.length
+  }
   for (const bucket of ['ping-media', 'avatars']) {
     // Ficheiros guardados em <uid>/<ficheiro> (um nível): listagem paginada e remoção em lotes.
     for (;;) {
