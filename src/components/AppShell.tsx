@@ -25,7 +25,7 @@ export function AppShell() {
   const primary = session ? { to: '/conta/pings/novo', label: 'Novo Ping', icon: Radio } : { to: '/capturas/nova', label: 'Registar captura', icon: Plus }
   // Página inicial imersiva (ecrã dividido + histórias): sem barra lateral, barra inferior nem botão flutuante.
   // O menu completo continua acessível pelo botão de menu da própria página.
-  const immersive = pathname === '/' && state.onboarded
+  const immersive = (pathname === '/' || pathname === '/inicio') && state.onboarded
 
   if (immersive)
     return (

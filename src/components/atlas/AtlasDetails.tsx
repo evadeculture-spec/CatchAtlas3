@@ -39,10 +39,12 @@ export interface DetailsProps {
   onRelated: (id: string) => void
   onFrame: () => void
   loadingRegistry: boolean
+  /** Ações contextuais da massa de água: marcar aqui, ver os meus pins, preparar jornada. */
+  waterActions?: { onMark: () => void; onMine: () => void; planHref: string; mineCount: number | null }
 }
 
 /** Ficha do Atlas: cartografia real separada da informação do catálogo (demonstração). */
-export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, onFavorite, onClose, onSection, onRelated, onFrame, loadingRegistry }: DetailsProps) {
+export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, onFavorite, onClose, onSection, onRelated, onFrame, loadingRegistry, waterActions }: DetailsProps) {
   const type: AtlasType = feature?.type ?? (pick ? typeOfPick(pick) : 'albufeira')
   const basemap = !feature && (pick?.kind === 'basemap-water' || pick?.kind === 'basemap-river')
   const catalogId = feature?.catalogId ?? (pick?.props.catalog ? String(pick.props.catalog) : undefined)
@@ -104,24 +106,31 @@ export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, on
         </button>
       </div>
 
-      {catalogId && dam ? (
-        <div className="mt-4 grid gap-2" data-flows>
-          <Link to={flowUrls(catalogId).jornada} className="press flex h-12 items-center justify-between rounded-2xl bg-[#38c9d5] px-4 text-[14.5px] font-extrabold text-[#071923] hover:bg-[#5fd6e0]" data-flow="jornada">
+      {waterActions && (
+        <div className="mt-4 grid gap-2" data-water-actions>
+          <button type="button" onClick={waterActions.onMark} className="press flex h-12 items-center justify-between rounded-2xl bg-[#38c9d5] px-4 text-[14.5px] font-extrabold text-[#071923] hover:bg-[#5fd6e0]" data-action="marcar-aqui">
             <span className="flex items-center gap-2">
-              <CalendarPlus className="h-[18px] w-[18px]" aria-hidden /> Preparar jornada
+              <Fish className="h-[18px] w-[18px]" aria-hidden /> Marcar aqui
             </span>
             <ArrowRight className="h-4 w-4" aria-hidden />
-          </Link>
+          </button>
           <div className="grid grid-cols-2 gap-2">
-            <Link to={flowUrls(catalogId).captura} className="press flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 text-[13.5px] font-bold text-[#f4f7f8] hover:bg-white/10" data-flow="captura">
-              <Fish className="h-[18px] w-[18px]" aria-hidden /> Registar captura
-            </Link>
-            <Link to={flowUrls(catalogId).ficha} className="press flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 text-[13.5px] font-bold text-[#f4f7f8] hover:bg-white/10" data-flow="ficha">
-              <BookOpen className="h-[18px] w-[18px]" aria-hidden /> Abrir ficha
+            <button type="button" onClick={waterActions.onMine} className="press flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 px-2 text-[13.5px] font-bold text-[#f4f7f8] hover:bg-white/10" data-action="meus-pins">
+              <BookOpen className="h-[18px] w-[18px]" aria-hidden /> Ver os meus pins{waterActions.mineCount != null ? ` (${waterActions.mineCount})` : ''}
+            </button>
+            <Link to={waterActions.planHref} className="press flex min-h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 px-2 text-[13.5px] font-bold text-[#f4f7f8] hover:bg-white/10" data-action="preparar-jornada">
+              <CalendarPlus className="h-[18px] w-[18px]" aria-hidden /> Preparar jornada
             </Link>
           </div>
         </div>
-      ) : (
+      )}
+      {catalogId && dam ? (
+        <div className="mt-2 grid gap-2" data-flows>
+          <Link to={flowUrls(catalogId).ficha} className="press flex h-12 items-center justify-center gap-2 rounded-2xl border border-white/15 text-[13.5px] font-bold text-[#f4f7f8] hover:bg-white/10" data-flow="ficha">
+            <BookOpen className="h-[18px] w-[18px]" aria-hidden /> Abrir ficha da barragem
+          </Link>
+        </div>
+      ) : waterActions ? null : (
         <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] p-3.5" data-no-catalog>
           <p className="text-[14px] font-bold text-[#f4f7f8]">Informação deste local ainda não disponível</p>
           <p className="mt-1 text-[12.5px] leading-relaxed text-[#b5c5cc]">

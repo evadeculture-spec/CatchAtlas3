@@ -170,3 +170,53 @@ describe('planeador', () => {
     expect(safetyNotices(w.slice(0, 1), null, { boat: false, coastal: true }).map((n) => n.level)).toEqual(['info'])
   })
 })
+
+import { countryOf, tzForPoint, tzLabel } from './region'
+import { approximate, dayPeriod, localDateHour } from '../../../supabase/functions/_shared/approx.ts'
+import { classify, toServerRow, type FieldPin } from './fieldPins'
+
+describe('fuso pelo local (Portugal vs Espanha)', () => {
+  it('Castelo de Bode é Portugal; Alcántara e Mequinenza são Espanha', () => {
+    expect(tzForPoint(39.55, -8.33)).toBe('Europe/Lisbon')
+    expect(tzForPoint(39.72, -6.88)).toBe('Europe/Madrid')
+    expect(tzForPoint(41.36, 0.27)).toBe('Europe/Madrid')
+    expect(tzForPoint(38.2, -7.47)).toBe('Europe/Lisbon') // Alqueva (margem portuguesa)
+    expect(tzForPoint(32.7, -16.9)).toBe('Atlantic/Madeira')
+    expect(tzLabel('Europe/Madrid')).toBe('hora de Espanha')
+    expect(countryOf(39.55, -8.33)).toBe('PT')
+  })
+})
+
+describe('versão comunitária aproximada', () => {
+  it('é estável na mesma célula e nunca devolve a coordenada exata', () => {
+    const a = approximate(39.54321, -8.31234, 'Castelo de Bode')
+    const b = approximate(39.53001, -8.30101, 'Castelo de Bode')
+    expect(a).toEqual(b)
+    expect(a.lat).not.toBe(39.54321)
+    expect(Math.abs(a.lat - 39.54321)).toBeLessThan(0.05)
+    expect(a.label).toContain('Castelo de Bode')
+    expect(a.precisionKm).toBeGreaterThan(5)
+  })
+  it('período do dia e data local', () => {
+    expect(dayPeriod(7)).toBe('manha')
+    expect(localDateHour('2024-05-04T23:30:00Z', 'Europe/Madrid')).toEqual({ date: '2024-05-05', hour: 1 })
+  })
+})
+
+describe('sincronização dos pins de campo', () => {
+  it('classifica falhas de rede, sessão, quota e limite', () => {
+    expect(classify(new Error('Sem ligação ao servidor.')).state).toBe('local')
+    expect(classify({ message: 'JWT expired', status: 401 }).state).toBe('auth')
+    expect(classify({ message: 'Payload too large', status: 413 }).state).toBe('quota')
+    expect(classify({ message: 'x', code: '54000' })).toMatchObject({ state: 'local', retry: true })
+    expect(classify(new Error('Algo correu mal')).state).toBe('error')
+  })
+  it('mapeia captura para pings e local para voltar para pins', () => {
+    const base = { lat: 39.5, lng: -8.3, accuracy: 8, source: 'gps', measuredAt: '2026-11-08T07:00:00Z', occurredAt: '2026-11-08T07:00:00Z', tz: 'Europe/Lisbon', timeSource: 'dispositivo', timeReliability: 'alta', name: null, notes: 'n', species: 'Achigã', count: null, weightG: null, lengthCm: null, technique: null, bait: null, depthM: null, waterRef: 'w1', waterName: 'Castelo de Bode' } as unknown as FieldPin
+    const c = toServerRow({ ...base, type: 'captura' })
+    expect(c).toMatchObject({ kind: 'captura', location_source: 'gps', catch_count: 1, outcome: 'sucesso', water_body_ref: 'w1' })
+    expect(c).not.toHaveProperty('enrichment_status')
+    const l = toServerRow({ ...base, type: 'local' })
+    expect(l).toMatchObject({ name: 'Local para voltar', category: 'spot', coord_source: 'gps', private_notes: 'n' })
+  })
+})

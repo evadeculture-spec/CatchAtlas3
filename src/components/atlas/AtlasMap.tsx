@@ -72,6 +72,8 @@ export interface AtlasMapHandle {
   frame: (t: FrameTarget) => void
   showMe: (pos: { lng: number; lat: number } | null) => void
   getView: () => ViewInfo | null
+  /** Instância MapLibre (camadas dos pins e da comunidade, colocação de pins). */
+  getMap: () => MLMap | null
 }
 interface Padding {
   top: number
@@ -155,6 +157,8 @@ export function AtlasMap({
   onView,
   onStatus,
   onInteract,
+  onMapClick,
+  onLongPress,
   handle,
   className,
 }: {
@@ -171,6 +175,10 @@ export function AtlasMap({
   onView: (v: ViewInfo) => void
   onStatus: (s: AtlasStatus) => void
   onInteract?: () => void
+  /** Chamado antes da escolha de águas/rios: devolve true se o toque foi tratado (pins, colocação). */
+  onMapClick?: (e: { point: { x: number; y: number }; lngLat: { lng: number; lat: number }; touch: boolean }) => boolean
+  /** Toque prolongado (ou botão direito): atalho opcional para marcar um pin naquele ponto. */
+  onLongPress?: (lngLat: { lng: number; lat: number }) => void
   handle: Ref<AtlasMapHandle>
   className?: string
 }) {
@@ -181,9 +189,9 @@ export function AtlasMap({
   const paddingRef = useRef(padding)
   const readyRef = useRef(false)
   const statusRef = useRef<AtlasStatus>({ map: 'loading', dem: ATLAS_CONFIG.dem.enabled ? 'loading' : 'off', basemap: 'ok', water: 'ok', detailLoading: false })
-  const cb = useRef({ onPick, onView, onStatus, onInteract })
+  const cb = useRef({ onPick, onView, onStatus, onInteract, onMapClick, onLongPress })
   useEffect(() => {
-    cb.current = { onPick, onView, onStatus, onInteract }
+    cb.current = { onPick, onView, onStatus, onInteract, onMapClick, onLongPress }
     modeRef.current = mode
     paddingRef.current = padding
   })
@@ -500,8 +508,23 @@ export function AtlasMap({
       const any = q(e.point, 3, [...STRUCT_LAYERS, 'zone-dot', 'cat-point', 'cat-cluster', ...ATLAS_FILL_LAYERS, 'river-line', 'omt-water']).length > 0
       map.getCanvas().style.cursor = any ? 'pointer' : ''
     })
+    // Toque prolongado: atalho opcional (arrastar o mapa nunca cria nada).
+    let press: number | undefined
+    const cancelPress = () => window.clearTimeout(press)
+    map.on('touchstart', (e) => {
+      cancelPress()
+      if (e.originalEvent.touches.length !== 1 || !cb.current.onLongPress) return
+      const at = { lng: e.lngLat.lng, lat: e.lngLat.lat }
+      press = window.setTimeout(() => cb.current.onLongPress?.(at), 650)
+    })
+    map.on('touchend', cancelPress)
+    map.on('touchcancel', cancelPress)
+    map.on('touchmove', cancelPress)
+    map.on('movestart', cancelPress)
+    map.on('contextmenu', (e) => cb.current.onLongPress?.({ lng: e.lngLat.lng, lat: e.lngLat.lat }))
     map.on('click', async (e) => {
       const touch = (e.originalEvent as PointerEvent).pointerType === 'touch'
+      if (cb.current.onMapClick?.({ point: { x: e.point.x, y: e.point.y }, lngLat: { lng: e.lngLat.lng, lat: e.lngLat.lat }, touch })) return
       const pad = touch ? 14 : 5
       const at: [number, number] = [e.lngLat.lng, e.lngLat.lat]
       const cluster = q(e.point, pad, ['cat-cluster'])[0]
@@ -665,6 +688,7 @@ export function AtlasMap({
       ;(map.getSource('me') as GeoJSONSource | undefined)?.setData({ type: 'FeatureCollection', features: pos ? [{ type: 'Feature', properties: {}, geometry: { type: 'Point', coordinates: [pos.lng, pos.lat] } }] : [] })
       if (pos) map.easeTo({ center: [pos.lng, pos.lat], zoom: Math.max(map.getZoom(), fitRef.current + 3.2), duration: dur(900) })
     },
+    getMap: () => mapRef.current,
     getView: () => {
       const map = mapRef.current
       if (!map) return null

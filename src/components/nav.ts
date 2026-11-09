@@ -14,7 +14,7 @@ export const SECONDARY = [
   { to: '/painel', label: 'Painel resumo', icon: LayoutDashboard },
   { to: '/zonas', label: 'Concessões e zonas', icon: FileText },
   { to: '/licencas', label: 'Licenças e lei', icon: Scale },
-  { to: '/reports', label: 'Reports e pings', icon: Radio },
+  { to: '/?camada=comunidade', label: 'Reports e pings', icon: Radio },
   { to: '/comunidade/chat', label: 'Chat global', icon: MessageCircle },
   { to: '/mercado', label: 'Marketplace', icon: ShoppingBag },
   { to: '/provas', label: 'Provas', icon: Trophy },

@@ -1,6 +1,6 @@
 import { lazy, Suspense, type ReactNode } from 'react'
 import { useEffect } from 'react'
-import { createBrowserRouter, createHashRouter, Navigate, Outlet, RouterProvider, useLocation, useNavigate } from 'react-router'
+import { createBrowserRouter, createHashRouter, Navigate, Outlet, RouterProvider, useLocation, useNavigate, useSearchParams } from 'react-router'
 import { AppShell } from './components/AppShell'
 import { useApp } from './state/AppState'
 import { useAuth } from './state/Auth'
@@ -22,8 +22,6 @@ import Profile from './screens/Profile'
 import Rankings from './screens/Rankings'
 import TripDetail from './screens/TripDetail'
 import Community from './screens/Community'
-import Reports from './screens/Reports'
-import ReportForm from './screens/ReportForm'
 import Market from './screens/Market'
 import ListingDetail from './screens/ListingDetail'
 import ListingForm from './screens/ListingForm'
@@ -72,11 +70,23 @@ function Root() {
 
 const AtlasFallback = <div className="fixed inset-0 grid place-items-center bg-[#071923] text-[13px] font-bold text-[#b5c5cc]">A abrir o Atlas Ibérico…</div>
 
-/** O onboarding aparece só na primeira visita ao Início; links diretos abrem sempre.
- * Depois de entrar, o Início é o ecrã dividido "Prepara a tua jornada | Gera a tua história". */
+/** O onboarding aparece só na primeira visita; depois, o ecrã principal é o Atlas Ibérico 3D
+ * (marcar pins, explorar águas, camada comunitária). O antigo ecrã dividido fica em /inicio. */
 function HomeGate() {
   const { state } = useApp()
-  return state.onboarded ? <StoriesHome /> : <Navigate to="/boas-vindas" replace />
+  return state.onboarded ? <Suspense fallback={AtlasFallback}><Atlas /></Suspense> : <Navigate to="/boas-vindas" replace />
+}
+
+/** Links antigos de "Reports e pings": abrem a camada comunitária no Atlas, com os mesmos filtros. */
+function ReportsRedirect() {
+  const [p] = useSearchParams()
+  const q = new URLSearchParams({ camada: 'comunidade' })
+  for (const k of ['janela', 'especie', 'atividade']) {
+    const v = p.get(k)
+    if (v) q.set(k, v)
+  }
+  if (p.get('sel')) q.set('rep', p.get('sel')!)
+  return <Navigate to={`/?${q}`} replace />
 }
 
 const routes = [
@@ -90,6 +100,7 @@ const routes = [
     element: <AppShell />,
     children: [
       { index: true, element: <HomeGate /> },
+      { path: 'inicio', element: <StoriesHome /> },
       { path: 'painel', element: <Home /> },
       { path: 'explorar', element: <Explore /> },
       { path: 'barragens/:id', element: <DamDetail /> },
@@ -105,8 +116,8 @@ const routes = [
       { path: 'perfil', element: <Profile /> },
       { path: 'comunidade', element: <Community /> },
       { path: 'comunidade/chat', element: <Chat /> },
-      { path: 'reports', element: <Reports /> },
-      { path: 'reports/novo', element: <ReportForm /> },
+      { path: 'reports', element: <ReportsRedirect /> },
+      { path: 'reports/novo', element: <Navigate to="/?marcar=1" replace /> },
       { path: 'mercado', element: <Market /> },
       { path: 'mercado/novo', element: <ListingForm /> },
       { path: 'mercado/:id', element: <ListingDetail /> },

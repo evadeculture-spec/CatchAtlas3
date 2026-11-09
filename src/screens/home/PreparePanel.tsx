@@ -112,7 +112,7 @@ export function PreparePanel() {
           { to: '/rios', label: 'Rios e bacias', icon: Waves },
           { to: '/zonas', label: 'Concessões e zonas', icon: FileText },
           { to: '/licencas', label: 'Licenças e lei', icon: Scale },
-          { to: '/reports', label: 'Reports e pings', hint: 'Atividade recente nas barragens', icon: Radio },
+          { to: '/?camada=comunidade', label: 'Reports e pings', hint: 'Camada comunitária no Atlas', icon: Radio },
         ]}
       />
       <Credit art={DAY_ART} label="Embalse de El Atazar" />
