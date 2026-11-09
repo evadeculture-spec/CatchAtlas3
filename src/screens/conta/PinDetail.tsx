@@ -1,4 +1,4 @@
-import { Archive, ArchiveRestore, CalendarPlus, Navigation, Pencil, Radio, Star, Trash2 } from 'lucide-react'
+import { Archive, ArchiveRestore, CalendarPlus, MapPin, Navigation, Pencil, Radio, Star, Trash2 } from 'lucide-react'
 import { useMemo, useState } from 'react'
 import { Link, useNavigate, useParams } from 'react-router'
 import { ConfirmSheet } from '../../components/Dialog'
@@ -83,6 +83,9 @@ export default function PinDetail() {
             <PrivateMap pins={[pin]} pings={pings.filter((p) => p.lat != null).map((p) => ({ id: p.id, lat: p.lat!, lng: p.lng!, kind: p.kind, occurred_at: p.occurred_at }))} className="absolute inset-0" label={`Mapa do Pin ${pin.name}`} onSelect={(s) => s?.type === 'ping' && nav(`/conta/pings/${s.id}`)} />
           </div>
           <div className="flex flex-wrap gap-2">
+            <ButtonLink to={`/?pin=${pin.id}`} variant="dark" icon={MapPin}>
+              Ver no mapa
+            </ButtonLink>
             <ButtonLink to={`/conta/pings/novo?pin=${pin.id}`} icon={Radio}>
               Novo Ping aqui
             </ButtonLink>

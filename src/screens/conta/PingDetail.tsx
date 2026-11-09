@@ -220,6 +220,9 @@ export default function PingDetail() {
                   {LOCATION_SOURCE[ping.location_source]}
                   {ping.accuracy_m != null ? ` · ±${ping.accuracy_m} m` : ''}
                 </p>
+                <ButtonLink to={`/?pin=${ping.id}`} size="sm" variant="dark" icon={MapPin} className="mt-2">
+                  Ver no mapa
+                </ButtonLink>
               </>
             ) : (
               <p className="text-[13.5px] text-muted">Sem localização.</p>

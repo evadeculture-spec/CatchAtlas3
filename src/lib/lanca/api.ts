@@ -58,7 +58,7 @@ async function uid(): Promise<string> {
 
 // ------------------------------------------------------------------ colunas (sem a geografia gerada)
 const PIN_COLS = 'id, owner_id, name, category, description, tags, status, is_favorite, lat, lng, accuracy_m, coord_source, altitude_m, water_body_ref, water_body_name, environment, access_notes, target_species, modalities, techniques, baits, depth_m, bottom_type, private_notes, created_at, updated_at'
-const PING_COLS = 'id, owner_id, pin_id, journey_id, kind, occurred_at, occurred_tz, time_source, time_reliability, client_created_at, server_received_at, lat, lng, accuracy_m, location_source, location_measured_at, modality, technique, bait, equipment, depth_m, bottom_type, fishing_minutes, catch_count, outcome, notes, enrichment_status, enrichment_attempts, enrichment_error, enriched_at, created_at, updated_at'
+const PING_COLS = 'id, owner_id, pin_id, journey_id, kind, occurred_at, occurred_tz, time_source, time_reliability, client_created_at, server_received_at, lat, lng, accuracy_m, location_source, location_measured_at, modality, technique, bait, equipment, depth_m, bottom_type, fishing_minutes, catch_count, outcome, notes, enrichment_status, enrichment_attempts, enrichment_error, enriched_at, created_at, updated_at, water_body_ref, water_body_name'
 const PING_FULL = `${PING_COLS}, catches(*), ping_media(*), ping_environment(*), pin:pins(id, name, category, environment)`
 
 function normalizePing(row: Record<string, unknown>): PingFull {
@@ -260,16 +260,23 @@ export const enrichPing = (pingId: string) => invoke<EnrichResult>('enrich-ping'
 export const enrichSweep = () => invoke<EnrichResult>('enrich-ping', { sweep: true })
 
 // ------------------------------------------------------------------ jornadas
+export interface JourneyPingTarget {
+  ping_id: string
+  position: number
+  ping: { id: string; kind: string; lat: number | null; lng: number | null; occurred_at: string; occurred_tz: string; water_body_ref: string | null; water_body_name: string | null; catches: { species: string }[] } | null
+}
 export interface JourneyFull extends Journey {
   journey_pins: { pin_id: string; position: number; pin: Pin | null }[]
+  journey_pings: JourneyPingTarget[]
 }
+const JOURNEY_SEL = `*, journey_pins(pin_id, position, pin:pins(${PIN_COLS})), journey_pings(ping_id, position, ping:pings(id, kind, lat, lng, occurred_at, occurred_tz, water_body_ref, water_body_name, catches(species)))`
+const sortJourney = (j: JourneyFull): JourneyFull => ({ ...j, journey_pins: [...(j.journey_pins ?? [])].sort((a, b) => a.position - b.position), journey_pings: [...(j.journey_pings ?? [])].sort((a, b) => a.position - b.position) })
 export async function listJourneys(): Promise<JourneyFull[]> {
-  const rows = check(await sb().from('journeys').select(`*, journey_pins(pin_id, position, pin:pins(${PIN_COLS}))`).order('journey_date', { ascending: false }).limit(300)) as JourneyFull[]
-  return rows.map((j) => ({ ...j, journey_pins: [...(j.journey_pins ?? [])].sort((a, b) => a.position - b.position) }))
+  const rows = check(await sb().from('journeys').select(JOURNEY_SEL).order('journey_date', { ascending: false }).limit(300)) as JourneyFull[]
+  return rows.map(sortJourney)
 }
 export async function getJourney(id: string): Promise<JourneyFull> {
-  const j = check(await sb().from('journeys').select(`*, journey_pins(pin_id, position, pin:pins(${PIN_COLS}))`).eq('id', id).single()) as JourneyFull
-  return { ...j, journey_pins: [...(j.journey_pins ?? [])].sort((a, b) => a.position - b.position) }
+  return sortJourney(check(await sb().from('journeys').select(JOURNEY_SEL).eq('id', id).single()) as JourneyFull)
 }
 export type JourneyInput = Partial<Omit<Journey, 'id' | 'owner_id' | 'created_at' | 'updated_at'>> & Pick<Journey, 'title' | 'journey_date'>
 export async function createJourney(input: JourneyInput): Promise<Journey> {
@@ -282,6 +289,11 @@ export async function deleteJourney(id: string) {
   check(await sb().from('journeys').delete().eq('id', id))
 }
 /** Define os pins (ordenados) de uma jornada. */
+/** Pontos de referência da jornada a partir de capturas/observações (sem criar outro registo). */
+export async function setJourneyPings(journeyId: string, pingIds: string[]) {
+  check(await sb().from('journey_pings').delete().eq('journey_id', journeyId))
+  if (pingIds.length) check(await sb().from('journey_pings').insert(pingIds.map((ping_id, position) => ({ journey_id: journeyId, ping_id, position }))))
+}
 export async function setJourneyPins(journeyId: string, pinIds: string[]) {
   check(await sb().from('journey_pins').delete().eq('journey_id', journeyId))
   if (pinIds.length) check(await sb().from('journey_pins').insert(pinIds.map((pin_id, position) => ({ journey_id: journeyId, pin_id, position }))))

@@ -11,6 +11,7 @@ import { BOAT_MODALITIES, JOURNEY_STATUS, modalityLabel, plural } from '../../li
 import { moonPhaseName } from '../../lib/lanca/moon'
 import { daySummary, FORECAST_DISCLAIMER, hourRows, pressureTrend, safetyNotices, windowRows } from '../../lib/lanca/planner'
 import { formatDateTime, formatDay } from '../../lib/lanca/time'
+import { distanceM } from '../../lib/lanca/geo'
 import type { ChecklistItem, JourneyStatus, Pin, PingFull } from '../../lib/lanca/types'
 import { compass, fmt, weatherLabel, type Units } from '../../lib/lanca/units'
 import { useAuth } from '../../state/Auth'
@@ -38,6 +39,22 @@ export default function JourneyDetail() {
   if (loading || !data) return <ListSkeleton />
   const { journey: j, pings, equipment } = data
   const pins = j.journey_pins.map((jp) => jp.pin).filter((p): p is Pin => !!p)
+  // Pontos da jornada: Pins (locais) e capturas/observações guardadas como referência.
+  const targets: Target[] = [
+    ...pins.map((p) => ({ key: `pin:${p.id}`, kind: 'pin' as const, id: p.id, name: p.name, lat: p.lat, lng: p.lng, environment: p.environment, waterRef: p.water_body_ref })),
+    ...j.journey_pings
+      .filter((t) => t.ping && t.ping.lat != null && t.ping.lng != null)
+      .map((t) => ({
+        key: `ping:${t.ping_id}`,
+        kind: 'ping' as const,
+        id: t.ping_id,
+        name: `${t.ping!.catches?.[0]?.species ?? (t.ping!.kind === 'captura' ? 'Captura' : 'Observação')} · ${formatDateTime(t.ping!.occurred_at, t.ping!.occurred_tz, { dateStyle: 'short' })}`,
+        lat: t.ping!.lat!,
+        lng: t.ping!.lng!,
+        environment: null,
+        waterRef: t.ping!.water_body_ref,
+      })),
+  ]
   const journeyPings = pings.filter((p) => p.journey_id === j.id)
 
   const saveChecklist = async (checklist: ChecklistItem[]) => {
@@ -70,7 +87,7 @@ export default function JourneyDetail() {
             {j.start_time ? ` · ${j.start_time.slice(0, 5)}` : ''}
             {j.end_time ? `–${j.end_time.slice(0, 5)}` : ''}
           </p>
-          <p className="mt-2 text-[20px] font-extrabold">{pins.map((p) => p.name).join(' → ') || 'Sem locais'}</p>
+          <p className="mt-2 text-[20px] font-extrabold">{targets.map((p) => p.name).join(' → ') || 'Sem locais'}</p>
           <p className="mt-1 text-[13px] text-white/70">
             {j.modality ? modalityLabel(j.modality) : 'Modalidade por definir'}
             {j.target_species.length ? ` · ${j.target_species.join(', ')}` : ''} · {j.timezone}
@@ -98,7 +115,7 @@ export default function JourneyDetail() {
 
         <Notice>{FORECAST_DISCLAIMER} O índice de semelhança compara condições; não é uma probabilidade de captura.</Notice>
 
-        {pins.length === 0 ? (
+        {targets.length === 0 ? (
           <Panel>
             <p className="text-[14px] text-muted">Adicione Pins à jornada para ver as previsões e o histórico de cada local.</p>
             <ButtonLink to={`/conta/jornadas/${j.id}/editar`} size="sm" className="mt-3" icon={Plus}>
@@ -107,8 +124,8 @@ export default function JourneyDetail() {
           </Panel>
         ) : (
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
-            {pins.map((p, i) => (
-              <PinPlan key={p.id} index={i + 1} pin={p} journey={j} pings={pings} units={units} />
+            {targets.map((p, i) => (
+              <PinPlan key={p.key} index={i + 1} pin={p} journey={j} pings={pings} units={units} />
             ))}
           </div>
         )}
@@ -214,10 +231,22 @@ export default function JourneyDetail() {
   )
 }
 
-function PinPlan({ index, pin, journey, pings, units }: { index: number; pin: Pin; journey: Awaited<ReturnType<typeof getJourney>>; pings: PingFull[]; units: Units }) {
+interface Target {
+  key: string
+  kind: 'pin' | 'ping'
+  id: string
+  name: string
+  lat: number
+  lng: number
+  environment: Pin['environment']
+  waterRef: string | null
+}
+
+function PinPlan({ index, pin, journey, pings, units }: { index: number; pin: Target; journey: Awaited<ReturnType<typeof getJourney>>; pings: PingFull[]; units: Units }) {
   const c = useLoad<ConditionsResponse>(() => conditions({ lat: pin.lat, lng: pin.lng, date: journey.journey_date, timezone: journey.timezone }), [pin.id, journey.journey_date, journey.timezone])
   const [scope, setScope] = useState<'local' | 'todos'>('local')
-  const here = pings.filter((p) => p.pin_id === pin.id)
+  // Histórico do local: mesmo Pin, mesma massa de água ou a menos de 500 m (dados reais do utilizador).
+  const here = pings.filter((p) => (pin.kind === 'pin' && p.pin_id === pin.id) || (!!pin.waterRef && p.water_body_ref === pin.waterRef) || (p.lat != null && p.lng != null && distanceM({ lat: p.lat, lng: p.lng }, pin) < 500))
   const sessions = here.filter(isSession)
   const day = c.data ? daySummary(c.data) : null
   const rows = c.data ? windowRows(hourRows(c.data), journey.start_time, journey.end_time) : []
@@ -238,7 +267,7 @@ function PinPlan({ index, pin, journey, pings, units }: { index: number; pin: Pi
   const notices = safetyNotices(rows, day, { boat: !!journey.modality && BOAT_MODALITIES.includes(journey.modality), coastal: pin.environment === 'costa' || pin.environment === 'mar' })
 
   return (
-    <Panel kicker={`Local ${index}`} title={pin.name} actions={<Link to={`/conta/pins/${pin.id}`} className="text-[12.5px] font-bold text-teal-700">Abrir Pin</Link>}>
+    <Panel kicker={`Local ${index}`} title={pin.name} actions={<Link to={`/?pin=${pin.id}`} className="text-[12.5px] font-bold text-teal-700">Ver no mapa</Link>}>
       {/* Condições */}
       <div className="mb-4">
         <div className="mb-2 flex flex-wrap items-center gap-2">

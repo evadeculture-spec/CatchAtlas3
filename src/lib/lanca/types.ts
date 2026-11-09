@@ -98,6 +98,8 @@ export interface Ping {
   enriched_at: string | null
   created_at: string
   updated_at: string
+  water_body_ref?: string | null
+  water_body_name?: string | null
 }
 /** Campos que o cliente pode escrever (os de enriquecimento são só do servidor). */
 export type PingInput = Pick<Ping, 'kind' | 'occurred_at' | 'occurred_tz' | 'time_source' | 'time_reliability'> &
