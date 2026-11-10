@@ -211,6 +211,9 @@ body {
   bottom: var(--atlas-bottom, 0px);
   transition: bottom 300ms ease-out;
 }
+.atlas-root .maplibregl-ctrl-bottom-right {
+  right: var(--atlas-right, 0px);
+}
 .atlas-root .maplibregl-ctrl-attrib {
   background: rgb(10 34 48 / 0.88);
   color: #b5c5cc;

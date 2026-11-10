@@ -36,6 +36,8 @@ import { useApp } from '../state/AppState'
 const CATALOG_LABEL = catalogWater as unknown as Record<string, { waterId: string; label: [number, number] }>
 const HINT_KEY = 'catchatlas-atlas-hint'
 const PEEK = 104
+/** Espaço do botão «Marcar pin» (largura + margens) para a escala e a atribuição não ficarem por baixo dele. */
+const FAB_CLEARANCE = 176
 
 /** Tipo de seleção a partir do ID (antes de o registo estar carregado). */
 function inferKind(id: string): AtlasSelection['kind'] {
@@ -731,12 +733,22 @@ export default function Atlas() {
       ? { top: 84, right: 76, bottom: 16, left: panelOpen ? 432 : 16 }
       : { top: 196, right: 60, bottom: sheet === 'half' ? sheetHeight('half', window.innerHeight, PEEK) : PEEK, left: 0 }
   const webglFailed = status.map === 'webgl-error'
+  // Dica inicial. No telemóvel entra na coluna de avisos, acima do «Marcar pin» (nunca por baixo dele).
+  const hintEl =
+    hint && !webglFailed && status.map === 'ready' ? (
+      <p className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-[#0a2230]/90 py-1.5 pl-4 pr-1.5 text-[13px] font-semibold text-[#f4f7f8] shadow-lg backdrop-blur-md" data-hint>
+        Aproxima para descobrir águas
+        <button type="button" onClick={dismissHint} aria-label="Dispensar dica" className="press grid h-11 w-11 place-items-center rounded-full hover:bg-white/10">
+          <X className="h-4 w-4" aria-hidden />
+        </button>
+      </p>
+    ) : null
 
   return (
     <div
       className="atlas-root fixed inset-0 overflow-hidden bg-[#071923] text-[#f4f7f8]"
-      // A atribuição e a escala do mapa ficam sempre acima do painel inferior (nunca escondidas).
-      style={{ height: '100dvh', ['--atlas-bottom' as string]: desktop ? '0px' : `${sheet === 'peek' ? PEEK : sheetHeight('half', window.innerHeight, PEEK)}px` }} data-atlas-status={status.map} data-atlas-sel={url.sel ?? ''}>
+      // A atribuição e a escala do mapa ficam sempre acima do painel inferior e, no ecrã largo, à esquerda do «Marcar pin» (nunca escondidas).
+      style={{ height: '100dvh', ['--atlas-bottom' as string]: desktop ? '0px' : `${sheet === 'peek' ? PEEK : sheetHeight('half', window.innerHeight, PEEK)}px`, ['--atlas-right' as string]: desktop && !composer && sheet !== 'full' ? `${FAB_CLEARANCE}px` : '0px' }} data-atlas-status={status.map} data-atlas-sel={url.sel ?? ''}>
       {!webglFailed && (
         <AtlasMap
           key={mapKey}
@@ -794,7 +806,7 @@ export default function Atlas() {
       </header>
 
       {/* Avisos (sem bloquear o mapa). */}
-      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? 'top-[86px] pl-[420px] pr-[64px]' : 'bottom-[188px] pr-[56px]')} aria-live="polite">
+      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? 'top-[86px] pl-[420px] pr-[64px]' : 'bottom-[196px] pr-[56px]')} aria-live="polite">
         {notice && (
           <p className="pointer-events-auto flex max-w-md items-start gap-2 rounded-2xl bg-amber-50 px-3.5 py-2 text-[12.5px] font-semibold text-amber-900 shadow-lg" role="status">
             <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
@@ -828,6 +840,7 @@ export default function Atlas() {
             <Loader2 className="h-3 w-3 animate-spin" aria-hidden /> A carregar detalhe…
           </p>
         )}
+        {!desktop && hintEl}
       </div>
 
       {!webglFailed && (
@@ -868,16 +881,7 @@ export default function Atlas() {
         </div>
       )}
 
-      {hint && !webglFailed && status.map === 'ready' && (
-        <div className={cx('pointer-events-none absolute inset-x-0 z-20 flex justify-center', desktop ? 'bottom-8 pl-[420px]' : 'bottom-[120px]')}>
-          <p className="pointer-events-auto flex items-center gap-2 rounded-full border border-white/10 bg-[#0a2230]/90 py-1.5 pl-4 pr-1.5 text-[13px] font-semibold text-[#f4f7f8] shadow-lg backdrop-blur-md">
-            Aproxima para descobrir águas
-            <button type="button" onClick={dismissHint} aria-label="Dispensar dica" className="press grid h-8 w-8 place-items-center rounded-full hover:bg-white/10">
-              <X className="h-4 w-4" aria-hidden />
-            </button>
-          </p>
-        </div>
-      )}
+      {desktop && hintEl && <div className="pointer-events-none absolute inset-x-0 bottom-8 z-20 flex justify-center pl-[420px] pr-[260px]">{hintEl}</div>}
 
       {status.map === 'context-lost' && (
         <div className="absolute inset-0 z-40 grid place-items-center bg-[#071923]/80 p-6 text-center" role="alert">
