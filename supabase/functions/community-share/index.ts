@@ -53,7 +53,8 @@ Deno.serve(async (req) => {
     if (error || !blob) return json(req, { error: 'Não foi possível preparar a fotografia partilhada.' }, 500)
     const ext = media.display_path.endsWith('.webp') ? 'webp' : media.display_path.endsWith('.png') ? 'png' : 'jpg'
     photoPath = `${shareId}.${ext}`
-    const up = await admin.storage.from('community-media').upload(photoPath, blob, { contentType: blob.type || `image/${ext === 'jpg' ? 'jpeg' : ext}` })
+    // Sem cache na CDN: ao revogar, a imagem deixa de ser servida de imediato.
+    const up = await admin.storage.from('community-media').upload(photoPath, blob, { contentType: blob.type || `image/${ext === 'jpg' ? 'jpeg' : ext}`, cacheControl: '0' })
     if (up.error) return json(req, { error: `Falha ao publicar a fotografia (${up.error.message}).` }, 500)
   }
   const ap = approximate(ping.lat, ping.lng, ping.water_body_name)

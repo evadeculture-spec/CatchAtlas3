@@ -62,7 +62,7 @@ function newPin(uid: string, id: string): FieldPin {
   return {
     id, uid, type: 'captura', lat: 0, lng: 0, accuracy: null, source: 'mapa', measuredAt: null, occurredAt: nowIso, tz: 'Europe/Lisbon', timeSource: 'dispositivo', timeReliability: 'alta',
     name: null, notes: null, species: null, count: null, weightG: null, lengthCm: null, technique: null, bait: null, depthM: null, catchId: null, waterRef: null, waterName: null,
-    photos: [], sync: 'local', error: null, existsOnServer: false, serverUpdatedAt: null, dirty: true, reenrich: true, deleted: false, attempts: 0, nextAttemptAt: 0, createdAt: nowIso, updatedAt: nowIso,
+    photos: [], sync: 'local', error: null, existsOnServer: false, serverRev: null, dirty: true, reenrich: true, deleted: false, attempts: 0, nextAttemptAt: 0, createdAt: nowIso, updatedAt: nowIso,
   }
 }
 
@@ -116,6 +116,12 @@ export function PinComposer({
   const [more, setMore] = useState(mode === 'edit')
   const [photoSuggest, setPhotoSuggest] = useState<{ time?: ReturnType<typeof resolvePhotoTime>; gps?: { lat: number; lng: number; d: number } } | null>(null)
   const [saving, setSaving] = useState(false)
+  // Fotografias ainda a preparar (redimensionar, ler metadados, gravar no dispositivo): o pin só é guardado depois.
+  const [preparing, setPreparing] = useState(0)
+  const photosRef = useRef<PhotoItem[]>(photos)
+  useEffect(() => {
+    photosRef.current = photos
+  }, [photos])
   const [err, setErr] = useState<string | null>(null)
   const [nums, setNums] = useState(() => ({
     weight: pin.weightG != null ? String(fromBaseWeight(pin.weightG, units)) : '',
@@ -271,8 +277,10 @@ export function PinComposer({
 
   const addFiles = async (files: FileList | null, capturedNow: boolean) => {
     if (!files?.length) return
-    const room = 6 - photos.length
-    for (const file of [...files].slice(0, room)) {
+    const list = [...files].slice(0, 6 - photosRef.current.length)
+    setPreparing((n) => n + list.length)
+    for (const file of list) {
+      const first = photosRef.current.length === 0
       try {
         const [img, meta] = await Promise.all([prepareImage(file), readPhotoMeta(file)])
         const photo: FieldPhoto = {
@@ -280,10 +288,12 @@ export function PinComposer({
           displayMime: img.display?.type ?? null, thumbMime: img.thumb?.type ?? null, exif: meta, state: 'local', error: null,
         }
         // As fotografias ficam já no dispositivo (o rascunho sobrevive a fechar a app).
-        if (mode === 'new') await store.saveDraft({ pin, photos: [...photos.map((p) => p.photo), photo], step, savedAt: new Date().toISOString() }, [{ photo, img }])
-        setPhotos((ps) => [...ps, { photo, img, url: img.previewUrl || null }])
+        if (mode === 'new') await store.saveDraft({ pin, photos: [...photosRef.current.map((p) => p.photo), photo], step, savedAt: new Date().toISOString() }, [{ photo, img }])
+        const next = [...photosRef.current, { photo, img, url: img.previewUrl || null }]
+        photosRef.current = next
+        setPhotos(next)
         // Fotografia antiga: confirmar data e local antes de pedir dados históricos.
-        if (photos.length === 0) {
+        if (first) {
           const t = meta.takenLocal ? resolvePhotoTime(meta, pin.tz, { fileLastModified: file.lastModified, capturedNow }) : null
           const sug: typeof photoSuggest = {}
           if (t && !timeTouched && Math.abs(Date.parse(t.occurredAt) - Date.parse(pin.occurredAt)) > 15 * 60000) sug.time = t
@@ -295,6 +305,8 @@ export function PinComposer({
         }
       } catch (e) {
         setErr((e as Error).message)
+      } finally {
+        setPreparing((n) => n - 1)
       }
     }
   }
@@ -487,8 +499,13 @@ export function PinComposer({
                     <ImagePlus className="h-5 w-5" aria-hidden /> Escolher fotografia
                   </button>
                 </div>
-                {photos.length > 0 && (
+                {(photos.length > 0 || preparing > 0) && (
                   <ul className="mt-2 flex gap-2 overflow-x-auto pb-1">
+                    {Array.from({ length: preparing }, (_, i) => (
+                      <li key={`prep-${i}`} className="grid h-20 w-20 shrink-0 place-items-center rounded-xl bg-white/10" role="status" aria-label="A preparar fotografia">
+                        <Loader2 className="h-5 w-5 animate-spin text-[#b5c5cc]" aria-hidden />
+                      </li>
+                    ))}
                     {photos.map((p) => (
                       <li key={p.photo.id} className="relative h-20 w-20 shrink-0 overflow-hidden rounded-xl bg-white/10">
                         {p.url ? <img src={p.url} alt="Fotografia do pin" className="h-full w-full object-cover" /> : <div className="grid h-full place-items-center text-[11px] text-[#b5c5cc]">Sem pré-visualização</div>}
@@ -604,9 +621,9 @@ export function PinComposer({
             {err && <p className="rounded-2xl bg-[#fdf0ee] px-3.5 py-2.5 text-[13px] font-semibold text-[#7b2318]" role="alert">{err}</p>}
           </div>
           <div className="shrink-0 border-t border-white/10 p-3">
-            <button type="button" onClick={save} disabled={saving} className={cx(btn, 'h-12 w-full bg-[#38c9d5] text-[15px] font-extrabold text-[#071923] hover:bg-[#5fd6e0] disabled:opacity-60')} data-action="guardar-pin">
-              {saving ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden /> : <Check className="h-5 w-5" aria-hidden />}
-              {saving ? 'A guardar…' : mode === 'edit' ? 'Guardar alterações' : 'Guardar pin privado'}
+            <button type="button" onClick={save} disabled={saving || preparing > 0} className={cx(btn, 'h-12 w-full bg-[#38c9d5] text-[15px] font-extrabold text-[#071923] hover:bg-[#5fd6e0] disabled:opacity-60')} data-action="guardar-pin">
+              {saving || preparing > 0 ? <Loader2 className="h-5 w-5 animate-spin" aria-hidden /> : <Check className="h-5 w-5" aria-hidden />}
+              {preparing > 0 ? 'A preparar fotografia…' : saving ? 'A guardar…' : mode === 'edit' ? 'Guardar alterações' : 'Guardar pin privado'}
             </button>
           </div>
         </>

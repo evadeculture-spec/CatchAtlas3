@@ -106,6 +106,8 @@ export async function uploadAvatar(file: File, previous: string | null): Promise
 
 // ------------------------------------------------------------------ URLs assinados (cache em memória)
 const signedCache = new Map<string, { url: string; exp: number }>()
+/** Imagens comunitárias: validade curta (a revogação tem efeito rápido mesmo em URLs já emitidos). */
+const ttlFor = (bucket: string) => (bucket === 'community-media' ? 300 : SIGNED_URL_TTL_S)
 export async function signedUrls(paths: string[], bucket = PING_BUCKET): Promise<Record<string, string>> {
   const now = Date.now()
   const out: Record<string, string> = {}
@@ -116,12 +118,12 @@ export async function signedUrls(paths: string[], bucket = PING_BUCKET): Promise
     else missing.push(p)
   }
   if (missing.length) {
-    const { data, error } = await sb().storage.from(bucket).createSignedUrls(missing, SIGNED_URL_TTL_S)
+    const { data, error } = await sb().storage.from(bucket).createSignedUrls(missing, ttlFor(bucket))
     if (error) throw new ApiError(friendly(error))
     for (const d of data ?? []) {
       if (d.signedUrl && d.path) {
         out[d.path] = d.signedUrl
-        signedCache.set(`${bucket}/${d.path}`, { url: d.signedUrl, exp: now + SIGNED_URL_TTL_S * 1000 })
+        signedCache.set(`${bucket}/${d.path}`, { url: d.signedUrl, exp: now + ttlFor(bucket) * 1000 })
       }
     }
   }

@@ -104,6 +104,8 @@ export default function Atlas() {
     [janela, params],
   )
   const pinId = params.get('pin')
+  // Pin aberto por link (diário): enquadra-o uma vez, salvo se o utilizador já começou a interagir.
+  const flyToPin = useRef(!!params.get('pin') && !url.camera)
   const repId = params.get('rep')
   const waterPinsRef = params.get('meus_agua')
   const [composer, setComposer] = useState<null | { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null }>(null)
@@ -320,6 +322,7 @@ export default function Atlas() {
     )
   }
   const dismissHint = () => {
+    flyToPin.current = false
     setHint(false)
     writeJSON(HINT_KEY, true)
   }
@@ -359,6 +362,7 @@ export default function Atlas() {
     (opts: { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null }) => {
       if (!configured) return setNotice('Contas indisponíveis neste ambiente: os pins privados precisam do servidor de contas.')
       if (!session || !pins.store) return setAuthPrompt(true)
+      flyToPin.current = false
       setLayersOpen(false)
       setClusterList(null)
       setDraftOffer(null)
@@ -464,7 +468,6 @@ export default function Atlas() {
     }
     startComposer({ mode: 'new' })
   }, [marcarParam, status.map, session, configured, startComposer, updateUrl, authLoading])
-  const flyToPin = useRef(!!params.get('pin') && !url.camera)
   useEffect(() => {
     if (!flyToPin.current || !pins.selected || status.map !== 'ready') return
     flyToPin.current = false

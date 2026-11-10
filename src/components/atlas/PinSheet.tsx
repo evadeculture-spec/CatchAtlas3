@@ -116,7 +116,7 @@ export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, o
   const ap = approximate(sel.lat, sel.lng, sel.waterName)
 
   return (
-    <div className="space-y-3" data-pin-sheet={sel.id} data-pin-state={state}>
+    <div className="space-y-3" data-pin-sheet={sel.id} data-pin-state={state} data-pin-type={sel.type} data-lat={sel.lat} data-lng={sel.lng}>
       <div className="flex items-start gap-3">
         <span className="grid h-11 w-11 shrink-0 place-items-center rounded-2xl bg-white/8" dangerouslySetInnerHTML={{ __html: pinIconSvg(sel.type) }} aria-hidden />
         <div className="min-w-0 flex-1">

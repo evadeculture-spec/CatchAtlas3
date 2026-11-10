@@ -64,7 +64,8 @@ export interface FieldPin {
   sync: SyncState
   error: string | null
   existsOnServer: boolean
-  serverUpdatedAt: string | null
+  /** Revisão das edições no servidor quando foi lida (conflito se outro dispositivo editou entretanto). */
+  serverRev: number | null
   /** Houve alterações locais desde a última sincronização. */
   dirty: boolean
   /** Precisa de pedir de novo as condições (ponto ou hora mudaram). */
@@ -259,7 +260,7 @@ export class FieldStore {
 
   private async syncAll(force: boolean) {
     if (typeof navigator !== 'undefined' && navigator.onLine === false) return
-    const todo = [...this.pins.values()].filter((p) => (p.dirty || p.deleted || p.photos.some((f) => f.state !== 'synced')) && (force || p.nextAttemptAt <= Date.now()) && (force || (p.sync !== 'conflict' && p.sync !== 'auth' && p.sync !== 'quota')))
+    const todo = [...this.pins.values()].filter((p) => (p.dirty || p.deleted || p.sync !== 'synced' || p.photos.some((f) => f.state !== 'synced')) && (force || p.nextAttemptAt <= Date.now()) && (force || (p.sync !== 'conflict' && p.sync !== 'auth' && p.sync !== 'quota')))
     for (const p of todo) {
       try {
         await this.syncOne(p)
@@ -306,28 +307,27 @@ export class FieldStore {
     if (p.dirty) {
       const row = toServerRow(p)
       if (!p.existsOnServer) {
-        const res = await client.from(table).insert({ id: p.id, ...row, ...(isPing ? { client_created_at: p.createdAt } : {}) }).select('updated_at').single()
-        let updatedAt = res.data?.updated_at as string | undefined
+        const res = await client.from(table).insert({ id: p.id, ...row, ...(isPing ? { client_created_at: p.createdAt } : {}) }).select('rev').single()
+        let rev = res.data?.rev as number | undefined
         if (res.error) {
           // Repetição depois de uma falha de rede: o registo já existe com este ID (idempotente).
           if (res.error.code !== '23505') throw res.error
-          const again = await client.from(table).select('updated_at').eq('id', p.id).single()
+          const again = await client.from(table).select('rev').eq('id', p.id).single()
           if (again.error) throw again.error
-          updatedAt = again.data.updated_at
+          rev = again.data.rev
         }
-        p = { ...p, existsOnServer: true, serverUpdatedAt: updatedAt ?? null, reenrich: isPing }
+        p = { ...p, existsOnServer: true, serverRev: rev ?? 0, reenrich: isPing }
       } else {
-        let q = client.from(table).update(row).eq('id', p.id)
-        if (p.serverUpdatedAt) q = q.eq('updated_at', p.serverUpdatedAt)
-        const res = await q.select('updated_at')
+        const base = p.serverRev ?? 0
+        const res = await client.from(table).update({ ...row, rev: base + 1 }).eq('id', p.id).eq('rev', base).select('rev')
         if (res.error) throw res.error
         if (!res.data?.length) {
-          const cur = await client.from(table).select('updated_at').eq('id', p.id).maybeSingle()
+          const cur = await client.from(table).select('rev').eq('id', p.id).maybeSingle()
           const msg = cur.data ? 'Este pin foi alterado noutro dispositivo.' : 'Este pin foi apagado noutro dispositivo.'
           await this.put({ ...p, sync: 'conflict', error: msg, nextAttemptAt: Number.MAX_SAFE_INTEGER })
           return
         }
-        p = { ...p, serverUpdatedAt: res.data[0].updated_at }
+        p = { ...p, serverRev: res.data[0].rev }
       }
       // Captura estruturada (espécie, medidas) com ID próprio também gerado no dispositivo.
       if (isPing) {
@@ -375,8 +375,8 @@ export class FieldStore {
       this.emit()
       return
     }
-    const cur = await sb().from(p.type === 'local' ? 'pins' : 'pings').select('updated_at').eq('id', id).maybeSingle()
-    await this.put({ ...p, existsOnServer: !!cur.data, serverUpdatedAt: cur.data?.updated_at ?? null, sync: 'local', error: null, dirty: true, nextAttemptAt: 0 })
+    const cur = await sb().from(p.type === 'local' ? 'pins' : 'pings').select('rev').eq('id', id).maybeSingle()
+    await this.put({ ...p, existsOnServer: !!cur.data, serverRev: cur.data?.rev ?? null, sync: 'local', error: null, dirty: true, nextAttemptAt: 0 })
     void this.sync(true)
   }
 
@@ -438,7 +438,7 @@ export function toServerRow(p: FieldPin): Record<string, unknown> {
 export async function fetchServerPin(uid: string, id: string): Promise<FieldPin | null> {
   const client = sb()
   const base = { uid, photos: [] as FieldPhoto[], sync: 'synced' as SyncState, error: null, existsOnServer: true, dirty: false, reenrich: false, deleted: false, attempts: 0, nextAttemptAt: 0 }
-  const g = await client.from('pings').select('id, kind, lat, lng, accuracy_m, location_source, location_measured_at, occurred_at, occurred_tz, time_source, time_reliability, notes, technique, bait, depth_m, catch_count, water_body_ref, water_body_name, created_at, updated_at, catches(id, species, length_cm, weight_g), ping_media(id, mime, width, height, bytes, display_path, thumb_path)').eq('id', id).maybeSingle()
+  const g = await client.from('pings').select('id, kind, lat, lng, accuracy_m, location_source, location_measured_at, occurred_at, occurred_tz, time_source, time_reliability, notes, technique, bait, depth_m, catch_count, water_body_ref, water_body_name, rev, created_at, updated_at, catches(id, species, length_cm, weight_g), ping_media(id, mime, width, height, bytes, display_path, thumb_path)').eq('id', id).maybeSingle()
   if (g.data && g.data.lat != null) {
     const d = g.data as Record<string, unknown> & { catches: { id: string; species: string; length_cm: number | null; weight_g: number | null }[]; ping_media: { id: string; mime: string; width: number | null; height: number | null; bytes: number; display_path: string | null; thumb_path: string | null }[] }
     const c = d.catches?.[0]
@@ -468,12 +468,12 @@ export async function fetchServerPin(uid: string, id: string): Promise<FieldPin 
       waterRef: (d.water_body_ref as string | null) ?? null,
       waterName: (d.water_body_name as string | null) ?? null,
       photos: (d.ping_media ?? []).map((m) => ({ id: m.id, mime: m.mime, width: m.width, height: m.height, bytes: m.bytes, hasDisplay: !!m.display_path, hasThumb: !!m.thumb_path, displayMime: null, thumbMime: null, exif: null, state: 'synced' as const, error: null })),
-      serverUpdatedAt: d.updated_at as string,
+      serverRev: (d.rev as number | null) ?? 0,
       createdAt: d.created_at as string,
       updatedAt: d.updated_at as string,
     }
   }
-  const p = await client.from('pins').select('id, name, lat, lng, accuracy_m, coord_source, water_body_ref, water_body_name, private_notes, created_at, updated_at').eq('id', id).maybeSingle()
+  const p = await client.from('pins').select('id, name, lat, lng, accuracy_m, coord_source, water_body_ref, water_body_name, private_notes, rev, created_at, updated_at').eq('id', id).maybeSingle()
   if (!p.data) return null
   const d = p.data
   return {
@@ -501,7 +501,7 @@ export async function fetchServerPin(uid: string, id: string): Promise<FieldPin 
     catchId: null,
     waterRef: d.water_body_ref,
     waterName: d.water_body_name,
-    serverUpdatedAt: d.updated_at,
+    serverRev: d.rev ?? 0,
     createdAt: d.created_at,
     updatedAt: d.updated_at,
   }
