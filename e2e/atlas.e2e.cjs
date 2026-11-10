@@ -209,7 +209,8 @@ const attributionVisible = (page) =>
     await page.mouse.down()
     await page.mouse.move(760, 430, { steps: 8 })
     await page.mouse.up()
-    await page.waitForTimeout(1500)
+    // O estado observável do mapa é atualizado no evento "idle" (pode demorar com WebGL por software).
+    await page.waitForFunction((p) => document.querySelector('[data-atlas-map]')?.dataset.probes !== p, before.probes, { timeout: 15000 }).catch(() => {})
     const after = await ds(page)
     ok('arrastar no mapa move o mapa e não muda de percurso', new URL(page.url()).pathname === '/atlas' && before.probes !== after.probes && (await page.textContent('nav[aria-label="Percursos"] [aria-current="page"]')).includes('Prepara'))
     // Controlos visíveis de rotação, inclinação, norte, 2D/3D e Península.
@@ -284,7 +285,7 @@ const attributionVisible = (page) =>
     } else ok('telemóvel: há albufeiras tocáveis', false)
     // Geolocalização só a pedido; recusa com resposta clara.
     await page.click('[data-sheet-handle]')
-    await page.click('button[aria-label="A minha localização"]')
+    await page.click('button[aria-label="Recentrar na minha posição"]')
     await page.waitForTimeout(1500)
     ok('localização recusada tem resposta clara', /Localização recusada|Não foi possível obter/.test(await page.textContent('body')))
     ok('sem erros de página (telemóvel)', errors.length === 0, errors.slice(0, 3).join(' | '))
