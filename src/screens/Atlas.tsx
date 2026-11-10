@@ -115,6 +115,7 @@ export default function Atlas() {
   const [authPrompt, setAuthPrompt] = useState(false)
   const [draftOffer, setDraftOffer] = useState<Draft | null>(null)
   const [clusterList, setClusterList] = useState<PinListItem[] | null>(null)
+  const [slowSuggest, setSlowSuggest] = useState(false)
   const pins = useAtlasPins({
     uid: user?.id ?? null,
     mapHandle,
@@ -349,6 +350,11 @@ export default function Atlas() {
   // ---------- Marcar pin ----------
   const selectPin = useCallback(
     (id: string) => {
+      try {
+        performance.mark('pin:select')
+      } catch {
+        /* sem suporte */
+      }
       setChooser(null)
       setPick(null)
       setClusterList(null)
@@ -441,6 +447,39 @@ export default function Atlas() {
       },
     }
   }, [reducedMotion])
+
+  // Degradação progressiva em aparelhos lentos: mede os frames enquanto o mapa se move; primeiro reduz a
+  // resolução do canvas, depois sugere o 2D (nunca muda sozinho de modo; marcar pins continua disponível).
+  useEffect(() => {
+    if (status.map !== 'ready') return
+    const map = mapHandle.current?.getMap()
+    if (!map) return
+    let raf = 0
+    let last = performance.now()
+    let samples: number[] = []
+    let stage = 0
+    const tick = (t: number) => {
+      const d = t - last
+      last = t
+      if (map.isMoving()) samples.push(d)
+      if (samples.length >= 40) {
+        const med = [...samples].sort((a, b) => a - b)[20]
+        samples = []
+        if (med > 60) {
+          if (stage === 0 && map.getPixelRatio() > 1) {
+            map.setPixelRatio(Math.max(1, map.getPixelRatio() / 1.5))
+            stage = 1
+          } else if (url.mode === '3d') {
+            setSlowSuggest(true)
+            return
+          }
+        }
+      }
+      raf = requestAnimationFrame(tick)
+    }
+    raf = requestAnimationFrame(tick)
+    return () => cancelAnimationFrame(raf)
+  }, [status.map, url.mode])
 
   // Rascunho por guardar: oferecer retomar ou descartar.
   useEffect(() => {
@@ -755,7 +794,7 @@ export default function Atlas() {
       </header>
 
       {/* Avisos (sem bloquear o mapa). */}
-      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? 'top-[86px] pl-[420px] pr-[64px]' : 'bottom-[164px] pr-[56px]')} aria-live="polite">
+      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? 'top-[86px] pl-[420px] pr-[64px]' : 'bottom-[188px] pr-[56px]')} aria-live="polite">
         {notice && (
           <p className="pointer-events-auto flex max-w-md items-start gap-2 rounded-2xl bg-amber-50 px-3.5 py-2 text-[12.5px] font-semibold text-amber-900 shadow-lg" role="status">
             <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
@@ -764,6 +803,17 @@ export default function Atlas() {
               <X className="h-4 w-4" aria-hidden />
             </button>
           </p>
+        )}
+        {slowSuggest && url.mode === '3d' && !composer && (
+          <div className="pointer-events-auto flex max-w-md flex-wrap items-center gap-2 rounded-2xl border border-white/10 bg-[#0a2230]/96 p-3 shadow-xl backdrop-blur" role="status" data-slow-suggest>
+            <p className="min-w-0 flex-1 text-[13px] font-semibold">O relevo 3D está lento neste aparelho. O 2D é mais leve e mantém todos os pins.</p>
+            <button type="button" className="press min-h-11 rounded-full bg-[#38c9d5] px-4 text-[13.5px] font-extrabold text-[#071923]" onClick={() => (updateUrl({ modo: '2d' }), setSlowSuggest(false))}>
+              Mudar para 2D
+            </button>
+            <button type="button" className="press min-h-11 rounded-full px-3 text-[13.5px] font-bold text-[#b5c5cc]" onClick={() => setSlowSuggest(false)}>
+              Manter 3D
+            </button>
+          </div>
         )}
         {status.basemap === 'failed' && !webglFailed && (
           <p className="rounded-full bg-[#0a2230]/90 px-3 py-1 text-[11.5px] font-semibold text-[#b5c5cc] backdrop-blur">Mapa base detalhado indisponível · base simplificada Natural Earth</p>

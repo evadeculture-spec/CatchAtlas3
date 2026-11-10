@@ -130,11 +130,11 @@ export function AtlasDetails({ feature, pick, sectionId, sources, isFavorite, on
             <BookOpen className="h-[18px] w-[18px]" aria-hidden /> Abrir ficha da barragem
           </Link>
         </div>
-      ) : waterActions ? null : (
+      ) : (
         <div className="mt-4 rounded-2xl border border-white/10 bg-white/[0.04] p-3.5" data-no-catalog>
           <p className="text-[14px] font-bold text-[#f4f7f8]">Informação deste local ainda não disponível</p>
           <p className="mt-1 text-[12.5px] leading-relaxed text-[#b5c5cc]">
-            Este elemento existe na cartografia, mas ainda não tem ficha Lança Lance. Preparar jornada e registar captura ficam disponíveis quando houver ficha.
+            Este elemento existe na cartografia, mas ainda não tem ficha Lança Lance (informação de pesca e regras). {waterActions ? 'Pode marcar pins e preparar jornadas aqui na mesma.' : ''}
           </p>
         </div>
       )}

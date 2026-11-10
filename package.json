@@ -20,7 +20,10 @@
     "e2e:atlas": "node e2e/atlas.e2e.cjs",
     "e2e:backend": "node e2e/backend.e2e.mjs",
     "e2e:lanca": "node e2e/lanca.e2e.cjs",
-    "e2e:fixture": "node e2e/make-exif-fixture.cjs e2e/fixtures/exif-photo.jpg 39.46125 -8.19765 \"2023:06:10 07:15:00\" \"+01:00\""
+    "e2e:fixture": "node e2e/make-exif-fixture.cjs e2e/fixtures/exif-photo.jpg 39.46125 -8.19765 \"2023:06:10 07:15:00\" \"+01:00\"",
+    "e2e:marcar": "node e2e/marcar.e2e.cjs",
+    "perf:atlas": "node e2e/perf.cjs",
+    "load:atlas": "node e2e/load.mjs"
   },
   "dependencies": {
     "@fontsource-variable/fraunces": "^5.3.0",

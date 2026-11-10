@@ -43,6 +43,10 @@ Em alternativa, pode ligar o repositório em app.netlify.com: as definições s�
 
 `npm run build:artifact` gera `dist-artifact/atlascatch.html`, um ficheiro com tudo incluído, router em hash e sem service worker. Abre em qualquer navegador sem servidor.
 
+## Lança Lance: Atlas e «Marcar pin»
+
+O ecrã principal é o Atlas Ibérico 3D com a ação **Marcar pin** (captura, observação ou local para voltar), guardado no dispositivo e sincronizado com a conta, com regresso do diário ao mapa num toque. Ver **[docs/ATLAS_MARCAR_PIN.md](docs/ATLAS_MARCAR_PIN.md)** (como testar em menos de um minuto, decisões, medições e limites).
+
 ## Lança Lance: área privada
 
 - Rotas: `/entrar`, `/registar`, `/recuperar`, `/nova-palavra-passe`, `/privacidade` e `/conta/*` (painel, mapa, Pins, Pings, jornadas, histórico, inteligência, definições).

@@ -1,5 +1,5 @@
 import { BookOpen, CalendarPlus, Loader2, MapPin, Move, Pencil, Share2, Trash2, X } from 'lucide-react'
-import { useEffect, useState } from 'react'
+import { useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { getPing, listJourneys, type JourneyFull } from '../../lib/lanca/api'
 import { addToJourney, PHOTO_LABEL, publishShare, revokeShare, SYNC_LABEL, TYPE_LABEL, type FieldPin, type FieldPinType, type FieldStore } from '../../lib/lanca/fieldPins'
@@ -12,6 +12,7 @@ import { approximate } from '../../../supabase/functions/_shared/approx.ts'
 import { SignedImage } from '../lanca/SignedImage'
 import { cx } from '../ui'
 import { pinIconSvg } from './pinLayers'
+import { perfMeasure } from './PinComposer'
 
 /** Pin selecionado no mapa: registo local (pode ainda não estar no servidor) e/ou linha do servidor. */
 export interface SelectedPin {
@@ -81,6 +82,17 @@ export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, o
     }
   }, [local, firstLocal, store])
 
+  // Feedback da seleção (toque no pin → ficha visível), medido em produção.
+  useLayoutEffect(() => {
+    requestAnimationFrame(() => {
+      try {
+        performance.mark('pin:sheet')
+        perfMeasure('pin-select:feedback', 'pin:select', 'pin:sheet')
+      } catch {
+        /* sem marca inicial */
+      }
+    })
+  }, [sel.id])
   const ping = full?.id === sel.id ? full.ping : null
   const env = ping?.ping_environment ?? null
   const media = ping?.ping_media[0] ?? null

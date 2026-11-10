@@ -1,0 +1,174 @@
+{
+  "date": "2026-11-10T06:33:28.956Z",
+  "origin": "um cliente (contentor) → proxy → Supabase eu-west-3 (plano gratuito)",
+  "hypothesis": "300 sessões simultâneas para 6 000 subscritores ativos (não ensaiado diretamente: ver nota)",
+  "reads": [
+    {
+      "concurrency": 10,
+      "seconds": 30,
+      "requests": 778,
+      "rps": 25.9,
+      "errors": 0,
+      "avg_rows": 468,
+      "latency_ms": {
+        "n": 778,
+        "p50": 367,
+        "p95": 618,
+        "p99": 1284,
+        "max": 1537
+      },
+      "by_view": {
+        "margem": {
+          "n": 380,
+          "p50": 381,
+          "p95": 643,
+          "p99": 1274,
+          "max": 1377
+        },
+        "albufeira": {
+          "n": 201,
+          "p50": 393,
+          "p95": 651,
+          "p99": 1524,
+          "max": 1537
+        },
+        "peninsula": {
+          "n": 96,
+          "p50": 258,
+          "p95": 440,
+          "p99": 1284,
+          "max": 1284
+        },
+        "regiao": {
+          "n": 101,
+          "p50": 246,
+          "p95": 448,
+          "p99": 517,
+          "max": 779
+        }
+      }
+    },
+    {
+      "concurrency": 30,
+      "seconds": 30,
+      "requests": 903,
+      "rps": 30.1,
+      "errors": 0,
+      "avg_rows": 462,
+      "latency_ms": {
+        "n": 903,
+        "p50": 922,
+        "p95": 1751,
+        "p99": 2303,
+        "max": 2673
+      },
+      "by_view": {
+        "margem": {
+          "n": 444,
+          "p50": 1010,
+          "p95": 1874,
+          "p99": 2483,
+          "max": 2623
+        },
+        "albufeira": {
+          "n": 227,
+          "p50": 865,
+          "p95": 1751,
+          "p99": 2139,
+          "max": 2673
+        },
+        "peninsula": {
+          "n": 114,
+          "p50": 806,
+          "p95": 1543,
+          "p99": 1708,
+          "max": 1785
+        },
+        "regiao": {
+          "n": 118,
+          "p50": 772,
+          "p95": 1609,
+          "p99": 1899,
+          "max": 2033
+        }
+      }
+    },
+    {
+      "concurrency": 60,
+      "seconds": 30,
+      "requests": 919,
+      "rps": 30.6,
+      "errors": 0,
+      "avg_rows": 439,
+      "latency_ms": {
+        "n": 919,
+        "p50": 1552,
+        "p95": 4746,
+        "p99": 7455,
+        "max": 14550
+      },
+      "by_view": {
+        "margem": {
+          "n": 459,
+          "p50": 1660,
+          "p95": 5177,
+          "p99": 8217,
+          "max": 14550
+        },
+        "albufeira": {
+          "n": 205,
+          "p50": 1568,
+          "p95": 4317,
+          "p99": 6809,
+          "max": 7486
+        },
+        "peninsula": {
+          "n": 127,
+          "p50": 1527,
+          "p95": 5170,
+          "p99": 6597,
+          "max": 7069
+        },
+        "regiao": {
+          "n": 128,
+          "p50": 1313,
+          "p95": 3865,
+          "p99": 6077,
+          "max": 7253
+        }
+      }
+    }
+  ],
+  "writes": {
+    "inserts": 40,
+    "wall_ms": 1037,
+    "latency_ms": {
+      "n": 40,
+      "p50": 466,
+      "p95": 500,
+      "p99": 500,
+      "max": 500
+    },
+    "errors": 0,
+    "retries_rejected_as_duplicate": 40,
+    "rows_on_server": 40,
+    "duplicates": 0
+  },
+  "uploads": {
+    "uploads": 10,
+    "bytes_each": 60000,
+    "latency_ms": {
+      "n": 10,
+      "p50": 788,
+      "p95": 904,
+      "p99": 904,
+      "max": 904
+    },
+    "errors": 0
+  },
+  "dataset": {
+    "pings": 40000,
+    "pins": 3000,
+    "note": "dados sintéticos com densidade desigual (albufeira popular: Castelo do Bode)"
+  }
+}

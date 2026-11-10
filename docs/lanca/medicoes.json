@@ -1,0 +1,141 @@
+{
+  "date": "2026-11-10T05:42:21.224Z",
+  "base": "http://localhost:4173",
+  "environment": {
+    "browser": "Chromium 153.0.8010.12 (headless, Playwright)",
+    "webgl": "ANGLE (Google, Vulkan 1.3.0 (SwiftShader Device (Subzero) (0x0000C0DE)), SwiftShader driver)",
+    "host": "4 vCPU (Intel(R) Xeon(R) Processor @ 2.10GHz), 16 GB, contentor Linux sem GPU",
+    "server": "vite preview (build de produção) em localhost; backend Supabase eu-west-3 através de proxy de saída",
+    "note": "WebGL por software (SwiftShader): os tempos de frame não representam dispositivos físicos."
+  },
+  "results": {
+    "primeiro-mapa-manipulavel:telemovel-4g-lento-cpu4x": {
+      "unit": "ms desde o início da navegação, cache fria",
+      "n": 3,
+      "p50": 40546.6,
+      "p75": 40969.9,
+      "p95": 40969.9,
+      "max": 40969.9,
+      "estado_pronto": {
+        "n": 3,
+        "p50": 22743.3,
+        "p75": 22899.8,
+        "p95": 22899.8,
+        "max": 22899.8
+      }
+    },
+    "primeiro-mapa-manipulavel:telemovel-sem-limites": {
+      "unit": "ms desde o início da navegação, cache fria",
+      "n": 3,
+      "p50": 20137.6,
+      "p75": 20836.8,
+      "p95": 20836.8,
+      "max": 20836.8,
+      "estado_pronto": {
+        "n": 3,
+        "p50": 11276.5,
+        "p75": 11307,
+        "p95": 11307,
+        "max": 11307
+      }
+    },
+    "resposta:sem-limites": {
+      "unit": "ms",
+      "marcar-pin → painel visível": {
+        "n": 6,
+        "p50": 9.8,
+        "p75": 11.9,
+        "p95": 16.1,
+        "max": 16.1
+      },
+      "toque no pin → ficha visível": {
+        "n": 12,
+        "p50": 260.9,
+        "p75": 1535.8,
+        "p95": 2076.5,
+        "max": 2076.5
+      },
+      "guardar → escrita local durável (IndexedDB)": {
+        "n": 6,
+        "p50": 16,
+        "p75": 23.7,
+        "p95": 545.1,
+        "max": 545.1
+      },
+      "guardar → fotografia enviada (inclui escrita local e criação no servidor)": {
+        "n": 3,
+        "p50": 8486,
+        "p75": 12475,
+        "p95": 12475,
+        "max": 12475
+      },
+      "guardar → confirmação remota (Sincronizado)": {
+        "n": 6,
+        "p50": 8234,
+        "p75": 9865,
+        "p95": 14616,
+        "max": 14616
+      }
+    },
+    "resposta:cpu4x": {
+      "unit": "ms",
+      "marcar-pin → painel visível": {
+        "n": 6,
+        "p50": 42.1,
+        "p75": 68.6,
+        "p95": 75.8,
+        "max": 75.8
+      },
+      "toque no pin → ficha visível": {
+        "n": 6,
+        "p50": 3846.2,
+        "p75": 4236.2,
+        "p95": 5174.6,
+        "max": 5174.6
+      },
+      "guardar → escrita local durável (IndexedDB)": {
+        "n": 6,
+        "p50": 35.9,
+        "p75": 38.4,
+        "p95": 41.7,
+        "max": 41.7
+      },
+      "guardar → fotografia enviada (inclui escrita local e criação no servidor)": {
+        "n": 3,
+        "p50": 18369,
+        "p75": 19718,
+        "p95": 19718,
+        "max": 19718
+      },
+      "guardar → confirmação remota (Sincronizado)": {
+        "n": 6,
+        "p50": 14449,
+        "p75": 20177,
+        "p95": 21225,
+        "max": 21225
+      }
+    },
+    "frames:ipad-1180x820": {
+      "unit": "ms por frame",
+      "frames": 14,
+      "fps_medio": 0.4,
+      "n": 14,
+      "p50": 2316.6,
+      "p75": 2616.7,
+      "p95": 2866.5,
+      "max": 2866.5,
+      "percent_acima_33ms": 100
+    },
+    "frames:telemovel-390x844": {
+      "unit": "ms por frame",
+      "frames": 27,
+      "fps_medio": 0.9,
+      "n": 27,
+      "p50": 1083.3,
+      "p75": 1466.6,
+      "p95": 1766.6,
+      "max": 1833.2,
+      "percent_acima_33ms": 100
+    }
+  }
+}
