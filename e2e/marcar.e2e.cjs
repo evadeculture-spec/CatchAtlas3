@@ -268,8 +268,18 @@ async function markWithCrosshair(page, { type = 'captura', species, photo } = {}
       // Revogar: deixa de estar disponível.
       await sbA.functions.invoke('community-share', { body: { action: 'revoke', pingId: capId } })
       const { data: after } = await sbB.from('shared_reports').select('id').eq('id', mine.id)
-      const gone = await fetch(signed.signedUrl)
-      ok('após revogação: a publicação e a imagem deixam de estar disponíveis', (after ?? []).length === 0 && gone.status >= 400, `HTTP ${gone.status}`)
+      ok('após revogação: a publicação deixa de estar disponível (imediato)', (after ?? []).length === 0)
+      const { error: reSign } = await sbB.storage.from('community-media').createSignedUrl(mine.photo_path, 60)
+      ok('após revogação: já não é possível obter novo URL da imagem', !!reSign)
+      // Um URL já emitido pode continuar em cache na CDN durante alguns segundos: mede-se quanto.
+      const t0 = Date.now()
+      let status = 200
+      while (Date.now() - t0 < 120000) {
+        status = (await fetch(`${signed.signedUrl}&t=${Date.now()}`)).status
+        if (status >= 400) break
+        await new Promise((r) => setTimeout(r, 5000))
+      }
+      ok('após revogação: URL já emitido deixa de servir a imagem', status >= 400, `${Math.round((Date.now() - t0) / 1000)} s · HTTP ${status}`)
       const { data: still } = await sbA.from('pings').select('id').eq('id', capId)
       ok('após revogação: o diário privado mantém-se', (still ?? []).length === 1)
       await c2.close()
@@ -350,7 +360,7 @@ async function markWithCrosshair(page, { type = 'captura', species, photo } = {}
       await page.waitForTimeout(400)
       const n30 = Number((await page.getByText(/reports neste período/).innerText()).match(/\d+/)[0])
       ok('filtros 3/7/30 dias e espécie funcionam', n30 >= n3 && /janela=30/.test(page.url()), `${n3} → ${n30}`)
-      await page.getByRole('button', { name: 'forte' }).click()
+      await page.getByRole('group', { name: 'Atividade' }).getByRole('button', { name: /forte/ }).click()
       await page.waitForTimeout(300)
       ok('filtro de atividade', /atividade=forte/.test(page.url()))
       await page.screenshot({ path: join(shots, 'tel-7-comunidade.png') })
