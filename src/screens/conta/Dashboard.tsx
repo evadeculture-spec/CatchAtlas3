@@ -19,7 +19,7 @@ function greeting() {
 }
 
 export default function Dashboard() {
-  const { profile, user, units } = useAuth()
+  const { profile, user, units, isGuest } = useAuth()
   const { data, error, loading, reload } = useLoad(async () => {
     const [summary, pins, pings, journeys] = await Promise.all([anglerSummary(), listPins(), listPings({ limit: 300 }), listJourneys()])
     return { summary, pins, pings, journeys }
@@ -40,6 +40,15 @@ export default function Dashboard() {
 
   return (
     <div className="space-y-5">
+      {isGuest && (
+        <Notice>
+          Está numa <strong className="text-ink">sessão de teste</strong>: os dados são reais e privados, mas ficam ligados só a este navegador. Para os apagar, use{' '}
+          <Link to="/conta/definicoes" className="font-bold text-teal-700 underline">
+            Definições → Terminar sessão de teste
+          </Link>
+          .
+        </Notice>
+      )}
       {/* Resumo superior */}
       <section className="overflow-hidden rounded-[28px] bg-ink p-5 text-white shadow-lift sm:p-6">
         <div className="flex items-center gap-4">

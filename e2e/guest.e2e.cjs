@@ -124,8 +124,9 @@ async function endTestSession(page) {
     await page2.goto(`${base}/entrar`, { waitUntil: 'domcontentloaded' })
     await page2.click('[data-action="sessao-teste"]')
     await page2.waitForURL(/\/conta$/, { timeout: 60000 })
+    await page2.getByText('Definições → Terminar sessão de teste').waitFor()
     const s2 = await session(page2)
-    ok('«Entrar» → «Experimentar sem email» abre outra sessão de teste, separada', s2?.user?.app_metadata?.guest === true && s2.user.id !== uid1)
+    ok('«Entrar» → «Experimentar sem email» abre outra sessão de teste, separada, com o aviso de sessão temporária no painel', s2?.user?.app_metadata?.guest === true && s2.user.id !== uid1)
     const db2 = asUser(s2.access_token)
     const { data: shared } = await db2.from('shared_reports').select('id, kind, species, approx_lat, approx_lng, approx_label, precision_km, occurred_on, day_period, photo_path, created_at').eq('species', SPECIES)
     const mine = (shared ?? [])[0]
