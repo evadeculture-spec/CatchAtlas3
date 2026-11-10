@@ -1,8 +1,8 @@
-// Sessões de teste sem email (início de sessão anónimo do Supabase), contra o backend real.
-// Exige «Allow anonymous sign-ins» ativo no projeto Supabase (Authentication → Sign In / Providers).
+// Sessões de teste sem email (função guest-session), contra o backend real.
 // Uso:
 //   npm run build && npx vite preview --port 4173 &
-//   node e2e/guest.e2e.cjs http://localhost:4173 screenshots/sessao-teste
+//   NODE_USE_ENV_PROXY=1 node e2e/guest.e2e.cjs http://localhost:4173 screenshots/sessao-teste
+// (NODE_USE_ENV_PROXY só é preciso atrás de um proxy de saída, para as verificações feitas a partir do Node.)
 // Cria duas sessões de teste e termina-as no fim pelo próprio fluxo da app (que apaga os dados).
 const { chromium } = require('playwright')
 const { mkdirSync } = require('node:fs')
@@ -73,7 +73,7 @@ async function endTestSession(page) {
     await page.click('[data-action="sessao-teste"]')
     await page.waitForSelector('[data-atlas-status="ready"]', { timeout: 120000 })
     const s1 = await session(page)
-    ok('boas-vindas: «Experimentar sem email» abre o Atlas com uma sessão de teste', !!s1?.user?.is_anonymous && !s1.user.email)
+    ok('boas-vindas: «Experimentar sem email» abre o Atlas com uma sessão de teste', s1?.user?.app_metadata?.guest === true)
     const uid1 = s1.user.id
     await atlas(page, `${CB},14.8,45,0`)
     await page.click('[data-action="marcar-pin"]')
@@ -125,7 +125,7 @@ async function endTestSession(page) {
     await page2.click('[data-action="sessao-teste"]')
     await page2.waitForURL(/\/conta$/, { timeout: 60000 })
     const s2 = await session(page2)
-    ok('«Entrar» → «Experimentar sem email» abre outra sessão de teste, separada', !!s2?.user?.is_anonymous && s2.user.id !== uid1)
+    ok('«Entrar» → «Experimentar sem email» abre outra sessão de teste, separada', s2?.user?.app_metadata?.guest === true && s2.user.id !== uid1)
     const db2 = asUser(s2.access_token)
     const { data: shared } = await db2.from('shared_reports').select('id, kind, species, approx_lat, approx_lng, approx_label, precision_km, occurred_on, day_period, photo_path, created_at').eq('species', SPECIES)
     const mine = (shared ?? [])[0]

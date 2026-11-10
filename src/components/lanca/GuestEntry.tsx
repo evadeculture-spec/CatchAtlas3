@@ -5,7 +5,7 @@ import { cx } from '../ui'
 import { useAuth } from '../../state/Auth'
 
 /**
- * «Experimentar sem email»: abre uma sessão de teste (início de sessão anónimo do Supabase).
+ * «Experimentar sem email»: abre uma sessão de teste (função guest-session: conta de teste sem email do utilizador).
  * Os dados são reais e privados (mesmas regras de acesso de uma conta normal), mas ficam ligados só a este navegador:
  * sem email nem palavra-passe não há forma de voltar a entrar, por isso terminar a sessão apaga-os (ver Definições).
  */

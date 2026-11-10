@@ -50,6 +50,16 @@ async function invoke<T>(fn: string, body: Record<string, unknown>): Promise<T> 
   return data as T
 }
 
+/**
+ * Sessão de teste sem email: a função `guest-session` cria uma conta de teste (email interno, nunca usado) e
+ * devolve a sessão. A palavra-passe nunca chega ao dispositivo, por isso não há forma de voltar a entrar.
+ */
+export async function startGuestSession(privacyNoticeVersion: string) {
+  const tokens = await invoke<{ access_token: string; refresh_token: string }>('guest-session', { privacyNoticeVersion })
+  const { error } = await sb().auth.setSession(tokens)
+  if (error) throw new ApiError(friendly(error))
+}
+
 async function uid(): Promise<string> {
   const { data } = await sb().auth.getSession()
   const id = data.session?.user.id

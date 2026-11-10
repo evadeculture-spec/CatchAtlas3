@@ -17,26 +17,28 @@ no terreno e, mais tarde, voltar a ele a partir do diário com um toque.
 ## Sessões de teste sem email
 
 «Experimentar sem email» (boas-vindas, «Entrar», «Criar conta» e o pedido de sessão do Atlas) abre uma sessão
-de teste com o início de sessão anónimo do Supabase (`signInAnonymously`). Não pede email nem palavra-passe.
+de teste sem pedir email nem palavra-passe. Não precisa de nenhuma configuração no painel do Supabase.
 
-- **Dados reais, mesmas regras**: o utilizador anónimo usa o papel `authenticated`; todas as políticas RLS e
-  de Storage filtram por `auth.uid()`, por isso os pins, fotografias, jornadas e partilhas funcionam e ficam
-  privados exatamente como numa conta com email. Duas sessões de teste (dois navegadores) são duas contas
+- **Como funciona**: a Edge Function `guest-session` (pública, sem JWT) cria uma conta real com um email
+  interno no domínio reservado `.invalid` (nunca recebe nem envia correio), confirmada pelo servidor e marcada
+  em `app_metadata.guest` (só o servidor a pode alterar), e devolve logo a sessão. A palavra-passe é aleatória
+  e nunca sai do servidor. O perfil fica com o nome «Sessão de teste» e a versão do aviso de privacidade aceite.
+- **Dados reais, mesmas regras**: é uma conta como as outras; todas as políticas RLS e de Storage filtram por
+  `auth.uid()`, por isso pins, fotografias, jornadas, condições e partilhas funcionam e ficam privados como
+  numa conta com email. Duas sessões de teste (dois navegadores, ou uma janela privada) são duas contas
   distintas: serve para verificar a partilha aproximada sem criar emails.
 - **Ligada a este navegador**: sem email nem palavra-passe não há forma de voltar a entrar. Por isso, nas
   Definições, «Terminar sessão de teste» apaga os dados no servidor (função `delete-account`) e a cópia local
   (IndexedDB), depois de confirmação. Eliminar uma conta normal também passou a apagar a cópia local.
-- **Ativar no Supabase** (necessário uma vez): *Authentication → Sign In / Providers → Allow anonymous
-  sign-ins*. Enquanto estiver desligado, o botão mostra «As sessões de teste sem email não estão ativas neste
-  servidor.» e nada é criado.
-- **Abuso e custos**: qualquer visitante pode abrir sessões de teste. O Supabase limita a 30 por hora por IP
-  (ajustável em *Authentication → Rate Limits*) e recomenda CAPTCHA (Turnstile/hCaptcha) se a app for
-  divulgada publicamente. As sessões abandonadas (navegador limpo sem terminar a sessão) ficam no servidor; o
-  Supabase não as limpa sozinho. A limpeza periódica (por exemplo, sessões de teste com mais de 30 dias) não
-  foi ativada: apaga dados e precisa da sua decisão, e tem de passar pela função `delete-account` para remover
-  também as fotografias.
-- **Teste**: `npm run e2e:sessao-teste` (duas sessões de teste: pin com fotografia sincronizado, diário ↔ mapa,
-  partilha vista só como aproximada pela outra sessão, e terminar a sessão apaga servidor e dispositivo).
+- **Abuso e custos**: qualquer visitante pode abrir sessões de teste. A função limita a 10 por hora por rede
+  e a 300 por dia no total; para isso guarda em `guest_sessions` só um HMAC do IP (nunca o IP em claro),
+  apagado ao fim de 2 dias. Se a app for divulgada publicamente, convém acrescentar CAPTCHA ou desligar a
+  função. As sessões abandonadas (navegador limpo sem terminar a sessão) ficam no servidor: a limpeza
+  periódica não foi ativada, porque apaga dados e precisa da sua decisão (tem de passar pela função
+  `delete-account` para remover também as fotografias).
+- **Teste**: `NODE_USE_ENV_PROXY=1 npm run e2e:sessao-teste -- http://localhost:4173 screenshots/sessao-teste`
+  (duas sessões de teste: pin com fotografia sincronizado, diário ↔ mapa, partilha vista só como aproximada
+  pela outra sessão, e terminar a sessão apaga servidor e dispositivo).
 
 ## Decisões
 
@@ -128,7 +130,9 @@ locais do utilizador nessa água, previsão, histórico e semelhança; «guardar
 - `20261110000200_rate_limit_indexes.sql`: índices `(owner_id, created_at)` para o limite por minuto.
 - `20261110000300_atlas_pins_perf.sql`: `btree_gist` e índices `(owner_id, location)`; `my_atlas_pins` sem
   subconsultas na agregação e com limite antes das subconsultas.
-- Edge Functions: `community-share` (nova); `delete-account` (apaga também as fotografias partilhadas).
+- `20261110000400_guest_sessions.sql`: `guest_sessions` (limites das sessões de teste; HMAC do IP; só service role).
+- Edge Functions: `community-share` (nova); `guest-session` (nova, sessões de teste); `delete-account` (apaga
+  também as fotografias partilhadas).
 
 ## Medições efetivas
 
