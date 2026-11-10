@@ -13,6 +13,8 @@ interface AuthState {
   loading: boolean
   session: Session | null
   user: User | null
+  /** Sessão de teste sem email (início de sessão anónimo do Supabase): não há forma de voltar a entrar depois de sair. */
+  isGuest: boolean
   profile: Profile | null
   units: Units
   /** A sessão atual veio de um link de recuperação: o utilizador deve definir nova palavra-passe. */
@@ -23,6 +25,8 @@ interface AuthState {
   setProfile: (p: Profile) => void
   signIn: (email: string, password: string) => Promise<void>
   signUp: (email: string, password: string, displayName: string) => Promise<{ needsConfirmation: boolean }>
+  /** Abre uma sessão de teste sem email nem palavra-passe (exige «Allow anonymous sign-ins» no Supabase). */
+  signInGuest: () => Promise<void>
   signOut: (everywhere?: boolean) => Promise<void>
   requestReset: (email: string) => Promise<void>
   updatePassword: (password: string) => Promise<void>
@@ -42,6 +46,7 @@ export function authError(e: unknown): string {
   if (/Password should be|weak/i.test(m)) return 'Palavra-passe demasiado fraca: use pelo menos 8 caracteres, com letras e números.'
   if (/rate limit|too many|over_email_send_rate_limit|security purposes/i.test(m)) return 'Demasiados pedidos. Aguarde alguns minutos e tente de novo.'
   if (/is invalid|invalid email|Unable to validate email/i.test(m)) return 'Endereço de email inválido.'
+  if (/anonymous sign-ins are disabled|anonymous_provider_disabled/i.test(m)) return 'As sessões de teste sem email não estão ativas neste servidor.'
   if (/Failed to fetch|NetworkError|Load failed/i.test(m)) return 'Sem ligação ao servidor. Verifique a internet.'
   if (/same_password|different from the old/i.test(m)) return 'A nova palavra-passe tem de ser diferente da anterior.'
   if (/session|JWT|expired/i.test(m)) return 'O link expirou ou já foi usado. Peça um novo.'
@@ -106,6 +111,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       loading,
       session,
       user: session?.user ?? null,
+      isGuest: !!session?.user.is_anonymous,
       profile,
       units: profile ? { unit_temperature: profile.unit_temperature, unit_length: profile.unit_length, unit_weight: profile.unit_weight, unit_wind: profile.unit_wind } : DEFAULT_UNITS,
       recovery,
@@ -129,6 +135,10 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         })
         if (error) throw new Error(authError(error))
         return { needsConfirmation: !data.session }
+      },
+      signInGuest: async () => {
+        const { error } = await sb().auth.signInAnonymously({ options: { data: { privacy_notice_version: PRIVACY_NOTICE_VERSION } } })
+        if (error) throw new Error(authError(error))
       },
       signOut: async (everywhere = false) => {
         await sb().auth.signOut({ scope: everywhere ? 'global' : 'local' })

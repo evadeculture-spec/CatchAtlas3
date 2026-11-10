@@ -4,6 +4,7 @@ import { Link, Navigate } from 'react-router'
 import { Button, Field, inputCls } from '../../components/ui'
 import { passwordProblems, useAuth } from '../../state/Auth'
 import { BackendMissing } from '../conta/Layout'
+import { GuestEntry } from '../../components/lanca/GuestEntry'
 import { AuthLayout, FormError } from './AuthLayout'
 
 export default function SignUp() {
@@ -82,6 +83,9 @@ export default function SignUp() {
           {busy ? 'A criar…' : 'Criar conta'}
         </Button>
       </form>
+      <div className="mt-5 border-t border-line pt-5">
+        <GuestEntry />
+      </div>
     </AuthLayout>
   )
 }

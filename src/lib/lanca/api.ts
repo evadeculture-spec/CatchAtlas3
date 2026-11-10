@@ -6,6 +6,7 @@ import { FunctionsHttpError, type PostgrestError } from '@supabase/supabase-js'
 import { AVATAR_BUCKET, PING_BUCKET, SIGNED_URL_TTL_S, sb } from './supabase'
 import { extFor, fitWithin, type PreparedImage } from './image'
 import type { PhotoMeta } from './exif'
+import { deleteDb } from './idb'
 import type {
   AnglerSummary, Catch, DataSource, Equipment, Journey, Pin, PinInput, Ping, PingEnvironment, PingFull, PingInput, PingMedia, Profile, TimelineRow,
 } from './types'
@@ -393,4 +394,6 @@ export async function deleteAccount() {
   await invoke<{ ok: boolean }>('delete-account', { confirm: 'ELIMINAR' })
   clearSignedCache()
   await sb().auth.signOut({ scope: 'local' })
+  // A cópia local (pins por sincronizar, fotografias, rascunho) também sai deste dispositivo.
+  await deleteDb(`lancalance-${id}`)
 }

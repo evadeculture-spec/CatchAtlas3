@@ -7,6 +7,8 @@ import { brand } from '../config/brand'
 import { MODALITIES, REGIONS, SPECIES } from '../data/catalog'
 import type { ModalityId, RegionId, SpeciesId } from '../data/types'
 import { useApp } from '../state/AppState'
+import { GuestEntry } from '../components/lanca/GuestEntry'
+import { backendConfigured } from '../lib/lanca/supabase'
 
 const MOD_ICON = { margem: Footprints, caiaque: Sailboat, embarcacao: Anchor }
 
@@ -60,12 +62,13 @@ export default function Onboarding() {
               >
                 Criar conta
               </button>
+              {backendConfigured && <GuestEntry tone="dark" className="mt-3 text-center [&_p]:text-center" onSignedIn={() => finish(true)} />}
             </div>
           </div>
         </div>
 
         <p className="px-6 pb-[calc(env(safe-area-inset-bottom)+1.25rem)] text-center text-[11.5px] leading-snug text-white/45">
-          {brand.demoLabel}. Sem servidor: o perfil fica apenas neste navegador.
+          {backendConfigured ? 'As preferências deste ecrã ficam neste navegador. Pins, fotografias e jornadas ficam na sua conta, privados.' : `${brand.demoLabel}. Sem servidor: o perfil fica apenas neste navegador.`}
         </p>
       </main>
     )

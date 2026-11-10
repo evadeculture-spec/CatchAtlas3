@@ -31,7 +31,7 @@ export default function Settings() {
 }
 
 function SettingsBody({ profile }: { profile: Profile }) {
-  const { user, saveProfile, setProfile, signOut, updatePassword } = useAuth()
+  const { user, isGuest, saveProfile, setProfile, signOut, updatePassword } = useAuth()
   const toast = useToast()
   const nav = useNavigate()
   const [draft, setDraft] = useState<Partial<Profile>>(profile)
@@ -107,7 +107,7 @@ function SettingsBody({ profile }: { profile: Profile }) {
     setDeleting(true)
     try {
       await deleteAccount()
-      toast('Conta eliminada', { detail: 'Todos os seus dados e fotografias foram apagados.' })
+      toast(isGuest ? 'Sessão de teste terminada' : 'Conta eliminada', { detail: 'Todos os seus dados e fotografias foram apagados.' })
       nav('/', { replace: true })
     } catch (e) {
       toast(friendly(e), { tone: 'warning' })
@@ -169,7 +169,7 @@ function SettingsBody({ profile }: { profile: Profile }) {
               </Field>
             </div>
             <dl>
-              <KV label="Email" value={user.email} />
+              <KV label="Email" value={isGuest ? 'Sessão de teste (sem email)' : user.email} />
               <KV label="Membro desde" value={new Date(profile.created_at).toLocaleDateString('pt-PT', { dateStyle: 'long' })} />
             </dl>
             <Button disabled={saving} onClick={() => save({ display_name: draft.display_name?.trim() || null, country: draft.country ?? null, language: draft.language })}>
@@ -300,6 +300,17 @@ function SettingsBody({ profile }: { profile: Profile }) {
         </Panel>
 
         <Panel title="Segurança">
+          {isGuest ? (
+            <div className="space-y-3" data-guest-session>
+              <p className="text-[13px] text-muted">
+                Está numa sessão de teste, sem email nem palavra-passe. Depois de sair não há forma de voltar a entrar nela, por isso terminar a sessão apaga os pins, fotografias e jornadas desta sessão. Exporte antes se quiser guardar uma cópia.
+              </p>
+              <Button variant="outline" icon={LogOut} onClick={() => setDelOpen(true)}>
+                Terminar sessão de teste
+              </Button>
+            </div>
+          ) : (
+            <>
           <form
             className="space-y-3"
             onSubmit={async (e) => {
@@ -330,6 +341,8 @@ function SettingsBody({ profile }: { profile: Profile }) {
               Terminar em todos os dispositivos
             </Button>
           </div>
+            </>
+          )}
         </Panel>
 
         <Panel title="Os seus dados" className="lg:col-span-2">
@@ -355,17 +368,25 @@ function SettingsBody({ profile }: { profile: Profile }) {
       <Sheet
         open={delOpen}
         onClose={() => setDelOpen(false)}
-        title="Eliminar a conta definitivamente?"
+        title={isGuest ? 'Terminar a sessão de teste?' : 'Eliminar a conta definitivamente?'}
         footer={
-          <Button variant="danger" className="w-full" disabled={delText !== 'ELIMINAR' || deleting} onClick={doDelete}>
-            {deleting ? 'A eliminar…' : 'Eliminar tudo'}
+          <Button variant="danger" className="w-full" disabled={(!isGuest && delText !== 'ELIMINAR') || deleting} onClick={doDelete}>
+            {deleting ? 'A eliminar…' : isGuest ? 'Apagar dados e sair' : 'Eliminar tudo'}
           </Button>
         }
       >
-        <p className="text-[14px] leading-relaxed text-muted">
-          Para confirmar, escreva <strong className="text-ink">ELIMINAR</strong>. Todos os dados e fotografias desta conta ({user.email}) são apagados de imediato.
-        </p>
-        <input value={delText} onChange={(e) => setDelText(e.target.value)} className={`${inputCls} mt-3`} aria-label="Escreva ELIMINAR para confirmar" autoComplete="off" />
+        {isGuest ? (
+          <p className="text-[14px] leading-relaxed text-muted">
+            Os pins, fotografias, partilhas e jornadas desta sessão de teste são apagados de imediato, no servidor e neste dispositivo. Sem email nem palavra-passe, não é possível voltar a esta sessão.
+          </p>
+        ) : (
+          <>
+            <p className="text-[14px] leading-relaxed text-muted">
+              Para confirmar, escreva <strong className="text-ink">ELIMINAR</strong>. Todos os dados e fotografias desta conta ({user.email}) são apagados de imediato.
+            </p>
+            <input value={delText} onChange={(e) => setDelText(e.target.value)} className={`${inputCls} mt-3`} aria-label="Escreva ELIMINAR para confirmar" autoComplete="off" />
+          </>
+        )}
       </Sheet>
     </div>
   )

@@ -42,6 +42,29 @@ export function openDb(name: string): Promise<IDBDatabase> {
   return p
 }
 
+/**
+ * Apaga a base local de uma conta (pins, fotografias e rascunho), depois de a conta ser eliminada no servidor.
+ * Fecha primeiro a ligação deste separador; noutros separadores o `versionchange` fecha-a e o navegador conclui a remoção.
+ */
+export async function deleteDb(name: string): Promise<void> {
+  const p = cache.get(name)
+  cache.delete(name)
+  if (p) {
+    try {
+      ;(await p).close()
+    } catch {
+      /* nunca chegou a abrir */
+    }
+  }
+  if (!('indexedDB' in globalThis)) return
+  await new Promise<void>((resolve) => {
+    const r = indexedDB.deleteDatabase(name)
+    r.onsuccess = () => resolve()
+    r.onerror = () => resolve()
+    r.onblocked = () => resolve()
+  })
+}
+
 export interface Write {
   store: StoreName
   key: string

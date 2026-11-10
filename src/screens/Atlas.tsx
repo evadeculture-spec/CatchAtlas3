@@ -32,6 +32,7 @@ import { itemsInView, matchesFilters, searchAtlas } from '../lib/atlas/search'
 import { cameraParam, parseAtlasUrl, patchParams } from '../lib/atlas/urlState'
 import { readJSON, writeJSON } from '../lib/storage'
 import { useApp } from '../state/AppState'
+import { GuestEntry } from '../components/lanca/GuestEntry'
 
 const CATALOG_LABEL = catalogWater as unknown as Record<string, { waterId: string; label: [number, number] }>
 const HINT_KEY = 'catchatlas-atlas-hint'
@@ -987,7 +988,7 @@ export default function Atlas() {
           <p className="flex items-center gap-2 text-[15px] font-extrabold">
             <Lock className="h-4 w-4 text-[#83e5ef]" aria-hidden /> Os pins são privados
           </p>
-          <p className="mt-1 text-[13px] text-[#b5c5cc]">Ficam na sua conta (e no dispositivo até sincronizar). Entre ou crie conta para marcar o primeiro.</p>
+          <p className="mt-1 text-[13px] text-[#b5c5cc]">Ficam na sua conta (e no dispositivo até sincronizar). Entre, crie conta ou experimente sem email para marcar o primeiro.</p>
           <div className="mt-3 flex flex-wrap gap-2">
             <Link to={`/entrar?next=${encodeURIComponent(`${location.pathname}${location.search}`)}`} className="press inline-flex min-h-11 items-center rounded-full bg-[#38c9d5] px-4 text-[14px] font-extrabold text-[#071923]">
               Entrar
@@ -999,6 +1000,15 @@ export default function Atlas() {
               Agora não
             </button>
           </div>
+          <GuestEntry
+            tone="dark"
+            className="mt-3 border-t border-white/10 pt-3"
+            onSignedIn={() => {
+              setAuthPrompt(false)
+              // O compositor abre quando a sessão de teste estiver ativa (mesmo caminho do antigo «+ Report»).
+              updateUrl({ marcar: '1' })
+            }}
+          />
         </div>
       )}
       {draftOffer && !composer && (

@@ -5,6 +5,7 @@ import { Button, Field, inputCls } from '../../components/ui'
 import { Notice } from '../../components/lanca/primitives'
 import { useAuth } from '../../state/Auth'
 import { BackendMissing } from '../conta/Layout'
+import { GuestEntry } from '../../components/lanca/GuestEntry'
 import { AuthLayout, FormError } from './AuthLayout'
 
 const safeNext = (n: string | null) => (n && n.startsWith('/') && !n.startsWith('//') ? n : '/conta')
@@ -84,6 +85,9 @@ export default function SignIn() {
           </Link>
         </p>
       </form>
+      <div className="mt-5 border-t border-line pt-5">
+        <GuestEntry />
+      </div>
     </AuthLayout>
   )
 }

@@ -6,12 +6,37 @@ no terreno e, mais tarde, voltar a ele a partir do diário com um toque.
 
 ## Testar uma captura em menos de um minuto
 
-1. Abra a app e inicie sessão (conta própria; os pins são privados).
+1. Abra a app e inicie sessão (conta própria; os pins são privados) ou toque em **Experimentar sem email**
+   (sessão de teste, ver abaixo).
 2. No Atlas, aproxime até à margem (por exemplo, pesquise «Castelo do Bode» e toque na albufeira).
 3. Toque em **Marcar pin** → **Usar a minha posição** (ou mova o mapa até a mira estar na margem) → **Confirmar local**.
 4. Deixe **Captura**, toque em **Tirar fotografia** (ou **Escolher fotografia**), escreva a espécie se quiser.
 5. **Guardar pin privado**. O marcador aparece logo e a ficha mostra «Guardado no dispositivo» → «A sincronizar» → «Sincronizado» (a fotografia tem estado próprio).
 6. Abra **Abrir no diário** e, no diário, **Ver no mapa**: regressa à mesma margem com a mesma ficha.
+
+## Sessões de teste sem email
+
+«Experimentar sem email» (boas-vindas, «Entrar», «Criar conta» e o pedido de sessão do Atlas) abre uma sessão
+de teste com o início de sessão anónimo do Supabase (`signInAnonymously`). Não pede email nem palavra-passe.
+
+- **Dados reais, mesmas regras**: o utilizador anónimo usa o papel `authenticated`; todas as políticas RLS e
+  de Storage filtram por `auth.uid()`, por isso os pins, fotografias, jornadas e partilhas funcionam e ficam
+  privados exatamente como numa conta com email. Duas sessões de teste (dois navegadores) são duas contas
+  distintas: serve para verificar a partilha aproximada sem criar emails.
+- **Ligada a este navegador**: sem email nem palavra-passe não há forma de voltar a entrar. Por isso, nas
+  Definições, «Terminar sessão de teste» apaga os dados no servidor (função `delete-account`) e a cópia local
+  (IndexedDB), depois de confirmação. Eliminar uma conta normal também passou a apagar a cópia local.
+- **Ativar no Supabase** (necessário uma vez): *Authentication → Sign In / Providers → Allow anonymous
+  sign-ins*. Enquanto estiver desligado, o botão mostra «As sessões de teste sem email não estão ativas neste
+  servidor.» e nada é criado.
+- **Abuso e custos**: qualquer visitante pode abrir sessões de teste. O Supabase limita a 30 por hora por IP
+  (ajustável em *Authentication → Rate Limits*) e recomenda CAPTCHA (Turnstile/hCaptcha) se a app for
+  divulgada publicamente. As sessões abandonadas (navegador limpo sem terminar a sessão) ficam no servidor; o
+  Supabase não as limpa sozinho. A limpeza periódica (por exemplo, sessões de teste com mais de 30 dias) não
+  foi ativada: apaga dados e precisa da sua decisão, e tem de passar pela função `delete-account` para remover
+  também as fotografias.
+- **Teste**: `npm run e2e:sessao-teste` (duas sessões de teste: pin com fotografia sincronizado, diário ↔ mapa,
+  partilha vista só como aproximada pela outra sessão, e terminar a sessão apaga servidor e dispositivo).
 
 ## Decisões
 
