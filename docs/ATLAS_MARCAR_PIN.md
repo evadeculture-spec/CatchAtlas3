@@ -143,8 +143,10 @@ medições em telemóvel e iPad físicos.
 | Conjunto | Comando | Resultado |
 |---|---|---|
 | Percurso mapa → pin → diário → mapa, iPad/telemóvel, sem rede, privacidade, links antigos | `npm run e2e:marcar -- <url> <pasta>` | 42/42 |
-| Unitários | `npm test` | ver relatório final |
-| Atlas (regressão) | `npm run e2e:atlas -- <url> <pasta>` | ver relatório final |
+| Unitários | `npm test` | 98/98 |
+| Atlas (regressão) | `npm run e2e:atlas -- <url> <pasta>` | 58/58 |
+| Área privada (regressão) | `npm run e2e:lanca -- <url> <pasta>` | 33/33 |
+| Backend real (regressão) | `npm run e2e:backend` | 61/61 |
 
 Precisa de aparelho físico: tempos de frame e de arranque, câmara real (o teste usa ficheiros), GPS real
 (o teste emula posição e recusa), Safari/iPadOS (barras móveis, Split View real, teclado), armazenamento sob
