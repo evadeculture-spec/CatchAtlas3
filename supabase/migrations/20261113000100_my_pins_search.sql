@@ -12,9 +12,12 @@ alter table public.shared_reports
   add column if not exists occurred_at timestamptz,
   add column if not exists occurred_tz text;
 -- O ponto exato só existe quando o autor escolheu «Partilhar ponto exato» (sem consentimento, fica resguardado).
-alter table public.shared_reports drop constraint if exists shared_reports_exact_consistency;
-alter table public.shared_reports add constraint shared_reports_exact_consistency
-  check ((share_mode = 'exato') = (exact_lat is not null and exact_lng is not null));
+do $$ begin
+  if not exists (select 1 from pg_constraint where conname = 'shared_reports_exact_consistency') then
+    alter table public.shared_reports add constraint shared_reports_exact_consistency
+      check ((share_mode = 'exato') = (exact_lat is not null and exact_lng is not null));
+  end if;
+end $$;
 -- As colunas novas NÃO são legíveis diretamente: terceiros só recebem o que search_pins decidir.
 -- (A concessão de select existente cobre apenas as colunas aproximadas.)
 
@@ -78,8 +81,7 @@ begin
   return new;
 end $$;
 revoke all on function public.pings_refresh_share() from public, anon, authenticated;
-drop trigger if exists pings_refresh_share on public.pings;
-create trigger pings_refresh_share after update of lat, lng, occurred_at, occurred_tz, kind, technique, water_body_ref, water_body_name
+create or replace trigger pings_refresh_share after update of lat, lng, occurred_at, occurred_tz, kind, technique, water_body_ref, water_body_name
   on public.pings for each row execute function public.pings_refresh_share();
 
 create or replace function public.catches_refresh_share() returns trigger
@@ -89,16 +91,11 @@ begin
   return null;
 end $$;
 revoke all on function public.catches_refresh_share() from public, anon, authenticated;
-drop trigger if exists catches_refresh_share on public.catches;
-create trigger catches_refresh_share after insert or update or delete on public.catches
+create or replace trigger catches_refresh_share after insert or update or delete on public.catches
   for each row execute function public.catches_refresh_share();
 
--- Partilhas já existentes (só zona): preenche os campos de pesquisa.
-update public.shared_reports s set
-  zone_id = (select z.zone_id from public.zone_cell(s.approx_lat, s.approx_lng) z),
-  water_body_ref = g.water_body_ref, occurred_at = g.occurred_at, occurred_tz = g.occurred_tz,
-  weight_g = (select ca.weight_g from public.catches ca where ca.ping_id = g.id order by ca.created_at limit 1)
-from public.pings g where g.id = s.ping_id and s.zone_id is null;
+-- Partilhas anteriores ficam no modo «zona» (sem ponto exato); os campos novos preenchem-se na próxima
+-- edição do registo (gatilhos). Sem alterações em massa de linhas existentes.
 
 create index if not exists shared_reports_owner_idx on public.shared_reports (owner_id);
 create index if not exists shared_reports_water_idx on public.shared_reports (water_body_ref);
@@ -127,7 +124,7 @@ create or replace function public.search_pins(
   p_min_from integer default null, p_min_to integer default null,
   p_limit integer default 2000
 ) returns table (
-  source text, id uuid, kind text, lat double precision, lng double precision, precision text, visibility text,
+  source text, id uuid, kind text, lat double precision, lng double precision, "precision" text, visibility text,
   species text, weight_g integer, occurred_at timestamptz, occurred_tz text, zone_id text,
   water_body_ref text, water_body_name text, photo_path text, photo_bucket text, label text,
   total integer, in_view integer
@@ -150,7 +147,7 @@ begin
   return query
   with base as (
     -- os meus pings (ponto exato)
-    select 'mine'::text as source, g.id, g.kind::text as kind, g.lat, g.lng, 'exato'::text as precision,
+    select 'mine'::text as source, g.id, g.kind::text as kind, g.lat, g.lng, 'exato'::text as "precision",
       coalesce(s.share_mode, 'privado')::text as visibility, c.species, c.weight_g, g.occurred_at, g.occurred_tz,
       null::text as zone_id, g.water_body_ref, g.water_body_name,
       (select coalesce(m.thumb_path, m.display_path) from public.ping_media m where m.ping_id = g.id order by m.position limit 1) as photo_path,
@@ -196,7 +193,7 @@ begin
         else (k.sday >= coalesce(p_date_from, date '0001-01-01') and k.sday <= coalesce(p_date_to, date '9999-12-31'))
       end))
   )
-  select f.source, f.id, f.kind, f.lat, f.lng, f.precision, f.visibility, f.species, f.weight_g, f.occurred_at, f.occurred_tz,
+  select f.source, f.id, f.kind, f.lat, f.lng, f."precision", f.visibility, f.species, f.weight_g, f.occurred_at, f.occurred_tz,
     f.zone_id, f.water_body_ref, f.water_body_name, f.photo_path, f.photo_bucket, f.label,
     (count(*) over ())::integer,
     (count(*) filter (where f.lat between p_south and p_north and f.lng between p_west and p_east) over ())::integer

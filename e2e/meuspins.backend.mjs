@@ -127,7 +127,7 @@ try {
   const f = await search(A, { p_water: wf, p_date_from: '2025-02-13', p_date_to: '2025-03-20' })
   ok('data local do sítio: o mesmo instante é dia 13 em Espanha e dia 12 em Portugal', f.total === 1 && f.rows[0].id === es)
   const wy = W('anos')
-  for (const at of ['2028-02-29T10:00:00Z', '2025-02-28T10:00:00Z', '2025-03-01T10:00:00Z', '2022-12-28T10:00:00Z', '2023-01-05T10:00:00Z']) await ping(A, { water: wy, at })
+  for (const at of ['2024-02-29T10:00:00Z', '2025-02-28T10:00:00Z', '2025-03-01T10:00:00Z', '2022-12-28T10:00:00Z', '2023-01-05T10:00:00Z']) await ping(A, { water: wy, at })
   ok('29 de fevereiro sozinho, anual: só anos bissextos', (await n(A, { p_water: wy, p_date_from: '2024-02-29', p_date_to: '2024-02-29', p_yearly: true })) === 1)
   ok('anual dezembro → janeiro dá a volta ao ano', (await n(A, { p_water: wy, p_date_from: '2024-12-20', p_date_to: '2025-01-10', p_yearly: true })) === 2)
   // Ordenação: mesmo minuto → ID; o servidor ordena por data desc e ID.

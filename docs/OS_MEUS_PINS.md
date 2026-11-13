@@ -68,13 +68,13 @@ O título do mapa é «Mapa de pins».
 | 12h00 incluído / 12h01 excluído; 22h–02h no dia 13 | Inclui / exclui | Como pedido | idem | Unitário | ✅ |
 | 13 fev–20 mar (limites, anual), Portugal/Espanha, registo tardio, 29 fev, dez→jan | Como pedido | Como pedido | idem | Unitário | ✅ |
 | Mesmo minuto ordena pelo ID; total 10 / área 7 sem duplicados | Como pedido | Como pedido | idem | Unitário | ✅ |
-| Os mesmos cenários **no servidor real**; conteúdo entregue à 2.ª conta; exato → zona → privado; mover report partilhado | Ver script | — | `e2e/meuspins.backend.mjs` | Servidor real | ⏳ pendente: a migração ainda não foi aplicada |
+| Os mesmos cenários **no servidor real** (2→10→2, carpas, pesos, horas, 22h–02h, datas, anual, PT/ES, 29 fev, dez→jan, ordem); conteúdo entregue à 2.ª conta; colunas exatas ilegíveis; exato → zona → privado; mover report partilhado | Ver script | 30/30 | `e2e/meuspins.backend.mjs` | Servidor real (2 sessões de teste) | ✅ |
 | Castelo do Bode / margem espanhola, rodar, 2D/3D, GPS recusado, editar, eliminar, rede, rascunho | Já cobertos no fluxo «Marcar pin» | — | `e2e/marcar.e2e.cjs` (versão anterior) | Browser | Reutilizado; não repetido neste ecrã |
-| Tempo até mapa manipulável e latência ao tocar com muitos pins | p75 ≤ 2,5 s; p95 ≤ 100 ms | — | — | Medição | ⏳ pendente: precisa dos dados reais (migração) e de um aparelho real |
+| Tempo até mapa manipulável e latência ao tocar com muitos pins | p75 ≤ 2,5 s; p95 ≤ 100 ms | — | — | Medição | ⏳ pendente: precisa de um aparelho real |
 
-Para reproduzir um teste pendente:
+Para reproduzir:
 
-- **Servidor:** aplicar a migração, publicar a função `community-share` e correr `NODE_USE_ENV_PROXY=1 node e2e/meuspins.backend.mjs`.
+- **Servidor:** `NODE_USE_ENV_PROXY=1 node e2e/meuspins.backend.mjs` (migração e função já publicadas).
 - **Browser:** `npm run build && npx vite preview --port 4173 &`, depois `node e2e/meuspins.e2e.cjs`.
 
 ## Limitações conhecidas
