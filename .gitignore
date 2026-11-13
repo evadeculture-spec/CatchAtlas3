@@ -10,3 +10,6 @@ dist-e2e
 photos/pending
 .cache
 dist-tiles
+
+# Excel do Atlas da Carpa (fonte de trabalho; não versionar sem decisão)
+data/carpa/*.xlsx

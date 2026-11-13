@@ -23,6 +23,8 @@
     "e2e:fixture": "node e2e/make-exif-fixture.cjs e2e/fixtures/exif-photo.jpg 39.46125 -8.19765 \"2023:06:10 07:15:00\" \"+01:00\"",
     "e2e:marcar": "node e2e/marcar.e2e.cjs",
     "e2e:sessao-teste": "node e2e/guest.e2e.cjs",
+    "carpa:import": "tsx scripts/carpa/import.ts",
+    "carpa:fixture": "python3 scripts/carpa/make-fixture.py e2e/fixtures/carpa-sintetico.xlsx",
     "perf:atlas": "node e2e/perf.cjs",
     "load:atlas": "node e2e/load.mjs"
   },
