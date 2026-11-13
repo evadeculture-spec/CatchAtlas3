@@ -33,6 +33,9 @@ import { cameraParam, parseAtlasUrl, patchParams } from '../lib/atlas/urlState'
 import { readJSON, writeJSON } from '../lib/storage'
 import { useApp } from '../state/AppState'
 import { GuestEntry } from '../components/lanca/GuestEntry'
+import { CarpPanel, CarpSearchResults, CarpSheet } from '../components/carpa/CarpSheet'
+import { anchorOf, bboxOf, CARP_SRC, carpFeatures, ensureCarpLayers, setCarpData, setCarpSelected, useCarp } from '../components/carpa/data'
+import type { Activity as CarpActivity, Lang as CarpLang } from '../lib/carpa/model'
 
 const CATALOG_LABEL = catalogWater as unknown as Record<string, { waterId: string; label: [number, number] }>
 const HINT_KEY = 'catchatlas-atlas-hint'
@@ -76,7 +79,7 @@ export default function Atlas() {
     [setParams],
   )
   const { state, toggleFavorite, toggleFavoriteWater, allReports } = useApp()
-  const { configured, session, user, units, loading: authLoading } = useAuth()
+  const { configured, session, user, units, profile, loading: authLoading } = useAuth()
   const toast = useToast()
   const location = useLocation()
   const desktop = useMediaQuery('(min-width: 900px)')
@@ -111,7 +114,7 @@ export default function Atlas() {
   const flyToPin = useRef(!!params.get('pin') && !url.camera)
   const repId = params.get('rep')
   const waterPinsRef = params.get('meus_agua')
-  const [composer, setComposer] = useState<null | { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null }>(null)
+  const [composer, setComposer] = useState<null | { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null; carpSector?: string | null }>(null)
   const [composerBox, setComposerBox] = useState<{ step: 'place' | 'details'; h: number }>({ step: 'place', h: 0 })
   const [layersOpen, setLayersOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -133,6 +136,45 @@ export default function Atlas() {
     selectedRepId: repId,
     waterFilter: null,
   })
+
+  // ---------- camada «Carpa» (catálogo importado; o mesmo para o mapa e a pesquisa) ----------
+  const carpaOn = params.get('carpa_camada') === '1'
+  const carpaKey = params.get('carpa')
+  const dataParam = params.get('data') ?? ''
+  const carpaDate = /^\d{4}-\d{2}-\d{2}$/.test(dataParam) ? dataParam : new Date().toLocaleDateString('en-CA')
+  const carpaMod = (['pesca-individual', 'carpfishing', 'carpfishing-noturno', 'provas'].includes(params.get('modalidade') ?? '') ? params.get('modalidade') : 'pesca-individual') as CarpActivity
+  const [carpaLang, setCarpaLang] = useState<CarpLang>(() => (profile?.language === 'es-ES' ? 'es' : 'pt'))
+  const carp = useCarp(carpaOn || !!carpaKey || query.trim().length >= 2)
+  useEffect(() => {
+    const map = mapHandle.current?.getMap()
+    if (!map || status.map !== 'ready' || !carp.idx) return
+    ensureCarpLayers(map)
+    setCarpData(map, carpFeatures(carp.idx, carpaDate, carpaMod), carpaOn)
+  }, [status.map, carp.idx, carpaDate, carpaMod, carpaOn, mapKey])
+  useEffect(() => {
+    const map = mapHandle.current?.getMap()
+    if (!map || status.map !== 'ready' || !carp.idx || !map.getSource('carpa-sel')) return
+    const sct = carpaKey ? carp.idx.sector.get(carpaKey) : null
+    const pts = sct ? ([sct.a, sct.b].filter(Boolean) as [number, number][]) : []
+    if (sct && !pts.length) {
+      const a = anchorOf(carp.idx, sct)
+      if (a) pts.push(a)
+    }
+    setCarpSelected(map, pts)
+  }, [status.map, carp.idx, carpaKey, mapKey])
+  const openCarp = useCallback(
+    (key: string, frame: boolean) => {
+      updateUrl({ carpa: key, carpa_camada: '1', pin: null, rep: null, sel: null, troco: null, meus_agua: null })
+      setQuery('')
+      setClusterList(null)
+      setLayersOpen(false)
+      const sct = carp.idx?.sector.get(key)
+      const bb = sct && carp.idx ? bboxOf(carp.idx, sct) : null
+      if (frame && bb) mapHandle.current?.frame({ bbox: bb, kind: bb[0] === bb[2] && bb[1] === bb[3] ? 'point' : 'structure' })
+      if (!desktop) setSheet((sh) => (sh === 'peek' ? 'half' : sh))
+    },
+    [updateUrl, carp.idx, desktop],
+  )
 
   // ---------- entradas a partir de outras páginas (?ficha=, ?agua=) ----------
   // Elemento a enquadrar quando o registo chegar (seleção vinda do URL, sem câmara guardada).
@@ -368,7 +410,7 @@ export default function Atlas() {
     [updateUrl, desktop],
   )
   const startComposer = useCallback(
-    (opts: { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null }) => {
+    (opts: { mode: ComposerMode; pin?: FieldPin | null; draft?: Draft | null; start?: LngLat | null; water?: { ref: string; name: string } | null; carpSector?: string | null }) => {
       if (!configured) return setNotice('Contas indisponíveis neste ambiente: os pins privados precisam do servidor de contas.')
       if (!session || !pins.store) return setAuthPrompt(true)
       flyToPin.current = false
@@ -526,7 +568,7 @@ export default function Atlas() {
       return true
     }
     const pad = touch ? 16 : 7
-    const order = ['lanca-my-pin', 'lanca-my-cluster', 'lanca-comm-pt', 'lanca-comm-cluster']
+    const order = ['lanca-my-pin', 'lanca-my-cluster', 'carpa-pt', 'carpa-cluster', 'lanca-comm-pt', 'lanca-comm-cluster']
     const layers = order.filter((l) => map.getLayer(l) && map.getLayoutProperty(l, 'visibility') !== 'none')
     if (!layers.length) return false
     const f = map.queryRenderedFeatures([[point.x - pad, point.y - pad], [point.x + pad, point.y + pad]], { layers }).sort((a, b) => order.indexOf(a.layer.id) - order.indexOf(b.layer.id))[0]
@@ -534,7 +576,11 @@ export default function Atlas() {
     const at = (f.geometry as unknown as { coordinates: [number, number] }).coordinates
     const id = String(f.properties.id ?? '')
     if (f.layer.id === 'lanca-my-pin') selectPin(id)
-    else if (f.layer.id === 'lanca-comm-pt') {
+    else if (f.layer.id === 'carpa-pt') openCarp(String(f.properties.key), false)
+    else if (f.layer.id === 'carpa-cluster') {
+      const src = map.getSource(CARP_SRC) as GeoJSONSource
+      void src.getClusterExpansionZoom(Number(f.properties.cluster_id)).then((z) => map.easeTo({ center: at, zoom: z + 0.3, duration: reducedMotion ? 0 : 600 }))
+    } else if (f.layer.id === 'lanca-comm-pt') {
       updateUrl({ rep: id, pin: null, sel: null, troco: null })
       if (!desktop) setSheet((s) => (s === 'peek' ? 'half' : s))
     } else {
@@ -615,6 +661,36 @@ export default function Atlas() {
       </div>
     )
   else if (pinId && session) body = <p className="flex items-center gap-2 py-4 text-[13px] text-[#b5c5cc]"><Loader2 className="h-4 w-4 animate-spin" aria-hidden /> A abrir o pin…</p>
+  else if (carpaKey)
+    body = carp.idx ? (
+      <CarpSheet
+        idx={carp.idx}
+        sectorKey={carpaKey}
+        date={carpaDate}
+        activity={carpaMod}
+        lang={carpaLang}
+        signedIn={!!session}
+        onDate={(d) => updateUrl({ data: d })}
+        onActivity={(a) => updateUrl({ modalidade: a })}
+        onLang={setCarpaLang}
+        onClose={() => updateUrl({ carpa: null })}
+        onFrame={() => {
+          const sct = carp.idx?.sector.get(carpaKey)
+          const bb = sct && carp.idx ? bboxOf(carp.idx, sct) : null
+          if (bb) mapHandle.current?.frame({ bbox: bb, kind: bb[0] === bb[2] && bb[1] === bb[3] ? 'point' : 'structure' })
+        }}
+        onMark={() => {
+          const sct = carp.idx!.sector.get(carpaKey)
+          const w = sct ? carp.idx!.water.get(sct.waterKey) : null
+          const a = sct ? anchorOf(carp.idx!, sct) : null
+          startComposer({ mode: 'new', start: a ? { lng: a[0], lat: a[1] } : null, water: w?.atlasId ? { ref: w.atlasId, name: w.name } : null, carpSector: carpaKey })
+        }}
+      />
+    ) : carp.error ? (
+      <CarpPanel idx={null} error onRetry={carp.retry} date={carpaDate} activity={carpaMod} lang={carpaLang} onOpen={openCarp} />
+    ) : (
+      <p className="flex items-center gap-2 py-4 text-[13px] text-[#b5c5cc]"><Loader2 className="h-4 w-4 animate-spin" aria-hidden /> …</p>
+    )
   else if (pins.selectedRep) body = <CommunityCard item={pins.selectedRep} onClose={() => updateUrl({ rep: null })} />
   else if (waterPinsRef)
     body = <PinList title={`Os meus pins · ${waterInfo?.name ?? 'esta água'}`} items={waterPinItems} selectedId={pinId} onSelect={selectPin} onClose={() => updateUrl({ meus_agua: null })} empty="Ainda não tem pins nesta água (na área carregada do mapa). Use «Marcar aqui»." />
@@ -650,7 +726,12 @@ export default function Atlas() {
       />
     )
   else if (showingSearch)
-    body = <SearchResults hits={hits} query={query} loading={!reg && !regError} error={regError} onRetry={retry} selectedId={url.sel} favorites={favAtlasIds} onSelect={selectItem} />
+    body = (
+      <>
+        <SearchResults hits={hits} query={query} loading={!reg && !regError} error={regError} onRetry={retry} selectedId={url.sel} favorites={favAtlasIds} onSelect={selectItem} />
+        <CarpSearchResults idx={carp.idx} query={query} date={carpaDate} activity={carpaMod} lang={carpaLang} onOpen={openCarp} />
+      </>
+    )
   else if (listOpen || filtersActive || status.map === 'webgl-error')
     body = regError ? (
       <RegistryError onRetry={retry} />
@@ -674,6 +755,7 @@ export default function Atlas() {
         />
       </>
     )
+  else if (carpaOn) body = <CarpPanel idx={carp.idx} error={carp.error} onRetry={carp.retry} date={carpaDate} activity={carpaMod} lang={carpaLang} onOpen={openCarp} />
   else if (showCommunity)
     body = (
       <div className="space-y-3">
@@ -724,7 +806,7 @@ export default function Atlas() {
   )
   const filtersBar = <AtlasFilters countries={url.countries} types={url.types} favOnly={url.favOnly} onCountry={setCountry} onType={toggleType} onFav={toggleFav} className={desktop ? 'flex-wrap overflow-visible' : undefined} />
 
-  const sheetTitle = clusterList ? 'Pins neste ponto' : pinId ? 'Pin' : repId ? 'Report da comunidade' : waterPinsRef ? 'Os meus pins' : chooser ? 'Escolher elemento' : !url.sel && showCommunity ? 'Comunidade' : hasSelection ? (feature?.name || pick?.name || 'Elemento selecionado') : showingSearch ? `${hits.length} resultados` : listOpen ? `${inView.length} nesta vista` : 'Explorar águas'
+  const sheetTitle = clusterList ? 'Pins neste ponto' : pinId ? 'Pin' : carpaKey ? 'Carpa' : repId ? 'Report da comunidade' : waterPinsRef ? 'Os meus pins' : chooser ? 'Escolher elemento' : !url.sel && showCommunity ? 'Comunidade' : hasSelection ? (feature?.name || pick?.name || 'Elemento selecionado') : showingSearch ? `${hits.length} resultados` : listOpen ? `${inView.length} nesta vista` : 'Explorar águas'
   // No telemóvel, com o painel a meio, o centro do mapa sobe para a seleção não ficar tapada.
   const padding = composer
     ? desktop
@@ -869,6 +951,11 @@ export default function Atlas() {
               <LayersPopover
                 mine={showMine}
                 community={showCommunity}
+                carp={carpaOn}
+                onCarp={(v) => {
+                  updateUrl({ carpa_camada: v ? '1' : null, ...(v ? {} : { carpa: null }) })
+                  if (v && !desktop) setSheet((sh) => (sh === 'peek' ? 'half' : sh))
+                }}
                 signedIn={!!session}
                 onMine={(v) => updateUrl({ meus: v ? null : '0' })}
                 onCommunity={(v) => {
@@ -917,6 +1004,7 @@ export default function Atlas() {
           draft={composer.draft}
           start={composer.start}
           water={composer.water}
+          carpSector={composer.carpSector}
           bridge={bridge}
           desktop={desktop}
           onLayout={(step, h) => setComposerBox((b) => (b.step === step && Math.abs(b.h - h) < 4 ? b : { step, h }))}

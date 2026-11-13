@@ -68,8 +68,8 @@ async function uid(): Promise<string> {
 }
 
 // ------------------------------------------------------------------ colunas (sem a geografia gerada)
-const PIN_COLS = 'id, owner_id, name, category, description, tags, status, is_favorite, lat, lng, accuracy_m, coord_source, altitude_m, water_body_ref, water_body_name, environment, access_notes, target_species, modalities, techniques, baits, depth_m, bottom_type, private_notes, created_at, updated_at'
-const PING_COLS = 'id, owner_id, pin_id, journey_id, kind, occurred_at, occurred_tz, time_source, time_reliability, client_created_at, server_received_at, lat, lng, accuracy_m, location_source, location_measured_at, modality, technique, bait, equipment, depth_m, bottom_type, fishing_minutes, catch_count, outcome, notes, enrichment_status, enrichment_attempts, enrichment_error, enriched_at, created_at, updated_at, water_body_ref, water_body_name'
+const PIN_COLS = 'id, owner_id, name, category, description, tags, status, is_favorite, lat, lng, accuracy_m, coord_source, altitude_m, water_body_ref, water_body_name, environment, access_notes, target_species, modalities, techniques, baits, depth_m, bottom_type, private_notes, created_at, updated_at, carp_sector_key'
+const PING_COLS = 'id, owner_id, pin_id, journey_id, kind, occurred_at, occurred_tz, time_source, time_reliability, client_created_at, server_received_at, lat, lng, accuracy_m, location_source, location_measured_at, modality, technique, bait, equipment, depth_m, bottom_type, fishing_minutes, catch_count, outcome, notes, enrichment_status, enrichment_attempts, enrichment_error, enriched_at, created_at, updated_at, water_body_ref, water_body_name, carp_sector_key'
 const PING_FULL = `${PING_COLS}, catches(*), ping_media(*), ping_environment(*), pin:pins(id, name, category, environment)`
 
 function normalizePing(row: Record<string, unknown>): PingFull {

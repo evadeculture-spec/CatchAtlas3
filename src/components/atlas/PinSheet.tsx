@@ -208,6 +208,17 @@ export function PinSheet({ sel, store, units, shared, shareMode = null, onClose,
             <span className="block text-[11.5px] font-semibold text-[#b5c5cc]">{local ? (local.source === 'gps' ? 'GPS do telemóvel' : 'Escolhido no mapa') : ''}{sel.waterName ? `${local ? ' · ' : ''}${sel.waterName}` : ''}</span>
           </dd>
         </div>
+        {(local?.carpSector ?? ping?.carp_sector_key) && (
+          <div className="flex justify-between gap-3" data-pin-carp={local?.carpSector ?? ping?.carp_sector_key}>
+            <dt className="text-[#b5c5cc]">Setor (Carpa)</dt>
+            <dd className="text-right font-bold">
+              <Link to={`/?carpa=${encodeURIComponent((local?.carpSector ?? ping?.carp_sector_key)!)}&carpa_camada=1`} className="text-[#e6c36a] underline">
+                Abrir ficha do setor
+              </Link>
+              <span className="block text-[11.5px] font-semibold text-[#b5c5cc]">Pin pessoal ligado a um local do Atlas da Carpa</span>
+            </dd>
+          </div>
+        )}
         {(c || local?.species) && (
           <div className="flex justify-between gap-3">
             <dt className="text-[#b5c5cc]">Captura</dt>

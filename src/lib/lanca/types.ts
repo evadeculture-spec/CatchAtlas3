@@ -37,6 +37,8 @@ export interface Profile {
 
 export interface Pin {
   id: string
+  /** Setor do catálogo «Carpa» ligado (opcional). */
+  carp_sector_key?: string | null
   owner_id: string
   name: string
   category: PinCategory
@@ -67,6 +69,8 @@ export type PinInput = Omit<Pin, 'id' | 'owner_id' | 'created_at' | 'updated_at'
 
 export interface Ping {
   id: string
+  /** Setor do catálogo «Carpa» ligado (opcional). */
+  carp_sector_key?: string | null
   owner_id: string
   pin_id: string | null
   journey_id: string | null

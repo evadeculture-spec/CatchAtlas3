@@ -39,8 +39,7 @@ Deno.serve(async (req) => {
   const now = Date.now()
   // Limpeza dos registos antigos fora do caminho da resposta.
   const cleanup = admin.from('guest_sessions').delete().lt('created_at', new Date(now - 2 * 86400_000).toISOString()).then(() => undefined)
-  // deno-lint-ignore no-explicit-any
-  ;(globalThis as any).EdgeRuntime?.waitUntil?.(cleanup)
+  ;(globalThis as { EdgeRuntime?: { waitUntil?: (p: Promise<unknown>) => void } }).EdgeRuntime?.waitUntil?.(cleanup)
   const [{ count: perNet }, { count: perDay }] = await Promise.all([
     admin.from('guest_sessions').select('id', { count: 'exact', head: true }).eq('ip_hash', net).gte('created_at', new Date(now - 3600_000).toISOString()),
     admin.from('guest_sessions').select('id', { count: 'exact', head: true }).gte('created_at', new Date(now - 86400_000).toISOString()),

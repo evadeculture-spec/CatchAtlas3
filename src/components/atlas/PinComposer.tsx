@@ -79,6 +79,7 @@ export function PinComposer({
   draft,
   start,
   water,
+  carpSector,
   bridge,
   desktop,
   onDone,
@@ -91,6 +92,8 @@ export function PinComposer({
   draft?: Draft | null
   start?: LngLat | null
   water?: { ref: string; name: string } | null
+  /** Setor do catálogo «Carpa» de onde o pin foi marcado (fica ligado ao pin). */
+  carpSector?: string | null
   bridge: MapBridge
   desktop: boolean
   onDone: (p: FieldPin) => void
@@ -102,7 +105,8 @@ export function PinComposer({
     if (draft) return { ...newPin(store.uid, draft.pin.id), ...draft.pin } as FieldPin
     if (initialPin) return initialPin
     const p = newPin(store.uid, crypto.randomUUID())
-    return water ? { ...p, waterRef: water.ref, waterName: water.name } : p
+    const withWater = water ? { ...p, waterRef: water.ref, waterName: water.name } : p
+    return carpSector ? { ...withWater, carpSector } : withWater
   })
   const [step, setStep] = useState<'place' | 'details'>(() => (draft ? draft.step : mode === 'edit' ? 'details' : 'place'))
   const [placeMode, setPlaceMode] = useState<'mira' | 'gps'>('mira')

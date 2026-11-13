@@ -31,12 +31,15 @@ function JourneyFormBody({ id, allPins, j, allPings }: { id?: string; allPins: P
   const toast = useToast()
   const { profile } = useAuth()
   const [title, setTitle] = useState(j?.title ?? '')
-  const [date, setDate] = useState(() => j?.journey_date ?? todayIn(deviceTimeZone()))
+  // Planeamento a partir de um setor do Atlas da Carpa (?setor=&data=&nome=): a data escolhida na ficha passa para a jornada.
+  const qs = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
+  const qsDate = /^\d{4}-\d{2}-\d{2}$/.test(qs.get('data') ?? '') ? qs.get('data')! : null
+  const [date, setDate] = useState(() => j?.journey_date ?? qsDate ?? todayIn(deviceTimeZone()))
   const [start, setStart] = useState(j ? (j.start_time?.slice(0, 5) ?? '') : '06:30')
   const [end, setEnd] = useState(j ? (j.end_time?.slice(0, 5) ?? '') : '12:00')
   const [tz, setTz] = useState(() => j?.timezone ?? deviceTimeZone())
   const [modality, setModality] = useState(j ? (j.modality ?? '') : (profile?.modalities?.[0] ?? 'margem'))
-  const [species, setSpecies] = useState<string[]>(j?.target_species ?? profile?.favorite_species?.slice(0, 2) ?? [])
+  const [species, setSpecies] = useState<string[]>(j?.target_species ?? (qs.get('setor') ? ['carpa'] : profile?.favorite_species?.slice(0, 2) ?? []))
   // Planeamento a partir de uma massa de água do Atlas (?agua=&nome=&lat=&lng=) ou de um pin (?pin= / ?ping=).
   const agua = params.get('agua')
   const aguaNome = params.get('nome')
@@ -48,7 +51,7 @@ function JourneyFormBody({ id, allPins, j, allPings }: { id?: string; allPins: P
   const [selected, setSelected] = useState<string[]>(() => (j ? j.journey_pins.map((jp) => jp.pin_id) : params.get('pin') ? [params.get('pin')!] : waterPins.map((p) => p.id)))
   const [selectedPings, setSelectedPings] = useState<string[]>(() => (j ? j.journey_pings.map((t) => t.ping_id) : params.get('ping') ? [params.get('ping')!] : []))
   const [centrePin, setCentrePin] = useState(() => !j && !!agua && !!centre && !params.get('pin') && !params.get('ping') && waterPins.length === 0)
-  const [notes, setNotes] = useState(j?.notes ?? '')
+  const [notes, setNotes] = useState(j?.notes ?? (qs.get('setor') ? `Setor do Atlas da Carpa: ${qs.get('nome') ?? ''} [${qs.get('setor')}]` : ''))
   const [adding, setAdding] = useState('')
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)

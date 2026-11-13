@@ -151,7 +151,7 @@ export function PinList({ title, items, selectedId, onSelect, onClose, empty }: 
   )
 }
 
-export function LayersPopover({ mine, community, onMine, onCommunity, onClose, signedIn }: { mine: boolean; community: boolean; onMine: (v: boolean) => void; onCommunity: (v: boolean) => void; onClose: () => void; signedIn: boolean }) {
+export function LayersPopover({ mine, community, carp = false, onMine, onCommunity, onCarp, onClose, signedIn }: { mine: boolean; community: boolean; carp?: boolean; onMine: (v: boolean) => void; onCommunity: (v: boolean) => void; onCarp?: (v: boolean) => void; onClose: () => void; signedIn: boolean }) {
   const row = 'press flex min-h-12 w-full items-center justify-between gap-3 rounded-2xl px-3 text-left text-[13.5px] font-bold hover:bg-white/5'
   return (
     <div className="pointer-events-auto w-[260px] rounded-2xl border border-white/10 bg-[#0a2230]/96 p-2 shadow-xl backdrop-blur-xl" role="dialog" aria-label="Camadas" data-no-swipe>
@@ -179,6 +179,17 @@ export function LayersPopover({ mine, community, onMine, onCommunity, onClose, s
           <span className={cx('block h-5 w-5 rounded-full bg-white transition', community && 'translate-x-4')} />
         </span>
       </button>
+      {onCarp && (
+        <button type="button" role="switch" aria-checked={carp} className={row} onClick={() => onCarp(!carp)} data-layer="carpa">
+          <span>
+            Carpa
+            <span className="block text-[11.5px] font-semibold text-[#b5c5cc]">Águas e setores · estado por data</span>
+          </span>
+          <span className={cx('h-6 w-10 rounded-full p-0.5 transition', carp ? 'bg-[#e6c36a]' : 'bg-white/20')}>
+            <span className={cx('block h-5 w-5 rounded-full bg-white transition', carp && 'translate-x-4')} />
+          </span>
+        </button>
+      )}
     </div>
   )
 }

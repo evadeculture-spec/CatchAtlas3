@@ -60,6 +60,8 @@ export interface FieldPin {
   catchId: string | null
   waterRef: string | null
   waterName: string | null
+  /** Setor do catálogo «Carpa» a que o pin está ligado (opcional; pins livres continuam possíveis). */
+  carpSector?: string | null
   photos: FieldPhoto[]
   sync: SyncState
   error: string | null
@@ -410,6 +412,7 @@ export function toServerRow(p: FieldPin): Record<string, unknown> {
       coord_source: p.source === 'gps' ? 'gps' : 'mapa',
       water_body_ref: p.waterRef,
       water_body_name: p.waterName,
+      carp_sector_key: p.carpSector ?? null,
       private_notes: p.notes?.trim() || null,
     }
   return {
@@ -431,6 +434,7 @@ export function toServerRow(p: FieldPin): Record<string, unknown> {
     outcome: p.type === 'captura' ? 'sucesso' : null,
     water_body_ref: p.waterRef,
     water_body_name: p.waterName,
+    carp_sector_key: p.carpSector ?? null,
   }
 }
 
@@ -438,7 +442,7 @@ export function toServerRow(p: FieldPin): Record<string, unknown> {
 export async function fetchServerPin(uid: string, id: string): Promise<FieldPin | null> {
   const client = sb()
   const base = { uid, photos: [] as FieldPhoto[], sync: 'synced' as SyncState, error: null, existsOnServer: true, dirty: false, reenrich: false, deleted: false, attempts: 0, nextAttemptAt: 0 }
-  const g = await client.from('pings').select('id, kind, lat, lng, accuracy_m, location_source, location_measured_at, occurred_at, occurred_tz, time_source, time_reliability, notes, technique, bait, depth_m, catch_count, water_body_ref, water_body_name, rev, created_at, updated_at, catches(id, species, length_cm, weight_g), ping_media(id, mime, width, height, bytes, display_path, thumb_path)').eq('id', id).maybeSingle()
+  const g = await client.from('pings').select('id, kind, lat, lng, accuracy_m, location_source, location_measured_at, occurred_at, occurred_tz, time_source, time_reliability, notes, technique, bait, depth_m, catch_count, water_body_ref, water_body_name, carp_sector_key, rev, created_at, updated_at, catches(id, species, length_cm, weight_g), ping_media(id, mime, width, height, bytes, display_path, thumb_path)').eq('id', id).maybeSingle()
   if (g.data && g.data.lat != null) {
     const d = g.data as Record<string, unknown> & { catches: { id: string; species: string; length_cm: number | null; weight_g: number | null }[]; ping_media: { id: string; mime: string; width: number | null; height: number | null; bytes: number; display_path: string | null; thumb_path: string | null }[] }
     const c = d.catches?.[0]
@@ -467,13 +471,14 @@ export async function fetchServerPin(uid: string, id: string): Promise<FieldPin 
       catchId: c?.id ?? null,
       waterRef: (d.water_body_ref as string | null) ?? null,
       waterName: (d.water_body_name as string | null) ?? null,
+      carpSector: (d.carp_sector_key as string | null) ?? null,
       photos: (d.ping_media ?? []).map((m) => ({ id: m.id, mime: m.mime, width: m.width, height: m.height, bytes: m.bytes, hasDisplay: !!m.display_path, hasThumb: !!m.thumb_path, displayMime: null, thumbMime: null, exif: null, state: 'synced' as const, error: null })),
       serverRev: (d.rev as number | null) ?? 0,
       createdAt: d.created_at as string,
       updatedAt: d.updated_at as string,
     }
   }
-  const p = await client.from('pins').select('id, name, lat, lng, accuracy_m, coord_source, water_body_ref, water_body_name, private_notes, rev, created_at, updated_at').eq('id', id).maybeSingle()
+  const p = await client.from('pins').select('id, name, lat, lng, accuracy_m, coord_source, water_body_ref, water_body_name, carp_sector_key, private_notes, rev, created_at, updated_at').eq('id', id).maybeSingle()
   if (!p.data) return null
   const d = p.data
   return {
@@ -501,6 +506,7 @@ export async function fetchServerPin(uid: string, id: string): Promise<FieldPin 
     catchId: null,
     waterRef: d.water_body_ref,
     waterName: d.water_body_name,
+    carpSector: d.carp_sector_key ?? null,
     serverRev: d.rev ?? 0,
     createdAt: d.created_at,
     updatedAt: d.updated_at,

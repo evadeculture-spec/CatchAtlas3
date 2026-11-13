@@ -69,7 +69,7 @@ export function AtlasControls({
       </div>
       <Group label="Camadas e posição">
         {onLayers && (
-          <button type="button" className={btn} onClick={onLayers} aria-expanded={layersOpen} aria-label="Camadas: os meus pins e comunidade" title="Camadas">
+          <button type="button" className={btn} onClick={onLayers} aria-expanded={layersOpen} aria-label="Camadas: os meus pins, comunidade e carpa" title="Camadas">
             <Layers className="h-5 w-5" aria-hidden />
           </button>
         )}
