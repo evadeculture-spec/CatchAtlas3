@@ -576,8 +576,9 @@ export async function myShares(): Promise<Map<string, string>> {
   return new Map(((data ?? []) as { share_id: string; ping_id: string }[]).map((r) => [r.ping_id, r.share_id]))
 }
 
-async function invokeShare(action: 'publish' | 'revoke', pingId: string) {
-  const { data, error } = await sb().functions.invoke('community-share', { body: { action, pingId } })
+export type ShareMode = 'zona' | 'exato'
+async function invokeShare(action: 'publish' | 'revoke', pingId: string, mode?: ShareMode) {
+  const { data, error } = await sb().functions.invoke('community-share', { body: { action, pingId, mode } })
   if (error) {
     const ctx = (error as { context?: Response }).context
     const j = ctx ? await ctx.json().catch(() => null) : null
@@ -585,7 +586,8 @@ async function invokeShare(action: 'publish' | 'revoke', pingId: string) {
   }
   return data as { ok: boolean; shareId?: string }
 }
-export const publishShare = (pingId: string) => invokeShare('publish', pingId)
+/** Publica (ou muda o modo de) a versão pública: «zona» por omissão; «exato» só por escolha explícita. */
+export const publishShare = (pingId: string, mode: ShareMode = 'zona') => invokeShare('publish', pingId, mode)
 export const revokeShare = (pingId: string) => invokeShare('revoke', pingId)
 
 /** Associa o pin a uma jornada (sem criar outra captura). */

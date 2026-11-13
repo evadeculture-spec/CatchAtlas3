@@ -40,6 +40,7 @@ const ForgotPassword = lazy(() => import('./screens/auth/ForgotPassword'))
 const ResetPassword = lazy(() => import('./screens/auth/ResetPassword'))
 const Dashboard = lazy(() => import('./screens/conta/Dashboard'))
 const MapScreen = lazy(() => import('./screens/conta/MapScreen'))
+const MeusPins = lazy(() => import('./screens/conta/MeusPins'))
 const Pins = lazy(() => import('./screens/conta/Pins'))
 const PinForm = lazy(() => import('./screens/conta/PinForm'))
 const PinDetail = lazy(() => import('./screens/conta/PinDetail'))
@@ -132,6 +133,7 @@ const routes = [
         children: [
           { index: true, element: L(<Dashboard />) },
           { path: 'mapa', element: L(<MapScreen />) },
+          { path: 'meus-pins', element: L(<MeusPins />) },
           { path: 'pins', element: L(<Pins />) },
           { path: 'pins/novo', element: L(<PinForm />) },
           { path: 'pins/:id', element: L(<PinDetail />) },

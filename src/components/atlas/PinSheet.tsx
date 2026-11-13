@@ -2,7 +2,7 @@ import { BookOpen, CalendarPlus, Loader2, MapPin, Move, Pencil, Share2, Trash2, 
 import { useEffect, useLayoutEffect, useState } from 'react'
 import { Link } from 'react-router'
 import { getPing, listJourneys, type JourneyFull } from '../../lib/lanca/api'
-import { addToJourney, PHOTO_LABEL, publishShare, revokeShare, SYNC_LABEL, TYPE_LABEL, type FieldPin, type FieldPinType, type FieldStore } from '../../lib/lanca/fieldPins'
+import { addToJourney, PHOTO_LABEL, publishShare, revokeShare, SYNC_LABEL, TYPE_LABEL, type FieldPin, type FieldPinType, type FieldStore, type ShareMode } from '../../lib/lanca/fieldPins'
 import { formatCoords } from '../../lib/lanca/geo'
 import { tzLabel } from '../../lib/lanca/region'
 import { formatDateTime, todayIn } from '../../lib/lanca/time'
@@ -32,11 +32,13 @@ export interface SelectedPin {
 const chip = 'inline-flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[11.5px] font-bold'
 const action = 'press inline-flex min-h-11 items-center justify-center gap-2 rounded-2xl border border-white/12 px-3 text-[13px] font-bold hover:bg-white/5'
 
-export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, onDeleted, onSharedChange, toast }: {
+export function PinSheet({ sel, store, units, shared, shareMode = null, onClose, onEdit, onMove, onDeleted, onSharedChange, toast }: {
   sel: SelectedPin
   store: FieldStore
   units: Units
   shared: boolean
+  /** Modo da partilha atual, quando conhecido («zona» por omissão nas partilhas antigas). */
+  shareMode?: ShareMode | null
   onClose: () => void
   onEdit: () => void
   onMove: () => void
@@ -53,6 +55,8 @@ export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, o
   const [journeys, setJourneys] = useState<JourneyFull[] | null>(null)
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
+  const currentMode: ShareMode = shareMode ?? 'zona'
+  const [mode, setMode] = useState<ShareMode>(currentMode)
 
   // Dados completos do servidor (fotografia assinada, captura, condições) quando já sincronizado.
   const syncedNow = local?.sync === 'synced' || !local
@@ -146,7 +150,8 @@ export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, o
           {SYNC_LABEL[state]}
         </span>
         {photoState && <span className={cx(chip, photoState === 'synced' ? 'bg-white/8 text-[#b5c5cc]' : photoState === 'error' ? 'bg-amber-50 text-amber-900' : 'bg-white/10 text-[#f4f7f8]')} data-photo={photoState}>{PHOTO_LABEL[photoState]}</span>}
-        {shared && <span className={cx(chip, 'bg-[#e6b65a]/15 text-[#e6b65a]')}>Partilhado (aproximado)</span>}
+        {shared && <span className={cx(chip, 'bg-[#3b82f6]/20 text-[#bcd6ff]')} data-share-mode={currentMode}>{currentMode === 'exato' ? 'Partilhado (ponto exato)' : 'Partilhado (aproximado)'}</span>}
+        {!shared && synced && isPing && <span className={cx(chip, 'bg-[#8b5cf6]/20 text-[#d9ccff]')} data-share-mode="privado">Privado</span>}
       </div>
       {local?.error && state !== 'synced' && (
         <div className="rounded-2xl bg-amber-50 p-3 text-[12.5px] text-amber-900" role="alert">
@@ -290,36 +295,63 @@ export function PinSheet({ sel, store, units, shared, onClose, onEdit, onMove, o
       )}
 
       {panel === 'partilhar' && (
-        <div className="space-y-2 rounded-2xl border border-[#e6b65a]/40 p-3">
-          <p className="text-[13.5px] font-extrabold">{shared ? 'Partilhado na comunidade' : 'Partilhar uma versão aproximada'}</p>
-          <p className="text-[12px] leading-relaxed text-[#b5c5cc]">O seu pin continua privado. A comunidade vê apenas uma cópia separada com:</p>
-          <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]">
-            <li>Local: {ap.label} (nunca o ponto exato)</li>
-            <li>Dia {occurredAt ? formatDateTime(occurredAt, tz, { dateStyle: 'medium' }) : ''} e período do dia (sem hora exata)</li>
-            <li>{TYPE_LABEL[sel.type]}{(local?.species ?? c?.species) ? ` · ${local?.species ?? c?.species}` : ''}{ping?.technique ? ` · ${ping.technique}` : ''}</li>
+        <div className="space-y-2 rounded-2xl border border-[#3b82f6]/40 p-3" data-share-panel>
+          <p className="text-[13.5px] font-extrabold">{shared ? 'Partilhado na comunidade' : 'Partilhar na comunidade'}</p>
+          <p className="text-[12px] leading-relaxed text-[#b5c5cc]">O seu pin continua no seu diário com o ponto exato. A comunidade vê uma cópia separada:</p>
+          <fieldset className="space-y-1.5">
+            <legend className="sr-only">Como partilhar a localização</legend>
+            {(['zona', 'exato'] as const).map((m) => (
+              <label key={m} className={cx('flex min-h-11 cursor-pointer items-start gap-2.5 rounded-xl border px-3 py-2', mode === m ? 'border-[#3b82f6] bg-[#3b82f6]/10' : 'border-white/12')}>
+                <input type="radio" name="share-mode" value={m} checked={mode === m} onChange={() => setMode(m)} className="mt-1 h-4 w-4 accent-[#3b82f6]" />
+                <span className="text-[12.5px]">
+                  <span className="block font-extrabold">{m === 'zona' ? 'Partilhar zona' : 'Partilhar ponto exato'}{m === 'zona' ? ' (recomendado)' : ''}</span>
+                  <span className="text-[#b5c5cc]">{m === 'zona' ? 'Mostra só uma zona da massa de água (~6 km), nunca o ponto exato.' : 'Qualquer pessoa da comunidade vê exatamente onde pescou.'}</span>
+                </span>
+              </label>
+            ))}
+          </fieldset>
+          <p className="text-[11.5px] font-bold uppercase tracking-[0.1em] text-[#83e5ef]">Pré-visualização da vista pública</p>
+          <ul className="list-disc space-y-0.5 pl-5 text-[12.5px]" data-share-preview={mode}>
+            <li>{mode === 'zona' ? `Local: ${ap.label} (nunca o ponto exato)` : `Local: ponto exato (${sel.lat.toFixed(5)}, ${sel.lng.toFixed(5)})`}</li>
+            <li>Data e hora da captura{occurredAt ? `: ${formatDateTime(occurredAt, tz)}` : ''}</li>
+            <li>{TYPE_LABEL[sel.type]}{(local?.species ?? c?.species) ? ` · ${local?.species ?? c?.species}` : ''}{c?.weight_g ? ` · ${(c.weight_g / 1000).toLocaleString('pt-PT')} kg` : ''}{ping?.technique ? ` · ${ping.technique}` : ''}</li>
             <li>{media?.display_path ? 'Fotografia reduzida, sem metadados nem GPS' : 'Sem fotografia'} · sem notas nem nome</li>
           </ul>
-          <button
-            type="button"
-            disabled={busy}
-            className={cx(action, 'w-full', shared ? '' : 'bg-[#e6b65a] text-[#071923]')}
-            onClick={() =>
-              run(async () => {
-                if (shared) {
+          {(!shared || mode !== currentMode) && (
+            <button
+              type="button"
+              disabled={busy}
+              className={cx(action, 'w-full bg-[#3b82f6] text-white')}
+              onClick={() =>
+                run(async () => {
+                  await publishShare(sel.id, mode)
+                  toast(shared ? 'Partilha atualizada' : 'Partilhado na comunidade', { detail: mode === 'zona' ? 'Versão aproximada, sem o ponto exato.' : 'Com o ponto exato, por sua escolha.' })
+                  onSharedChange()
+                  setPanel(null)
+                })
+              }
+            >
+              {busy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Share2 className="h-4 w-4" aria-hidden />}
+              {shared ? (mode === 'zona' ? 'Mudar para zona aproximada' : 'Mudar para ponto exato') : mode === 'zona' ? 'Publicar versão aproximada' : 'Publicar ponto exato'}
+            </button>
+          )}
+          {shared && (
+            <button
+              type="button"
+              disabled={busy}
+              className={cx(action, 'w-full')}
+              onClick={() =>
+                run(async () => {
                   await revokeShare(sel.id)
                   toast('Partilha retirada', { detail: 'O pin continua no seu diário privado.' })
-                } else {
-                  await publishShare(sel.id)
-                  toast('Partilhado na comunidade', { detail: 'Versão aproximada, sem o ponto exato.' })
-                }
-                onSharedChange()
-                setPanel(null)
-              })
-            }
-          >
-            {busy ? <Loader2 className="h-4 w-4 animate-spin" aria-hidden /> : <Share2 className="h-4 w-4" aria-hidden />}
-            {shared ? 'Retirar da comunidade' : 'Publicar versão aproximada'}
-          </button>
+                  onSharedChange()
+                  setPanel(null)
+                })
+              }
+            >
+              Retirar da comunidade (tornar privado)
+            </button>
+          )}
           <button type="button" className="press min-h-11 w-full text-[13px] font-bold text-[#b5c5cc]" onClick={() => setPanel(null)}>
             Cancelar
           </button>

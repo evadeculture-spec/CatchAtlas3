@@ -1,4 +1,4 @@
-import { BarChart3, BookOpen, CalendarRange, LayoutDashboard, Map, MapPin, Radio, Settings } from 'lucide-react'
+import { BarChart3, BookOpen, CalendarRange, LayoutDashboard, Map, MapPin, MapPinned, Radio, Settings } from 'lucide-react'
 import type { ReactNode } from 'react'
 import { Navigate, NavLink, Outlet, useLocation } from 'react-router'
 import { cx } from '../../components/ui'
@@ -7,6 +7,7 @@ import { useAuth } from '../../state/Auth'
 
 export const PRIVATE_NAV = [
   { to: '/conta', label: 'Painel', icon: LayoutDashboard, end: true },
+  { to: '/conta/meus-pins', label: 'Os meus pins', icon: MapPinned },
   { to: '/conta/mapa', label: 'Mapa', icon: Map },
   { to: '/conta/pins', label: 'Pins', icon: MapPin },
   { to: '/conta/pings', label: 'Pings', icon: Radio },
@@ -44,7 +45,7 @@ export function RequireAuth({ children }: { children: ReactNode }) {
 
 export default function PrivateLayout() {
   const { pathname } = useLocation()
-  const fullBleed = pathname === '/conta/mapa'
+  const fullBleed = pathname === '/conta/mapa' || pathname === '/conta/meus-pins'
   return (
     <RequireAuth>
       <div className={cx('sticky top-0 z-30 border-b border-line/70 bg-canvas/90 backdrop-blur-xl', 'pt-safe')}>
