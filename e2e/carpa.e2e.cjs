@@ -159,29 +159,7 @@ const state = (page) => page.locator('[data-carp-sheet] [data-carp-state]').getA
     const backA = await rest(sA.access_token, `pings?id=eq.${pinId}&select=carp_sector_key`)
     ok('B não consulta nem altera o pin de A; A recupera o original', asB.length === 0 && !searchB.some((r) => r.id === pinId) && Array.isArray(updBody) && updBody.length === 0 && backA[0]?.carp_sector_key === S1)
 
-    // ====================================================== iPad: pesquisa → mapa 3D → seleção direta
-    const ip = await browser.newPage({ viewport: { width: 1180, height: 820 } })
-    await ip.context().route('**/data/carpa/catalogo.json', (r) => r.fulfill({ status: 200, contentType: 'application/json', body: CATALOG }))
-    await ip.goto(base + '/privacidade', { waitUntil: 'domcontentloaded' })
-    await ip.evaluate(() => localStorage.setItem('atlascatch-demo-v1', JSON.stringify({ onboarded: true })))
-    await atlas(ip, '?modo=3d')
-    await ip.fill('input[aria-label="Pesquisar barragem, lagoa ou rio"]', 'Aguieira')
-    await ip.waitForSelector('[data-carp-search-results]')
-    await ip.locator('[data-carp-search-results] li', { hasText: 'Setor S1' }).locator('[data-action="carpa-ver-mapa"]').click()
-    await ip.waitForSelector(`[data-carp-sheet="${S1}"]`)
-    await ip.waitForTimeout(2500)
-    await mapEval(ip, 'map.jumpTo({ pitch: 60, bearing: 35 })')
-    await ip.waitForTimeout(2000)
-    const terrain = await mapEval(ip, 'return !!map.getTerrain()')
-    const hit = await mapEval(ip, `const p = map.project([-8.2102, 40.3401]); const r = map.getContainer().getBoundingClientRect(); const f = map.queryRenderedFeatures([[p.x - 3, p.y - 3], [p.x + 3, p.y + 3]], { layers: ['carpa-pt'] })[0]; return { x: r.left + p.x, y: r.top + p.y, key: f ? f.properties.key : null, role: f ? f.properties.role : null }`)
-    ok('3D inclinado e rodado: o extremo A desenha-se no ponto documentado', hit.key === S1 && hit.role === 'a', `terreno=${terrain} ${JSON.stringify(hit)}`)
-    await ip.getByRole('button', { name: 'Fechar ficha' }).click()
-    await ip.mouse.click(hit.x, hit.y)
-    await ip.waitForSelector(`[data-carp-sheet="${S1}"]`)
-    ok('tocar no elemento 3D abre a mesma ficha (mesmo identificador)', true, `terreno ativo: ${terrain}`)
-    await ip.screenshot({ path: join(shots, 'ipad-3d-setor.png') })
-    ok('iPad: sem erros na consola', true)
-    await ip.close()
+    // O ensaio 3D (iPad) está em e2e/carpa3d.e2e.cjs (sem sessão; corre sobre a build).
   } catch (e) {
     ok('execução sem exceções', false, e.message.split('\n')[0])
   } finally {
