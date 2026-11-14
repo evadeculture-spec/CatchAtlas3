@@ -14,8 +14,8 @@ import { anchorOf, searchCarp, stateOf, STATE_COLOR, STATE_GLYPH, type CarpFilte
 const ACTIVITIES: Activity[] = ['pesca-individual', 'carpfishing', 'carpfishing-noturno', 'provas']
 const triText = (v: Tri, lang: Lang) => (v === 'sim' ? (lang === 'es' ? 'Sí' : 'Sim') : v === 'nao' ? (lang === 'es' ? 'No' : 'Não') : lang === 'es' ? 'No documentado' : 'Não documentado')
 const L = {
-  pt: { local: 'Local do Atlas da Carpa · não é um pin pessoal', data: 'Data da jornada', modalidade: 'Modalidade', condicoes: 'Condições documentadas', licenca: 'Licença', epoca: 'Época', noturna: 'Pesca noturna', devolucao: 'Devolução obrigatória', gestor: 'Gestor', horario: 'Horário', presenca: 'Presença', acesso: 'Acesso à margem', localizacao: 'Localização', fontes: 'Fontes', verificado: 'Verificado em', semVerif: 'Sem verificação independente registada', importado: 'Importado em', naoVerif: '(importação, não é verificação)', linha: 'Origem', marcar: 'Marcar pin aqui', jornada: 'Preparar jornada', enquadrar: 'Enquadrar', fechar: 'Fechar ficha', porque: 'Porquê', planear: 'Pode planear a jornada; confirme as condições no local.', confirmar: 'Antes de planear, falta confirmar:', proibido: 'A fonte competente proíbe esta pesca nesta data.', previsao: 'Previsão meteorológica', previsto: 'Previsto (modelo), não observado', semPrev: 'Sem previsão para esta data.', navegar: 'Navegar até ao ponto documentado', idioma: 'Idioma da ficha', original: 'documento em' },
-  es: { local: 'Lugar del Atlas de la Carpa · no es un pin personal', data: 'Fecha de la jornada', modalidade: 'Modalidad', condicoes: 'Condiciones documentadas', licenca: 'Licencia', epoca: 'Temporada', noturna: 'Pesca nocturna', devolucao: 'Devolución obligatoria', gestor: 'Gestor', horario: 'Horario', presenca: 'Presencia', acesso: 'Acceso a la orilla', localizacao: 'Ubicación', fontes: 'Fuentes', verificado: 'Verificado el', semVerif: 'Sin verificación independiente registrada', importado: 'Importado el', naoVerif: '(importación, no es verificación)', linha: 'Origen', marcar: 'Marcar pin aquí', jornada: 'Preparar jornada', enquadrar: 'Encuadrar', fechar: 'Cerrar ficha', porque: 'Por qué', planear: 'Puede planificar la jornada; confirme las condiciones en el lugar.', confirmar: 'Antes de planificar, falta confirmar:', proibido: 'La fuente competente prohíbe esta pesca en esta fecha.', previsao: 'Previsión meteorológica', previsto: 'Previsto (modelo), no observado', semPrev: 'Sin previsión para esta fecha.', navegar: 'Navegar hasta el punto documentado', idioma: 'Idioma de la ficha', original: 'documento en' },
+  pt: { local: 'Local do Atlas da Carpa · não é um pin pessoal', data: 'Data da jornada', modalidade: 'Modalidade', condicoes: 'Condições documentadas', licenca: 'Licença', epoca: 'Época', noturna: 'Pesca noturna', devolucao: 'Devolução obrigatória', gestor: 'Gestor', horario: 'Horário', presenca: 'Presença', acesso: 'Acesso à margem', localizacao: 'Localização', fontes: 'Fontes', verificado: 'Verificado em', semVerif: 'Sem verificação independente registada', importado: 'Importado em', naoVerif: '(importação, não é verificação)', linha: 'Origem', marcar: 'Marcar pin aqui', jornada: 'Preparar jornada', enquadrar: 'Enquadrar', fechar: 'Fechar ficha', porque: 'Porquê', planear: 'Pode planear a jornada; confirme as condições no local.', confirmar: 'Antes de planear, falta confirmar:', proibido: 'A fonte competente proíbe esta pesca nesta data.', previsao: 'Previsão meteorológica', previsto: 'Previsto (modelo), não observado', semPrev: 'Sem previsão para esta data.', navegar: 'Navegar até ao ponto documentado', idioma: 'Idioma da ficha', original: 'documento em', documentado: 'O que está documentado', base: 'Base documental', regras: 'Acesso e condições', regDevolucao: 'Devolução da carpa', vigencia: 'Vigência', semDatas: 'sem datas na fonte', textoFonte: 'texto da fonte, não traduzido' },
+  es: { local: 'Lugar del Atlas de la Carpa · no es un pin personal', data: 'Fecha de la jornada', modalidade: 'Modalidad', condicoes: 'Condiciones documentadas', licenca: 'Licencia', epoca: 'Temporada', noturna: 'Pesca nocturna', devolucao: 'Devolución obligatoria', gestor: 'Gestor', horario: 'Horario', presenca: 'Presencia', acesso: 'Acceso a la orilla', localizacao: 'Ubicación', fontes: 'Fuentes', verificado: 'Verificado el', semVerif: 'Sin verificación independiente registrada', importado: 'Importado el', naoVerif: '(importación, no es verificación)', linha: 'Origen', marcar: 'Marcar pin aquí', jornada: 'Preparar jornada', enquadrar: 'Encuadrar', fechar: 'Cerrar ficha', porque: 'Por qué', planear: 'Puede planificar la jornada; confirme las condiciones en el lugar.', confirmar: 'Antes de planificar, falta confirmar:', proibido: 'La fuente competente prohíbe esta pesca en esta fecha.', previsao: 'Previsión meteorológica', previsto: 'Previsto (modelo), no observado', semPrev: 'Sin previsión para esta fecha.', navegar: 'Navegar hasta el punto documentado', idioma: 'Idioma de la ficha', original: 'documento en', documentado: 'Lo que está documentado', base: 'Base documental', regras: 'Acceso y condiciones', regDevolucao: 'Devolución de la carpa', vigencia: 'Vigencia', semDatas: 'sin fechas en la fuente', textoFonte: 'texto de la fuente, sin traducir' },
 }
 
 export function StateBadge({ state, lang }: { state: PermissionState; lang: Lang }) {
@@ -25,6 +25,15 @@ export function StateBadge({ state, lang }: { state: PermissionState; lang: Lang
       {T[lang].state[state]}
     </span>
   )
+}
+
+/** Domínio do documento, quando a fonte não indica o organismo (não se infere o organismo). */
+const hostOf = (url: string | null | undefined) => {
+  try {
+    return url ? new URL(url).hostname.replace(/^www\./, '') : null
+  } catch {
+    return null
+  }
 }
 
 export function CarpSheet({ idx, sectorKey, date, activity, lang, signedIn, onDate, onActivity, onLang, onClose, onMark, onFrame }: {
@@ -70,6 +79,8 @@ export function CarpSheet({ idx, sectorKey, date, activity, lang, signedIn, onDa
   const src = new Map(idx.cat.sources.map((x) => [x.key, x]))
   const usedSources = [...new Set([...c.permission.rules.map((r) => r.sourceKey), ...c.presence.evidence.map((e) => e.sourceKey), ...c.access.entries.map((a) => a.sourceKey)].filter(Boolean) as string[])].map((k) => src.get(k)!).filter(Boolean)
   const cond = c.permission.conditions
+  // Tudo o que a fonte diz sobre este setor, mesmo quando não chega para «Pesca permitida».
+  const documented = idx.cat.rules.filter((r) => r.waterKey === s.waterKey && (r.sectorKey === null || r.sectorKey === s.key) && (r.conditions.basis || r.conditions.notes || r.conditions.release))
   const wxNow = wx && wx.k === wxKey ? wx : null
   const daily = wxNow?.r?.available ? wxNow.r.data?.daily : undefined
   const row = 'flex justify-between gap-3 border-t border-white/8 py-1.5 text-[12.5px]'
@@ -118,12 +129,27 @@ export function CarpSheet({ idx, sectorKey, date, activity, lang, signedIn, onDa
             {cond.licence && <div className={row}><dt>{t.licenca}</dt><dd className="text-right font-bold">{cond.licence}</dd></div>}
             {cond.season && <div className={row}><dt>{t.epoca}</dt><dd className="text-right font-bold">{cond.season}</dd></div>}
             <div className={row}><dt>{t.noturna}</dt><dd className="text-right font-bold">{triText(cond.night, lang)}</dd></div>
-            <div className={row}><dt>{t.devolucao}</dt><dd className="text-right font-bold">{triText(cond.catchAndRelease, lang)}</dd></div>
+            {!(cond.release && cond.catchAndRelease === 'desconhecido') && <div className={row}><dt>{t.devolucao}</dt><dd className="text-right font-bold">{triText(cond.catchAndRelease, lang)}</dd></div>}
             {cond.manager && <div className={row}><dt>{t.gestor}</dt><dd className="text-right font-bold">{cond.manager}</dd></div>}
             {cond.hours && <div className={row}><dt>{t.horario}</dt><dd className="text-right font-bold">{cond.hours}</dd></div>}
           </dl>
         )}
       </div>
+
+      {documented.length > 0 && (
+        <div className="space-y-1.5 rounded-2xl border border-white/8 p-3 text-[12.5px]" data-carp-documented>
+          <p className="text-[11.5px] font-extrabold uppercase tracking-[0.1em] text-[#83e5ef]">{t.documentado}</p>
+          {documented.map((r) => (
+            <dl key={r.key} lang="pt-PT">
+              {r.conditions.basis && <div className={row}><dt>{t.base}</dt><dd className="text-right font-bold">{r.conditions.basis}</dd></div>}
+              <div className={row}><dt>{t.vigencia}</dt><dd className="text-right">{r.validFrom || r.validTo ? `${r.validFrom ?? '…'} → ${r.validTo ?? '…'}` : t.semDatas}</dd></div>
+              {r.conditions.notes && <div className={row}><dt>{t.regras}</dt><dd className="text-right">{r.conditions.notes}</dd></div>}
+              {r.conditions.release && <div className={row}><dt>{t.regDevolucao}</dt><dd className="text-right" data-carp-release>{r.conditions.release}</dd></div>}
+            </dl>
+          ))}
+          {lang === 'es' && <p className="text-[11px] text-[#b5c5cc]">{t.textoFonte}</p>}
+        </div>
+      )}
 
       <dl className="text-[12.5px]">
         <div className={row}><dt>{t.presenca}</dt><dd className="text-right font-bold" data-carp-presence={c.presence.state}>{T[lang].presence[c.presence.state]}</dd></div>
@@ -156,7 +182,7 @@ export function CarpSheet({ idx, sectorKey, date, activity, lang, signedIn, onDa
           <ul className="mt-1 space-y-1.5 text-[12.5px]" data-carp-sources>
             {usedSources.map((x) => (
               <li key={x.key} className="rounded-xl border border-white/8 p-2" lang={x.lang ?? undefined}>
-                <span className="font-bold">{x.organism ?? '—'}</span>
+                <span className="font-bold">{x.organism ?? hostOf(x.url) ?? '—'}</span>
                 {x.ref ? ` · ${x.ref}` : ''}
                 {x.lang ? <span className="text-[#b5c5cc]"> · {t.original} {x.lang.toUpperCase()}</span> : null}
                 {x.url && (

@@ -37,7 +37,8 @@ const colIndex = (ref: string) => {
 
 export function readXlsx(buf: Uint8Array): Sheet[] {
   const files = unzipSync(buf)
-  const get = (p: string) => (files[p] ? strFromU8(files[p]) : null)
+  // Alguns geradores (ex.: Open XML SDK) prefixam os elementos («<x:sheet>»): remove o prefixo das etiquetas.
+  const get = (p: string) => (files[p] ? strFromU8(files[p]).replace(/<(\/?)[A-Za-z][\w.-]*:(?=[A-Za-z])/g, '<$1') : null)
   const wb = get('xl/workbook.xml')
   if (!wb) throw new Error('Ficheiro .xlsx inválido (sem xl/workbook.xml).')
   const rels = get('xl/_rels/workbook.xml.rels') ?? ''

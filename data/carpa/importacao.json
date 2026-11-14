@@ -1,0 +1,6132 @@
+{
+  "sheets": [
+    {
+      "name": "Guia",
+      "role": "leia_me",
+      "rows": 14,
+      "headerRow": 6,
+      "mapped": {
+        "39 locais/setores candidatos ainda sem confirmação individual suficiente (17 anteriores + 22 novos); ver validação de carpa e acesso.": "acesso"
+      },
+      "unmapped": [
+        "Locais a validar"
+      ]
+    },
+    {
+      "name": "Águas e setores",
+      "role": "inventario",
+      "rows": 376,
+      "headerRow": 1,
+      "mapped": {
+        "País": "pais",
+        "Território": "territorio",
+        "Província, bacia ou concelho": "provincia",
+        "Tipo": "tipo",
+        "Água ou local": "agua",
+        "Limite ou setor": "setor",
+        "Fundamento": "fundamento",
+        "Acesso e condições": "condicoes",
+        "Devolução da carpa": "devolucao",
+        "Lat. A": "lat_a",
+        "Lon. A": "lon_a",
+        "Lat. B": "lat_b",
+        "Lon. B": "lon_b",
+        "Fonte": "url"
+      },
+      "unmapped": []
+    },
+    {
+      "name": "Locais a validar",
+      "role": "candidatos",
+      "rows": 40,
+      "headerRow": 1,
+      "mapped": {
+        "País": "pais",
+        "Território": "territorio",
+        "Província, bacia ou concelho": "provincia",
+        "Tipo": "tipo",
+        "Água ou local": "agua",
+        "Limite ou setor": "setor",
+        "Fundamento": "fundamento",
+        "Acesso e condições": "condicoes",
+        "Devolução da carpa": "devolucao",
+        "Lat. A": "lat_a",
+        "Lon. A": "lon_a",
+        "Lat. B": "lat_b",
+        "Lon. B": "lon_b",
+        "Fonte": "url"
+      },
+      "unmapped": []
+    },
+    {
+      "name": "Concessões a verificar",
+      "role": "concessoes",
+      "rows": 92,
+      "headerRow": 1,
+      "mapped": {
+        "Distrito": "provincia",
+        "N.º de ZPL": "id_oficial",
+        "Local": "agua",
+        "O que falta confirmar": "notas",
+        "Fonte": "url"
+      },
+      "unmapped": []
+    },
+    {
+      "name": "Cobertura",
+      "role": "cobertura",
+      "rows": 19,
+      "headerRow": 1,
+      "mapped": {
+        "Território": "territorio",
+        "O que falta confirmar": "notas",
+        "Fonte": "url"
+      },
+      "unmapped": [
+        "Cobertura da pesquisa"
+      ]
+    },
+    {
+      "name": "Exclusões",
+      "role": "exclusoes",
+      "rows": 11,
+      "headerRow": 1,
+      "mapped": {
+        "País": "pais",
+        "Local": "agua",
+        "Situação": "situacao",
+        "Fundamento": "fundamento",
+        "Fonte": "url"
+      },
+      "unmapped": []
+    },
+    {
+      "name": "Novos 11-11",
+      "role": "novidades",
+      "rows": 14,
+      "headerRow": 1,
+      "mapped": {
+        "País": "pais",
+        "Território": "territorio",
+        "Distrito / província": "provincia",
+        "Tipo": "tipo",
+        "Água ou setor": "agua",
+        "Categoria da evidência": "fundamento",
+        "Vigência/documento": "referencia",
+        "Fonte oficial": "url"
+      },
+      "unmapped": [
+        "Revisão para publicação"
+      ]
+    },
+    {
+      "name": "Fontes GIS e cadastro",
+      "role": "fontes_gis",
+      "rows": 17,
+      "headerRow": 1,
+      "mapped": {
+        "Território": "territorio",
+        "Fonte": "organismo",
+        "Valor e limites": "limites",
+        "Próxima ação técnica": "tecnica",
+        "URL": "url"
+      },
+      "unmapped": [
+        "Formato",
+        "Prioridade"
+      ]
+    },
+    {
+      "name": "Regras e auditoria",
+      "role": "auditoria",
+      "rows": 14,
+      "headerRow": 1,
+      "mapped": {
+        "Referência temporal": "referencia",
+        "URL": "url"
+      },
+      "unmapped": [
+        "Âmbito",
+        "Regra/risco",
+        "Evidência",
+        "Implicação na Lança Lance"
+      ]
+    },
+    {
+      "name": "Síntese 11-11",
+      "role": "sintese",
+      "rows": 13,
+      "headerRow": 5,
+      "mapped": {
+        "Novas linhas com fonte oficial nominal": "url"
+      },
+      "unmapped": [
+        "Adicionados nesta pesquisa",
+        "13",
+        "Ver folha Novos 11-11"
+      ]
+    }
+  ],
+  "rows": [
+    {
+      "sheet": "Guia",
+      "row": 1,
+      "role": "leia_me",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Guia",
+      "row": 3,
+      "role": "leia_me",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Guia",
+      "row": 5,
+      "role": "leia_me",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Guia",
+      "row": 6,
+      "role": "leia_me",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Guia",
+      "row": 7,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 8,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 9,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 10,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 11,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 12,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 13,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 15,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 16,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Guia",
+      "row": 17,
+      "role": "leia_me",
+      "destination": "informativa",
+      "reason": "folha «leia_me»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 1,
+      "role": "inventario",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 2,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-aguieira:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 3,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-aguieira:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 4,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-aguieira:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 5,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-aguieira:portugal-continental/zona-3"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 6,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-meimoa:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 7,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-venda-nova:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 8,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-de-fagilde:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 9,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-de-montargil:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 10,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-de-montargil:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 11,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-alqueva:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 12,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-alqueva:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 13,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-alqueva:portugal-continental/zona-3"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 14,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-alto-rabagao-ou-pisoes:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 15,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-cabril:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 16,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-caia:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 17,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-caia:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 18,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 19,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 20,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 21,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-3"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 22,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-4"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 23,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-5"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 24,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-maranhao:portugal-continental/zona-6"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 25,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-monte-novo:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 26,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-monte-novo:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 27,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-monte-novo:portugal-continental/zona-3"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 28,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-roxo:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 29,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-dos-minutos:portugal-continental/zona-1"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 30,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-dos-minutos:portugal-continental/zona-2"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 31,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-dos-patudos:portugal-continental/albufeira"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 32,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-pequena-da-herdade-da-areia:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 33,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:alvito:portugal-continental/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 34,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-da-cristalina:portugal-continental/consultar-mapa-da-pista"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 35,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-da-talagueira:portugal-continental/setor-concessionado-a-albipesca"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 36,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-de-castelo-de-bode:portugal-continental/consultar-mapa-da-pista"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 37,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-de-montargil:portugal-continental/braco-rasquete-60-pesqueiros-salgueiros-30-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 38,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-do-carril-tomar:portugal-continental/consultar-mapa-da-pista"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 39,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-do-divor:portugal-continental/igreijinha-40-pesqueiros-tomada-de-agua-60-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 40,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-do-maranhao:portugal-continental/consultar-mapa-da-pista"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 41,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-vale-do-cobrao-benavente:portugal-continental/40-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 42,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:cabecao:portugal-continental/ribeira-da-raia-pista-velha-e-pista-nova"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 43,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:carpodromo-charca:portugal-continental/5-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 44,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:carpodromo-pinheiros:portugal-continental/2-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 45,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:carreteira:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 46,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:defesa:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 47,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:fonte-serne:portugal-continental/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 48,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:gagos:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 49,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:isabel-dias:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 50,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:lago-alfarofia:portugal-continental/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 51,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:lagoa-de-mira:portugal-continental/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 52,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:lagoas-da-folhadosa:portugal-continental/35-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 53,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:monte-clerigo:portugal-continental/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 54,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:oleirita:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 55,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:patudos:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 56,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:pavia:portugal-continental/ribeira-da-raia-cerca-de-2-km"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 57,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:ribeira-da-raia:portugal-continental/moinho-da-aboboda-acude-do-gameiro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 58,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:ribeira-da-raia:portugal-continental/pista-internacional-de-mora-acude-do-gameiro-ponte-do-paco"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 59,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:ribeira-da-serta:portugal-continental/ponte-da-en529-ponte-do-porto-dos-cavalos"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 60,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:ribeira-de-alge:portugal-continental/pista-do-poeiro-ponte-do-poeiro-acude-da-ribeira-de-alge"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 61,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:ribeira-de-raia-mora:portugal-continental/50-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 62,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-almonda-torres-novas:portugal-continental/60-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 63,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ardila:portugal-continental/troco-portugues"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 64,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave:portugal-continental/acude-da-lagoncinha-ponte-da-lagoncinha"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 65,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave:portugal-continental/aproveitamento-da-boavista-ponte-da-estacao-de-santo-tirso"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 66,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave:portugal-continental/azenha-do-bicho-etar"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 67,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave:portugal-continental/ponte-da-en14-agra-de-cima-direita-foz-do-trofa-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 68,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave-riba-d-ave:portugal-continental/52-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 69,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave-santo-tirso:portugal-continental/ambas-as-margens-postos-junto-as-pontes-e-ao-parque-da-rabada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 70,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-ave-vila-das-aves:portugal-continental/36-37-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 71,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-cavado:portugal-continental/praia-fluvial-a-montante-ate-ao-acude-de-ruaes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 72,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-do-carrapatelo:portugal-continental/margem-direita"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 73,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-do-carrapatelo:portugal-continental/margem-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 74,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-de-crestuma-lever:portugal-continental/escamarao-margem-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 75,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-de-crestuma-lever:portugal-continental/fontelas-quinta-da-nossa-senhora-da-guia-margem-direita"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 76,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-de-crestuma-lever:portugal-continental/lagoa-de-leverinho-tomas-da-lixa-margem-direita"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 77,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-douro-albufeira-de-crestuma-lever:portugal-continental/pedorido-troco-descrito-entre-nogueira-do-rio-e-concas"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 78,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-lis-leiria:portugal-continental/48-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 79,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-lis-vale-do-lis-monte-real:portugal-continental/133-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 80,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-mondego:portugal-continental/ponte-rainha-santa-isabel-ponte-de-santa-clara-margem-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 81,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-sorraia:portugal-continental/montinho-do-brito-ponte-ferroviaria"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 82,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-sorraia-coruche:portugal-continental/paredao-ate-a-ponte-80-pesqueiros-zona-do-milho-30-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 83,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-sorraia-santa-justa:portugal-continental/70-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 84,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-sousa:portugal-continental/parque-de-merendas-500-m-a-montante-do-acude"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 85,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-sousa:portugal-continental/ponte-da-en106-em-novelas-500-m-para-cada-lado"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 86,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega:portugal-continental/acude-de-captacao-azenha-do-agapito-chaves"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 87,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega:portugal-continental/limite-de-cabeceiras-de-basto-ponte-de-cavez"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 88,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega:portugal-continental/ponte-de-curalha-limite-de-redondelo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 89,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega:portugal-continental/ponte-de-sao-goncalo-amarante-1-4-km-a-montante-e-100-m-a-jusante"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 90,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega-cavez:portugal-continental/1-acude-50-pesqueiros-2-acude-32-pesqueiros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 91,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega-albufeira-do-torrao:portugal-continental/canaveses-cerca-de-900-m"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 92,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega-albufeira-do-torrao:portugal-continental/matos-alpendurada-margem-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 93,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-tamega-albufeira-do-torrao:portugal-continental/quinta-do-alvelo-margem-esquerda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 94,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:venda-velha:portugal-continental/perimetro-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 95,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aguas-continentais-nao-truteiras:andalucia/excluir-refugios-zonas-com-outras-limitacoes-e-espacos-protegidos-sujeitos-a-pla"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 96,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:bermejales:andalucia/rio-cacin"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 97,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:beznar:andalucia/rio-izbor"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 98,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:canales:andalucia/rio-genil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 99,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:francisco-abellan:andalucia/rio-fardes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 100,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-bolera:andalucia/rio-guadalentin"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 101,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:quentar:andalucia/rio-aguas-blancas"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 102,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:san-clemente:andalucia/rio-guardal"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 103,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:tranco-de-beas:andalucia/rio-guadalquivir"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 104,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:alcanadre:aragon/guatizalema-cinca"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 105,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aliaga:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 106,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:almochuel:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 107,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aragon:aragon/ponte-de-santa-cilia-de-jaca-limite-de-navarra"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 108,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:arba:aragon/confluencia-riguel-arba-de-luesia-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 109,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ardisa:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 110,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:azlor:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 111,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:balsa-de-valdestremera:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 112,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barasona:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 113,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barrio-rural-del-campillo:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 114,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:calanda:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 115,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:canelles:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 116,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cerrito:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 117,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cinca:aragon/foz-do-ara-segre"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 118,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:civan-caspe-ii:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 119,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cuba:aragon/bacia-do-mijares-sem-coordenadas-no-anexo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 120,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cueva-foradada:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 121,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:dique-de-cola-puente-de-santolea:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 122,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ebro:aragon/percurso-aragones"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 123,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-arquillo:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 124,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-bolaso:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 125,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-grado:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 126,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-molino:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 127,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:esca:aragon/ponte-de-sigues-albufeira-de-yesa"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 128,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:escuriza:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 129,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:esera:aragon/ponte-da-estrada-para-benabarre-cinca"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 130,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:estanca-de-alcaniz:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 131,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:estanca-del-gancho:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 132,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:estanca-del-sabinar:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 133,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:flumen:aragon/isuela-alcanadre"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 134,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:fuente-abeja:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 135,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:gallego:aragon/salto-del-lobo-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 136,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:gallipuen:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 137,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:guadalope:aragon/acude-do-rio-alto-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 138,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:guatizalema:aragon/salillas-alcanadre"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 139,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:huerva:aragon/cauda-de-mezalocha-maria-de-huerva"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 140,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:isuela:aragon/huesca-flumen"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 141,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:jalon:aragon/entrada-em-aragon-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 142,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-huerta:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 143,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-pena:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 144,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-sotonera:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 145,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 146,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lagunas-de-estana:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 147,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-navas:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 148,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-penicas:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 149,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-torcas:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 150,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:maidevera:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 151,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:masecicos:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 152,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:matarrana:aragon/fabara-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 153,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:mediano:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 154,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:mequinenza:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 155,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:molino-sastanaga:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 156,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:noguera-ribagorzana:aragon/cauda-da-albufeira-de-escales-limite-de-lleida-excluir-vedados"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 157,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:pena:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 158,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:piedra:aragon/cauda-de-la-tranquera-jalon"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 159,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ribarroja:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 160,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:riguel:aragon/estrada-a-125-rio-arba"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 161,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:san-bartolome:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 162,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santa-ana-noguera-ribagorzana:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 163,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santa-ana-queiles:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 164,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santolea:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 165,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:sopeira:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 166,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:torrollon:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 167,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:tortajada:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 168,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:valdabra:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 169,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:valdelafuen:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 170,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:vera-del-moncayo:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 171,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:vero:aragon/barbastro-cinca"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 172,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:yesa:aragon/ponto-de-referencia-da-norma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 173,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ebro:cantabria/setor-cantabro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 174,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aguilar-de-campoo:castilla-y-leon/rio-pisuerga"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 175,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:almendra:castilla-y-leon/rio-tormes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 176,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:antonan-del-valle:castilla-y-leon/arroyo-de-san-vicente"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 177,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barcena:castilla-y-leon/cuenca-sil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 178,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barrios-de-luna:castilla-y-leon/rio-luna"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 179,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:benamarias-magaz-de-cepeda:castilla-y-leon/rio-salguiral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 180,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:burgomillodo:castilla-y-leon/rio-duraton"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 181,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:burguillo:castilla-y-leon/rio-alberche"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 182,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:campanana-o-de-cornatel:castilla-y-leon/cuenca-sil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 183,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:canal-de-castilla:castilla-y-leon/da-ponte-sobre-la-carretera-p-434-km-7-a-la-altura-de-requena-de-campos-ate-ao-l"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 184,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:canal-de-castilla:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 185,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:charco-del-cura:castilla-y-leon/rio-alberche"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 186,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cuerda-del-pozo:castilla-y-leon/rio-duero"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 187,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ebro:castilla-y-leon/rio-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 188,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-milagro-o-de-miruena:castilla-y-leon/rio-almar"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 189,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:embalse-de-ayoo-de-vidriales:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 190,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:embalse-de-congosta:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 191,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:embalse-de-encinas:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 192,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:embalse-de-la-santa-espina:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 193,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:fuentes-claras:castilla-y-leon/rio-adaja"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 194,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:juarros-de-voltoya:castilla-y-leon/rio-voltoya"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 195,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-almendra:castilla-y-leon/rio-tormes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 196,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-tabla:castilla-y-leon/rio-jamuz"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 197,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lago-de-carucedo:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 198,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lago-de-laguna-de-duero:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 199,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-branuelas:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 200,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-de-grisuela:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 201,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-de-zotes-del-paramo:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 202,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lagunas-de-san-juan-de-torres:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 203,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lagunas-del-semillero:castilla-y-leon/na-provincia-indicada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 204,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-cogotas:castilla-y-leon/rio-adaja"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 205,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-rozas:castilla-y-leon/cuenca-sil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 206,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-vencias:castilla-y-leon/rio-duraton"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 207,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:linares-del-arroyo:castilla-y-leon/rio-riaza"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 208,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:los-angeles-de-san-rafael:castilla-y-leon/rio-moros"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 209,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:los-rabanos:castilla-y-leon/rio-duero"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 210,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:matalavilla:castilla-y-leon/cuenca-sil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 211,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:monteagudo-de-las-vicarias:castilla-y-leon/rio-nagima"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 212,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:penarrubia:castilla-y-leon/cuenca-sil"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 213,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ponton-alto:castilla-y-leon/rio-eresma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 214,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:porma:castilla-y-leon/rio-porma"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 215,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-cega:castilla-y-leon/desde-el-limite-con-la-provincia-de-segovia-ate-a-foz-no-rio-duero"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 216,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-duero:castilla-y-leon/de-rio-situado-entre-el-puente-del-ferrocarril-de-soria-a-torralba-en-almazan-y-"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 217,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-duero:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 218,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-duero:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 219,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-duero:castilla-y-leon/percurso-provincial-y-en-los-afluentes-del-duero-en-el-tramo-comprendido-desde-s"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 220,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-eresma:castilla-y-leon/desde-el-limite-con-la-provincia-de-segovia-ate-a-foz-no-rio-adaja"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 221,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-eresma:castilla-y-leon/desde-el-puente-de-la-carretera-sg-v-3122-a-la-altura-de-la-localidad-de-hontana"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 222,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-esla:castilla-y-leon/da-ponte-de-la-carretera-cl-621-a-la-altura-de-la-localidad-de-valencia-de-don-j"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 223,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-esla:castilla-y-leon/percurso-provincial-incluido-el-embalse-de-ricobayo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 224,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-orbigo:castilla-y-leon/desde-su-confluencia-con-el-rio-jamuz-ate-ao-limite-de-zamora"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 225,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-orbigo:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 226,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-pisuerga:castilla-y-leon/desde-el-puente-de-piedra-de-astudillo-en-el-km-31-de-la-p-405-hasta-el-limite-c"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 227,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-pisuerga:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 228,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-sequillo:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 229,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-sequillo:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 230,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-tormes:castilla-y-leon/situado-entre-el-puente-nuevo-de-encinas-de-abajo-en-la-a-50-limite-inferior-del"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 231,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rio-valderaduey:castilla-y-leon/percurso-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 232,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rosarito:castilla-y-leon/rio-tietar"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 233,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:san-juan:castilla-y-leon/rio-alberche"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 234,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santa-teresa:castilla-y-leon/rio-tormes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 235,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:serones:castilla-y-leon/rio-voltoya"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 236,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:sobron:castilla-y-leon/rio-ebro"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 237,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:valparaiso:castilla-y-leon/rio-tera"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 238,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:villagonzalo:castilla-y-leon/rio-tormes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 239,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:villameca:castilla-y-leon/rio-tuerto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 240,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:alarcon:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 241,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:alcorlo:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 242,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:almansa:castilla-la-mancha/apenas-a-zona-do-coto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 243,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:almoguera:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 244,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:atance:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 245,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:belena:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 246,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:bolarque:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 247,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:bolarque:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 248,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:buendia:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 249,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:buendia:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 250,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:bullaque:castilla-la-mancha/na-provincia"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 251,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cabriel:castilla-la-mancha/ponte-cm-2109-entre-cardenete-e-villora-limite-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 252,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:camarillas:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 253,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:castilseras:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 254,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cijara:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 255,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:contreras:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 256,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cursos-de-agua-de-toledo:castilla-la-mancha/todos-os-leitos-abrangidos-pela-ordem-sujeitos-aos-restantes-condicionamentos"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 257,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-cenajo:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 258,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-talave:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 259,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:entrepenas:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 260,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:fresnedas-nuevo:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 261,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:fresnedas-viejo:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 262,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:gasset:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 263,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:guadiana:castilla-la-mancha/ponte-flor-de-ribera-daimiel-limite-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 264,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:guadiana:castilla-la-mancha/todas-as-aguas-da-bacia-na-provincia-ressalvadas-as-interdicoes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 265,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:guadiela:castilla-la-mancha/travessia-da-n-320-foz-no-tajo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 266,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:jabalon:castilla-la-mancha/barragem-de-la-cabezuela-guadiana"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 267,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:jucar:castilla-la-mancha/foz-do-altarejos-limite-provincial"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 268,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:jucar:castilla-la-mancha/percurso-na-provincia"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 269,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-cabezuela:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 270,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-fuensanta:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 271,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-tajera:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 272,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-toba:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 273,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-tosca:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 274,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-de-una:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 275,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-del-marquesado:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 276,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-grande-del-tobar:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 277,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:molino-de-chincha:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 278,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:montoro-i:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 279,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:montoro-ii:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 280,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:palmaces:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 281,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:penarroya:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 282,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:puerto-de-vallehermoso:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 283,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:segura:castilla-la-mancha/base-da-barragem-de-la-fuensanta-ponte-de-hijar"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 284,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:tajo:castilla-la-mancha/desde-a-agua-represada-de-entrepenas-ate-a-saida-da-provincia-incluindo-albufeir"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 285,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:tajo:castilla-la-mancha/entrada-no-municipio-de-buendia-saida-em-barajas-de-melo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 286,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:torre-de-abraham:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 287,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:vega-del-jabalon:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 288,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:vicario:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 289,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:zorita:castilla-la-mancha/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 290,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:escales:catalunya/setor-catalao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 291,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:riba-roja-i-flix:catalunya/eb-01-apenas-setores-abertos"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 292,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:pizarroso-abastecimiento:extremadura/coto-de-canaveral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 293,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:a-frieira:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 294,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:a-hedrada:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 295,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:as-conchas:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 296,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:as-portas:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 297,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:belesar:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 298,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cachamuina:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 299,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:castrelo-de-mino:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 300,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cecebre:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 301,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:leboreiro:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 302,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:lindoso:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 303,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:mino:galiza/apenas-entre-as-albufeiras-enumeradas-no-art-9"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 304,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:montefurado:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 305,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:o-vao:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 306,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:os-peares:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 307,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:portodemouros:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 308,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:pumares:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 309,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:san-martino:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 310,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:san-pedro:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 311,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santiago:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 312,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santo-estevo:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 313,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:sequeiros:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 314,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:sil:galiza/apenas-entre-as-albufeiras-enumeradas-no-art-9"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 315,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:velle:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 316,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:viasouto:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 317,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:zamans:galiza/limites-do-anexo-viii-apenas-territorio-galego"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 318,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ebro:la-rioja/logrono-presa-de-las-norias-200-m-a-jusante-da-foz-do-iregua"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 319,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-villar:la-rioja/tricio"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 320,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-grajera:la-rioja/logrono"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 321,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-laguna-ii-alfaro:la-rioja/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 322,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-molineta-alfaro:la-rioja/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 323,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:sopranis-arnedo:la-rioja/geral"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 324,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:santillana:madrid/setores-abertos-do-coto-em-manzanares-el-real"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 325,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aguas-continentais-de-murcia:murcia/art-3-1-e-sujeitas-a-vedados"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 326,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:azud-de-ojos:murcia/blanca-setor-autorizado-no-anexo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 327,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-esparragal:murcia/rio-segura-calasparra"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 328,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-jarral:murcia/rio-segura-abaran"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 329,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-mayes:murcia/setor-do-anexo-la-cierva-sujeito-a-coto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 330,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:hoya-garcia:murcia/rio-segura-cieza"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 331,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-cierva:murcia/setor-do-anexo-la-cierva-sujeito-a-coto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 332,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:puentes:murcia/setor-do-anexo-la-cierva-sujeito-a-coto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 333,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:trasvase-tajo-segura:murcia/apenas-os-trocos-pescaveis"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 334,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:aragon:navarra/barragem-da-central-de-arriba-gallipienzo-foz-incluindo-afluentes-e-descontando-"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 335,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:arakil:navarra/barragem-da-central-de-berazpea-ibero-rio-arga"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 336,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:arga:navarra/barragem-de-huarte-foz-e-afluentes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 337,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:balsa-de-castejon:navarra/castejon"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 338,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barca-vieja:navarra/ebro-margem-esquerda-a-jusante-da-ponte-na-8703-ate-ao-fim-do-soto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 339,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:barcelosa:navarra/tudela"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 340,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:campiel:navarra/ebro-margem-esquerda-escarpas-de-campiel-barragem-de-machin"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 341,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ebro:navarra/curso-navarro-e-afluentes-com-excecoes-locais"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 342,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ega:navarra/a-jusante-da-central-de-allo-e-afluentes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 343,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-marinal:navarra/ebro-margem-esquerda-do-soto-de-resa-a-ponte-antiga-de-san-adrian"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 344,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:el-vergal:navarra/ega-barragem-da-central-farinheira-de-andosilla-barragem-de-rega-de-azagra"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 345,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:gobella:navarra/ebro-ponte-para-alcanadre-em-lodosa-electra-sartaguda"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 346,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-barca:navarra/ebro-margem-esquerda-desde-100-m-acima-de-la-barca-ate-la-boleta"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 347,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-estanca:navarra/corella-excluido-setor-sudoeste-junto-ao-observatorio"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 348,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-estanquilla:navarra/corella"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 349,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-morea:navarra/beriain-unicamente-setor-do-guia"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 350,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-panueva:navarra/rio-zidacos-ponte-de-la-panueva-ponte-da-na-132-tafalla"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 351,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-penica:navarra/ebro-margem-direita-300-m-abaixo-da-foz-do-queiles-fim-do-passeio-do-prado"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 352,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:laguna-de-rada:navarra/rada"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 353,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:las-estanquillas-agua-potable:navarra/cintruenigo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 354,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:los-tubos:navarra/arga-troco-desportivo-delimitado-na-pagina-48-do-guia"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 355,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:rinuevo-alto:navarra/cascante"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 356,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:somero-la-estanca:navarra/cintruenigo"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 357,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:soto-del-churri:navarra/charca-de-peralta-antigo-leito-do-arga"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 358,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ultzama:navarra/barragem-de-sorauren-foz-e-afluentes"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 359,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:valdelafuente:navarra/tudela-margem-direita-300-m"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 360,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:yesa:navarra/parte-navarra"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 361,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:albina:pais-vasco/perimetro-em-alava"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 362,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:ullibarri-gamboa:pais-vasco/perimetro-exceto-os-setores-vedados"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 363,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:urrunaga:pais-vasco/perimetro-em-alava"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 364,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:barragem-do-vale-seco:portugal-continental/concessao-definida-no-edital-2024-2034"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 365,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-do-bonito:portugal-continental/zona-municipal-regulamentada-confirmar-eventuais-editais-complementares"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 366,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-madalena:portugal-continental/herdade-da-madalena-herdade-do-gusmao-margens-da-concessao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 367,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-zezere-zpl-tortosendo:portugal-continental/zona-n-037-2020-limites-geograficos-a-obter-no-cadastro-icnf"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 368,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-cabril-braco-do-alto-lindoso:portugal-continental/foz-ribeira-da-sardeira-230-m-regolfo-rio-lima-alto-lindoso"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 369,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:albufeira-da-canicada-braco-do-geres:portugal-continental/margem-esquerda-do-braco-do-geres-zona-de-regolfo-ate-praia-fluvial-do-alqueirao"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 370,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "pt:rio-geres-zpl-canicada:portugal-continental/troco-delimitado-pelo-edital-2025-no-braco-da-canicada-e-limite-do-pnpg-verifica"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 371,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:silillos-i-y-ii:andalucia/dos-embalses-silillos-i-e-ii-conforme-anexo-v-consultar-dias-de-abertura-do-coto"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 372,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:cijara:extremadura/massas-e-setores-sujeitos-a-cotos-restricoes-ambientais-e-regras-de-margem-nao-i"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 373,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:garcia-de-sola:extremadura/massas-e-setores-sujeitos-a-cotos-restricoes-ambientais-e-regras-de-margem-nao-i"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 374,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:zujar:extremadura/massas-e-setores-sujeitos-a-cotos-restricoes-ambientais-e-regras-de-margem-nao-i"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 375,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:la-serena:extremadura/massas-e-setores-sujeitos-a-cotos-restricoes-ambientais-e-regras-de-margem-nao-i"
+    },
+    {
+      "sheet": "Águas e setores",
+      "row": 376,
+      "role": "inventario",
+      "destination": "agua+setor+regra",
+      "key": "es:orellana:extremadura/massas-e-setores-sujeitos-a-cotos-restricoes-ambientais-e-regras-de-margem-nao-i"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 1,
+      "role": "candidatos",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 2,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:camarasa:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 3,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:darnius-boadella:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 4,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:sant-llorenc-de-montgai:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 5,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:santa-anna:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 6,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:sau:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 7,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:utxesa:catalunya"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 8,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:alcantara:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 9,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:cijara:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 10,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:cornalvo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 11,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:garcia-sola:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 12,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:la-serena:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 13,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:nuestra-senora-de-la-piedad-la-laguna:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 14,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:orellana:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 15,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:sierra-brava:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 16,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:valdecanas:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 17,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:zujar:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 18,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:urkulu:pais-vasco"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 19,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:pena-del-aguila:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 20,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:sierra-brava:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 21,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:los-canchales:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 22,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:alange:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 23,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:valdecanas:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 24,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:gabriel-y-galan:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 25,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:guijo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 26,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:valdeobispo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 27,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:jerte-plasencia:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 28,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:borbollon:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 29,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:alcantara:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 30,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:cedillo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 31,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:arrocampo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 32,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:torrejon-tajo:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 33,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:torrejon-tietar:extremadura"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 34,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:puente-nuevo:andalucia"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 35,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:guadalnuno:andalucia"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 36,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:sierra-boyera:andalucia"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 37,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:arcos-de-la-frontera:andalucia"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 38,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "es:bornos:andalucia"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 39,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "pt:albufeira-de-sambade:portugal-continental"
+    },
+    {
+      "sheet": "Locais a validar",
+      "row": 40,
+      "role": "candidatos",
+      "destination": "candidato",
+      "key": "pt:albufeira-de-pedrogao:portugal-continental"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 1,
+      "role": "concessoes",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 2,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:007-2018:albufeira-do-salgueiro:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 3,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:013-2019:albufeira-de-sambade:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 4,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:123-2022:albufeira-de-santa-justa:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 5,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:215-2026:rio-sabor:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 6,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:029-2020:ribeira-da-aveleda:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 7,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:028-2020:rio-onor:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 8,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:030-2020:rio-igrejas:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 9,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:048-2021:albufeira-da-serra-serrada:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 10,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:049-2021:rio-sabor:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 11,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:052-2021:albufeira-de-veiguinhas:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 12,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:050-2021:acude-das-gralhas:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 13,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:187-2025:rio-baceiro:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 14,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:108-2022:albufeira-de-fonte-longa:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 15,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:162-2024:rio-tua:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 16,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:072-2022:rio-rabacal:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 17,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:092-2022:rio-rabacal:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 18,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:167-2024:albufeira-do-ribeiro-grande-e-arco:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 19,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:183-2025:albufeira-do-peneireiro:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 20,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:177-2025:albufeira-de-valtorno:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 21,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:202-2026:albufeira-de-prada:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 22,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:032-2020:rio-rabacal:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 23,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:074-2022:rio-assureira:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 24,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:166-2024:rio-baceiro:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 25,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:033-2020:rio-tuela:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 26,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:031-2020:rio-mente:braganca"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 27,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:196-2025:ribeira-de-tera:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 28,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:155-2024:albufeira-de-sao-castor:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 29,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:070-2021:albufeira-herdade-da-calada:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 30,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:091-2022:albufeira-da-balanqueira-de-baixo:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 31,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:113-2022:albufeira-da-oleirita:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 32,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:036-2020:albufeira-do-pinheiro:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 33,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:065-2021:albufeira-do-marnel:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 34,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:084-2022:albufeira-de-nossa-senhora-da-tourega:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 35,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:208-2026:albufeira-da-herdade-da-repoula:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 36,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:178-2025:albufeira-de-fonte-portas-barrocal:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 37,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:116-2022:albufeira-da-defesa:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 38,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:100-2022:albufeira-da-herdade-do-sobral-dos-ricos:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 39,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:095-2022:albufeira-do-pinheiro:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 40,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:141-2023:ribeira-da-raia:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 41,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:115-2022:albufeira-das-aguias:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 42,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:140-2023:ribeira-da-tera:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 43,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:160-2024:albufeira-da-herdade-do-esporao:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 44,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:159-2024:parte-norte-da-albufeira-da-herdade-do-esporao:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 45,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:107-2022:albufeira-do-barranco-do-montinho:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 46,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:128-2023:albufeira-da-burquilheira:evora"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 47,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:093-2022:albufeira-de-vale-barqueiros:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 48,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:002-2018:albufeira-da-selada:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 49,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:125-2022:albufeira-da-figueira-doida:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 50,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:106-2022:albufeira-da-mesquita:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 51,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:105-2022:albufeira-vale-do-ouro:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 52,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:069-2021:albufeira-da-abodaneira:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 53,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:027-2020:albufeira-das-nascentes:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 54,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:026-2020:albufeira-da-arreganhada:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 55,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:024-2019:albufeira-do-crasto:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 56,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:017-2019:albufeira-do-vale-seco:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 57,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:144-2024:albufeira-das-casas-velhas:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 58,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:035-2020:albufeira-lago-de-alfarofia:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 59,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:174-2024:albufeira-de-palma:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 60,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:112-2022:albufeira-da-cristalina:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 61,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:005-2018:albufeira-da-ribeira-de-vide:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 62,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:192-2025:albufeira-da-carreteira:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 63,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:189-2025:albufeira-de-isabel-dias:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 64,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:176-2025:albufeira-da-herdade-dos-esquerdos:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 65,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:154-2024:albufeira-da-marmanja:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 66,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:038-2020:albufeira-do-ribeiro-das-vinhas:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 67,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:145-2024:albufeira-de-entre-ribeiras:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 68,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:118-2022:albufeira-do-vale-penedo:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 69,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:207-2026:albufeira-da-madalena:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 70,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:200-2026:albufeira-da-herdade-da-turca-e-santa-maria:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 71,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:083-2022:albufeira-da-revenduda:portalegre"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 72,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:021-2019:rio-odres:porto"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 73,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:158-2024:rio-ave:porto"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 74,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:003-2018:rio-ferreira:porto"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 75,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:209-2026:albufeira-da-herdade-dos-cadoucos:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 76,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:043-2020:albufeira-da-barragem-das-tojeiras:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 77,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:109-2022:albufeira-da-barragem-dos-gagos:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 78,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:114-2022:albufeira-dos-patudos:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 79,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:163-2024:albufeira-da-herdade-da-aroeira:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 80,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:194-2025:albufeira-grande-da-herdade-da-areia:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 81,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:195-2025:albufeira-pequena-da-herdade-da-areia:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 82,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:149-2024:albufeira-do-vale-de-pocilgoes:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 83,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:015-2019:acude-da-agolada-de-baixo:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 84,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:124-2023:albufeira-do-vale-da-formosa:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 85,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:096-2022:rio-sorraia-pista-de-pesca-de-coruche:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 86,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:101-2022:albufeira-do-bonito:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 87,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:111-2022:albufeira-de-belver:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 88,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:219-2026:albufeira-do-carril:santarem"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 89,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:sem-nome:idanha-marechal-carmona:castelo-branco"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 90,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:sem-nome:santa-agueda-marateca:castelo-branco"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 91,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:sem-nome:fratel:castelo-branco"
+    },
+    {
+      "sheet": "Concessões a verificar",
+      "row": 92,
+      "role": "concessoes",
+      "destination": "concessao",
+      "key": "concessao:sem-nome:herdade-do-goncalao:castelo-branco"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 1,
+      "role": "cobertura",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 2,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 3,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 4,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 5,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 6,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 7,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 8,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 9,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 10,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 11,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 12,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 13,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 14,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 15,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 16,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 17,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 18,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Cobertura",
+      "row": 19,
+      "role": "cobertura",
+      "destination": "informativa",
+      "reason": "folha «cobertura»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 1,
+      "role": "exclusoes",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 2,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Boavista, Almodôvar — ZPL extinta — Despacho de 28/10/2022 extinguiu a ZPL 008/2019. Reavaliar o regime atual antes de anunciar pesca ou acesso."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 3,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Albufeira Grande da Herdade da Areia — Carpa fora do edital — O edital da Grande enumera apenas achigã. A Pequena tem autorização própria para carpa."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 4,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Bizkaia — Dirigida proibida — Ordem 2084/2026, anexo I B, espécie de captura acidental."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 5,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Embalse del Perdiguero, La Rioja — Interdito em 2026 — O coto ficou vedado em 2026 devido ao esvaziamento."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 6,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Laguna de Juncal, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 7,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Laguna de Pitillas, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 8,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Embalse de Salobre / Las Cañas, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 9,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Balsa de Agua Salada, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 10,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Laguna de Dos Reinos, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 11,
+      "role": "exclusoes",
+      "destination": "excluida",
+      "reason": "Canal de Navarra e balsas de regulação, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 1,
+      "role": "novidades",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 2,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 3,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 4,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 5,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 6,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 7,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 8,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 9,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 10,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 11,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 12,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 13,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Novos 11-11",
+      "row": 14,
+      "role": "novidades",
+      "destination": "informativa",
+      "reason": "folha «novidades»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 1,
+      "role": "fontes_gis",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 2,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-sigservices-icnf-pt-server-rest-services-bdg-concessoes-pesca-mapserver-0"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 3,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-www-icnf-pt-pesca-pescaludicaedesportiva-carpfishingnoturno"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 4,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-www-icnf-pt-pesca-pescaludicaedesportiva-zpludica-extincaodazpl"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 5,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-sniambgeoogc-apambiente-pt-getogc-rest-services-sniamb-poaap-mapserver"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 6,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-datos-gob-es-es-catalogo-a11002926-cotos-de-pesca-en-extremadura"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 7,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-doe-juntaex-es-pdfs-doe-2026-590o-590o-pdf"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 8,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-turismolasiberia-juntaex-es-pt-embalse-de-orellana"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 9,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-agricultura-gencat-cat-ca-ambits-medi-natural-pesca-continental-cartografi"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 10,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-agricultura-gencat-cat-ca-serveis-cartografia-sig-bases-cartografiques-cac"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 11,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-www-aragon-es-pesca-folletos-informativos"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 12,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-datos-gob-es-es-catalogo-a07002862-pesca-de-castilla-y-leon-tramos-de-pesc"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 13,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-datos-gob-es-es-catalogo-a07002862-pesca-cyl-delimitacion-cartografica-car"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 14,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-www-juntadeandalucia-es-boja-2023-15-1"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 15,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-fapd-org-escenarios-de-pesca"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 16,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:https-www-navarra-es-documents-48192-6652441-folleto-2bnormativa-2bpesca-cas-pdf"
+    },
+    {
+      "sheet": "Fontes GIS e cadastro",
+      "row": 17,
+      "role": "fontes_gis",
+      "destination": "fonte",
+      "key": "fonte:normalizacao-entre-jurisdicoes"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 1,
+      "role": "auditoria",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 2,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 3,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 4,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 5,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 6,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 7,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 8,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 9,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 10,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 11,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 12,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 13,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Regras e auditoria",
+      "row": 14,
+      "role": "auditoria",
+      "destination": "informativa",
+      "reason": "folha «auditoria»: controlo/resumo, sem entidades novas"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 1,
+      "role": "sintese",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 2,
+      "role": "sintese",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 3,
+      "role": "sintese",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 4,
+      "role": "sintese",
+      "destination": "titulo",
+      "reason": "linha acima do cabeçalho"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 5,
+      "role": "sintese",
+      "destination": "cabecalho"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 6,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 7,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 8,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 9,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 11,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 12,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 13,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    },
+    {
+      "sheet": "Síntese 11-11",
+      "row": 14,
+      "role": "sintese",
+      "destination": "informativa",
+      "reason": "síntese: referencia registos já presentes"
+    }
+  ],
+  "review": [
+    {
+      "kind": "ambito-parcial",
+      "keys": [
+        "es:cijara:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 372
+        }
+      ],
+      "detail": "«Presença carpa + regra regional 2026» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar»."
+    },
+    {
+      "kind": "ambito-parcial",
+      "keys": [
+        "es:garcia-de-sola:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 373
+        }
+      ],
+      "detail": "«Presença carpa + regra regional 2026» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar»."
+    },
+    {
+      "kind": "ambito-parcial",
+      "keys": [
+        "es:zujar:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 374
+        }
+      ],
+      "detail": "«Presença carpa + regra regional 2026» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar»."
+    },
+    {
+      "kind": "ambito-parcial",
+      "keys": [
+        "es:la-serena:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 375
+        }
+      ],
+      "detail": "«Presença carpa + regra regional 2026» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar»."
+    },
+    {
+      "kind": "ambito-parcial",
+      "keys": [
+        "es:orellana:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 376
+        }
+      ],
+      "detail": "«Presença carpa + regra regional 2026» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar»."
+    },
+    {
+      "kind": "homonimo",
+      "keys": [
+        "es:aragon:aragon",
+        "es:aragon:navarra"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 107
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 334
+        }
+      ],
+      "detail": "«Aragón» aparece em 2 sítios (?, ?); mantidos separados até revisão."
+    },
+    {
+      "kind": "homonimo",
+      "keys": [
+        "es:ebro:aragon",
+        "es:ebro:cantabria",
+        "es:ebro:castilla-y-leon",
+        "es:ebro:la-rioja",
+        "es:ebro:navarra"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 122
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 173
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 187
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 318
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 341
+        }
+      ],
+      "detail": "«Ebro» aparece em 5 sítios (?, ?, BURGOS, ?, ?); mantidos separados até revisão."
+    },
+    {
+      "kind": "homonimo",
+      "keys": [
+        "es:yesa:aragon",
+        "es:yesa:navarra"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 172
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 360
+        }
+      ],
+      "detail": "«Yesa» aparece em 2 sítios (?, ?); mantidos separados até revisão."
+    },
+    {
+      "kind": "homonimo",
+      "keys": [
+        "es:cijara:castilla-la-mancha",
+        "es:cijara:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 254
+        },
+        {
+          "sheet": "Águas e setores",
+          "row": 372
+        }
+      ],
+      "detail": "«Cíjara» aparece em 2 sítios (Ciudad Real, Badajoz / Cáceres; setor extremeño); mantidos separados até revisão."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "pt:albufeira-da-venda-nova:portugal-continental",
+        "osm-relation-18494254",
+        "osm-way-208639596"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 7
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Albufeira da Venda Nova»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:la-bolera:andalucia",
+        "osm-way-52571655",
+        "osm-way-42086271"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 100
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «La Bolera»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:ebro:aragon",
+        "osm-relation-1843373",
+        "ne-rio-ebro"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 122
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Ebro»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:el-molino:aragon",
+        "osm-way-83823372",
+        "osm-way-48774982"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 126
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «El Molino»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:ebro:cantabria",
+        "osm-relation-1843373",
+        "ne-rio-ebro"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 173
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Ebro»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:ebro:castilla-y-leon",
+        "osm-relation-1843373",
+        "ne-rio-ebro"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 187
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Ebro»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:san-juan:castilla-y-leon",
+        "osm-way-27578047",
+        "osm-way-221638200"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 233
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «San Juan»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:alarcon:castilla-la-mancha",
+        "osm-relation-2980752",
+        "osm-way-360357096"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 240
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Alarcón»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:pumares:galiza",
+        "osm-way-68555638",
+        "osm-relation-1240620"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 308
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Pumares»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:ebro:la-rioja",
+        "osm-relation-1843373",
+        "ne-rio-ebro"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 318
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Ebro»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:ebro:navarra",
+        "osm-relation-1843373",
+        "ne-rio-ebro"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 341
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Ebro»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "es:zujar:extremadura",
+        "osm-relation-2367856",
+        "ne-rio-zujar"
+      ],
+      "rows": [
+        {
+          "sheet": "Águas e setores",
+          "row": 374
+        }
+      ],
+      "detail": "2 águas do Atlas possíveis para «Zújar»; ligação por decidir."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "concessao:158-2024:rio-ave:porto",
+        "pt:rio-ave:portugal-continental",
+        "pt:rio-ave-riba-d-ave:portugal-continental",
+        "pt:rio-ave-santo-tirso:portugal-continental",
+        "pt:rio-ave-vila-das-aves:portugal-continental"
+      ],
+      "rows": [
+        {
+          "sheet": "Concessões a verificar",
+          "row": 73
+        }
+      ],
+      "detail": "Concessão «RIO AVE» coincide com 4 águas."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "concessao:114-2022:albufeira-dos-patudos:santarem",
+        "pt:albufeira-dos-patudos:portugal-continental",
+        "pt:patudos:portugal-continental"
+      ],
+      "rows": [
+        {
+          "sheet": "Concessões a verificar",
+          "row": 78
+        }
+      ],
+      "detail": "Concessão «ALBUFEIRA DOS PATUDOS» coincide com 2 águas."
+    },
+    {
+      "kind": "atlas-ambiguo",
+      "keys": [
+        "concessao:096-2022:rio-sorraia-pista-de-pesca-de-coruche:santarem",
+        "pt:rio-sorraia:portugal-continental",
+        "es:esca:aragon"
+      ],
+      "rows": [
+        {
+          "sheet": "Concessões a verificar",
+          "row": 85
+        }
+      ],
+      "detail": "Concessão «RIO SORRAIA – PISTA DE PESCA DE CORUCHE» coincide com 2 águas."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:camarasa:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 2
+        }
+      ],
+      "detail": "Candidato «Camarasa»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:darnius-boadella:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 3
+        }
+      ],
+      "detail": "Candidato «Darnius-Boadella»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:sant-llorenc-de-montgai:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 4
+        }
+      ],
+      "detail": "Candidato «Sant Llorenç de Montgai»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:santa-anna:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 5
+        }
+      ],
+      "detail": "Candidato «Santa Anna»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:sau:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 6
+        }
+      ],
+      "detail": "Candidato «Sau»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:utxesa:catalunya"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 7
+        }
+      ],
+      "detail": "Candidato «Utxesa»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:alcantara:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 8
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 29
+        }
+      ],
+      "detail": "Candidato «Alcántara»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:cijara:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 9
+        }
+      ],
+      "detail": "Candidato «Cíjara»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:cornalvo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 10
+        }
+      ],
+      "detail": "Candidato «Cornalvo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:garcia-sola:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 11
+        }
+      ],
+      "detail": "Candidato «García Sola»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:la-serena:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 12
+        }
+      ],
+      "detail": "Candidato «La Serena»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:nuestra-senora-de-la-piedad-la-laguna:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 13
+        }
+      ],
+      "detail": "Candidato «Nuestra Señora de la Piedad / La Laguna»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:orellana:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 14
+        }
+      ],
+      "detail": "Candidato «Orellana»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:sierra-brava:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 15
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 20
+        }
+      ],
+      "detail": "Candidato «Sierra Brava»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:valdecanas:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 16
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 23
+        }
+      ],
+      "detail": "Candidato «Valdecañas»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:zujar:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 17
+        }
+      ],
+      "detail": "Candidato «Zújar»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:urkulu:pais-vasco"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 18
+        }
+      ],
+      "detail": "Candidato «Urkulu»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:pena-del-aguila:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 19
+        }
+      ],
+      "detail": "Candidato «Peña del Águila»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:los-canchales:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 21
+        }
+      ],
+      "detail": "Candidato «Los Canchales»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:alange:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 22
+        }
+      ],
+      "detail": "Candidato «Alange»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:gabriel-y-galan:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 24
+        }
+      ],
+      "detail": "Candidato «Gabriel y Galán»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:guijo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 25
+        }
+      ],
+      "detail": "Candidato «Guijo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:valdeobispo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 26
+        }
+      ],
+      "detail": "Candidato «Valdeobispo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:jerte-plasencia:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 27
+        }
+      ],
+      "detail": "Candidato «Jerte / Plasencia»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:borbollon:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 28
+        }
+      ],
+      "detail": "Candidato «Borbollón»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:cedillo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 30
+        }
+      ],
+      "detail": "Candidato «Cedillo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:arrocampo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 31
+        }
+      ],
+      "detail": "Candidato «Arrocampo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:torrejon-tajo:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 32
+        }
+      ],
+      "detail": "Candidato «Torrejón-Tajo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:torrejon-tietar:extremadura"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 33
+        }
+      ],
+      "detail": "Candidato «Torrejón-Tiétar»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:puente-nuevo:andalucia"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 34
+        }
+      ],
+      "detail": "Candidato «Puente Nuevo»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:guadalnuno:andalucia"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 35
+        }
+      ],
+      "detail": "Candidato «Guadalnuño»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:sierra-boyera:andalucia"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 36
+        }
+      ],
+      "detail": "Candidato «Sierra Boyera»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:arcos-de-la-frontera:andalucia"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 37
+        }
+      ],
+      "detail": "Candidato «Arcos de la Frontera»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "es:bornos:andalucia"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 38
+        }
+      ],
+      "detail": "Candidato «Bornos»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "pt:albufeira-de-sambade:portugal-continental"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 39
+        }
+      ],
+      "detail": "Candidato «Albufeira de Sambade»: por confirmar antes de entrar no inventário."
+    },
+    {
+      "kind": "candidato",
+      "keys": [
+        "pt:albufeira-de-pedrogao:portugal-continental"
+      ],
+      "rows": [
+        {
+          "sheet": "Locais a validar",
+          "row": 40
+        }
+      ],
+      "detail": "Candidato «Albufeira de Pedrógão»: por confirmar antes de entrar no inventário."
+    }
+  ],
+  "candidates": [
+    {
+      "key": "es:alange:extremadura",
+      "name": "Alange",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 22
+        }
+      ]
+    },
+    {
+      "key": "es:alcantara:extremadura",
+      "name": "Alcántara",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 8
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 29
+        }
+      ]
+    },
+    {
+      "key": "es:arcos-de-la-frontera:andalucia",
+      "name": "Arcos de la Frontera",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 37
+        }
+      ]
+    },
+    {
+      "key": "es:arrocampo:extremadura",
+      "name": "Arrocampo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 31
+        }
+      ]
+    },
+    {
+      "key": "es:borbollon:extremadura",
+      "name": "Borbollón",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 28
+        }
+      ]
+    },
+    {
+      "key": "es:bornos:andalucia",
+      "name": "Bornos",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 38
+        }
+      ]
+    },
+    {
+      "key": "es:camarasa:catalunya",
+      "name": "Camarasa",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 2
+        }
+      ]
+    },
+    {
+      "key": "es:cedillo:extremadura",
+      "name": "Cedillo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 30
+        }
+      ]
+    },
+    {
+      "key": "es:cijara:extremadura",
+      "name": "Cíjara",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 9
+        }
+      ]
+    },
+    {
+      "key": "es:cornalvo:extremadura",
+      "name": "Cornalvo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 10
+        }
+      ]
+    },
+    {
+      "key": "es:darnius-boadella:catalunya",
+      "name": "Darnius-Boadella",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 3
+        }
+      ]
+    },
+    {
+      "key": "es:gabriel-y-galan:extremadura",
+      "name": "Gabriel y Galán",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 24
+        }
+      ]
+    },
+    {
+      "key": "es:garcia-sola:extremadura",
+      "name": "García Sola",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 11
+        }
+      ]
+    },
+    {
+      "key": "es:guadalnuno:andalucia",
+      "name": "Guadalnuño",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 35
+        }
+      ]
+    },
+    {
+      "key": "es:guijo:extremadura",
+      "name": "Guijo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 25
+        }
+      ]
+    },
+    {
+      "key": "es:jerte-plasencia:extremadura",
+      "name": "Jerte / Plasencia",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 27
+        }
+      ]
+    },
+    {
+      "key": "es:la-serena:extremadura",
+      "name": "La Serena",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 12
+        }
+      ]
+    },
+    {
+      "key": "es:los-canchales:extremadura",
+      "name": "Los Canchales",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 21
+        }
+      ]
+    },
+    {
+      "key": "es:nuestra-senora-de-la-piedad-la-laguna:extremadura",
+      "name": "Nuestra Señora de la Piedad / La Laguna",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 13
+        }
+      ]
+    },
+    {
+      "key": "es:orellana:extremadura",
+      "name": "Orellana",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 14
+        }
+      ]
+    },
+    {
+      "key": "es:pena-del-aguila:extremadura",
+      "name": "Peña del Águila",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 19
+        }
+      ]
+    },
+    {
+      "key": "es:puente-nuevo:andalucia",
+      "name": "Puente Nuevo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 34
+        }
+      ]
+    },
+    {
+      "key": "es:sant-llorenc-de-montgai:catalunya",
+      "name": "Sant Llorenç de Montgai",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 4
+        }
+      ]
+    },
+    {
+      "key": "es:santa-anna:catalunya",
+      "name": "Santa Anna",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 5
+        }
+      ]
+    },
+    {
+      "key": "es:sau:catalunya",
+      "name": "Sau",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 6
+        }
+      ]
+    },
+    {
+      "key": "es:sierra-boyera:andalucia",
+      "name": "Sierra Boyera",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 36
+        }
+      ]
+    },
+    {
+      "key": "es:sierra-brava:extremadura",
+      "name": "Sierra Brava",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 15
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 20
+        }
+      ]
+    },
+    {
+      "key": "es:torrejon-tajo:extremadura",
+      "name": "Torrejón-Tajo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 32
+        }
+      ]
+    },
+    {
+      "key": "es:torrejon-tietar:extremadura",
+      "name": "Torrejón-Tiétar",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 33
+        }
+      ]
+    },
+    {
+      "key": "es:urkulu:pais-vasco",
+      "name": "Urkulu",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 18
+        }
+      ]
+    },
+    {
+      "key": "es:utxesa:catalunya",
+      "name": "Utxesa",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 7
+        }
+      ]
+    },
+    {
+      "key": "es:valdecanas:extremadura",
+      "name": "Valdecañas",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 16
+        },
+        {
+          "sheet": "Locais a validar",
+          "row": 23
+        }
+      ]
+    },
+    {
+      "key": "es:valdeobispo:extremadura",
+      "name": "Valdeobispo",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 26
+        }
+      ]
+    },
+    {
+      "key": "es:zujar:extremadura",
+      "name": "Zújar",
+      "country": "ES",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 17
+        }
+      ]
+    },
+    {
+      "key": "pt:albufeira-de-pedrogao:portugal-continental",
+      "name": "Albufeira de Pedrógão",
+      "country": "PT",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 40
+        }
+      ]
+    },
+    {
+      "key": "pt:albufeira-de-sambade:portugal-continental",
+      "name": "Albufeira de Sambade",
+      "country": "PT",
+      "provenance": [
+        {
+          "sheet": "Locais a validar",
+          "row": 39
+        }
+      ]
+    }
+  ],
+  "exclusions": [
+    {
+      "sheet": "Exclusões",
+      "row": 2,
+      "reason": "Boavista, Almodôvar — ZPL extinta — Despacho de 28/10/2022 extinguiu a ZPL 008/2019. Reavaliar o regime atual antes de anunciar pesca ou acesso."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 3,
+      "reason": "Albufeira Grande da Herdade da Areia — Carpa fora do edital — O edital da Grande enumera apenas achigã. A Pequena tem autorização própria para carpa."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 4,
+      "reason": "Bizkaia — Dirigida proibida — Ordem 2084/2026, anexo I B, espécie de captura acidental."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 5,
+      "reason": "Embalse del Perdiguero, La Rioja — Interdito em 2026 — O coto ficou vedado em 2026 devido ao esvaziamento."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 6,
+      "reason": "Laguna de Juncal, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 7,
+      "reason": "Laguna de Pitillas, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 8,
+      "reason": "Embalse de Salobre / Las Cañas, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 9,
+      "reason": "Balsa de Agua Salada, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 10,
+      "reason": "Laguna de Dos Reinos, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    },
+    {
+      "sheet": "Exclusões",
+      "row": 11,
+      "reason": "Canal de Navarra e balsas de regulação, Navarra — Interdito na fonte de 2026 — Exceção à regra territorial da região ciprinícola."
+    }
+  ],
+  "lacunas": [
+    "Cobertura · Portugal continental: Validar editais anuais 2026/2027, cartografia ICNF, 91 concessões e regras de margens.",
+    "Cobertura · Galiza: Georreferenciar anexo VIII, regimes XIV e correções. Lindoso refere-se à jurisdição galega.",
+    "Cobertura · Castilla-La Mancha: Toledo e parte de Cuenca exigem decomposição por curso e cruzamento com vedados.",
+    "Cobertura · Castilla y León: A região admite devolução na área delimitada. Falta cruzar cada geometria com vedados, cotos e calendário anual.",
+    "Cobertura · Aragón: Os pontos das albufeiras ficam na água. Faltam acessos e a geometria das exclusões.",
+    "Cobertura · Andalucía: Cruzamento indispensável com distribuição histórica da carpa, refugios, cotos e eventuais alterações posteriores a 2023.",
+    "Cobertura · Madrid: Outros rios e cotos por cruzar com presença, plano de pesca e setores autorizados.",
+    "Cobertura · Extremadura: Outras 15 albufeiras citadas num quadro da distribuição de black-bass não foram automaticamente consideradas pesqueiros de carpa. Cruzar o cadastro de cotos e registos de presença.",
+    "Cobertura · Catalunya: Falta cruzar massas não salmonícolas, áreas controladas e refúgios com cartografia corrigida.",
+    "Cobertura · Cantabria: Falta revisão de todos os anexos de bacia.",
+    "Cobertura · País Vasco: Regime provincial. Confirmar Urkulu na época e as restantes delimitações.",
+    "Cobertura · Navarra: Folheto 2026 especifica áreas ciprinícolas, exclusões, horas, número de canas e diferença no regime de devolução/sacrifício.",
+    "Cobertura · La Rioja: Faltam outras águas ciprinícolas, charcas de rega e cruzamento com períodos locais.",
+    "Cobertura · Murcia: Regra territorial abrange as águas continentais; faltam geometrias e vedados locais.",
+    "Cobertura · Asturias: A carpa não foi identificada na lista consultada de espécies. Confirmar uma base específica antes de publicar.",
+    "Cobertura · Comunitat Valenciana: Registo de zonas controladas e negociação federativa sobre competições. Falta ato que confirme local e modalidade.",
+    "Cobertura · Andorra: Consulta do portal de pesca continental do Govern.",
+    "Cobertura · Gibraltar e setor francês peninsular: Sem levantamento local nesta edição.",
+    "Candidato «Cíjara» já existe no inventário (sobreposição).",
+    "Candidato «La Serena» já existe no inventário (sobreposição).",
+    "Candidato «Orellana» já existe no inventário (sobreposição).",
+    "Candidato «Zújar» já existe no inventário (sobreposição).",
+    "Sem coordenadas: Albufeira da Aguieira — Albufeira",
+    "Sem coordenadas: Albufeira da Meimoa — Albufeira",
+    "Sem coordenadas: Albufeira do Cabril — Albufeira",
+    "Sem coordenadas: Albufeira do Maranhão — Albufeira",
+    "Sem coordenadas: Albufeira do Roxo — Albufeira",
+    "Sem coordenadas: Albufeira dos Patudos — Albufeira",
+    "Sem coordenadas: Albufeira Pequena da Herdade da Areia — Perímetro da concessão",
+    "Sem coordenadas: Alvito — Água inteira (sem setor definido)",
+    "Sem coordenadas: Barragem da Cristalina — Consultar mapa da pista",
+    "Sem coordenadas: Barragem da Talagueira — Setor concessionado à Albipesca",
+    "Sem coordenadas: Barragem de Castelo de Bode — Consultar mapa da pista",
+    "Sem coordenadas: Barragem de Montargil — Braço Rasquete – 60 Pesqueiros | Salgueiros – 30 Pesqueiros",
+    "Sem coordenadas: Barragem do Carril – Tomar — Consultar mapa da pista",
+    "Sem coordenadas: Barragem do Divôr — Igreijinha – 40 Pesqueiros | Tomada de Água – 60 Pesqueiros",
+    "Sem coordenadas: Barragem do Maranhão — Consultar mapa da pista",
+    "Sem coordenadas: Barragem Vale do Cobrão – Benavente — 40 Pesqueiros",
+    "Sem coordenadas: Cabeção — Ribeira da Raia, pista velha e pista nova",
+    "Sem coordenadas: Carpodromo · Charca — 5 pesqueiros",
+    "Sem coordenadas: Carpodromo · Pinheiros — 2 pesqueiros",
+    "Sem coordenadas: Carreteira — Perímetro da concessão",
+    "Sem coordenadas: Defesa — Perímetro da concessão",
+    "Sem coordenadas: Fonte Serne — Água inteira (sem setor definido)",
+    "Sem coordenadas: Gagos — Perímetro da concessão",
+    "Sem coordenadas: Isabel Dias — Perímetro da concessão",
+    "Sem coordenadas: Lago Alfarófia — Água inteira (sem setor definido)",
+    "Sem coordenadas: Lagoa de Mira — Água inteira (sem setor definido)",
+    "Sem coordenadas: Lagoas da Folhadosa — 35 Pesqueiros",
+    "Sem coordenadas: Monte Clérigo — Água inteira (sem setor definido)",
+    "Sem coordenadas: Oleirita — Perímetro da concessão",
+    "Sem coordenadas: Patudos — Perímetro da concessão",
+    "Sem coordenadas: Pavia — Ribeira da Raia, cerca de 2 km",
+    "Sem coordenadas: Ribeira da Raia — Moinho da Abóboda → açude do Gameiro",
+    "Sem coordenadas: Ribeira da Raia — Pista Internacional de Mora, açude do Gameiro → ponte do Paço",
+    "Sem coordenadas: Ribeira da Sertã — Ponte da EN529 → ponte do Porto dos Cavalos",
+    "Sem coordenadas: Ribeira de Alge — Pista do Poeiro, ponte do Poeiro → açude da ribeira de Alge",
+    "Sem coordenadas: Ribeira de Raia – Mora — 50 Pesqueiros",
+    "Sem coordenadas: Rio Almonda – Torres Novas — 60 Pesqueiros",
+    "Sem coordenadas: Rio Ardila — Troço português",
+    "Sem coordenadas: Rio Ave — Açude da Lagoncinha → ponte da Lagoncinha",
+    "Sem coordenadas: Rio Ave — Aproveitamento da Boavista → ponte da estação de Santo Tirso",
+    "Sem coordenadas: Rio Ave — Azenha do Bicho → ETAR",
+    "Sem coordenadas: Rio Ave — Ponte da EN14 → Agra de Cima (direita) / foz do Trofa (esquerda)",
+    "Sem coordenadas: Rio Ave – Riba d’ Ave — 52 pesqueiros",
+    "Sem coordenadas: Rio Ave – Santo Tirso — Ambas as margens, postos junto às pontes e ao Parque da Rabada",
+    "Sem coordenadas: Rio Ave – Vila das Aves — 36/37 pesqueiros",
+    "Sem coordenadas: Rio Cávado — Praia fluvial a montante até ao açude de Ruães",
+    "Sem coordenadas: Rio Douro/Albufeira de Crestuma-Lever — Escamarão, margem esquerda",
+    "Sem coordenadas: Rio Douro/Albufeira de Crestuma-Lever — Fontelas → Quinta da Nossa Senhora da Guia, margem direita",
+    "Sem coordenadas: Rio Douro/Albufeira de Crestuma-Lever — Lagoa de Leverinho / Tomás da Lixa, margem direita",
+    "Sem coordenadas: Rio Douro/Albufeira de Crestuma-Lever — Pedorido, troço descrito entre Nogueira do Rio e Concas",
+    "Sem coordenadas: Rio Lis – Leiria — 48 Pesqueiros",
+    "Sem coordenadas: Rio Lis (Vale do Lis)- Monte Real — 133 Pesqueiros",
+    "Sem coordenadas: Rio Mondego — Ponte Rainha Santa Isabel → ponte de Santa Clara, margem esquerda",
+    "Sem coordenadas: Rio Sorraia — Montinho do Brito → ponte ferroviária",
+    "Sem coordenadas: Rio Sorraia – Coruche — Paredão até à Ponte – 80 Pesqueiros | Zona do Milho – 30 Pesqueiros",
+    "Sem coordenadas: Rio Sorraia – Santa Justa — 70 Pesqueiros",
+    "Sem coordenadas: Rio Sousa — Parque de Merendas, 500 m a montante do açude",
+    "Sem coordenadas: Rio Sousa — Ponte da EN106 em Novelas, 500 m para cada lado",
+    "Sem coordenadas: Rio Tâmega — Açude de captação → Azenha do Agapito, Chaves",
+    "Sem coordenadas: Rio Tâmega — Limite de Cabeceiras de Basto → ponte de Cavez",
+    "Sem coordenadas: Rio Tâmega — Ponte de Curalha → limite de Redondelo",
+    "Sem coordenadas: Rio Tâmega — Ponte de São Gonçalo, Amarante (1,4 km a montante e 100 m a jusante)",
+    "Sem coordenadas: Rio Tâmega – Cavez — 1º Açude – 50 pesqueiros | 2º Açude – 32 pesqueiros",
+    "Sem coordenadas: Rio Tâmega/Albufeira do Torrão — Canaveses, cerca de 900 m",
+    "Sem coordenadas: Rio Tâmega/Albufeira do Torrão — Matos/Alpendurada, margem esquerda",
+    "Sem coordenadas: Rio Tâmega/Albufeira do Torrão — Quinta do Alvelo, margem esquerda",
+    "Sem coordenadas: Venda Velha — Perímetro da concessão",
+    "Sem coordenadas: Águas continentais não truteiras — Excluir refúgios, zonas com outras limitações e espaços protegidos sujeitos a plano",
+    "Sem coordenadas: Bermejales — Rio Cacín",
+    "Sem coordenadas: Béznar — Rio Ízbor",
+    "Sem coordenadas: Canales — Rio Genil",
+    "Sem coordenadas: Francisco Abellán — Rio Fardes",
+    "Sem coordenadas: La Bolera — Rio Guadalentín",
+    "Sem coordenadas: Quéntar — Rio Aguas Blancas",
+    "Sem coordenadas: San Clemente — Rio Guardal",
+    "Sem coordenadas: Tranco de Beas — Rio Guadalquivir",
+    "Sem coordenadas: Cuba — Bacia do Mijares. Sem coordenadas no anexo.",
+    "Sem coordenadas: Ebro — Percurso aragonês",
+    "Sem coordenadas: Jalón — Entrada em Aragón → Ebro",
+    "Sem coordenadas: Ebro — Setor cântabro",
+    "Sem coordenadas: Aguilar de Campoo — Río Pisuerga",
+    "Sem coordenadas: Almendra — Río Tormes",
+    "Sem coordenadas: Antoñán del Valle — Arroyo de San Vicente",
+    "Sem coordenadas: Bárcena — Cuenca Sil",
+    "Sem coordenadas: Barrios de Luna — Río Luna",
+    "Sem coordenadas: Benamarías (Magaz de Cepeda) — Río Salguiral",
+    "Sem coordenadas: Burgomillodo — Río Duratón",
+    "Sem coordenadas: Burguillo — Río Alberche",
+    "Sem coordenadas: Campañana o de Cornatel — Cuenca Sil",
+    "Sem coordenadas: Canal de Castilla — Da ponte sobre la carretera P-434 (km 7) a la altura de Requena de Campos até ao limite de Valladolid",
+    "Sem coordenadas: Canal de Castilla — Percurso provincial",
+    "Sem coordenadas: Charco del Cura — Río Alberche",
+    "Sem coordenadas: Cuerda del Pozo — Río Duero",
+    "Sem coordenadas: Ebro — Río Ebro",
+    "Sem coordenadas: El Milagro o de Mirueña — Río Almar",
+    "Sem coordenadas: Embalse de Ayoo de Vidriales — Na província indicada",
+    "Sem coordenadas: Embalse de Congosta — Na província indicada",
+    "Sem coordenadas: Embalse de Encinas — Na província indicada",
+    "Sem coordenadas: Embalse de La Santa Espina — Na província indicada",
+    "Sem coordenadas: Fuentes Claras — Río Adaja",
+    "Sem coordenadas: Juarros de Voltoya — Río Voltoya",
+    "Sem coordenadas: la Almendra — Río Tormes",
+    "Sem coordenadas: La Tabla — Río Jamuz",
+    "Sem coordenadas: Lago de Carucedo — Na província indicada",
+    "Sem coordenadas: Lago de Laguna de Duero — Na província indicada",
+    "Sem coordenadas: Laguna Brañuelas — Na província indicada",
+    "Sem coordenadas: Laguna de Grisuela — Na província indicada",
+    "Sem coordenadas: Laguna de Zotes del Páramo — Na província indicada",
+    "Sem coordenadas: Lagunas de San Juan de Torres — Na província indicada",
+    "Sem coordenadas: Lagunas del Semillero — Na província indicada",
+    "Sem coordenadas: las Cogotas — Río Adaja",
+    "Sem coordenadas: las Rozas — Cuenca Sil",
+    "Sem coordenadas: las Vencías — Río Duratón",
+    "Sem coordenadas: Linares del Arroyo — Río Riaza",
+    "Sem coordenadas: los Ángeles de San Rafael — Río Moros",
+    "Sem coordenadas: los Rábanos — Río Duero",
+    "Sem coordenadas: Matalavilla — Cuenca Sil",
+    "Sem coordenadas: Monteagudo de las Vicarías — Río Nágima",
+    "Sem coordenadas: Peñarrubia — Cuenca Sil",
+    "Sem coordenadas: Pontón Alto — Río Eresma",
+    "Sem coordenadas: Porma — Río Porma",
+    "Sem coordenadas: Río Cega — Desde el límite con la provincia de Segovia até à foz no rio Duero",
+    "Sem coordenadas: Río Duero — de río situado entre el puente del ferrocarril de Soria a Torralba, en Almazán y el límite con la provincia de Burgos",
+    "Sem coordenadas: Río Duero — Percurso provincial",
+    "Sem coordenadas: Río Duero — Percurso provincial y en los afluentes del Duero en el tramo comprendido desde su entrada en la provincia de Zamora hasta el embalse de Villalcampo",
+    "Sem coordenadas: Río Eresma — Desde el límite con la provincia de Segovia até à foz no rio Adaja",
+    "Sem coordenadas: Río Eresma — desde el puente de la carretera SG-V-3122, a la altura de la localidad de Hontanares de Eresma hasta el límite con la provincia de Valladolid",
+    "Sem coordenadas: Río Esla — Da ponte de la carretera CL-621, a la altura de la localidad de Valencia de Don Juan até ao limite de Zamora",
+    "Sem coordenadas: Río Esla — Percurso provincial, incluido el Embalse de Ricobayo",
+    "Sem coordenadas: Río Órbigo — Desde su confluencia con el río Jamuz até ao limite de Zamora",
+    "Sem coordenadas: Río Órbigo — Percurso provincial",
+    "Sem coordenadas: Río Pisuerga — desde el puente de piedra de Astudillo en el km 31 de la P-405 hasta el límite con la provincia de Valladolid",
+    "Sem coordenadas: Río Pisuerga — Percurso provincial",
+    "Sem coordenadas: Río Sequillo — Percurso provincial",
+    "Sem coordenadas: Río Tormes — situado entre el puente nuevo de Encinas de Abajo en la A-50 (límite inferior del coto de pesca Villagonzalo II) y la cola del embalse de Almendra",
+    "Sem coordenadas: Río Valderaduey — Percurso provincial",
+    "Sem coordenadas: Rosarito — Río Tiétar",
+    "Sem coordenadas: San Juan — Río Alberche",
+    "Sem coordenadas: Santa Teresa — Río Tormes",
+    "Sem coordenadas: Serones — Río Voltoya",
+    "Sem coordenadas: Sobrón — Río Ebro",
+    "Sem coordenadas: Valparaíso — Río Tera",
+    "Sem coordenadas: Villagonzalo — Río Tormes",
+    "Sem coordenadas: Villameca — Río Tuerto",
+    "Sem coordenadas: Alarcón — Água inteira (sem setor definido)",
+    "Sem coordenadas: Alcorlo — Água inteira (sem setor definido)",
+    "Sem coordenadas: Almansa — Apenas a zona do coto",
+    "Sem coordenadas: Almoguera — Água inteira (sem setor definido)",
+    "Sem coordenadas: Atance — Água inteira (sem setor definido)",
+    "Sem coordenadas: Beleña — Água inteira (sem setor definido)",
+    "Sem coordenadas: Bolarque — Água inteira (sem setor definido)",
+    "Sem coordenadas: Buendía — Água inteira (sem setor definido)",
+    "Sem coordenadas: Bullaque — Na província",
+    "Sem coordenadas: Cabriel — Ponte CM-2109 entre Cardenete e Víllora → limite provincial",
+    "Sem coordenadas: Camarillas — Água inteira (sem setor definido)",
+    "Sem coordenadas: Castilseras — Água inteira (sem setor definido)",
+    "Sem coordenadas: Cíjara — Água inteira (sem setor definido)",
+    "Sem coordenadas: Contreras — Água inteira (sem setor definido)",
+    "Sem coordenadas: Cursos de água de Toledo — Todos os leitos abrangidos pela ordem, sujeitos aos restantes condicionamentos",
+    "Sem coordenadas: El Cenajo — Água inteira (sem setor definido)",
+    "Sem coordenadas: El Talave — Água inteira (sem setor definido)",
+    "Sem coordenadas: Entrepeñas — Água inteira (sem setor definido)",
+    "Sem coordenadas: Fresnedas Nuevo — Água inteira (sem setor definido)",
+    "Sem coordenadas: Fresnedas Viejo — Água inteira (sem setor definido)",
+    "Sem coordenadas: Gasset — Água inteira (sem setor definido)",
+    "Sem coordenadas: Guadiana — Ponte Flor de Ribera (Daimiel) → limite provincial",
+    "Sem coordenadas: Guadiana — Todas as águas da bacia na província, ressalvadas as interdições",
+    "Sem coordenadas: Guadiela — Travessia da N-320 → foz no Tajo",
+    "Sem coordenadas: Jabalón — Barragem de La Cabezuela → Guadiana",
+    "Sem coordenadas: Júcar — Foz do Altarejos → limite provincial",
+    "Sem coordenadas: Júcar — Percurso na província",
+    "Sem coordenadas: La Cabezuela — Água inteira (sem setor definido)",
+    "Sem coordenadas: La Fuensanta — Água inteira (sem setor definido)",
+    "Sem coordenadas: La Tajera — Água inteira (sem setor definido)",
+    "Sem coordenadas: La Toba — Água inteira (sem setor definido)",
+    "Sem coordenadas: La Tosca — Água inteira (sem setor definido)",
+    "Sem coordenadas: Laguna de Uña — Água inteira (sem setor definido)",
+    "Sem coordenadas: Laguna del Marquesado — Água inteira (sem setor definido)",
+    "Sem coordenadas: Laguna Grande del Tobar — Água inteira (sem setor definido)",
+    "Sem coordenadas: Molino de Chincha — Água inteira (sem setor definido)",
+    "Sem coordenadas: Montoro I — Água inteira (sem setor definido)",
+    "Sem coordenadas: Montoro II — Água inteira (sem setor definido)",
+    "Sem coordenadas: Pálmaces — Água inteira (sem setor definido)",
+    "Sem coordenadas: Peñarroya — Água inteira (sem setor definido)",
+    "Sem coordenadas: Puerto de Vallehermoso — Água inteira (sem setor definido)",
+    "Sem coordenadas: Segura — Base da barragem de La Fuensanta → ponte de Híjar",
+    "Sem coordenadas: Tajo — Desde a água represada de Entrepeñas até à saída da província, incluindo albufeiras",
+    "Sem coordenadas: Tajo — Entrada no município de Buendía → saída em Barajas de Melo",
+    "Sem coordenadas: Torre de Abraham — Água inteira (sem setor definido)",
+    "Sem coordenadas: Vega del Jabalón — Água inteira (sem setor definido)",
+    "Sem coordenadas: Vicario — Água inteira (sem setor definido)",
+    "Sem coordenadas: Zorita — Água inteira (sem setor definido)",
+    "Sem coordenadas: Escales — Setor catalão",
+    "Sem coordenadas: Riba-roja i Flix — EB-01, apenas setores abertos",
+    "Sem coordenadas: Pizarroso / Abastecimiento — Coto de Cañaveral",
+    "Sem coordenadas: A Frieira — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: A Hedrada — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: As Conchas — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: As Portas — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Belesar — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Cachamuíña — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Castrelo de Miño — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Cecebre — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Leboreiro — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Lindoso — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Miño — Apenas entre as albufeiras enumeradas no art. 9.º",
+    "Sem coordenadas: Montefurado — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: O Vao — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Os Peares — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Portodemouros — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Pumares — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: San Martiño — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: San Pedro — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Santiago — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Santo Estevo — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Sequeiros — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Sil — Apenas entre as albufeiras enumeradas no art. 9.º",
+    "Sem coordenadas: Velle — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Viasouto — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Zamáns — Limites do anexo VIII, apenas território galego",
+    "Sem coordenadas: Ebro — Logroño, presa de Las Norias → 200 m a jusante da foz do Iregua",
+    "Sem coordenadas: El Villar — Tricio",
+    "Sem coordenadas: La Grajera — Logroño",
+    "Sem coordenadas: La Laguna II (Alfaro) — Água inteira (sem setor definido)",
+    "Sem coordenadas: La Molineta (Alfaro) — Água inteira (sem setor definido)",
+    "Sem coordenadas: Sopranis (Arnedo) — Água inteira (sem setor definido)",
+    "Sem coordenadas: Santillana — Setores abertos do coto, em Manzanares el Real",
+    "Sem coordenadas: Águas continentais de Murcia — Art. 3.1.e, sujeitas a vedados",
+    "Sem coordenadas: Azud de Ojós — Blanca, setor autorizado no anexo",
+    "Sem coordenadas: El Esparragal — Rio Segura, Calasparra",
+    "Sem coordenadas: El Jarral — Rio Segura, Abarán",
+    "Sem coordenadas: El Mayés — Setor do anexo; La Cierva sujeito a coto",
+    "Sem coordenadas: Hoya García — Rio Segura, Cieza",
+    "Sem coordenadas: La Cierva — Setor do anexo; La Cierva sujeito a coto",
+    "Sem coordenadas: Puentes — Setor do anexo; La Cierva sujeito a coto",
+    "Sem coordenadas: Trasvase Tajo-Segura — Apenas os troços pescáveis",
+    "Sem coordenadas: Aragón — Barragem da central de Arriba, Gallipienzo → foz, incluindo afluentes e descontando vedados",
+    "Sem coordenadas: Arakil — Barragem da central de Berazpea, Ibero → rio Arga",
+    "Sem coordenadas: Arga — Barragem de Huarte → foz e afluentes",
+    "Sem coordenadas: Balsa de Castejón — Castejón",
+    "Sem coordenadas: Barca Vieja — Ebro, margem esquerda, a jusante da ponte NA-8703 até ao fim do soto",
+    "Sem coordenadas: Barcelosa — Tudela",
+    "Sem coordenadas: Campiel — Ebro, margem esquerda, escarpas de Campiel → barragem de Machín",
+    "Sem coordenadas: Ebro — Curso navarro e afluentes, com exceções locais",
+    "Sem coordenadas: Ega — A jusante da central de Allo e afluentes",
+    "Sem coordenadas: El Marinal — Ebro, margem esquerda do Soto de Resa à ponte antiga de San Adrián",
+    "Sem coordenadas: El Vergal — Ega, barragem da central farinheira de Andosilla → barragem de rega de Azagra",
+    "Sem coordenadas: Gobella — Ebro, ponte para Alcanadre em Lodosa → Electra Sartaguda",
+    "Sem coordenadas: La Barca — Ebro, margem esquerda, desde 100 m acima de La Barca até La Boleta",
+    "Sem coordenadas: La Estanca — Corella, excluído setor sudoeste junto ao observatório",
+    "Sem coordenadas: La Estanquilla — Corella",
+    "Sem coordenadas: La Morea — Beriáin, unicamente setor do guia",
+    "Sem coordenadas: La Panueva — Rio Zidacos, ponte de La Panueva → ponte da NA-132, Tafalla",
+    "Sem coordenadas: La Peñica — Ebro, margem direita, 300 m abaixo da foz do Queiles → fim do passeio do Prado",
+    "Sem coordenadas: Laguna de Rada — Rada",
+    "Sem coordenadas: Las Estanquillas / Agua Potable — Cintruénigo",
+    "Sem coordenadas: Los Tubos — Arga, troço desportivo delimitado na página 48 do guia",
+    "Sem coordenadas: Rinuevo Alto — Cascante",
+    "Sem coordenadas: Somero / La Estanca — Cintruénigo",
+    "Sem coordenadas: Soto del Churri — Charca de Peralta, antigo leito do Arga",
+    "Sem coordenadas: Ultzama — Barragem de Sorauren → foz e afluentes",
+    "Sem coordenadas: Valdelafuente — Tudela, margem direita, 300 m",
+    "Sem coordenadas: Yesa — Parte navarra",
+    "Sem coordenadas: Albina — Perímetro em Álava",
+    "Sem coordenadas: Ullibarri-Gamboa — Perímetro exceto os setores vedados",
+    "Sem coordenadas: Urrunaga — Perímetro em Álava",
+    "Sem coordenadas: Barragem do Vale Seco — Concessão definida no edital 2024–2034",
+    "Sem coordenadas: Albufeira do Bonito — Zona municipal regulamentada; confirmar eventuais editais complementares",
+    "Sem coordenadas: Albufeira da Madalena — Herdade da Madalena / Herdade do Gusmão; margens da concessão",
+    "Sem coordenadas: Rio Zêzere — ZPL Tortosendo — Zona n.º 037/2020; limites geográficos a obter no cadastro ICNF",
+    "Sem coordenadas: Rio Cabril — braço do Alto Lindoso — Foz ribeira da Sardeira (-230 m) → regolfo rio Lima / Alto Lindoso",
+    "Sem coordenadas: Albufeira da Caniçada — braço do Gerês — Margem esquerda do braço do Gerês, zona de regolfo até Praia Fluvial do Alqueirão; edital específico",
+    "Sem coordenadas: Rio Gerês — ZPL Caniçada — Troço delimitado pelo edital 2025 no braço da Caniçada e limite do PNPG; verificar geometria",
+    "Sem coordenadas: Silillos I y II — Dos embalses Silillos I e II conforme Anexo V; consultar dias de abertura do coto",
+    "Sem coordenadas: Cíjara — Massas e setores sujeitos a cotos, restrições ambientais e regras de margem; NÃO implica todo o perímetro",
+    "Sem coordenadas: García de Sola — Massas e setores sujeitos a cotos, restrições ambientais e regras de margem; NÃO implica todo o perímetro",
+    "Sem coordenadas: Zújar — Massas e setores sujeitos a cotos, restrições ambientais e regras de margem; NÃO implica todo o perímetro",
+    "Sem coordenadas: La Serena — Massas e setores sujeitos a cotos, restrições ambientais e regras de margem; NÃO implica todo o perímetro",
+    "Sem coordenadas: Orellana — Massas e setores sujeitos a cotos, restrições ambientais e regras de margem; NÃO implica todo o perímetro",
+    "Fonte sem competência confirmada: https://www.fppd.pt/locais-de-pesca-agua-doce/",
+    "Fonte sem competência confirmada: https://www.cm-mora.pt/locais/pista-internacional-de-pesca-desportiva-de-cabecao/",
+    "Fonte sem competência confirmada: https://carpodromo.pt/charca/",
+    "Fonte sem competência confirmada: https://carpodromo.pt/pinheiros/",
+    "Fonte sem competência confirmada: https://www.lagodaalfarofia.com/pt/home-portugues/",
+    "Fonte sem competência confirmada: https://www.cm-mora.pt/locais/pista-de-pesca-de-pavia/",
+    "Fonte sem competência confirmada: https://s2.ppllstatics.com/larioja/www/multimedia/2026/02/24/per%C3%ADodos%20pesca.pdf",
+    "Fonte sem competência confirmada: https://www.cm-entroncamento.pt/images/CME/Regulamentos/2023/Regulamento_da_Zona_de_Pesca_L%C3%BAdica_na_Albufeira_do_Bonito_compressed.pdf",
+    "Fonte sem competência confirmada: https://www.portalturismoportugal.com/pesca",
+    "Fonte sem competência confirmada: https://www.pesca-pt.com/pesqueiro.php?id=170",
+    "Fonte sem competência confirmada: https://www.cm-vvrodao.pt/media/305471/geoportal_monumento-naturaldasportasderodao.pdf",
+    "Fonte sem competência confirmada: Extremadura — Cotos de Pesca",
+    "Fonte sem competência confirmada: Aragón — Folhetos / cartografia",
+    "Fonte sem competência confirmada: Castilla y León — tramos de pesca",
+    "Fonte sem competência confirmada: Castilla y León — alerta de catálogo",
+    "Fonte sem competência confirmada: Andalucía — cenários federativos",
+    "Fonte sem competência confirmada: Normalização entre jurisdições"
+  ],
+  "totals": {
+    "linhas_inventario": 375,
+    "linhas_inventario_pt": 100,
+    "linhas_inventario_es": 275,
+    "aguas": 331,
+    "aguas_pt": 70,
+    "aguas_es": 261,
+    "setores": 371,
+    "setores_sem_coordenadas": 279,
+    "setores_extremos_ab": 43,
+    "regras": 371,
+    "fontes": 62,
+    "concessoes": 91,
+    "candidatos": 36,
+    "exclusoes": 10,
+    "revisao": 60,
+    "aguas_ligadas_atlas": 140
+  },
+  "diff": {
+    "waters": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "sectors": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "evidence": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "rules": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "access": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "sources": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    },
+    "concessions": {
+      "novos": 0,
+      "alterados": 0,
+      "removidos": 0
+    }
+  },
+  "sha256": "bed85478d84de6145f3d628702d104bd1f7c45c82ea4f372d395620f3f39e5a3",
+  "file": "data/carpa/Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx"
+}

@@ -91,6 +91,10 @@ export interface CarpConditions {
   manager: string | null
   hours: string | null
   notes: string | null
+  /** Regime de devolução tal como a fonte o descreve (ex.: «Proibida. Sacrifício imediato no local.»). */
+  release?: string | null
+  /** Base documental da referência (ex.: «Espécie prevista», «Carpfishing noturno», «Edital carpa (2024–2034)»). */
+  basis?: string | null
 }
 export interface CarpRule {
   key: string

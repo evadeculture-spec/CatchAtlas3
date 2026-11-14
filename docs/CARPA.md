@@ -6,24 +6,35 @@ Integração da pesquisa sobre a carpa (*Cyprinus carpio*) na app existente. O m
 
 ## Estado do Excel
 
-O ficheiro `Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx` **não estava disponível** nesta sessão. Procurei no disco, nos anexos, em todos os ramos do repositório e no GitHub.
+**Importado a 14/11/2026** a partir de `Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx` (sha256 `bed85478…f39e5a3`). O ficheiro não é versionado (`data/carpa/*.xlsx` no `.gitignore`). O catálogo gerado é `public/data/carpa/catalogo.json`, e o relatório linha a linha está em `data/carpa/RELATORIO_IMPORTACAO.md` e `data/carpa/importacao.json`.
 
-Tudo o que não depende dele foi implementado e testado com uma folha **sintética** com a mesma estrutura de dez folhas (`e2e/fixtures/carpa-sintetico.xlsx`, só para testes, gerada por `npm run carpa:fixture`). O catálogo da app está vazio (`public/data/carpa/catalogo.json`) até à importação real, e a camada diz «Catálogo da carpa por importar».
+| Medida | Valor |
+|---|---|
+| Linhas de «Águas e setores» | 375 (PT 100, ES 275), todas com destino |
+| Águas | 331 (PT 70, ES 261); 140 ligadas a uma albufeira do Atlas |
+| Setores | 371: 43 com extremos A/B, 49 com um ponto, 279 sem coordenadas |
+| Fontes | 62 (45 de organismo/domínio competente, 5 não competentes, 12 por determinar) |
+| Zonas de pesca lúdica PT | 91 |
+| Candidatos («Locais a validar») | 39 linhas → 36 (repetidos juntos); não entram no inventário |
+| Exclusões | 10 |
+| Para revisão | 60 (homónimos, ligações ambíguas ao Atlas, candidatos, âmbito parcial) |
 
-Para concluir com o Excel real:
+Uma segunda importação mostra «+0 ~0 -0» em todas as entidades.
+
+**Como o Excel foi lido** (regras em `scripts/carpa/mapeamento.json`):
+- **Cada linha do inventário é presença documentada.** O «Fundamento» é a base documental. O Excel não tem coluna de regime nem datas de vigência: as datas só saem do texto («Edital carpa (2024–2034)», «(2025; rever 2026)», «(2026+)», «regra regional 2026»).
+- **«Acesso e condições»** e **«Devolução da carpa»** aparecem na ficha como texto da fonte («O que está documentado»). Não geram acesso físico à margem.
+- **«Pesca permitida»** só aparece com fonte competente e vigência expressa em curso. Para pesca individual a 14/11/2026, só a Barragem do Vale Seco (edital 2024–2034) cumpre isso. Os outros 370 setores ficam «Por confirmar», com o motivo: sem termo nem verificação independente, outra modalidade, fonte não competente ou fora de vigência.
+- **«Regra regional 2026» da Extremadura** (Cíjara, García de Sola, La Serena, Orellana, Zújar): o próprio Excel diz que «não implica todo o perímetro». Ficam «Por confirmar» e entram na lista de revisão.
+- **A data de importação não é verificação.** Nenhuma fonte tem data de verificação independente.
+
+Para reimportar uma nova edição:
 
 ```bash
-# 1. Colocar o ficheiro (não é versionado: data/carpa/*.xlsx está no .gitignore)
-cp ~/Downloads/Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx data/carpa/
-# 2. Pré-visualização (não escreve nada): folhas, colunas reconhecidas e não reconhecidas, totais, diferenças
-npm run carpa:import -- data/carpa/Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx
-# 3. Se houver colunas não reconhecidas, acrescentar sinónimos em scripts/carpa/mapeamento.json e repetir o passo 2
-# 4. Importar (escrita atómica do catálogo + relatório em data/carpa/RELATORIO_IMPORTACAO.md e importacao.json)
-npm run carpa:import -- data/carpa/Atlas-Iberico-Carpa-Atualizado-11-11-2026.xlsx --aplicar
-# 5. Repetir o passo 4: o resumo deve mostrar «+0 ~0 -0» em todas as entidades (zero duplicados)
+cp ~/Downloads/<edição>.xlsx data/carpa/
+npm run carpa:import -- data/carpa/<edição>.xlsx            # pré-visualização, não escreve nada
+npm run carpa:import -- data/carpa/<edição>.xlsx --aplicar  # escrita atómica + relatório
 ```
-
-Totais esperados da edição de 11/11: 375 registos em «Águas e setores» (100 PT, 275 ES), 39 candidatos e 91 referências de zonas de pesca lúdica PT. A pré-visualização mede os totais reais, e o relatório explica qualquer diferença linha a linha (destino ou motivo de exclusão).
 
 ## Arquitetura (o mínimo de módulos)
 

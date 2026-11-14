@@ -17,7 +17,12 @@ import { excelDate, type Cell, type Sheet } from './xlsx'
 export interface Mapping {
   folhas: { papel: string; padroes: string[] }[]
   colunas: Record<string, string[]>
+  /** Sinónimos que só valem numa folha (ex.: «Fonte» é o URL no inventário mas o organismo nas fontes GIS). */
+  colunasPorPapel?: Record<string, Record<string, string[]>>
   competentes: string[]
+  competentesDominios?: string[]
+  naoCompetentesDominios?: string[]
+  inventario?: { presencaDocumentada?: boolean; fundamentoComoBaseDocumental?: boolean }
 }
 export interface AtlasIndexItem {
   id: string
@@ -44,7 +49,7 @@ export interface RowOutcome {
   reason?: string
 }
 export interface ReviewItem {
-  kind: 'homonimo' | 'atlas-ambiguo' | 'eixos-trocados' | 'fora-do-ambito' | 'conflito-dados' | 'candidato' | 'sintese-sem-registo'
+  kind: 'homonimo' | 'atlas-ambiguo' | 'eixos-trocados' | 'fora-do-ambito' | 'conflito-dados' | 'candidato' | 'sintese-sem-registo' | 'ambito-parcial'
   keys: string[]
   rows: Provenance[]
   detail: string
@@ -126,7 +131,7 @@ const TYPE = (v: Cell | undefined, name: string): WaterType => {
 const ACTIVITY = (v: Cell | undefined): Activity => {
   const s = norm(v)
   if (!s) return 'todas'
-  if (/prova|concurso|competic|campeonato/.test(s)) return 'provas'
+  if (/prova|concurso|competic|campeonato|treino|fppd/.test(s)) return 'provas'
   if (/carp\s?fishing/.test(s) && /noturn|nocturn|noite|noche/.test(s)) return 'carpfishing-noturno'
   if (/carp\s?fishing/.test(s)) return 'carpfishing'
   if (/individual|lazer|ludica|recreativ/.test(s)) return 'pesca-individual'
@@ -140,10 +145,36 @@ const EFFECT = (v: Cell | undefined): 'permitida' | 'proibida' | null => {
   return null
 }
 
+/** Datas expressas no texto da base documental: «(2024–2034)», «(2025; rever 2026)», «(2026+)», «regra regional 2026», «(2023)». */
+export function basisDates(text: string | null): { from: string | null; to: string | null } {
+  const t = text ?? ''
+  let m = /(\d{4})\s*[–-]\s*(\d{4})/.exec(t)
+  if (m) return { from: `${m[1]}-01-01`, to: `${m[2]}-12-31` }
+  m = /\((\d{4})\s*;\s*rever/i.exec(t)
+  if (m) return { from: `${m[1]}-01-01`, to: `${m[1]}-12-31` }
+  m = /(\d{4})\s*\+/.exec(t)
+  if (m) return { from: `${m[1]}-01-01`, to: null }
+  m = /regra regional (\d{4})/i.exec(t)
+  if (m) return { from: `${m[1]}-01-01`, to: `${m[1]}-12-31` }
+  m = /\b(20\d{2})\b/.exec(t)
+  if (m) return { from: `${m[1]}-01-01`, to: null }
+  return { from: null, to: null }
+}
+/** Devolução: obrigatória → sim; facultativa (retenção permitida) → nao; proibida, «consultar» ou outro → desconhecido (texto guardado à parte). */
+function releaseTri(v: Cell | undefined): Tri {
+  const s = norm(v)
+  if (!s) return 'desconhecido'
+  if (/^obrigatori/.test(s)) return 'sim'
+  if (/^facultativ/.test(s)) return 'nao'
+  if (v != null && !/proib|consult|ver |conforme|art |anexo|edital|extremadura/.test(s)) return tri(v)
+  return 'desconhecido'
+}
+
 // ------------------------------------------------------------------ cabeçalhos
-function headerMatch(header: string, mapping: Mapping): string | null {
+function headerMatch(header: string, mapping: Mapping, role = ''): string | null {
   const h = norm(header)
   if (!h) return null
+  for (const [k, syn] of Object.entries(mapping.colunasPorPapel?.[role] ?? {})) if (syn.some((x) => norm(x) === h)) return k
   for (const [k, syn] of Object.entries(mapping.colunas)) if (syn.some((x) => norm(x) === h)) return k
   // Cabeçalhos mais longos («Latitude (WGS84)»): o sinónimo mais longo contido como palavras inteiras.
   let best: { k: string; len: number } | null = null
@@ -154,14 +185,14 @@ function headerMatch(header: string, mapping: Mapping): string | null {
     }
   return best?.k ?? null
 }
-function locateHeader(sheet: Sheet, mapping: Mapping) {
+function locateHeader(sheet: Sheet, mapping: Mapping, role = '') {
   for (const r of sheet.rows.slice(0, 12)) {
     const cols: Record<string, number> = {}
     const mapped: Record<string, string> = {}
     const unmapped: string[] = []
     r.cells.forEach((c, i) => {
       if (c == null) return
-      const k = headerMatch(String(c), mapping)
+      const k = headerMatch(String(c), mapping, role)
       if (k && cols[k] === undefined) {
         cols[k] = i
         mapped[String(c)] = k
@@ -191,6 +222,7 @@ export function buildCatalog(
   const report: ImportReport = { sheets: [], rows: [], review: [], candidates: [], exclusions: [], lacunas: [], totals: {} }
   const candidates = new Map<string, ImportReport['candidates'][number]>()
   const syntheseRefs: { ref: string; prov: Provenance }[] = []
+  const novos: { name: string; country: Country | null; prov: Provenance }[] = []
   const competentRe = new RegExp(`(^| )(${mapping.competentes.map((c) => norm(c)).join('|')})( |$)`)
 
   const addProv = (list: Provenance[], p: Provenance) => {
@@ -200,7 +232,16 @@ export function buildCatalog(
     const org = str(g('organismo')), url = str(g('url')), ref = str(g('referencia'))
     if (!org && !url && !ref) return null
     const key = `fonte:${slug(url ?? `${org ?? ''} ${ref ?? ''}`)}`
-    const comp = g('competente') != null ? tri(g('competente')) : org && competentRe.test(norm(org)) ? 'sim' : org ? 'desconhecido' : 'desconhecido'
+    const host = (() => {
+      try {
+        return url ? new URL(url).hostname.toLowerCase() : ''
+      } catch {
+        return ''
+      }
+    })()
+    const byHost = (list?: string[]) => !!host && !!list?.some((d) => host === d || host.endsWith(`.${d}`))
+    // Competência: coluna explícita; senão o organismo emissor ou o domínio oficial do documento.
+    const comp: Tri = g('competente') != null ? tri(g('competente')) : byHost(mapping.naoCompetentesDominios) ? 'nao' : (org && competentRe.test(norm(org))) || byHost(mapping.competentesDominios) ? 'sim' : 'desconhecido'
     const verifiedAt = excelDate(g('verificado') ?? null)
     const lang = norm(g('idioma')).startsWith('es') ? 'es' : norm(g('idioma')).startsWith('pt') ? 'pt' : null
     const prev = sources.get(key)
@@ -215,7 +256,7 @@ export function buildCatalog(
 
   for (const sheet of sheets) {
     const role = roleOf(sheet.name, mapping)
-    const head = locateHeader(sheet, mapping)
+    const head = locateHeader(sheet, mapping, role)
     report.sheets.push({ name: sheet.name, role, rows: sheet.rows.length, headerRow: head?.headerRow ?? null, mapped: head?.mapped ?? {}, unmapped: head?.unmapped ?? [] })
     const body = head ? sheet.rows.filter((r) => r.row > head.headerRow) : sheet.rows
     // Linhas de título e o próprio cabeçalho também ficam registadas (nenhuma linha some sem destino).
@@ -235,6 +276,8 @@ export function buildCatalog(
       if (role === 'leia_me' || role === 'cobertura' || role === 'auditoria' || role === 'novidades' || role === 'desconhecida') {
         // Folhas de controlo: não criam entidades. A síntese/novidades referenciam registos (verificados abaixo).
         if (role === 'novidades' && str(g('id'))) syntheseRefs.push({ ref: str(g('id'))!, prov })
+        if (role === 'novidades' && !str(g('id')) && str(g('agua'))) novos.push({ name: str(g('agua'))!, country: COUNTRY(g('pais')), prov })
+        if (role === 'cobertura' && str(g('notas'))) report.lacunas.push(`Cobertura · ${str(g('territorio')) ?? '?'}: ${str(g('notas'))}`)
         out('informativa', undefined, `folha «${role}»: controlo/resumo, sem entidades novas`)
         continue
       }
@@ -249,7 +292,7 @@ export function buildCatalog(
         continue
       }
       if (role === 'exclusoes') {
-        const reason = str(g('motivo')) ?? str(g('notas')) ?? 'excluída pela folha de exclusões (sem motivo indicado)'
+        const reason = str(g('motivo')) ?? ([str(g('agua')), str(g('situacao')), str(g('fundamento'))].filter(Boolean).join(' — ') || str(g('notas'))) ?? 'excluída pela folha de exclusões (sem motivo indicado)'
         report.exclusions.push({ sheet: sheet.name, row: r.row, reason })
         out('excluida', undefined, reason)
         continue
@@ -263,7 +306,10 @@ export function buildCatalog(
       }
       const official = str(g('id_oficial'))
       const province = str(g('provincia'))
-      const waterKey = official ? `oficial:${slug(official)}` : `${(country ?? 'xx').toLowerCase()}:${slug(name)}${province ? `:${slug(province)}` : ''}`
+      const territory = str(g('territorio'))
+      // Desambiguação estável: o território (preenchido em todas as linhas) quando existe; senão a província.
+      const scope = territory ?? province
+      const waterKey = official && role !== 'concessoes' ? `oficial:${slug(official)}` : `${(country ?? 'xx').toLowerCase()}:${slug(name)}${scope ? `:${slug(scope)}` : ''}`
 
       if (role === 'candidatos') {
         const c = candidates.get(waterKey) ?? { key: waterKey, name, country, provenance: [] }
@@ -273,7 +319,7 @@ export function buildCatalog(
         continue
       }
       if (role === 'concessoes') {
-        const k = `concessao:${slug(name)}${province ? `:${slug(province)}` : ''}`
+        const k = `concessao:${official ? `${slug(official)}:` : ''}${slug(name)}${province ? `:${slug(province)}` : ''}`
         const status = /extint|caduc|revogad|terminad/.test(norm(g('estado'))) ? 'extinta' : /ativ|vigent|em vigor/.test(norm(g('estado'))) ? 'ativa' : 'desconhecido'
         const prev = concessions.get(k)
         const c: CarpConcession = prev ?? { key: k, waterKey: null, name, status, validTo: excelDate(g('vigencia_fim') ?? null), sourceKey: sourceFor(g, prov), provenance: [] }
@@ -299,6 +345,7 @@ export function buildCatalog(
         w = { key: waterKey, name, original: name, variants: [], country, type: TYPE(g('tipo'), name), province, atlasId: null, officialIds: official ? [{ scheme: 'oficial', id: official }] : [], point: null, provenance: [] }
         waters.set(waterKey, w)
       } else if (norm(w.original) !== norm(name) && !w.variants.includes(name)) w.variants.push(name)
+      if (!w.province && province) w.province = province
       addProv(w.provenance, prov)
       if (wp.issue) report.review.push({ kind: wp.issue, keys: [waterKey], rows: [prov], detail: wp.issue === 'eixos-trocados' ? 'Latitude e longitude parecem trocadas; coordenadas não usadas até revisão.' : 'Coordenadas fora de PT continental/ES peninsular; não usadas.' })
 
@@ -315,8 +362,11 @@ export function buildCatalog(
         sectors.set(sectorKey, s)
       }
       addProv(s.provenance, prov)
-      if (pa.p && !s.a) s.a = pa.p
-      if (pb.p && !s.b) s.b = pb.p
+      // Com os dois extremos: limites do setor. Só com o A: é um ponto do setor (não se inventa o B).
+      if (pa.p && pb.p) {
+        if (!s.a) s.a = pa.p
+        if (!s.b) s.b = pb.p
+      } else if ((pa.p || pb.p) && !s.point) s.point = (pa.p ?? pb.p)!
       // Um ponto num registo com setor localiza o setor; sem setor, localiza só a água.
       if (wp.p) {
         if (sName && !s.point) s.point = wp.p
@@ -326,22 +376,34 @@ export function buildCatalog(
 
       // ---- fonte, presença, regra, acesso
       const src = sourceFor(g, prov)
-      const pres = tri(g('presenca'))
-      if (g('presenca') != null) {
+      const presDoc = mapping.inventario?.presencaDocumentada && g('presenca') == null
+      const pres: Tri = presDoc ? 'sim' : tri(g('presenca'))
+      if (g('presenca') != null || presDoc) {
         const ek = `${sectorKey}#presenca#${src ?? 'sem-fonte'}`
         const e = evidence.get(ek) ?? { key: ek, waterKey, sectorKey: sName ? sectorKey : null, species: 'carpa', present: pres, sourceKey: src, observedAt: excelDate(g('verificado') ?? null), provenance: [] }
         addProv(e.provenance, prov)
         evidence.set(ek, e)
       }
-      const effect = EFFECT(g('regime'))
+      const basis = str(g('fundamento'))
+      const effect = EFFECT(g('regime')) ?? (mapping.inventario?.fundamentoComoBaseDocumental && basis ? 'permitida' : null)
       if (effect) {
         const species = (str(g('especie')) ?? 'carpa').split(/[,;/]| e | y /).map((x) => norm(x)).filter(Boolean).map((x) => (/carp|cyprinus/.test(x) ? 'carpa' : /tod|all/.test(x) ? 'todas' : x))
-        const activity = ACTIVITY(g('modalidade'))
-        const vf = excelDate(g('vigencia_inicio') ?? null), vt = excelDate(g('vigencia_fim') ?? null)
+        const activity = ACTIVITY(g('modalidade') ?? basis)
+        // Uma norma regional que a própria fonte diz não cobrir todo o perímetro não delimita o setor:
+        // as datas ficam no texto, mas não chegam para «Pesca permitida» (fica «Por confirmar»).
+        const partial = /n[aã]o implica/i.test(`${sName ?? ''} ${limits ?? ''}`)
+        const fromText = partial ? { from: null, to: null } : basisDates(basis)
+        if (partial && basisDates(basis).from) report.review.push({ kind: 'ambito-parcial', keys: [waterKey], rows: [prov], detail: `«${basis}» com vigência expressa, mas o setor indica que não cobre todo o perímetro: fica «Por confirmar».` })
+        const vf = excelDate(g('vigencia_inicio') ?? null) ?? fromText.from, vt = excelDate(g('vigencia_fim') ?? null) ?? fromText.to
         const rk = `${sectorKey}#${activity}#${[...new Set(species)].sort().join('+')}#${effect}#${vf ?? ''}#${vt ?? ''}#${src ?? ''}`
         const rule: CarpRule = rules.get(rk) ?? {
-          key: rk, waterKey, sectorKey: sName ? sectorKey : null, species: [...new Set(species)], activity, localActivity: str(g('modalidade')), effect, validFrom: vf, validTo: vt,
-          conditions: { licence: str(g('licenca')), season: str(g('epoca')), night: g('noturna') != null ? tri(g('noturna')) : 'desconhecido', catchAndRelease: g('devolucao') != null ? tri(g('devolucao')) : 'desconhecido', manager: str(g('gestor')), hours: str(g('horario')), notes: str(g('notas')) },
+          key: rk, waterKey, sectorKey: sName ? sectorKey : null, species: [...new Set(species)], activity, localActivity: str(g('modalidade')) ?? basis, effect, validFrom: vf, validTo: vt,
+          conditions: {
+            licence: str(g('licenca')), season: str(g('epoca')), night: g('noturna') != null ? tri(g('noturna')) : activity === 'carpfishing-noturno' ? 'sim' : 'desconhecido',
+            catchAndRelease: releaseTri(g('devolucao')), manager: str(g('gestor')), hours: str(g('horario')),
+            notes: [str(g('condicoes')), str(g('notas'))].filter(Boolean).join(' · ') || null,
+            release: str(g('devolucao')), basis,
+          },
           sourceKey: src, concessionKey: null, provenance: [],
         }
         addProv(rule.provenance, prov)
@@ -396,6 +458,12 @@ export function buildCatalog(
   // ---- síntese/novidades devem referenciar registos existentes
   const invIds = new Set(syntheseRefs.filter((x) => x.ref.startsWith('__inv__')).map((x) => x.ref.slice(7)))
   for (const x of syntheseRefs) if (!x.ref.startsWith('__inv__') && !invIds.has(x.ref)) report.review.push({ kind: 'sintese-sem-registo', keys: [x.ref], rows: [x.prov], detail: `A folha «${x.prov.sheet}» refere «${x.ref}», que não está no inventário.` })
+
+  // ---- «Novos» de uma revisão têm de estar no inventário (já contados nos totais)
+  for (const n of novos) {
+    const hit = [...waters.values()].some((w) => (!n.country || w.country === n.country) && (norm(w.name) === norm(n.name) || [...sectors.values()].some((s) => s.waterKey === w.key && norm(`${w.name} ${s.name}`).includes(norm(n.name)))) || norm(n.name).includes(norm(w.name)))
+    if (!hit) report.review.push({ kind: 'sintese-sem-registo', keys: [n.name], rows: [n.prov], detail: `«${n.name}» aparece em «${n.prov.sheet}» mas não foi encontrado no inventário.` })
+  }
 
   // ---- correções humanas (por chave estável; nunca reescritas pela importação)
   const all: Record<string, Map<string, object>> = { waters, sectors, evidence, rules, access, sources, concessions }
