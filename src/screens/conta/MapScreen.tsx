@@ -52,7 +52,7 @@ export default function MapScreen() {
 
   return (
     <div className="relative h-[calc(100dvh-var(--nav-h)-env(safe-area-inset-bottom)-53px)] lg:h-[calc(100dvh-53px)]">
-      <PrivateMap pins={showPins ? pins : []} pings={points} showPins={showPins} showPings={showPings} selected={sel} onSelect={setSel} onCreateAt={setCreateAt} flyTo={fly} className="absolute inset-0" label="Mapa privado de Pins e Pings" />
+      <PrivateMap pins={showPins ? pins : []} pings={points} showPins={showPins} showPings={showPings} selected={sel} onSelect={setSel} onCreateAt={setCreateAt} flyTo={fly} className="absolute inset-0" label="Mapa privado de Pins e Pings" controlsClassName="right-3 top-[128px] sm:top-3" />
 
       {/* Pesquisa e camadas */}
       <div className="pointer-events-none absolute inset-x-3 top-3 z-10 flex flex-col gap-2 sm:right-auto sm:w-[380px]">

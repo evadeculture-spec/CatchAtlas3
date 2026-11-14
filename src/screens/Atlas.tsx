@@ -33,6 +33,7 @@ import { cameraParam, parseAtlasUrl, patchParams } from '../lib/atlas/urlState'
 import { readJSON, writeJSON } from '../lib/storage'
 import { useApp } from '../state/AppState'
 import { GuestEntry } from '../components/lanca/GuestEntry'
+import { memoryCamera, writeCamera } from '../lib/atlas/cameraMemory'
 import { CarpPanel, CarpSearchResults, CarpSheet } from '../components/carpa/CarpSheet'
 import { anchorOf, bboxOf, CARP_SRC, carpFeatures, ensureCarpLayers, setCarpData, setCarpSelected, useCarp } from '../components/carpa/data'
 import type { Activity as CarpActivity, Lang as CarpLang } from '../lib/carpa/model'
@@ -99,7 +100,8 @@ export default function Atlas() {
   const [locating, setLocating] = useState(false)
   const [notice, setNotice] = useState<string | null>(null)
   const [mapKey, setMapKey] = useState(0)
-  const [initialCamera] = useState(() => url.camera ?? undefined)
+  // Câmara: a do URL; senão a do último mapa usado nesta sessão (mesmo motor em todos os módulos).
+  const [initialCamera] = useState(() => url.camera ?? memoryCamera())
 
   // ---------- pins (Marcar pin) e camada comunitária ----------
   const showMine = params.get('meus') !== '0'
@@ -283,6 +285,7 @@ export default function Atlas() {
   const viewTimer = useRef<number | undefined>(undefined)
   const onView = (v: ViewInfo) => {
     setView(v)
+    writeCamera(v, url.mode)
     window.clearTimeout(viewTimer.current)
     viewTimer.current = window.setTimeout(() => updateUrl({ v: cameraParam(v) }), 450)
   }

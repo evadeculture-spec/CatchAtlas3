@@ -14,6 +14,8 @@ import { useNavigate } from 'react-router'
 import type { GeoJSONSource } from 'maplibre-gl'
 import { AtlasMap, type AtlasMapHandle, type AtlasStatus, type ViewInfo } from '../../components/atlas/AtlasMap'
 import { useMediaQuery } from '../../components/atlas/BottomSheet'
+import { MapQuickControls } from '../../components/atlas/MapQuickControls'
+import { memoryCamera, memoryMode, writeCamera } from '../../lib/atlas/cameraMemory'
 import { PinSheet, type SelectedPin } from '../../components/atlas/PinSheet'
 import { Sheet } from '../../components/Dialog'
 import { SignedImage } from '../../components/lanca/SignedImage'
@@ -56,6 +58,10 @@ export default function MeusPins() {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const [status, setStatus] = useState<AtlasStatus>({ map: 'loading', dem: ATLAS_CONFIG.dem.enabled ? 'loading' : 'off', basemap: 'ok', water: 'ok', detailLoading: false })
   const [view, setView] = useState<ViewInfo | null>(null)
+  // Mesmo motor e mesma memória de câmara que os outros mapas; 3D por omissão, 2D se o relevo falhar.
+  const [mode, setMode] = useState<'2d' | '3d'>(() => memoryMode('3d'))
+  const [initialCamera] = useState(() => memoryCamera())
+  const effMode = status.dem === 'failed' ? '2d' : mode
   // Ao entrar no separador começa SEMPRE pela vista pessoal (estado não persistido entre visitas).
   const [community, setCommunity] = useState(false)
   const [filter, setFilter] = useState<PinFilter>(EMPTY_FILTER)
@@ -447,7 +453,8 @@ export default function MeusPins() {
     <div className="relative h-[calc(100dvh-var(--nav-h)-env(safe-area-inset-bottom)-53px)] overflow-hidden bg-[#071923] text-[#f4f7f8] lg:h-[calc(100dvh-53px)]" data-meus-pins data-community={community ? '1' : '0'} data-atlas-status={status.map} data-total={countsReady ? merged.total : ''}>
       <AtlasMap
         handle={mapHandle}
-        mode="2d"
+        mode={effMode}
+        initialCamera={initialCamera}
         selection={null}
         favoriteIds={[]}
         filters={NO_FILTERS}
@@ -456,7 +463,10 @@ export default function MeusPins() {
         padding={desktop ? { top: 72, right: 16, bottom: 16, left: 392 } : { top: 120, right: 12, bottom: curRow || sheetSel ? 260 : 96, left: 12 }}
         attribution={desktop ? 'bottom-right' : 'bottom-left'}
         onPick={() => undefined}
-        onView={setView}
+        onView={(v) => {
+          setView(v)
+          writeCamera(v, effMode)
+        }}
         onStatus={setStatus}
         onMapClick={onMapClick}
         className="absolute inset-0"
@@ -484,6 +494,8 @@ export default function MeusPins() {
           {countsReady ? `${merged.inView.toLocaleString('pt-PT')} nesta área` : '… nesta área'}
         </span>
       </div>
+
+      <MapQuickControls handle={mapHandle} mode={effMode} onMode={setMode} dem={status.dem} className={cx('absolute right-3 z-20', desktop ? 'top-[72px]' : 'top-[172px]')} />
 
       {desktop ? (
         <aside className="absolute bottom-4 left-4 top-[72px] z-20 flex w-[360px] flex-col gap-3 overflow-auto rounded-3xl border border-white/10 bg-[#0a2230]/95 p-4 shadow-2xl backdrop-blur" aria-label="Pesquisa e filtros">

@@ -3,7 +3,7 @@ import { lazy, Suspense, useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router'
 import { DamCard, FavButton, SkyIcon } from '../components/cards'
 import { DamCover } from '../components/photo/DamCover'
-import type { MapView } from '../components/map/IberiaMap'
+import type { MapView } from '../components/map/ExploreMap'
 import catalogWater from '../data/map/catalogWater.json'
 import { ExploreTabs } from '../components/ExploreTabs'
 import { ButtonLink, Chip, cx, EmptyState, Segmented, Tag } from '../components/ui'
@@ -15,7 +15,7 @@ import { simulateConditions } from '../lib/weather'
 import { useApp } from '../state/AppState'
 
 // O mapa real (MapLibre) só é descarregado quando é mostrado.
-const IberiaMap = lazy(() => import('../components/map/IberiaMap'))
+const ExploreMap = lazy(() => import('../components/map/ExploreMap'))
 const WATER = catalogWater as unknown as Record<string, { areaKm2: number; name: string }>
 
 const norm = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').toLowerCase()
@@ -178,7 +178,7 @@ export default function Explore() {
           <div className={cx(view === 'lista' && 'hidden lg:block')}>
             <div className="lg:sticky lg:top-[150px]">
               <Suspense fallback={<div className="grid h-[min(78dvh,680px)] place-items-center rounded-[var(--radius-card)] bg-[#cfe2ea] text-[13px] font-bold text-muted lg:h-[calc(100dvh-190px)]">A carregar o mapa…</div>}>
-                <IberiaMap
+                <ExploreMap
                   dams={results}
                   selectedDamId={sel?.id}
                   focus={focus}

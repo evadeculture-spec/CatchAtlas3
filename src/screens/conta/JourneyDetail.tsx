@@ -4,6 +4,7 @@ import { Link, useNavigate, useParams } from 'react-router'
 import { ConfirmSheet } from '../../components/Dialog'
 import { Button, ButtonLink, Chip, cx, inputCls, PageHeader, Tag } from '../../components/ui'
 import { PingRow } from '../../components/lanca/cards'
+import { PrivateMap } from '../../components/lanca/PrivateMap'
 import { ErrorBox, KindBadge, KV, ListSkeleton, Notice, Panel, Spinner, selectCls, useLoad } from '../../components/lanca/primitives'
 import { conditions, deleteJourney, friendly, getJourney, listEquipment, listPings, updateJourney, type ConditionsResponse } from '../../lib/lanca/api'
 import { isSession, isSuccess, MIN_SAMPLE, mostSimilar, speciesSummary, type ConditionVector } from '../../lib/lanca/intelligence'
@@ -12,7 +13,7 @@ import { moonPhaseName } from '../../lib/lanca/moon'
 import { daySummary, FORECAST_DISCLAIMER, hourRows, pressureTrend, safetyNotices, windowRows } from '../../lib/lanca/planner'
 import { formatDateTime, formatDay } from '../../lib/lanca/time'
 import { distanceM } from '../../lib/lanca/geo'
-import type { ChecklistItem, JourneyStatus, Pin, PingFull } from '../../lib/lanca/types'
+import type { ChecklistItem, JourneyStatus, Pin, PingFull, PingKind } from '../../lib/lanca/types'
 import { compass, fmt, weatherLabel, type Units } from '../../lib/lanca/units'
 import { useAuth } from '../../state/Auth'
 import { useToast } from '../../state/Toasts'
@@ -123,11 +124,23 @@ export default function JourneyDetail() {
             </ButtonLink>
           </Panel>
         ) : (
+          <>
+          <Panel title="Mapa da jornada" actions={<Tag>{targets.length}</Tag>}>
+            {/* Mesmo motor cartográfico 3D do Atlas, com os locais e capturas desta jornada. */}
+            <PrivateMap
+              pins={pins}
+              pings={j.journey_pings.filter((t) => t.ping && t.ping.lat != null && t.ping.lng != null).map((t) => ({ id: t.ping_id, lat: t.ping!.lat!, lng: t.ping!.lng!, kind: t.ping!.kind as PingKind, occurred_at: t.ping!.occurred_at }))}
+              onSelect={(s) => s && nav(s.type === 'pin' ? `/conta/pins/${s.id}` : `/conta/pings/${s.id}`)}
+              className="h-72 rounded-2xl lg:h-80"
+              label="Mapa da jornada"
+            />
+          </Panel>
           <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
             {targets.map((p, i) => (
               <PinPlan key={p.key} index={i + 1} pin={p} journey={j} pings={pings} units={units} />
             ))}
           </div>
+          </>
         )}
 
         <div className="grid grid-cols-1 gap-4 lg:grid-cols-2">
