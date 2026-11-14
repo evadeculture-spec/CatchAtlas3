@@ -59,9 +59,18 @@ Contagens medidas em `public/map/atlas/registry.json`:
 
 Não declaro cobertura completa.
 
-## Testes
+## Testes (build de produção servida localmente, Chromium do Playwright, WebGL por software)
 
-Ver a tabela final da entrega.
+| Suíte | Resultado | Notas |
+|---|---|---|
+| `e2e/mapas.e2e.cjs` (novo) | 15/15 | T01, T02, T07, T09 (desvio do centro medido: 0 m), T10, T11, T14 (320, 390 e 430 px), Mapa privado, Explorar, memória entre módulos |
+| `e2e/atlas.e2e.cjs` | 58/58 | Inclui seleção de albufeira (T03) e lista equivalente |
+| `e2e/meuspins.e2e.cjs` | 40/40 | Esperas ajustadas ao 3D por omissão (o mapa é mais lento sem GPU); comportamento igual |
+| `e2e/carpa.e2e.cjs` | 15/15 | Camada Carpa (T04), pin ligado ao setor, duas contas, sem rede |
+| `e2e/carpa3d.e2e.cjs` | 3/3 | Uma falha pontual numa execução, que não se repetiu |
+| `e2e/guest.e2e.cjs` | 16/16 | Pins, fotografia, diário ↔ mapa, partilha (T05, T08 parcial) |
+| Unitários | 145/145 | |
+| Lint, typecheck (`tsc -b`) e build | OK | |
 
 - `e2e/mapas.e2e.cjs`: T01, T02, T07, T09, T10, T11, T14 e mapas da área privada, Explorar e Jornada.
 - As suítes anteriores cobrem T03 (seleção de albufeira no Atlas), T05/T06 (pins, pings e fichas «3 de N») e T08 (comunidade desligada, servidor).

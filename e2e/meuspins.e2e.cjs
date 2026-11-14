@@ -114,6 +114,8 @@ async function endSession(page) {
       await page.getByRole('switch', { name: 'Incluir pins da comunidade' }).click()
       await page.waitForTimeout(400)
       await page.getByRole('switch', { name: 'Incluir pins da comunidade' }).click()
+      // Espera a pesquisa pessoal terminar e depois o tempo da resposta atrasada (que tem de ser descartada).
+      await settle(page, 2)
       await page.waitForTimeout(3500)
       const feats = await mapEval(page, 'return map.querySourceFeatures("mp-pins").filter((f) => !f.properties.cluster).length')
       ok(`${name}: rede lenta — desligar a comunidade antes da resposta impede resultados tardios`, (await total(page)) === '2' && feats <= 2, `total=${await total(page)} pontos=${feats}`)
@@ -144,8 +146,12 @@ async function endSession(page) {
       await page.screenshot({ path: join(shots, `${name}-3-fichas.png`) })
       // Desligar a comunidade com a ficha de terceiro aberta: fecha ficha, foto e realce.
       await page.getByRole('switch', { name: 'Incluir pins da comunidade' }).click()
-      await page.waitForTimeout(400)
-      const zoneOff = await mapEval(page, 'return map.querySourceFeatures("mp-zone").length')
+      let zoneOff = -1
+      for (let i = 0; i < 30; i++) {
+        zoneOff = await mapEval(page, 'return map.querySourceFeatures("mp-zone").length')
+        if (zoneOff === 0 && (await page.locator('[data-card]').count()) === 0) break
+        await page.waitForTimeout(250)
+      }
       ok(`${name}: desligar a comunidade com ficha de terceiro aberta remove ficha e realce`, (await page.locator('[data-card]').count()) === 0 && zoneOff === 0)
 
       // ------------------------------------------------ filtros: aplicar, chips, remover um, limpar
@@ -154,9 +160,11 @@ async function endSession(page) {
       await page.getByRole('button', { name: 'Carpa', exact: true }).last().click()
       await page.getByLabel('Comparação de peso').selectOption('gt')
       await page.getByLabel('Peso em kg').fill('2')
+      const n0 = requests.length
       await page.click('[data-action="aplicar-filtros"]')
-      await page.waitForTimeout(800)
-      const last = requests[requests.length - 1]
+      const wanted = () => requests.slice(n0 - 1).reverse().find((r) => r.p_species && r.p_weight_op)
+      for (let i = 0; i < 40 && !wanted(); i++) await page.waitForTimeout(250)
+      const last = wanted() ?? {}
       ok(`${name}: filtros chegam ao servidor (espécie + mais de 2 kg em gramas)`, JSON.stringify(last.p_species) === '["Carpa"]' && last.p_weight_op === 'gt' && last.p_weight_g === 2000)
       ok(`${name}: só a carpa de 2,1 kg passa (2 kg exatos não é «mais de»)`, await settle(page, 1))
       if (name === 'telemóvel') await page.click('[data-action="abrir-filtros-tel"]')
@@ -168,11 +176,19 @@ async function endSession(page) {
       if (name === 'telemóvel') await page.keyboard.press('Escape')
 
       // ------------------------------------------------ total vs nesta área
-      await mapEval(page, 'map.jumpTo({ center: [-8.248, 39.602], zoom: 14 })')
-      await page.waitForTimeout(1200)
+      // Espera que a contagem da área acompanhe a câmara (em 3D por software cada movimento demora mais).
+      const inViewIs = async (want) => {
+        for (let i = 0; i < 40; i++) {
+          if ((await inView(page)) === want) return true
+          await page.waitForTimeout(250)
+        }
+        return false
+      }
+      await mapEval(page, 'map.jumpTo({ center: [-8.248, 39.602], zoom: 14, pitch: 0 })')
+      await inViewIs('2')
       const t1 = await total(page), v1 = await inView(page)
       await mapEval(page, 'map.jumpTo({ center: [-7.5, 39.0], zoom: 14 })')
-      await page.waitForTimeout(1200)
+      await inViewIs('0')
       const t2 = await total(page), v2 = await inView(page)
       ok(`${name}: mover o mapa muda só «nesta área»`, t1 === t2 && v1 !== v2, `total ${t1}→${t2}, área ${v1}→${v2}`)
 
