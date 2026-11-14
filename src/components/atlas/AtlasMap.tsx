@@ -157,6 +157,7 @@ export function AtlasMap({
   onView,
   onStatus,
   onInteract,
+  onUserCamera,
   onMapClick,
   onLongPress,
   handle,
@@ -175,6 +176,8 @@ export function AtlasMap({
   onView: (v: ViewInfo) => void
   onStatus: (s: AtlasStatus) => void
   onInteract?: () => void
+  /** Gesto do utilizador na câmara (pinça, roda, duplo toque, teclado, arrasto, rotação, inclinação). Nunca para movimentos programáticos. */
+  onUserCamera?: (kind: 'zoom' | 'drag' | 'rotate' | 'pitch') => void
   /** Chamado antes da escolha de águas/rios: devolve true se o toque foi tratado (pins, colocação). */
   onMapClick?: (e: { point: { x: number; y: number }; lngLat: { lng: number; lat: number }; touch: boolean }) => boolean
   /** Toque prolongado (ou botão direito): atalho opcional para marcar um pin naquele ponto. */
@@ -189,9 +192,9 @@ export function AtlasMap({
   const paddingRef = useRef(padding)
   const readyRef = useRef(false)
   const statusRef = useRef<AtlasStatus>({ map: 'loading', dem: ATLAS_CONFIG.dem.enabled ? 'loading' : 'off', basemap: 'ok', water: 'ok', detailLoading: false })
-  const cb = useRef({ onPick, onView, onStatus, onInteract, onMapClick, onLongPress })
+  const cb = useRef({ onPick, onView, onStatus, onInteract, onUserCamera, onMapClick, onLongPress })
   useEffect(() => {
-    cb.current = { onPick, onView, onStatus, onInteract, onMapClick, onLongPress }
+    cb.current = { onPick, onView, onStatus, onInteract, onUserCamera, onMapClick, onLongPress }
     modeRef.current = mode
     paddingRef.current = padding
   })
@@ -394,6 +397,13 @@ export function AtlasMap({
     map.on('dragstart', markInteraction)
     map.on('zoomstart', markInteraction)
     map.on('rotatestart', markInteraction)
+    // Só eventos com originalEvent (gesto real): flyTo, ajustes de padding e dados não mexem na interface.
+    for (const kind of ['zoom', 'drag', 'rotate', 'pitch'] as const)
+      map.on(`${kind}start`, (e: { originalEvent?: unknown }) => {
+        if (e.originalEvent) cb.current.onUserCamera?.(kind)
+      })
+    // A roda do rato aproxima por animação sem originalEvent no «zoomstart»: o próprio evento «wheel» é o gesto.
+    map.on('wheel', () => cb.current.onUserCamera?.('zoom'))
 
     map.on('error', (e) => {
       const src = (e as unknown as { sourceId?: string }).sourceId

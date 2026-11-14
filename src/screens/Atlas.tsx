@@ -1,9 +1,11 @@
-import { Loader2, Lock, Menu, Plus, Search, TriangleAlert, X } from 'lucide-react'
+import { Compass, Loader2, Lock, Menu, Plus, Search, TriangleAlert, X } from 'lucide-react'
 import * as maplibregl from 'maplibre-gl'
 import type { GeoJSONSource } from 'maplibre-gl'
 import type { FeatureCollection } from 'geojson'
 import { useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from 'react'
+import { flushSync } from 'react-dom'
 import { Link, useLocation, useSearchParams } from 'react-router'
+import { fade, FloatingBottomBar, FloatingTopBar, glass, MoreMenu, type TopPopover } from '../components/atlas/FloatingBars'
 import { AtlasControls } from '../components/atlas/AtlasControls'
 import { AtlasDetails } from '../components/atlas/AtlasDetails'
 import { AtlasFilters } from '../components/atlas/AtlasFilters'
@@ -120,6 +122,11 @@ export default function Atlas() {
   const [composerBox, setComposerBox] = useState<{ step: 'place' | 'details'; h: number }>({ step: 'place', h: 0 })
   const [layersOpen, setLayersOpen] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
+  // Modo imersivo: «expandido» (interface completa) ou «compacto» (duas barras flutuantes). Passa a compacto
+  // quando o utilizador faz zoom, roda ou inclina o mapa; só volta a expandido por ação explícita ou ao abrir
+  // uma ficha. Movimentos programáticos da câmara e atualizações de dados não mexem na interface.
+  const [compact, setCompact] = useState(false)
+  const [topPop, setTopPop] = useState<TopPopover>(null)
   const [authPrompt, setAuthPrompt] = useState(false)
   const [draftOffer, setDraftOffer] = useState<Draft | null>(null)
   const [clusterList, setClusterList] = useState<PinListItem[] | null>(null)
@@ -383,6 +390,32 @@ export default function Atlas() {
     else setSheet('half')
   }
   const closeDetails = () => select(null)
+
+  // ---------- modo imersivo (controlador de interação com o mapa) ----------
+  const holdUi = useRef(false)
+  useEffect(() => {
+    holdUi.current = !!composer || authPrompt
+  }, [composer, authPrompt])
+  const onUserCamera = useCallback((kind: 'zoom' | 'drag' | 'rotate' | 'pitch') => {
+    if (kind === 'drag' || holdUi.current) return
+    // Quem está a escrever (pesquisa, notas) mantém a interface e o foco até terminar.
+    const a = document.activeElement
+    if (a instanceof HTMLElement && a.matches('input:not([type=checkbox]):not([type=radio]), textarea, select')) return
+    setCompact(true) // mesmo valor → sem nova renderização durante o gesto
+  }, [])
+  const expandUi = () => {
+    setTopPop(null)
+    setCompact(false)
+  }
+  // Pesquisa: a interface expande de forma síncrona para o foco abrir o teclado no mesmo toque (iOS).
+  const openSearch = () => {
+    flushSync(() => {
+      setTopPop(null)
+      setCompact(false)
+      if (desktop) setPanelOpen(true)
+    })
+    searchRef.current?.focus()
+  }
 
   // Escape fecha o seletor, a ficha ou a pesquisa.
   useEffect(() => {
@@ -768,6 +801,42 @@ export default function Atlas() {
     )
   else body = <AtlasIntro onList={openList} onFocusSearch={() => searchRef.current?.focus()} />
 
+  const detailOpen = !!(url.sel || pinId || carpaKey || repId || chooser || clusterList || waterPinsRef)
+  const [prevDetail, setPrevDetail] = useState(detailOpen)
+  if (detailOpen !== prevDetail) {
+    setPrevDetail(detailOpen)
+    if (detailOpen) setCompact(false)
+  }
+  const immersive = compact && !composer
+  const activeFilters = url.countries.length + url.types.length + (url.favOnly ? 1 : 0)
+  const onMarcar = () => {
+    try {
+      performance.mark('marcar:click')
+    } catch {
+      /* sem suporte */
+    }
+    setTopPop(null)
+    startComposer({ mode: 'new' })
+  }
+  const layersPopover = (onClose: () => void) => (
+    <LayersPopover
+      mine={showMine}
+      community={showCommunity}
+      carp={carpaOn}
+      onCarp={(v) => {
+        updateUrl({ carpa_camada: v ? '1' : null, ...(v ? {} : { carpa: null }) })
+        if (v && !desktop) setSheet((sh) => (sh === 'peek' ? 'half' : sh))
+      }}
+      signedIn={!!session}
+      onMine={(v) => updateUrl({ meus: v ? null : '0' })}
+      onCommunity={(v) => {
+        updateUrl({ camada: v ? 'comunidade' : null, rep: null })
+        if (v && !desktop) setSheet((s) => (s === 'peek' ? 'half' : s))
+      }}
+      onClose={onClose}
+    />
+  )
+
   const searchBox = (
     <div className="relative" role="search">
       <input
@@ -815,7 +884,9 @@ export default function Atlas() {
     ? desktop
       ? { top: 84, right: 76, bottom: 16, left: 432 }
       : { top: 76, right: 12, bottom: Math.max(composerBox.h, 160) + 8, left: 0 }
-    : desktop
+    : immersive
+      ? { top: 72, right: desktop ? 16 : 12, bottom: 76, left: desktop ? 16 : 0 }
+      : desktop
       ? { top: 84, right: 76, bottom: 16, left: panelOpen ? 432 : 16 }
       : { top: 196, right: 60, bottom: sheet === 'half' ? sheetHeight('half', window.innerHeight, PEEK) : PEEK, left: 0 }
   const webglFailed = status.map === 'webgl-error'
@@ -834,7 +905,7 @@ export default function Atlas() {
     <div
       className="atlas-root fixed inset-0 overflow-hidden bg-[#071923] text-[#f4f7f8]"
       // A atribuição e a escala do mapa ficam sempre acima do painel inferior e, no ecrã largo, à esquerda do «Marcar pin» (nunca escondidas).
-      style={{ height: '100dvh', ['--atlas-bottom' as string]: desktop ? '0px' : `${sheet === 'peek' ? PEEK : sheetHeight('half', window.innerHeight, PEEK)}px`, ['--atlas-right' as string]: desktop && !composer && sheet !== 'full' ? `${FAB_CLEARANCE}px` : '0px' }} data-atlas-status={status.map} data-atlas-sel={url.sel ?? ''}>
+      style={{ height: '100dvh', ['--atlas-bottom' as string]: desktop ? '0px' : immersive ? '76px' : `${sheet === 'peek' ? PEEK : sheetHeight('half', window.innerHeight, PEEK)}px`, ['--atlas-right' as string]: desktop && !composer && sheet !== 'full' ? `${FAB_CLEARANCE}px` : '0px' }} data-atlas-status={status.map} data-atlas-sel={url.sel ?? ''} data-ui={immersive ? 'compact' : 'expanded'}>
       {!webglFailed && (
         <AtlasMap
           key={mapKey}
@@ -852,6 +923,7 @@ export default function Atlas() {
           onView={onView}
           onStatus={onStatus}
           onInteract={dismissHint}
+          onUserCamera={onUserCamera}
           onMapClick={onMapClick}
           onLongPress={configured ? onLongPress : undefined}
           className="absolute inset-0"
@@ -861,7 +933,7 @@ export default function Atlas() {
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(120%_85%_at_50%_45%,transparent_55%,rgb(7_25_35/0.55)_100%)]" aria-hidden />
 
       {/* Cabeçalho: voltar e mudança de percurso em controlos explícitos, fora da área do mapa. */}
-      <header className="pointer-events-none absolute inset-x-0 top-0 z-30 bg-gradient-to-b from-[#071923]/90 via-[#071923]/55 to-transparent px-3 pb-8 pt-[calc(env(safe-area-inset-top)+10px)] sm:px-4">
+      <header className={cx('pointer-events-none absolute inset-x-0 top-0 z-30 bg-gradient-to-b from-[#071923]/90 via-[#071923]/55 to-transparent px-3 pb-8 pt-[calc(env(safe-area-inset-top)+10px)] sm:px-4', fade, immersive && '-translate-y-6 opacity-0')} inert={immersive}>
         <div className="flex items-center gap-2">
           <button type="button" onClick={() => setMenuOpen(true)} aria-label="Menu" className="press pointer-events-auto grid h-11 w-11 shrink-0 place-items-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/15">
             <Menu className="h-5 w-5" aria-hidden />
@@ -892,7 +964,7 @@ export default function Atlas() {
       </header>
 
       {/* Avisos (sem bloquear o mapa). */}
-      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? 'top-[86px] pl-[420px] pr-[64px]' : 'bottom-[196px] pr-[56px]')} aria-live="polite">
+      <div className={cx('pointer-events-none absolute inset-x-3 z-20 flex flex-col items-center gap-1.5', desktop ? (immersive ? 'top-[76px]' : 'top-[86px] pl-[420px] pr-[64px]') : immersive ? 'bottom-[88px]' : 'bottom-[196px] pr-[56px]')} aria-live="polite">
         {notice && (
           <p className="pointer-events-auto flex max-w-md items-start gap-2 rounded-2xl bg-amber-50 px-3.5 py-2 text-[12.5px] font-semibold text-amber-900 shadow-lg" role="status">
             <TriangleAlert className="mt-0.5 h-4 w-4 shrink-0" aria-hidden />
@@ -930,14 +1002,17 @@ export default function Atlas() {
       </div>
 
       {!webglFailed && (
-        <div className={cx('pointer-events-none absolute right-3 z-20 sm:right-4', desktop ? 'top-[92px]' : 'top-[188px]')}>
+        <div className={cx('pointer-events-none absolute right-3 z-20 sm:right-4', desktop ? 'top-[92px]' : 'top-[188px]', fade, immersive && 'translate-x-4 opacity-0')} inert={immersive}>
           <AtlasControls
             mode={url.mode}
             bearing={view?.bearing ?? 0}
             pitch={view?.pitch ?? 0}
             locating={locating}
             compact={!desktop}
-            onZoom={(d) => mapHandle.current?.zoomBy(d)}
+            onZoom={(d) => {
+              mapHandle.current?.zoomBy(d)
+              if (!holdUi.current) setCompact(true)
+            }}
             onNorth={() => mapHandle.current?.north()}
             onRotate={(d) => mapHandle.current?.rotateBy(d)}
             onTilt={(d) => mapHandle.current?.tiltBy(d)}
@@ -951,22 +1026,7 @@ export default function Atlas() {
           />
           {layersOpen && (
             <div className="absolute right-0 top-0 -translate-x-[56px]">
-              <LayersPopover
-                mine={showMine}
-                community={showCommunity}
-                carp={carpaOn}
-                onCarp={(v) => {
-                  updateUrl({ carpa_camada: v ? '1' : null, ...(v ? {} : { carpa: null }) })
-                  if (v && !desktop) setSheet((sh) => (sh === 'peek' ? 'half' : sh))
-                }}
-                signedIn={!!session}
-                onMine={(v) => updateUrl({ meus: v ? null : '0' })}
-                onCommunity={(v) => {
-                  updateUrl({ camada: v ? 'comunidade' : null, rep: null })
-                  if (v && !desktop) setSheet((s) => (s === 'peek' ? 'half' : s))
-                }}
-                onClose={() => setLayersOpen(false)}
-              />
+              {layersPopover(() => setLayersOpen(false))}
             </div>
           )}
         </div>
@@ -1019,7 +1079,7 @@ export default function Atlas() {
           }}
         />
       ) : desktop ? (
-        panelOpen ? (
+        immersive ? null : panelOpen ? (
           <aside className="absolute bottom-4 left-4 top-[84px] z-30 flex w-[400px] flex-col overflow-hidden rounded-3xl border border-white/10 bg-[#0a2230]/94 shadow-[0_20px_60px_-20px_rgb(0_0_0/0.8)] backdrop-blur-xl" aria-label="Painel do Atlas" data-no-swipe>
             <div className="shrink-0 space-y-2.5 border-b border-white/10 p-3">
               {searchBox}
@@ -1036,6 +1096,7 @@ export default function Atlas() {
           </button>
         )
       ) : (
+        <div className={cx('pointer-events-none absolute inset-0 z-30', fade, immersive && 'translate-y-[110%] opacity-0')} inert={immersive} data-sheet-wrap>
         <BottomSheet
           snap={sheet}
           onSnap={setSheet}
@@ -1054,25 +1115,65 @@ export default function Atlas() {
         >
           {body}
         </BottomSheet>
+        </div>
       )}
 
-      {!composer && sheet !== 'full' && (
+      {!composer && sheet !== 'full' && !immersive && (
         <button
           type="button"
-          onClick={() => {
-            try {
-              performance.mark('marcar:click')
-            } catch {
-              /* sem suporte */
-            }
-            startComposer({ mode: 'new' })
-          }}
+          onClick={onMarcar}
           className="press absolute right-3 z-30 flex h-14 items-center gap-2 rounded-full bg-[#38c9d5] pl-4 pr-5 text-[15px] font-extrabold text-[#071923] shadow-[0_12px_30px_-10px_rgb(0_0_0/0.8)] hover:bg-[#5fd6e0] sm:right-4"
           style={{ bottom: desktop ? 24 : `calc(${sheet === 'peek' ? PEEK : sheetHeight('half', window.innerHeight, PEEK)}px + 12px)` }}
           data-action="marcar-pin"
         >
           <Plus className="h-5 w-5" strokeWidth={2.6} aria-hidden /> Marcar pin
         </button>
+      )}
+      {immersive && (
+        <>
+          <FloatingTopBar
+            visible
+            popover={topPop}
+            onPopover={setTopPop}
+            activeFilters={activeFilters}
+            onMenu={() => (setTopPop(null), setMenuOpen(true))}
+            onSearch={openSearch}
+            filters={<AtlasFilters countries={url.countries} types={url.types} favOnly={url.favOnly} onCountry={setCountry} onType={toggleType} onFav={toggleFav} className="flex-wrap overflow-visible" />}
+            layers={layersPopover(() => setTopPop(null))}
+            more={
+              <MoreMenu
+                mode={url.mode}
+                locating={locating}
+                bearing={view?.bearing ?? 0}
+                onMode={(m) => updateUrl({ modo: m === '2d' ? '2d' : null })}
+                onLayers={() => setTopPop('layers')}
+                onLocate={() => (setTopPop(null), locate())}
+                onNorth={() => mapHandle.current?.north()}
+                onPeninsula={() => (setTopPop(null), mapHandle.current?.peninsula())}
+                onList={() => (expandUi(), openList())}
+                onSources={() => (setTopPop(null), setSourcesOpen(true))}
+                onExpand={expandUi}
+              />
+            }
+          />
+          {Math.abs(view?.bearing ?? 0) > 0.5 && (
+            <button type="button" onClick={() => mapHandle.current?.north()} className={cx('press absolute right-3 top-[calc(env(safe-area-inset-top)+10px)] z-40 grid h-[52px] w-[52px] place-items-center rounded-full sm:right-4', glass)} aria-label={`Norte para cima (rotação atual ${Math.round(view?.bearing ?? 0)}°)`} data-floating-north>
+              <Compass className="h-5 w-5" style={{ transform: `rotate(${-(view?.bearing ?? 0) - 45}deg)` }} aria-hidden />
+            </button>
+          )}
+          <FloatingBottomBar
+            visible
+            title={sheetTitle}
+            pinsOn={showMine}
+            onExplore={() => {
+              expandUi()
+              if (!detailOpen && !showingSearch && !carpaOn && !showCommunity) openList()
+              else if (!desktop) setSheet((sh) => (sh === 'peek' ? 'half' : sh))
+            }}
+            onPins={() => updateUrl({ meus: showMine ? '0' : null })}
+            onMark={onMarcar}
+          />
+        </>
       )}
       {authPrompt && (
         <div className="absolute inset-x-3 bottom-[calc(env(safe-area-inset-bottom)+16px)] z-50 mx-auto max-w-md rounded-3xl border border-white/10 bg-[#0a2230] p-4 shadow-2xl sm:bottom-6" role="dialog" aria-label="Entrar para marcar pins">
@@ -1123,7 +1224,7 @@ export default function Atlas() {
         </div>
       )}
       {pins.store && pins.store.pendingCount() > 0 && !composer && (
-        <p className={cx('pointer-events-none absolute left-3 z-20 rounded-full bg-[#0a2230]/92 px-3 py-1 text-[11.5px] font-bold text-[#f4f7f8] backdrop-blur', desktop ? 'bottom-6 left-[440px]' : 'top-[calc(env(safe-area-inset-top)+168px)]')} aria-live="polite" data-pending>
+        <p className={cx('pointer-events-none absolute left-3 z-20 rounded-full bg-[#0a2230]/92 px-3 py-1 text-[11.5px] font-bold text-[#f4f7f8] backdrop-blur', desktop ? (immersive ? 'bottom-24 left-4' : 'bottom-6 left-[440px]') : immersive ? 'top-[calc(env(safe-area-inset-top)+72px)]' : 'top-[calc(env(safe-area-inset-top)+168px)]')} aria-live="polite" data-pending>
           {pins.store.pendingCount()} {pins.store.pendingCount() === 1 ? 'pin por sincronizar' : 'pins por sincronizar'}
           {typeof navigator !== 'undefined' && !navigator.onLine ? ' · sem rede' : ''}
         </p>
