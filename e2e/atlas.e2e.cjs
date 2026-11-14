@@ -231,7 +231,10 @@ const attributionVisible = (page) =>
     await page.click('button[aria-pressed]:has-text("3D")')
     await page.click('button[aria-label="Aproximar"]')
     await page.waitForTimeout(1200)
-    await page.click('button[aria-label="Ver Península"]')
+    // O zoom recolhe a interface (modo imersivo): «Ver Península» fica no menu «Mais» da barra flutuante.
+    ok('«Aproximar» recolhe a interface para as barras flutuantes', (await page.getAttribute('[data-ui]', 'data-ui')) === 'compact')
+    await page.click('button[aria-label^="Mais: percursos"]')
+    await page.click('[data-floating-popover="more"] button:has-text("Ver Península")')
     await waitDs(page, "Number(d.pitch) > 35 && d.walls === '1.00'")
     d = await ds(page)
     ok('Ver Península repõe a vista com volume', Number(d.pitch) > 35 && d.walls === '1.00')
